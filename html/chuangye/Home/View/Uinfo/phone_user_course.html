@@ -1,0 +1,103 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>我的课程</title>
+
+<link rel="stylesheet" href="__PUBLIC__/css/phone_style.css" />
+<style type="text/css">
+.biaoti{ width:100%; text-align:left;background:#fff; padding:20px 0px; height:50px;}
+.biaoti p{ border-left:8px solid #6e18ee; line-height:50px; color:#6e18ee; font-size:30px; }
+.course_list{ width:640px; height:auto; margin-top:20px;}
+.course_list ul{ width:100%;}
+.course_list ul li{ width:604px; border-top:1px solid #ccc; border-bottom:1px solid #ccc; padding:30px 18px; height:auto;
+background:#fff; margin-bottom:20px;}
+.c_top{ padding-bottom:30px; border-bottom:1px solid #dedede; width:100%; overflow:hidden;}
+.c_left{ width:240px; height:150px; float:left;}
+.c_left img{ width:100%; height:100%; object-fit:cover; -moz-object-fit:cover; -webkit-object-fit:cover;}
+.c_right{ float:left; width:344px; margin-left:20px; overflow:hidden;}
+.c_right p{ font-size:30px; color:#333; line-height:45px; height:90px; overflow:hidden;}
+.c_right span{ font-size:24px; display:block; width:344px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#888; margin-top:26px;}
+.c_bottom{ height:80px; width:100%; background:#fff;}
+.c_bottom a{ width:205px; height:65px; line-height:65px; background:#fff; border:2px solid #c8c8c8; color:#444; text-align:center; font-size:30px;
+border-radius:8px; float:right; margin-top:20px;}
+.c_tu{ text-align:center; margin:0 auto;}
+.c_tu img{ text-align:center; width:250px; margin-top:180px;}
+.c_nu{ width:100%; margin:0 auto; margin-top:30px; text-align:center;}
+.c_anniu{ width:270px; margin:0 auto !important; margin-top:40px;  background:#transparent !important; border-radius:8px; color:#6e18ee; font-size:34px; height:88px; line-height:88px; text-align:center; border:2px solid #6e18ee;}
+.c_nu p{ font-size:24px; color:#999; text-align:center; margin:20px;}
+</style>
+<script type="text/javascript" src="__PUBLIC__/js/koala.min.1.5.js"></script>
+
+</head>
+
+<body style="background:#f4f5f7; height:100%;">
+<include file="Public:phone_head_xin" />
+<div class="warpper"   style="position:relative; height:100%;">
+     <div class="biaoti">
+         <p>&nbsp;&nbsp;我的课程</p>   
+     </div>
+     <if condition="$a neq NULL ">
+     <div class="course_list">
+          <ul>
+              <volist name="list_course" id="vo">
+              <li>
+              	  <div class="c_top">
+                            <div class="c_left"><img src="__ROOT__/{$vo.image}"/></div>
+                            <div class="c_right">
+                                <p>{$vo.title}</p>
+                                <span>{$vo.brief}</span>
+                            </div>
+                       </div>
+                       <div class="c_bottom">
+                       		<if condition="$vo.mark_bit eq 1 ">
+                              <a href="{:U('Course/void',array('cid'=>$vo['id'] , 'kcname'=>$vo['title']))}" >
+                               
+                              开始上课
+                              </a>
+                              </if>
+                              
+                              <if condition="$vo.mark_bit eq 0 ">
+                              <a href="javascript:;" style="background-color:#CCC;">
+                              敬请期待
+                              </a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 3 ">
+                              <a href="javascript:;" style="background-color:#CCC;">
+                              敬请期待
+                              </a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 2 ">
+                  
+                              <a href="http://{$vo.href}" style="background-color: #FC0;">
+                              去上课
+                              </a>
+                              </if>
+                       </div>
+              </li>
+               </volist>
+          </ul>
+     </div>
+    </if>
+    <if condition="$a eq NULL ">
+
+    	 <div class="c_tu"><img src="__PUBLIC__/image/kong.png" /></div>
+         <div class="c_nu"><p>还没有课程，点击查找课程</p></div>
+         <div class="c_nu"><a class="c_anniu" href="{:U('Course/index')}">去找课程</a></div>
+    
+    </if>
+</div>
+</body>
+</html>

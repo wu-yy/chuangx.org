@@ -1,0 +1,41 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>中国创业学院</title>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/20160516style.css"/>
+
+<style type="text/css">
+
+</style>
+</head>
+
+<body style="background:#fff; width:100%;">
+    <div class="us_right_nav" style="width:100% !important;">
+        <div class="us_list" style=" position:fixed; top:0px; color:#000;">群组</div>
+        <div class="z_anniu">
+            <a href="__URL__/uinfo_group" class="an_xia">我加入的群组</a>
+            <a  class="an_xia z_active">我管理的群组</a>
+        </div>
+        <div class="z_zu">
+         <ul>
+         	<volist name="joined_group" id="vo">
+            <a href="">
+            <li>
+                <div class="z_pic"><img src="__ROOT__/{$vo.image}"/></div>
+                <p class="z_ming">{$vo.name}</p>
+                <a href="__URL__/uinfo_course_group/gid/{$vo.id}" class="zu_xiang3">查看详情</a>
+            </li>
+            </a>
+            </volist>
+            
+         </ul>
+        </div>
+   </div>
+</body>
+</html>

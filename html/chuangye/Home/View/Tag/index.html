@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">-->
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link href="__PUBLIC__/css/table.css" rel="stylesheet">
+  <link href="__PUBLIC__/css/style-responsive.css" rel="stylesheet">
+  <script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+
+<style>
+<style>
+body{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 14px;line-height: 1.42857;
+color: #333;}
+.table{ overflow:hidden; margin-bottom:-10px !important;}
+.table li input{ width:auto; float:left; margin-bottom:10px; margin-left:5px;border-radius:3px 0px 0px 3px; }
+.table{ overflow:hidden; border-bottom:1px solid #dadada;}
+ul{ outline:none; list-style:none;}
+.table li{ width:auto; float:left;overflow:hidden; margin-bottom:10px; height:34px;margin-left:5px;}
+.label_ad{ font-size:18px; font-weight:700;}
+.table a{background: #E3E4E8 none repeat scroll 0% 0%;
+border-radius:0px 3px 3px 0px;
+color: #858582;
+float: left;
+padding: 10px;
+text-decoration: none;}
+</style>
+
+</head>
+
+        <!-- header section start-->
+      
+
+        <!--body wrapper start-->
+        <div class="wrapper" style="background: #EFF0F4 none repeat scroll 0% 0%;">
+            <div class="row">
+            <div class="col-sm-6" style="width:100%;">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div class="btn-group">
+                            <p class="label_ad">标签管理</p>  
+                        </div>
+<!--                            <span class="tools pull-right">
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                                <a href="javascript:;" class="fa fa-times"></a>
+                                </span>-->
+                    </header>
+                    <div class="panel-body">
+                        <p>第一级分类</p>
+                        <ul class="table">
+                            <li><input type="email" class="form-control" id="" placeholder="行业" onclick="gettag(1);" onchange="gettag(1);" readonly>
+                                
+                            </li>
+                            <li><input type="email" class="form-control" id="" placeholder="分类" onclick="gettag(2);" onchange="gettag(2);" readonly>
+                                
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <p>第二级分类</p>
+                        <ul class="table" id="ul1">
+                        
+                        	<div id='erji'>
+
+                           </div>
+                            <li> <button id="editable-sample_new" style="margin-left:5px;" class="btn btn-primary" onclick="erji_tianjia();">
+                            增加二级菜单 <i class="fa fa-plus"></i>
+                            </button></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <p>第三级分类</p>
+                        <ul class="table" id="ul2">
+                            <div id='sanji'>
+
+                           </div>
+                            
+                            <li> <button id="editable-sample_new" style="margin-left:5px;" class="btn btn-primary" onClick="sanji_tianjia();">
+                            增加三级菜单 <i class="fa fa-plus"></i>
+                            </button></li>
+                        </ul>
+                    </div>
+
+                </section>
+            </div>
+
+        </div>
+        <input type="hidden" id="erjivalue" />
+        <input type="hidden"id="sanjivalue" />
+        <!--body wrapper end-->
+		<script>
+			function gettag(id)
+			{
+				clear();
+				document.getElementById('erjivalue').value=id;
+				var obj = {};
+					obj.key = "value";
+					$.post("__APP__/Home/Course/gettag/id/"+id, obj,
+						function(data,status)
+							{
+								var str= '';
+								var data = eval('('+data+')');
+								if(data)
+								{
+									for(var x in data){
+									var a = data[x]['name'];
+									var b = data[x]['id'];
+									var str='<li id="li'+b+'"><input type="email" class="form-control" id="'+b+'" placeholder="'+a+'" onclick="gettag_sanji('+b+');" onchange="changename('+b+');"><a href="javascript:;" class="fa fa-times" onclick="del('+b+');"></a></li>'+str;
+									}
+									document.getElementById("erji").innerHTML = str;
+								}
+								else
+								{
+									alert('未知错误');	
+								}
+							}
+						   );	
+
+			}
+			function gettag_sanji(id)
+			{
+				document.getElementById('sanjivalue').value=id;
+				var obj = {};
+					obj.key = "value";
+					$.post("__APP__/Home/Course/gettag/id/"+id, obj,
+						function(data,status)
+							{
+								var str= '';
+								var data = eval('('+data+')');
+								if(data)
+								{
+									for(var x in data){
+									var a = data[x]['name'];
+									var b = data[x]['id'];
+									var str='<li id="li'+b+'"><input type="email" class="form-control" id="'+b+'" placeholder="'+a+'" onchange="changename('+b+');"><a href="javascript:;" class="fa fa-times" onclick="del('+b+');"></a></li>'+str;
+									}
+									document.getElementById("sanji").innerHTML = str;
+								}
+								else
+								{
+									alert('未知错误');	
+								}
+							}
+						   );	
+
+			}
+			function clear()
+			{
+				document.getElementById("sanji").innerHTML = '';
+				document.getElementById("erji").innerHTML = '';
+			}
+			function changename(id)
+			{
+				
+				var a=document.getElementById(id).value;
+				
+				if(!(a))
+				{
+					return;	
+				}
+					
+				if(confirm("是否确认修改标签？"))
+				{
+					
+					name(id,a);
+					return;
+				
+				}
+				else
+				{
+					document.getElementById(id).value = '';
+					return;
+				} 
+			}
+			
+			function name(id,a)
+			{
+					var obj = {};
+					obj.key = "value";
+					$.post("__APP__/Home/Tag/saname/id/"+id+"/name/"+a, obj,
+						function(data,status)
+							{
+								if(!isNaN(data))
+								{
+									document.getElementById(id).placeholder=a;
+									
+									document.getElementById(id).value = '';
+									
+									return;
+								}
+								else
+								{
+									alert(data);	
+								}
+							}
+						   );
+			}
+			function del(id)
+			{
+				
+				if(confirm("是否确认删除标签？"))
+				{
+					
+					var obj = {};
+					obj.key = "value";
+					$.post("__APP__/Home/Tag/detag/id/"+id, obj,
+						function(data,status)
+							{
+								
+								
+								if(data=="删除成功")
+								{
+									var div = document.getElementById('li'+id);
+		
+									div.style.display="none";
+								}	
+							}
+						   );
+					return;
+				
+				}
+				else
+				{
+					return;
+				} 
+				
+			}
+			function erji_tianjia()
+			{
+				
+					var a=document.getElementById('erjivalue').value;
+					
+					if(!(a))
+					{
+						alert('请选择一级分类');	
+						return;
+					}
+					
+					var t = (new Date()).valueOf();
+					
+					var str='<li id="li'+t+'"><input type="email" class="form-control" id="'+t+'" placeholder="添加标签" onchange="adtag('+t+');"></li>';
+					
+					var g=document.getElementById('erji').innerHTML;
+					
+					document.getElementById("erji").innerHTML = g+str;
+			}
+			function adtag(id)
+			{
+					var a=document.getElementById('erjivalue').value;
+					
+					if(!(a))
+					{
+						alert('请选择一级分类');	
+					}
+					
+					var name=document.getElementById(id).value;
+					
+					
+					if(!(name))
+					{
+						return;	
+					}
+					
+					var obj = {};
+					obj.key = "value";
+					$.post("__APP__/Home/Tag/gettag/pid/"+a+"/name/"+name, obj,
+						function(data,status)
+							{
+								
+								var b=data;
+								if(!isNaN(data))
+								{
+									
+									var elem=document.getElementById("li"+id);
+									
+									elem.parentNode.removeChild(elem);
+									
+									
+									var a=name;
+									
+									var str='<li id="li'+b+'"><input type="email" class="form-control" id="'+b+'" placeholder="'+a+'" onclick="gettag_sanji('+b+');" onchange="changename('+b+');"><a href="javascript:;" class="fa fa-times" onclick="del('+b+');"></a></li>';
+									
+									var g=document.getElementById('erji').innerHTML;
+					
+									document.getElementById("erji").innerHTML = g+str
+									
+								}
+								else
+								{
+									alert(data);
+								}
+							}
+						   );
+					return;
+					
+					
+			}
+			function sanji_tianjia()
+			{
+				
+					var a=document.getElementById('sanjivalue').value;
+					
+					if(!(a))
+					{
+						alert('请选择二级分类');	
+						return;
+					}
+					
+					var t = (new Date()).valueOf();
+					
+					var str='<li id="li'+t+'"><input type="email" class="form-control" id="'+t+'" placeholder="添加标签" onchange="adtag_sanji('+t+');"></li>';
+					
+					var g=document.getElementById('sanji').innerHTML;
+					
+					document.getElementById("sanji").innerHTML = g+str;
+			}
+			function adtag_sanji(id)
+			{
+					var a=document.getElementById('sanjivalue').value;
+					
+					if(!(a))
+					{
+						alert('请选择二级分类');	
+					}
+					
+					var name=document.getElementById(id).value;
+					
+					
+					if(!(name))
+					{
+						return;	
+					}
+					
+					var obj = {};
+					obj.key = "value";
+					$.post("__APP__/Home/Tag/gettag/pid/"+a+"/name/"+name, obj,
+						function(data,status)
+							{
+								
+								var b=data;
+								if(!isNaN(data))
+								{
+									
+									var elem=document.getElementById("li"+id);
+									
+									elem.parentNode.removeChild(elem);
+									
+									
+									var a=name;
+									
+									var str='<li id="li'+b+'"><input type="email" class="form-control" id="'+b+'" placeholder="'+a+'"  onchange="changename('+b+');"><a href="javascript:;" class="fa fa-times" onclick="del('+b+');"></a></li>';
+									
+									var g=document.getElementById('sanji').innerHTML;
+					
+									document.getElementById("sanji").innerHTML = g+str
+									
+								}
+								else
+								{
+									alert(data);
+								}
+							}
+						   );
+					return;
+					
+					
+			}
+		</script>
+
+   

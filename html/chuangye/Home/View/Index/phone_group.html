@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+<title>{$name}</title>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/qybstye.css">
+<style>
+.qkc { width:94.5% !important;}
+.qbkc {width:94.5% !important;}
+.qbkc ul li {
+    width: 200px !important;}
+.sy_cyds11 {
+    width: 320px;
+    height: auto;
+    background-color: #fafafa;
+    color: #000;
+    margin-bottom: 40px;
+}
+.sy_cyds11 ul li {
+    width: 100%;
+    height:134px;
+    width: 85px;
+    margin: 4px;
+    float: left;
+}
+.sy_cyds11 ul {
+    overflow: hidden;
+}
+.sy_cyds11 ul li img {
+    height: 85px;
+    width: 85px;
+}
+.sy_cyds11 ul li p {
+    font-size: 14px;
+line-height: 25px;
+bottom: 0px;
+padding: 5px;
+width: 89%;
+    position: relative !important;
+    top: -5px !important;
+    font-weight: 800;
+    left: 0px;
+    background: none !important;
+    color: #333 !important;
+
+}
+.sy_cyds11 ul li p span {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+.sy_cyds11 ul li span {
+    line-height: 18px !important;
+    height: 18px !important;
+}
+.p111 {
+    float: left;
+    line-height: 35px;
+    font-weight: normal !important;
+    font-size: 9px !important;
+}
+</style>
+<script src="__PUBLIC__/js/index/index.js"></script>
+<script src="__PUBLIC__/js/index/zhuce1.js"></script>
+</head>
+
+<body style="background:#f1f1f1 !important; width:100%;">
+<div class="wapper" style="min-width: 1080px !important;">
+     <include file="Public:phone_head1" />
+     <div class="q_content" style="margin-top:110px !important; width:100% !important;">
+         <div class="q_bn"><img  src="__ROOT__/{$img}"/></div>
+         <div class="q_kc" style=" width:100% !important;">
+           <div style="float:left; width:740px; overflow:hidden; margin-right:20px;">
+           <if condition="$t eq 1">
+            <div class="q_left">
+               <h2 class="qkc" style="width:93.5% !important;">课程</h2>
+               <div class="qbkc" style="width:93.5% !important;">
+                   <ul>
+                   		<volist name="course_danjie" id="vo">
+                        <a href="{:U('Course/course_details',array('cid'=>$vo['id']))}" target="_blank">
+                        <li>
+                           <img src="__ROOT__/{$vo.image}"/>
+                           <p>{$vo.title}</p>
+                        </li>
+                        </a>
+                        </volist>
+                       
+                   </ul>
+               </div>
+            </div>
+            </if>
+            <volist name="arrname" id="vo">
+            <div class="q_left">
+            	
+               <h2 class="qkc">{$vo.name}</h2>
+               <div class="qbkc">
+                   <ul>
+   							<volist name="abc[$vo['id']]" id="vo1">
+                            <a href="{:U('Course/course_details',array('cid'=>$vo1['cid']))}" target="_blank">
+                            <li><img src="__ROOT__/{$vo1.image}"/><p>{$vo1.title}</p></li>
+                            </a>
+                  			</volist>
+                   </ul>
+               </div>
+               
+            </div>
+            </volist>
+          </div>
+            <div class="q_right">
+                <div class="q_re">
+                    <h2 class="qkc1">最新动态</h2>
+                    <hr class="bd" />
+                </div>
+                <ul>
+                	<volist name="information" id="vo">
+                	<a href="{:U('Information/information_details',array('id'=>$vo['id']))}" target="_blank">
+                   <li>
+                      <img src="__ROOT__/{$vo.img}"/>
+                      <p>{$vo.title}</p>
+                   </li>
+                   </a>
+                   </volist>
+                </ul>
+            </div>
+            <div class="q_right">
+                <div class="q_re">
+                    <h2 class="qkc1">创业导师</h2>
+                    <hr class="bd" />
+                </div>
+                <div class="sy_cyds11" style="background-color:#FFF;">
+                <ul>
+                   <foreach name="teacherlist" item="tvo">
+                   <li>
+                   		<if condition="$tvo[image] eq ''">
+                      <img src="__PUBLIC__/image/moren.jpg" />
+                      <else />
+                          <img src="__ROOT__{$tvo.image}" />
+                       </if>
+                       
+                        <p><span style="font-size: 13px;">{$tvo.name}</span> <span class="p111" style=" color:#666 !important;">{$tvo.job}</span></p>
+                   </li>
+                   </foreach>
+                </ul>
+                </div>
+            </div>
+         </div>
+     </div>
+     <div class="q_footer" style="min-width: 1080px;">
+       北京创一教育科技有限公司版权所有 &nbsp;&nbsp;京ICP备15066256号&nbsp;&nbsp; 京公网安备11010802020180号
+     </div>
+</div>
+
+</body>
+</html>

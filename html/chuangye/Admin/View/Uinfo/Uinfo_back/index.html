@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>中国创业学院</title>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="wapper">
+     <nav class="us_heard">
+          <div class="us_content">
+               <img class="us_logo" src="__PUBLIC__/image/bailogo.png"/>
+               <div class="us_nav">
+                   <ul>
+                        <li><a href="__APP__/Home/Index/">首页</a></li>
+                        <li><a href="__APP__/Home/Course/">课程</a></li>
+                        <li><a href="__APP__/Home/Information/">资讯</a></li>
+                   </ul>
+              </div>
+              <div class="us_right1">
+                  <a href="javascript:;" onclick="userout();">
+                  <p>退出</p>
+                  <img src="__PUBLIC__/image/tuichu.png"/>
+                  </a>
+             </div>
+          </div> 
+     </nav>
+     <div class="us_notic">
+               <if condition="$email_nu eq NULL ">
+               <p id="notic">最新通知：</p>
+               <p>亲爱的<font color="#CC3399">{$name}</font>童鞋，你还未绑定邮箱。<a href="javascript:;" onclick="iframepage('__URL__/mail');">立即绑定</a></p>
+			   </if>
+               <if condition="$email_nu neq NULL ">
+			   <if condition="$phone_nu eq NULL "> 
+			   <p id="notic">最新通知：</p>
+               <p>亲爱的<font color="#CC3399">{$name}</font>童鞋，你还未绑定手机号。<a href="javascript:;" onclick="iframepage('__URL__/phone');">立即绑定</a></p>
+			   </if>
+               </if>
+     </div>
+     
+     <section class="us_st" >
+          
+         <div class="us_user_content">
+              <div class="us_left_nav">
+                  <ul>
+                      <li id="us_pic">
+                          <img src="{$image}"/>
+                          <p>{$name}</p>
+                      </li>
+                     
+                      <a href="">
+                      <li>
+                          <img src="__PUBLIC__/image/2gz.png"/>
+                          <p>我的课程</p>
+                      </li>
+                      </a>
+                      <a href="javascript:;" onclick="iframepage('__URL__/personal');">
+                      <li>
+                          <img src="__PUBLIC__/image/1bjxx.png"/>
+                          <p>个人信息</p>
+                      </li>
+                      </a>
+                      <a href="javascript:;" onclick="iframepage('__URL__/phone');">
+                      <li>
+                          <img src="__PUBLIC__/image/3shouji.png"/>
+                          <p>绑定手机</p>
+                      </li>
+                      </a>
+                      <a href="javascript:;" onclick="iframepage('__URL__/mail');">
+                      <li>
+                          <img src="__PUBLIC__/image/4youxiang.png"/>
+                          <p>绑定邮箱</p>
+                      </li>
+                      </a>
+                      <a href="javascript:;" onclick="iframepage('__URL__/password');">
+                      <li>
+                          <img src="__PUBLIC__/image/5mima.png"/>
+                          <p>修改密码</p>
+                      </li>
+                      </a>
+                     
+                  </ul>
+              </div> 
+              
+             
+              <div class="us_right_nav" style=" display:table-cell; position:absolute; top:20px;left:230px;right: 0px;height: auto; bottom:0px; 
+                   background-color: #F1F1F1; min-height:100px; ">
+                   <iframe src="__URL__/profession" id="iframepage" frameborder="no";  style="width: 100%;
+                   height: 100%;" allowtransparency="true" scrolling="auto" marginheight="0" marginwidth="0" >
+                   </iframe>
+              </div>
+            
+          </div>
+             
+          </div>
+     </section>
+     <footer class="sy_footer">
+          <div class="sy_footer_content">
+               <div class="sy_f_about">
+                    <img src="__PUBLIC__/image/logo1.png"/>
+                    <ul>
+                        <li>
+                            <a href="">关于我们</a>
+                        </li>
+                        <li>
+                            <a href="">人才招聘</a>
+                        </li>
+                        <li>
+                            <a href="">联系我们</a>
+                        </li>
+                        <li>
+                            <a href="">常见问题</a>
+                        </li>
+                        <li>
+                            <a href="">意见反馈</a>
+                        </li>
+                        <li>
+                            <a href="">法律条款</a>
+                        </li>
+                    </ul>
+               </div>
+               <div class="sy_company">
+                   <p>合作伙伴</p>
+                   <ul>
+                        <li><a href=""><img src="__PUBLIC__/image/al.png"/></a></li>
+                        <li><a href=""><img src="__PUBLIC__/image/one.png"/></a></li>
+                        <li><a href=""><img src="__PUBLIC__/image/xiaoneng.png"/></a></li>
+                        <li><a href=""><img src="__PUBLIC__/image/nu.png"/></a></li>
+                        <li><a href=""><img src="__PUBLIC__/image/xuetang.png"/></a></li>
+                   </ul>
+               </div>
+               <div class="sy_concern">
+                  <ul>
+                      <li><img src="__PUBLIC__/image/weibao.png"/></li>
+                      <li><img src="__PUBLIC__/image/weixin.png"/></li>
+                  </ul>
+               </div>
+          </div>
+     </footer>
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+function userout()
+{	
+		var obj = {};
+		obj.key = "value";
+		$.post("__APP__/Home/Index/userout/", obj,
+			function(data,status)
+				{
+					if(data==1)
+					{
+						window.location.reload();
+					}
+					else
+					{
+						alert('未知错误');
+					}
+				}
+			   );
+}
+function iframepage(a)
+{
+	document.getElementById("iframepage").src=a;
+	
+}
+
+</script>

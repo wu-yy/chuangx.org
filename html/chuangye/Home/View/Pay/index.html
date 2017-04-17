@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+<title>中国创业学院</title>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<style type="text/css">
+.sy_st22 {padding-top:00px; padding-left:40px; padding-right:40pxoverflow: hidden;width: 1000px;min-width: 980px;margin: 0 auto;margin-top: 70px;background:#fff;
+}
+.pay{ padding:20px 0px;  font-size:22px;}
+.p_content{ width:970px; border:1px solid #dedede; }
+.p_kecheng{ width:930px; height:160px; background:#f4f5f5; margin:0 auto; margin-top:20px;}
+.p_kecheng img{ width:172px; height:110px; margin:28px 20px 22px 20px; float:left;}
+.k_ming{ width:520px; height:130px; overflow:hidden; padding-top:28px; float:left;}
+.k_ming h2{ font-size:18px; color:#000; text-align:left; width:100%;} 
+.k_ming p{ font-size:14px; color:#999;text-align:left; width:100%; margin-top:14px; height:66px; overflow:hidden; line-height:22px;}
+.p_jia{ width:190px; height:160px; line-height:160px; display:block; font-size:24px; color:#ff2a00; text-align:center; float:left;}
+.p_gm{ width:930px; margin:0 auto; margin-bottom:20px; height:auto; overflow:hidden; margin-top:24px;}
+.p_gm p{ font-size:18px; color:#888; width:130px; float:left; margin-top:16px;}
+.p_gm ul{ float:left; width:800px;}
+.p_gm ul li{ width:160px; height:48px; border:1px solid #dedede; margin-right:15px; margin-left:15px; float:left;}
+.p_nina{ width:56px; height:48px; background:#f4f5f5; text-align:center; line-height:48px; color:#000; float:left;}
+.p_qian{width:104px; overflow:hidden; height:48px; text-align:center; line-height:48px; color:#ff2a00; float:left;}
+.p_in{ width:150px;  line-height:27px; text-align:center; float:left; font-size:20px; color:#ff8400}
+.p_extra{ font-size:16px; color:#000 !important; width:auto !important;}
+.p_extra span{ color:#ff2a00;}
+.p_jin{ float:right !important; width:auto !important; font-size:20px !important; color:#525252 !important; }
+.p_jin span{ color:#ff2a00;}
+.p_yin{ float:right !important; width:100% !important; text-align:right; margin-bottom:30px; font-size:20px !important; color:#000 !important; margin-top:30px; }
+.p_pay{ width:970px; height:200px;}
+.p_yin span{ color:#ff2a00; font-weight:700; font-size:24px;}
+.p_zhifu{ width:174px; height:57px; line-height:50px; text-align:center; margin-top:30px; border-radius:4px; border:2px solid #ff8400; background:#fff; 
+color:#ff8400; font-size:24px; float:right;}
+.p_zhifu2{ width:174px; height:57px; line-height:50px; text-align:center; border-radius:4px; border:2px solid #ff2a00; background:#fff; 
+color:#ff2a00; font-size:24px; float:right;}
+.p_qx{ color:#999; float:right; font-size:18px;width:120px; height:57px; line-height:50px; text-align:center;}
+.pay_act{ border:2px solid #2c8aff !important; border-radius:3px; position:relative;}
+.p_an{ position:absolute; left:142px; top:31px;}
+.p_qian img{ width:26px; margin-top:12px; margin-left:28px; margin-right:10px; float:left;}
+.p_qian span{ float:left; display:block; color:#000 !important;}
+.code_queren{margin: 5px; float:left; width:110px;  padding:10px 0px; font-size:18px; color:#fff; background:#ff8400; border:1px solid;}
+.code_input{margin: 10px; padding-left:5px; width:160px; height:38px;line-height: 28px;font-size: 12px;float: left; border: 0;
+    color: #525252;  background-color: #f9f9f9; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;
+}
+.error{float:left; width:300px;margin: 10px; color: #f00;}
+</style>
+
+</head>
+<body style="background-color:#ececec;">
+<div class="wapper" style="background-color:#ececec;min-width: 1080px;">
+     <include file="Public:head" />
+     <div class="sy_st22"  >
+         <h3 class="pay">积分兑换订单</h3>
+         <volist name='course' id='vo'>
+             <div class="p_content">
+                 <div class="p_kecheng">
+                     <if condition="$vo['type'] eq 3">
+                         <a href="{:U('Zhibo/zhibo_details',array('zid'=>$vo['id']))}">
+                             <img src="__ROOT__/{$vo.jietu}"/>
+                         </a>
+                         <div class="k_ming">
+                             <a href="{:U('Zhibo/zhibo_details',array('zid'=>$vo['id']))}">
+                                 <h2>{$vo.title}</h2>
+                             </a>
+                             <p>{$vo.brief}</p>
+                         </div>
+                         <div class="p_jia" id="qian">{$vo.cost}积分</div>
+                     <else />
+                         <a href="{:U('course/course_details',array('cid'=>$vo['id']))}">
+                             <img src="__ROOT__/{$vo.image}"/>
+                         </a>
+                         <div class="k_ming">
+                             <a href="{:U('course/course_details',array('cid'=>$vo['id']))}">
+                                 <h2>{$vo.title}</h2>
+                             </a>
+                             <p>{$vo.brief}</p>
+                         </div>
+                         <div class="p_jia" id="qian2">{$vo.cost}积分</div>
+                     </if>
+                 </div>
+              
+          <div class="p_gm">
+             <p>兑换期限:</p>
+             <ul>
+                <li class="pay_act">
+                    <img class="p_an" src="__PUBLIC__/image/p_xz.png"/>
+                    <div class="p_nina">6个月</div>
+                    <div class="p_qian" id="qian3" ><?php echo $course[0]['cost'];?>积分</div>  
+                </li>
+               <!-- <a href=""><li>
+                    <div class="p_nina">1年</div>
+                    <div class="p_qian">¥960</div>  
+                </li></a>
+                <a href=""><li>
+                    <div class="p_nina">1年</div>
+                    <div class="p_qian">¥960</div>  
+                </li></a>-->
+                
+             </ul>
+         </div>
+
+         <!--优惠码-->
+         <div class="p_gm">
+         <p>优惠码：</p>    
+            <div>
+                <input type="text" class = "code_input" placeholder="请输入优惠码" id="discount"/>
+                <button class="code_queren" onclick="checkdiscount()">确认</button>
+            </div>
+            <div id="error" class="error" >error show</div>
+         </div>
+         <!--优惠码end-->
+         
+         <div class="p_gm" style="border-top:1px solid #dcdcdc; padding-top:10px;">
+             <p>本次使用积分：</p>
+             <p input class="p_in" id="qian3" style=" color:#000 !important; text-align:left !important; margin-left:15px;"/><?php echo $course[0]['cost'];?>积分</p>
+             <if condition="$course[0]['cost'] elt $credit ">
+             <p class="p_extra">（账户剩余积分：<span>{$credit}积分</span>）</p>
+             </if>
+             <if condition="$course[0]['cost'] gt $credit ">
+             <p class="p_extra">（还需购买积分：<span><?php echo $course[0]['cost']-$credit;?>积分</span>）</p>
+             </if>
+             <!--<p class="p_jin">抵扣金额：<span>0元</span></p>-->
+         </div>
+         <if condition="$course[0]['cost'] gt $credit ">
+           <div class="p_gm" style="border-top:1px solid #dcdcdc; padding-top:20px;">
+             <p>选择支付方式:</p>
+             <ul>
+                <li class="pay_act">
+                    <img class="p_an" src="__PUBLIC__/image/p_xz.png"/>
+                    <div class="p_qian" style="width:160px !important;"> <img src="__PUBLIC__/image/weixin2.png"/><span>微信支付</sapn></div>  
+                </li>               
+             </ul>
+         </div>
+         </if>
+         </div>
+      
+      <div class="p_pay">
+		   <if condition="$course[0]['cost'] gt $credit ">
+          <p class="p_yin" style="margin-top:20px !important; margin-bottom:10px !important;">应付金额：<span><?php $pay_cost=$course[0]['cost']-$credit; $money=$pay_cost/C('pay_jifen'); $money=number_format($money, 2, '.', ''); echo $money ?>元</span></p>
+          <p class="p_yin" style="margin-top:0px !important; margin-bottom:30px !important; font-size:14px !important; color:#999 !important;">需购买积分：<?php echo $course[0]['cost']-$credit;?>积分</p>
+		  </if>
+          </volist>
+          <if condition="$course[0]['cost'] elt $credit ">
+          <a href="javascript:;" onclick="zhifu()">
+          <button class="p_zhifu">立即兑换</button>
+          </a>
+          </if>
+          <if condition="$course[0]['cost'] gt $credit ">
+          <a href="javascript:;" onclick="zhifu2()">
+          <button class="p_zhifu2" >微信支付</button>
+          </a>
+          </if>
+      </div>   
+
+</div>
+<include file="Public:foot" />
+
+</body>
+</html>
+<!--banner-->
+<script>
+//pay_money是指购买该课应该付的钱
+//var pay_money = $course[0]['cost'];
+var money = 0;
+
+function checkdiscount(){
+    var input=document.getElementById("discount").value; 
+    if(!input){
+      alert("请输入优惠码");
+      return;
+    }
+    var ul = "{:U('Pay/check_discount')}";
+    $.post(ul, {'discount_code': input},
+      function(data,status)
+        {
+          //alert(data);
+          var arr=eval(data);
+          if(arr[0]==1)
+          {
+            //alert(1);
+            //alert(arr[1]);
+            money = arr[1];
+            //然后修改所有页面上的价格数值
+            document.getElementById("error").innerHTML='你可以优惠'+arr[1]+'积分';
+            //setTimeout("window.location.reload();",2000);
+            
+          }
+          else
+          {
+            document.getElementById("error").innerHTML=arr[1];  
+          }
+          //setTimeout("document.getElementById('error').innerHTML=''",2000);
+        }
+         );
+}
+
+function zhifu(){
+  var Jump_page = "__URL__/payment/nu/6/discount/"+money;
+  var ul = "{:U('Pay/payment')}";
+  $.post(ul, {'nu':6, 'discount':money}, 
+      function(data, status){
+        window.location.href=Jump_page;
+      });
+
+}
+//weixin支付
+function zhifu2() {
+  // body...
+  var Jump_page = "__URL__/payment/nu/6/type/wx/discount/"+money;
+  var ul = "{:U('Pay/payment')}";
+  $.post(ul, {'nu':6, 'type':'wx', 'discount':money}, 
+      function(data, status){
+        window.location.href=Jump_page;
+      });
+}
+</script>

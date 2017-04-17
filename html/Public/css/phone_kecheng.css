@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0px; padding:0px; font-family:"微软雅黑"; }
+ul{ list-style:none;}
+a{ text-decoration:none; display:block}
+img{ border:none;}
+body{ background:#eeeeee;}
+.warpper{ width:640px; height:auto; margin:0 auto; }
+.bf3{ position:absolute; width:640px; height:356px; left:0px; top:0px; background:#000; }
+.wk_fm3{ text-align:center; width:200px; margin:0 auto; margin-top:70px; margin-left:220px;}
+.k_bj{ width:640px; height:375px;}
+.k_bj img{ width:100%; height:100%; object-fit:cover; -moz-object-fit:cover; -webkit-object-fit:cover;}
+.k_tab{ width:640px; height:98px; background:#f0f0f0; text-align:center; line-height:98px; font-size:30px; color:#000;}
+.k_tab ul{ width:100%;}
+.k_tab ul a{ color:#000;}
+.k_tab ul li{width:213px; height:98px; float:left;}
+.k_tab ul li div{ height:94px; line-height:94px;}
+.k_active{ color:#62379e !important; border-bottom:2px solid #62379e;}
+/*k_list*/
+.k_list{ width:640px; height:auto; background:#fff;}
+.k_list ul{ width:600px;}
+.k_list ul a{ color:#7a7a7a;}
+.k_list ul li{ width:600px; height:70px; line-height:70px;font-size: 28px;}
+.k_list ul li p{ font-size:28px; width:600px; padding:20px; background:#fff;}
+.k_list ul li>p>span{ margin-right:20px;}
+.jrkc{ width:640px; height:98px; line-height:98px; text-align:center; color:#fff; background:#ff8c1c; font-size:34px; font-weight:700; position:fixed; bottom:0px;left:0px;}
+/*k_detail*/
+.k_detail{ width:640px; background:#fff;}
+.chuang{ width:600px; padding:20px; word-break:break-all; font-weight:200px; height:58px; line-height:54px; font-size:30px; text-align:left; border-bottom:1px solid #dcdcdc;}
+.k_xinxi{ width:600px; padding:20px;border-bottom:1px solid #dcdcdc;}
+.k_kke{ line-height:40px; font-size:26px; color:#da0606; word-break:break-all; margin-bottom:10px;}
+.k_kcap{ line-height:40px; font-size:26px; color:#000; word-break:break-all; margin-bottom:10px;}
+.k_kke>span{ margin-right:10px;}
+.k_kcap>span{ color:#6f6f6f; margin-right:10px;}
+.k_biaoq{ line-height:40px; font-size:26px; color:#0d84fe; word-break:break-all; margin-bottom:10px;}
+.k_biaoq>span{ color:#6f6f6f; margin-right:10px;}
+.skls{width:600px; padding:20px;border-bottom:1px solid #dcdcdc; }
+.chuang1{ width:600px; word-break:break-all; font-weight:200px; height:58px; line-height:54px; font-size:30px; text-align:left;}
+.tx_poto{ width:75px; height:75px; float:left; margin-top:20px; margin-right:30px; border-radius:100px;}
+.tx_poto img{ width:100%; height:100%; object-fit:cover;border-radius:100px;-moz-object-fit:cover; -webkit-object-fit:cover;}
+.k_right{ width:490px; float:left; margin-top:13px;}
+.k_right p{ font-size:26px; color:#000;  line-height:40px;}
+.k_right p span{ color:#7a7a7a; margin-left:20px; font-size:24px;}
+.k_teacher{ width:100%; overflow:hidden; height:auto; margin-bottom:20px;}
+.k_wz{ font-size:26px; color:#7a7a7a; line-height:44px; margin-top:10px;}
+/*k_xgtj*/
+.k_xgtj{ width:620px; padding:20px 10px;}
+.k_xgtj ul{ width:100%; margin-bottom:10px; overflow:hidden;}
+.k_xgtj ul li{ width:287px; height:280px; margin:10px 11px; float:left;}
+.k_xgtj ul li>p{ font-size:26px; word-break:break-all; color:#000; margin-top:10px; height:75px; overflow:hidden;}
+.k_bj1{ width:287px; height:180px;}
+.k_bj1 img{ width:100%; height:100%; object-fit:cover; -moz-object-fit:cover; -webkit-object-fit:cover;}

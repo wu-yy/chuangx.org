@@ -1,0 +1,130 @@
+@CHARSET "UTF-8";
+.us_list2{
+	margin-top:15px;
+	text-align:left;
+	font-size:16px;
+	background-color:#f8f8f8;
+     color:#62379e;
+	 width:864px;
+	 height:132px;
+	 line-height:40px;
+     font-weight:700;
+     display:block;
+     letter-spacing:0;
+     outline:none;
+     text-decoration:none;
+	 /*border-bottom:1px solid #dadada;*/
+	 }
+.us_list2_1{
+	width:188px;
+	float:left;
+	padding-top: 20px;
+    justify-content:center;
+	padding-top: 21px;
+}
+.us_list2_1_1{
+	margin-left: 50px;
+	border-right: 2px solid #f1f1f1;
+}
+.us_list2_1_2{
+    margin-left: 50px;
+    border-right: 2px solid #f1f1f1;
+}
+.us_list2_2{
+	width:676px;
+	float:left;
+	border:1px;
+}
+.chongzhialt{
+	margin-top: 21px;
+}
+.text {
+          width:480px;
+          height:42px;
+          float:left;
+          margin-left:75px;
+}
+#text {
+           width:480px;
+           height:42px;
+           border:1px solid #ddd;
+           color:#CCC;
+           background:#fff;
+}
+.us_list2_3_button {
+    width: 86px;
+    height: 43.5px;
+    float: left;
+    /* padding-left: 10px; */
+    background-color: #7542bd;
+    color: #fff;
+}
+
+.table_top{
+	margin-top:15px;
+	text-align:left;
+	font-size:16px;
+	background-color:#f8f8f8;
+     color:#62379e;
+	 width:864px;
+	 height:46px;
+	 line-height:40px;
+     font-weight:700;
+     display:block;
+     letter-spacing:0;
+     outline:none;
+     text-decoration:none;
+	 /*border-bottom:1px solid #dadada;*/
+	 }
+.table_title{
+	color:#888888;
+	padding:4px;
+	size:14px;
+	font-size:14px;
+	margin-left: 45px;
+}
+.us_list_content_msg{
+	height:138px;
+	width:864px;
+	border-bottom:3px solid #f3f3f3;
+}
+.us_list_content_msg_1{
+	float:left;
+}
+.us_list_content_msg_2{
+	float:left;
+	margin-left:19px;
+	margin-top:28px;
+	width: 180px;
+}
+.us_list_content_msg_2_3{
+	float:left;
+	margin-top:30px;
+}
+.us_list_content_msg_2_2{
+	margin-top:37px;
+}
+.us_list_content_msg_3{
+	float:left;
+	margin-top: 50px;
+    width: 135px;
+    text-align: center;
+}
+.us_list_content_msg_4{
+	float:left;
+	margin-top: 50px;
+    width: 240px;
+    text-align: center;
+}
+.us_list_content_msg_5{
+	float:left;
+	margin-top: 50px;
+    width: 80px;
+    text-align: right;
+}
+.image{
+	width: 82px;
+    height: 82px;
+    margin-left: 38px;
+    margin-top: 28px;
+}

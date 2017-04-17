@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head> 
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title>演示：jwplayer兼容各种视频格式播放</title>
+
+    </head>
+    <body>
+
+
+                    <div id="player"></div>
+
+
+         
+    </body>
+</html>
+<script type="text/javascript" src="__ROOT__/jwplayer/jwplayer.js"></script>
+        <script type="text/javascript">
+
+
+        
+            jwplayer("player").setup({
+                skin: "__ROOT__/jwplayer/glow.zip", //填写皮肤swf文件的直链地址
+                stretching: "fill", //锁定高宽比填满屏幕
+                flashplayer: "__ROOT__/jwplayer/player.swf", //调用播放器
+                image: "__ROOT__/jwplayer/screen.jpg", //视频预览图片
+                width: 400, //播放器宽
+                height: 270,
+                levels: [{file: "__ROOT__/jwplayer/video.mp4"}] ////调用视频文件
+            });
+        </script>
+        <script type="text/javascript">
+//        var thePlayer;  //保存当前播放器以便操作  
+//        $(function() {  
+//            thePlayer = jwplayer('container').setup({  
+//                flashplayer: 'js/plugins/mediaplayer-5.7/player.swf',  
+//                file: 'js/plugins/mediaplayer-5.7/video.mp4',  
+//                width: 500,  
+//                height: 350,  
+//                dock: false  
+//            });  
+//              
+//            //播放 暂停  
+//            $('.player-play').click(function() {  
+//                if (thePlayer.getState() != 'PLAYING') {  
+//                    thePlayer.play(true);  
+//                    this.value = '暂停';  
+//                } else {  
+//                    thePlayer.play(false);  
+//                    this.value = '播放';  
+//                }  
+//            });  
+//              
+//            //停止  
+//            $('.player-stop').click(function() { thePlayer.stop(); });  
+//              
+//            //获取状态  
+//            $('.player-status').click(function() {  
+//                var state = thePlayer.getState();  
+//                var msg;  
+//                switch (state) {  
+//                    case 'BUFFERING':  
+//                        msg = '加载中';  
+//                        break;  
+//                    case 'PLAYING':  
+//                        msg = '正在播放';  
+//                        break;  
+//                    case 'PAUSED':  
+//                        msg = '暂停';  
+//                        break;  
+//                    case 'IDLE':  
+//                        msg = '停止';  
+//                        break;  
+//                }  
+//                alert(msg);  
+//            });  
+//              
+//            //获取播放进度  
+//            $('.player-current').click(function() { alert(thePlayer.getPosition()); });  
+//      
+//            //跳转到指定位置播放  
+//            $('.player-goto').click(function() {  
+//                if (thePlayer.getState() != 'PLAYING') {    //若当前未播放，先启动播放器  
+//                    thePlayer.play();  
+//                }  
+//                thePlayer.seek(30); //从指定位置开始播放(单位：秒)  
+//            });  
+//              
+//            //获取视频长度  
+//            $('.player-length').click(function() { alert(thePlayer.getDuration()); });  
+//        });  
+        </script> 

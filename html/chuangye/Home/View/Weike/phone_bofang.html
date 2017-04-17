@@ -1,0 +1,163 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{$name}</title>
+<link rel="stylesheet" href="__PUBLIC__/css/phone_kecheng.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/phone_style.css" />
+<style type="text/css">
+.bf3{ position:absolute; width:640px; height:356px; left:0px; top:0px; background:#000; }
+.wk_fm3{ text-align:center; width:200px; margin:0 auto; margin-top:70px; margin-left:220px;}
+.relax ul li {
+    width: 200px;
+    height: 280px !important;
+    margin: 10px 6px;
+    float: left;
+}
+</style>
+</head>
+
+<body>
+<div class="warpper" style="background:#f1f1f1; position:relative;">
+ <!--<a href="{:U('Index/index')}" class="m_nav">
+     <img style="margin-top:20px !important; margin-left:18px;" src="__PUBLIC__/image/log.png"/>
+ </a>-->
+ <include file="Public:phone_head_xin" />
+ <div class="kechen">
+   <a href="javascript:;" class="bf">
+      <!--<img class="bfn" src="__PUBLIC__/image/bofan.png"/>--> 
+      <!--<div class="bf1"><img class="wk_fm" src="__PUBLIC__/image/bn.png"/></div> --> 
+      <!--加载-->
+<!--      <div class="bf3"><img class="wk_fm3" src="__PUBLIC__/image/jiazai.gif"/></div> 
+-->  
+	<script src="http://p.bokecc.com/player?vid={$cc_code}&siteid=B73CC50AF38DFD67&autoStart=true&width=100%&height=356&playerid=78F3CEA674B99498&playertype=2" type="text/javascript"></script>
+   </a>
+   <h2 class="tittle">{$name}</h2>
+
+   <div class="daoshi">
+   		<volist name="teacher" id="vo">
+        <a href="{:U('Teacher/alltutor',array('tid'=>$vo['id']))}">
+        <div style="width:100%; overflow:hidden; margin-bottom:20px;">
+        <img  src="__ROOT__{$vo.image}"/>
+        <p>{$vo.name}<span>{$vo.job}</span></p></div>
+        </a>
+        </volist>
+   </div>
+   <div class="w_jj">
+      <p class="w_p1">微课简介</p>
+      <p class="w_p2">{$brief}</p>
+   </div>
+
+ </div>
+ 
+ <div class="relax">
+     <a href="{:U('index')}" style=" color:#000;"><p class="w_tj">相关推荐<span>更多</span></p></a>
+    <ul>
+      <volist name="xiangguan" id="vo">
+        <li>
+        	<a href="javascript:;" onclick="log_url(event,'__URL__/bofang/id/{$vo.id}','phone_lecBrowser_recommendation')" style=" color:#000;">
+
+            <div class="w_kc"> <img src="__ROOT__/{$vo.image}"/></div>
+            <p class="w_mca">{$vo.title}</p>
+            
+            </a>
+        </li>
+        
+   	</volist>
+       
+    </ul>
+ </div>
+
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/weike/weike.js"> </script>
+<script type="text/javascript">
+		wx.config({   
+		
+		debug: false,    
+		appId: '{$appid_fenxiang}',    
+		timestamp: '{$timestamp_fenxiang}',    
+		nonceStr: '{$nonceStr_fenxiang}',    
+		signature: '{$signature_fenxiang}',    
+		jsApiList: [    
+		'checkJsApi',    
+		'onMenuShareTimeline',    
+		'onMenuShareAppMessage',    
+		'onMenuShareQQ',    
+		'onMenuShareWeibo',      
+		]    
+		});
+		
+		wx.ready(function(){
+		
+		wx.onMenuShareTimeline({
+		title: '{$title_fenxiang}', // 分享标题
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		wx.onMenuShareAppMessage({
+		title: '{$title_fenxiang}', // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		type: '', // 分享类型,music、video或link，不填默认为link
+		dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		//alert("谢谢分享");
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});  
+		
+		wx.onMenuShareQQ({
+		title: '{$title_fenxiang}', // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		
+		
+		wx.onMenuShareWeibo({
+		title: '{$title_fenxiang}', // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		
+		})
+</script>

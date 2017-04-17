@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>中国创业学院</title>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<!--<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>-->
+<style>
+#us_pic img { margin-top: 18px !important;}
+.us_logo {margin-top: 9px;height: 50px;}
+.us_notic { padding:0px;}
+</style>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="wapper" >
+     <nav class="us_heard">
+          <div class="us_content">
+          		<a href="javascript:;" onClick="log_url(event,'{:U('Index/homepage')}','public_pageHeader')">
+               <img class="us_logo" src="__PUBLIC__/image/1bai.png"/>
+               </a>
+               <div class="us_nav">
+                   <ul>
+                         <li><a href="javascript:;" onClick="log_url(event,'{:U('Index/homepage')}','public_pageHeader')">首页</a></li>
+                        <li><a href="javascript:;" onClick="log_url(event,'{:U('Course/index')}','public_pageHeader')">课程</a></li>
+                        <li><a href="javascript:;" onClick="log_url(event,'{:U('Information/index')}','public_pageHeader')">资讯</a></li>
+                   </ul>
+              </div>
+              <div class="us_right1">
+                  <a href="javascript:;" onclick="userout();">
+                  <p>退出</p>
+                  <img src="__PUBLIC__/image/tuichu.png"/>
+                  </a>
+             </div>
+          </div> 
+     </nav>
+     <div class="us_notic">
+     		  <if condition="$phone_nu eq NULL "> 
+			   <p id="notic">最新通知：</p>
+               <p>尊敬的<font color="#CC3399">{$name}</font>用户，请绑定手机号，提高账号安全性<a href="javascript:;" onclick="iframepage('__URL__/phone');">立即绑定</a></p>
+			   </if>
+              
+               <if condition="$phone_nu neq NULL ">
+			   <if condition="$email_nu eq NULL ">
+               <p id="notic">最新通知：</p>
+               <p>尊敬的<font color="#CC3399">{$name}</font>用户，你还未绑定邮箱。<a href="javascript:;" onclick="iframepage('__URL__/mail');">立即绑定</a></p>
+			   </if>
+               </if>
+     </div>
+     
+     <section class="us_st" >
+          
+         <div class="us_user_content" >
+              <div class="us_left_nav" style="height:540px;">
+                  <ul>
+                  <if condition="$image eq NULL ">
+                 	 <li id="us_pic" style="border-bottom: 1px dashed #fff !important;">
+                          <img src="__PUBLIC__/image/moren.jpg"/>
+                          <p>你好，新用户</p>
+                          <!--<p style="height:32px; line-height:32px; margin-top:15px;">你好，新用户</p>
+                          <p style="height:22px; font-size:12px; color:#ccb8e9; line-height:22px;">积分：{$jifen}</p>-->
+                      </li>
+                  </if>
+                  <if condition="$image neq NULL ">
+                      <li id="us_pic" style="border-bottom: 1px dashed #fff !important;">
+                          <img src="{$image}"/>
+                          <p>{$name}</p>
+                      </li>
+                  </if> 
+                      <!--<a href="javascript:;" onclick="noneiframe();">-->
+                      
+                      <a href="">
+                      <li>
+                          <img src="__PUBLIC__/image/2gz.png"/>
+                          <p>我的课程</p>
+                      </li>
+                      </a>
+                      <a href="javascript:;" onclick="iframepage('__URL__/personal');">
+                      <li>
+                          <img src="__PUBLIC__/image/1bjxx.png"/>
+                          <p>个人信息</p>
+                      </li>
+                      </a> 
+                      <a href="javascript:;" onclick="iframepage('__URL__/phone');">
+                      <li>
+                          <img src="__PUBLIC__/image/3shouji.png"/>
+                          <p>修改手机</p>
+                      </li>
+                      </a>
+                      <if condition="$phone_nu neq NULL "> 
+                      <a href="javascript:;" onclick="iframepage('__URL__/mail');">
+                      <li>
+                          <img src="__PUBLIC__/image/4youxiang.png"/>
+                          <p>修改邮箱</p>
+                      </li>
+                      </a>
+                      </if>
+                      <if condition="$phone_nu neq NULL "> 
+                      <a href="javascript:;" onclick="iframepage('__URL__/pw');">
+                      <li>
+                          <img src="__PUBLIC__/image/5mima.png"/>
+                          <p>修改密码</p>
+                      </li>
+                      </a>
+                      </if>
+                     
+                  </ul>
+              </div> 
+                <if condition="$a neq NULL ">
+              <div class="us_right_nav" id="div" style="width:100% !important; float:left; width:78% !important;">
+                  <div class="us_list" >我的课程</div>
+                   <div class="us_list_content" style="margin-top:20px;">
+                       <ul>
+                       <volist name="list_course" id="vo">
+                            <ul>
+                            	
+                              <li>
+                                <img class="us_zx_pic1" style="width:211px !important; margin-top:3px;height:135px !important;" src="__ROOT__/{$vo.image}"/>
+                                <div class="us_caption1" style="width:620px !important;">
+                                    <h6 class="us_zx_title">{$vo.title}</h6>
+                                    <div class="us_tips">
+                                                 
+                                        <p class="us_zx_brief">{$vo.brief}</p>
+                                        
+                               <if condition="$vo.mark_bit eq 1 ">
+                               <a class="us_begin" href="javascript:;" onClick=		   "log_url(event,'{:U('Course/void',array('cid'=>$vo['id'] , 'kcname'=>$vo['title']))}','user_courseList')">
+                               
+                              开始上课
+                              </a>
+                              </if>
+                              
+                              <if condition="$vo.mark_bit eq 0 ">
+                              <a class="us_begin" href="javascript:;" style="background-color:#CCC;">
+                              敬请期待
+                              </a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 3 ">
+                              <a class="us_begin" href="javascript:;" style="background-color:#CCC;">
+                              敬请期待
+                              </a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 2 ">
+                  
+                              <a class="us_begin" href="javascript:;" onClick=		   "log_url(event,'http://{$vo.href}','user_courseList')" style="background-color: #FC0;">
+                              去上课
+                              </a>
+                              </if>
+                                    </div>
+                                </div>
+                            </li> 
+     
+                       </ul>
+                       
+                       </volist>
+                       </ul>
+                   </div>
+              </div>
+                        </if>
+          <if condition="$a eq NULL ">
+             <!--have no coures-->
+             <div class="no_content" id="div" style="width: 900px;">
+                 <img src="__PUBLIC__/image/kong.png"/>
+                 <p>还没有完结的课程～点击查找标签，分类</p>
+                 <a href="javascript:;" onClick="log_url(event,'{:U('Course/index')}','user_courseList')">
+                 去找课程
+                 </a>
+             </div>
+          </div>
+          </if>
+              <!--<div class="us_right_nav" style=" display:table-cell; position:absolute; top:20px;left:230px;right: 0px; bottom:0px; background-color: #F1F1F1; display:none; ">
+              <iframe src="__URL__/profession" frameborder="0" scrolling="no" id="external-frame"
+   onload="setIframeHeight(this)" style="width:100%; ">
+                            </iframe>
+
+              </div>-->
+             
+              <div class="us_right_nav" id='iframe' style=" display:none; position:absolute; top:20px;left:230px;right: 0px;height: 600px; bottom:0px; background-color: #F1F1F1; min-height:100px; ">
+                   <iframe src="" id="iframepage" frameborder="no";  style="width: 100%;
+                   height: 100%;" allowtransparency="true" scrolling="auto" marginheight="0" marginwidth="0" >
+                   </iframe>
+              </div>
+            
+          </div>
+             
+          </div>
+     </section>
+     
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+function userout()
+{	
+		log_url2('userout','public_pageHeader');
+		var ur="{:U('Index/userout')}";
+		var obj = {};
+		obj.key = "value";
+		$.post(ur, obj,
+			function(data,status)
+				{
+					if(data==1)
+					{
+						window.location.reload();
+					}
+					else
+					{
+						alert('未知错误');
+					}
+				}
+			   );
+}
+function iframepage(a)
+{
+	
+	
+	document.getElementById("iframepage").src=a;
+	
+	var div=document.getElementById('div');
+	
+	div.style.display="none";
+	
+	var div1=document.getElementById('iframe');
+	
+	div1.style.display="block";
+		
+	log_url1(a,'user_navigation');
+	
+	
+}
+function noneiframe()
+{
+	var div=document.getElementById('div');
+	
+	div.style.display="block";
+	
+	var div1=document.getElementById('iframe');
+	
+	div1.style.display="none";	
+	
+
+}
+function log_url(e,Jump_page,head)
+{
+	var url=window.location.href;
+	var ur="{:U('Index/log')}";
+		var obj = {};
+		obj.key = "value";
+		$.post(ur, {'head': head,'Jump_page':Jump_page,'url':url},
+			function(data,status)
+				{
+				}
+			   );
+	window.location.href=Jump_page; 			   
+	e.cancelBubble = true;
+}
+function log_url1(Jump_page,head)
+{
+	var url=window.location.href;
+	var ur="{:U('Index/log')}";
+		var obj = {};
+		obj.key = "value";
+		$.post(ur, {'head': head,'Jump_page':Jump_page,'url':url},
+			function(data,status)
+				{
+				}
+			   );			   
+}
+function log_url2(Jump_page,head)
+{
+	var url=window.location.href;
+	var ur="{:U('Index/log')}";
+		var obj = {};
+		obj.key = "value";
+		$.post(ur, {'head': head,'Jump_page':Jump_page,'url':url},
+			function(data,status)
+				{
+				}
+			   );	
+	window.top.location=Jump_page;	   		   
+}
+</script>

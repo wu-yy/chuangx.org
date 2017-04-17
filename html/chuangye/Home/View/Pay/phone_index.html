@@ -1,0 +1,134 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>中国创业学院</title>
+
+<link rel="stylesheet" href="__PUBLIC__/css/phone_style.css" />
+<style type="text/css">
+body{ padding:0px; margin:0px;}
+p{ margin:0px 0px 10px; !important;}
+.d_top{ width:100%; height:100px; border-bottom:1px solid #dcdcdc; background:#fff;}
+.d_back{ width:100px; height:100px;  float:left;}
+.d_back img{ margin-top:30px; margin-left:20px;}
+.d_center{ margin:25 auto !important; text-align:center !important; width:465px; margin:26px 52px; float:left; }
+.d_center img{ float:left;}
+.d_center p{ font-size:30px; color:#525252;}
+.d_right{ width:100px; height:100px; text-align:center;float:left; line-height:100px; color:#88a4ff; font-size:30px;}
+
+.l_content{ width:640px; height:auto; background:#fff; margin:0 auto; }
+.j_kecheng{ width:600px; padding:20px;overflow:hidden; border-bottom:1px solid #dcdcdc !important; }
+.j_left{ width:290px; height:180px; float:left; margin-right:10px;}
+.j_left img{ width:100%; height:100%; object-fit:cover; -moz-object-fit:cover; -webkit-object-fit:cover;}
+.j_right{ width:300px; float:left; height:auto;}
+.j_biti{ font-size:26px; color:#000; height:auto;}
+.j_jj{ font-size:26px; color:#808080; height:auto;}
+.j_right p{ margin:0px 0px 10px; !important; line-height:38px;}
+.duih{ width:600px; padding:20px; overflow:hidden;}
+.ple{ font-size:26px; color:#000; float:left; padding-top:20px; border-bottom:1px solid #dcdcdc !important; }
+.py{width:470px; height:52px !important; float:right; height:auto;}
+.py a{ width:115px; height:52px; line-height:52px; text-align:center; border:2px solid #2c8aff; margin-top:12px; color:#2c8aff; font-size:28px; display:block; border-radius:6px; float:left;margin-top: -13px;}
+.pj{ width:600px; float:right; height:auto; margin-top:10px !important; font-size:26px; color:#bbb; margin-bottom:20px !important;}
+.pj span{ color:#ff2a00 !important;}
+.bcyong{width:600px; padding:20px; overflow:hidden;}
+.ple1{ font-size:26px; color:#000; float:left;   }
+.ple2{ font-size:26px; color:#bbb; float:left; }
+.ple2 span{color:#ff2a00 !important;}
+.j_zf{ background:#fff; width:600px; padding:20px; height:auto; position:fixed; bottom:0px; left:0px;}
+.j_zf input{ width:100%; height:88px; line-height:88px; text-align:center; font-size:34px; color:#fff; background:#ff4800; border:none !important; border-radius:6px;}
+.zhifu{ font-size:22px; margin-top:20px; color:#888; text-align:left; width:600px; padding:18px;margin-bottom:100px; overflow:hidden;}
+.zhifu img{ margin-top:-4px; margin-left:18px; float:left; margin-right:5px;}
+.zhifu p{ float:left;}
+.zhifu div{ float:left;}
+.j_jifen{ font-size:24px; color:#999; overflow:hidden;}
+.j_jine{ font-size:28px; color:#ff2a00; overflow:hidden; margin-bottom:20px;}
+.fl{ float:left;}
+.fr{ float:right;}
+</style>
+</head>
+
+<body style="background:#f4f5f7; height:100%;">
+<div class="warpper"   style="position:relative; height:100%;">
+<include file="Public:phone_head_xin" />
+   <div class="d_top">
+   		<!--<div class="d_back"></div>-->
+       <a href="javascript:;" class="d_back" onclick="history.go(-1)"><img src="__PUBLIC__/image/back11.png"/></a>
+       <div class="d_center">
+
+           <p>积分兑换订单</p>
+        </div>
+   </div>
+   <volist name='course' id='vo'>
+   <div class="l_content">
+      <div class="j_kecheng">
+          <if condition="$vo['type'] eq 3">
+              <div class="j_left"><img src="__ROOT__/{$vo.jietu}"/></div>
+              <div class="j_right">
+                  <a href="{:U('Zhibo/zhibo_details',array('zid'=>$vo['id']))}"><p class="j_biti">{$vo.title}</p></a>
+                  <p class="j_jj">{$vo.brief}</p>
+              </div>
+          <else />
+              <div class="j_left"><img src="__ROOT__/{$vo.image}"/></div>
+              <div class="j_right">
+                  <a href="{:U('course/course_details',array('cid'=>$vo['id']))}"><p class="j_biti">{$vo.title}</p></a>
+                  <p class="j_jj">{$vo.brief}</p>
+              </div>
+          </if>
+      </div>
+      <div class="duih">
+         <div class="ple">兑换期限：
+             <div class="py"><a  href="">6</a></div>
+         <p class="pj">此课程<span>{$vo.cost}积分</span>，期限月份为6个月</p>
+         </div>
+      </div>
+      <div class="bcyong">
+         <p class="ple1">本次使用积分：</p>
+         <if condition="$course[0]['cost'] elt $credit ">
+         <p class="ple2"><span style="color:#000 !important;"><?php echo $course[0]['cost'];?>积分</span>（账户剩余：<span>{$credit}</span>积分</p>
+         </if>
+         <if condition="$course[0]['cost'] gt $credit ">
+         <p class="ple2"><span style="color:#000 !important;"><?php echo $course[0]['cost'];?>积分</span>（还需购买：<span><?php echo $course[0]['cost']-$credit;?></span>积分）</p>
+         </if>
+      </div>
+   </div>
+   <if condition="$course[0]['cost'] gt $credit ">  
+   <div>
+         <div class="zhifu"><p>支付方式:</p><img src="__PUBLIC__/image/weixin2.png"/><div>微信支付</div></div>
+      </div>
+    </if>  
+   <if condition="$course[0]['cost'] elt $credit ">
+   <a href="__URL__/payment/nu/6">
+   <div class="j_zf"><input type="submit" value="立即兑换" /></div>
+   </a>
+   </if>
+   <if condition="$course[0]['cost'] gt $credit ">
+   <a href="__URL__/payment/nu/6/type/wx">
+   <div class="j_zf" >
+       <div>
+		  <if condition="$course[0]['cost'] gt $credit ">       	   
+          <p class="j_jifen"><span class="fl">还需积分</span><span class="fr"><?php echo $course[0]['cost']-$credit;?>积分</span></p>
+          <p class="j_jine"><span class="fl">应付金额</span><span class="fr"><?php $pay_cost=$course[0]['cost']-$credit; $money=$pay_cost/C('pay_jifen'); $money=number_format($money, 2, '.', ''); echo $money ?>元</span></p>
+          </if>
+       </div>
+      <input type="submit" style="color: #fff; background:#ff2a00;" value="立即购买" />
+   </div>
+   </a>
+   </if>
+   
+   <div style="width:640px; height:120px;"></div>
+     </volist>
+</div>
+</body>
+</html>

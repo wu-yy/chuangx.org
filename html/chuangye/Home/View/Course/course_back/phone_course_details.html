@@ -1,0 +1,317 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<volist name="course" id="vo">
+<title>{$vo.title}</title>
+</volist>
+
+<link rel="stylesheet" href="__PUBLIC__/css/phone_kecheng.css" />
+<style type="text/css">
+.jifen{ width:100%; font-size:26px;color: #ff2a00 !important; float:left; margin-bottom:10px;}
+.jifen span{ font-size:22px; font-weight:400; color:#525252; text-decoration:line-through;}
+.jrkc1 {
+    width:230px;
+	background:#fff;
+	padding:20px;
+    height: 58px;
+	float:left;
+    line-height:58px;
+    text-align: center;
+    color: #ff8c1c;
+	border:2px solid #ff8c1c;
+	border-radius:6px;
+
+    font-size: 34px;
+    font-weight: 700;
+    position: fixed;
+    bottom: 0px;
+    left:20px;
+}
+</style>
+</head>
+
+<body>
+<div class="warpper" style="background:#fff; position:relative;">
+<include file="Public:phone_head" />
+	<volist name="course" id="vo">
+    <div class="k_bj">
+    <if condition="$vo.cc_code eq null ">
+    	<img src="__ROOT__/{$vo.image}"/>
+    </if>
+    <if condition="$vo.cc_code neq null ">
+    	<script src="http://p.bokecc.com/player?vid={$void}&siteid=B73CC50AF38DFD67&autoStart=true&width=640&height=375&playerid=78F3CEA674B99498&playertype=2" type="text/javascript"></script>
+    </if>
+    </div>
+    <div class="k_tab">
+        <ul>
+           <a  href="javascript:;">
+              <li>
+                  <div class="k_active" id="xiangqing_head" onclick="chang('xiangqing');">课程简介</div>
+             </li>
+           </a>
+           <a  href="javascript:;">
+              <li>
+                  <div id="dagang_head" onclick="chang('dagang');">课程大纲</div>
+             </li>
+           </a>
+           <a  href="javascript:;">
+              <li>
+                  <div id="tuijian_head" onclick="chang('tuijian');" >授课教师</div>
+             </li>
+           </a>
+        </ul>
+    </div> 
+    <!--课程详情-->
+    <div class="k_detail" style="" id="xiangqing">
+         <p class="chuang">{$vo.title}</p>
+         <div class="k_xinxi">
+         
+              <div class="jifen">
+              <p style="float:left; color:#6f6f6f !important;">所需积分：</p>
+                   <p style="color:#ff2a00 !important;">{$vo.cost}积分<span style="text-decoration:none !important;color:#ff2a00 !important;"><if condition="$vo.yuanjifen gt 0 "></span></p>
+                   <span style=" width:100%; margin-left:130px; font-size:20px !important; "><span>原积分{$vo.yuanjifen}</span></if>
+
+              </div>
+             <p class="k_kke"><if condition="$vo.start_time elt time() "><span>开课时间：</span></if><if condition="$vo.start_time gt time() "><span>更新时间：</span></if>{$vo.start_time|default=time()|date='Y-m-d',###}</p>
+             <if condition="$course_user_type eq 1 ">
+             <p class="k_kke" style="color:#2c8aff;">有效期：{$course_user_end_time|default=time()|date='Y-m-d',###}</p>
+             </if>
+             <p class="k_kcap"><span>课程安排：</span>{$vo.anpai}</p>
+             <p class="k_kcap"><span>课程来源：</span>{$vo.source}</p>
+             <p class="k_kcap"><span>主讲教师：</span>{$vo.teacher_name}</p>
+             <p class="k_kcap"><span>语言：</span>{$vo.language}</p>
+             <p class="k_biaoq"><span>课程标签：</span>{$tagname}</p>
+         </div>
+         </volist>
+       <!--<div class="skls">
+             <p class="chuang1">授课老师</p>
+             <volist name="teacher" id="vo">
+             <div class="k_teacher">
+                  <div class="tx_poto"><img src="__ROOT__{$vo.image}" /></div>
+                  <div class="k_right">
+                      <p>{$vo.name}<span>{$vo.job}</span></p>
+                      <p>{$vo.brief}</p>
+                  </div>
+             </div>
+             </volist>
+         </div> -->
+         <volist name="course" id="vo"> 
+         <div class="skls">
+             <p class="chuang1">课程简介</p>
+             <div class="k_wz" style="word-break:break-all;">
+             	{$vo.brief}
+                <br></br>
+             </div>
+         </div>
+         
+         <div class="skls">
+             <p class="chuang1">课程概要</p>
+             <div class="k_wz">
+             	{$vo.summary}
+                <br></br>
+             </div>
+         </div>
+    </div>
+    <!--课程详情end-->
+    
+    <!--课程大纲-->
+    <div class="k_list" style="display:none;" id="dagang">
+         <ul> 
+            <li>
+                <p>{$vo.outline}<br></br>
+            
+            </p>
+            </li>
+			
+            
+         </ul>
+    </div>
+    </volist>
+    <!--课程大纲end-->
+    
+    <!--相关推荐-->
+    <div class="k_xgtj" style="display:none;" id="tuijian">
+        <!-- <ul>
+         	<volist name="list_c" id="vo">
+            <a href="javascript:;" onClick="log_url(event,'{:U('Course/course_details',array('cid'=>$vo['id']))}','courseInfo_recommendation')">
+
+            <li>
+                <div class="k_bj1"><img src="__ROOT__/{$vo.image}"/></div>
+                <p>{$vo.title}</p>
+            </li>
+            </a>
+            </volist>
+         </ul>-->
+         
+             
+             <volist name="teacher" id="vo">
+             <div class="k_teacher">
+                  <div class="tx_poto"><img src="__ROOT__{$vo.image}" /></div>
+                  <div class="k_right">
+                      <p>{$vo.name}<span>{$vo.job}</span></p>
+                      <p>{$vo.brief}</p>
+                  </div>
+             </div>
+             </volist>
+         
+    </div>
+    <!--相关推荐end-->
+     <volist name="course" id="vo">
+     						 <if condition="$vo.cost gt 0 ">
+                             
+                              <a href="javascript:;" class="jrkc1" style="margin-left:320px;" id='ke1' onClick="check_login('{:U('Course/void',array('cid'=>$vo['id']))}')">预览课程</a> 
+                              
+                             </if>
+     						  <if condition="$vo.cost eq 0 ">	 
+    						  <if condition="$vo.mark_bit eq 1 ">
+                              <a href="javascript:;" id='ke1' class="jrkc" onclick="goc(event,{$vo.id},{$vo.cost});" >加入课程</a> 
+                              </if>
+                              <if condition="$vo.mark_bit eq 0 ">
+                              <a href="javascript:;" id='ke1' class="jrkc" onclick="goc(event,{$vo.id},{$vo.cost});">加入课程</a>
+                              </if>
+                              </if>
+                              <if condition="$vo.mark_bit eq 2 ">
+                              <a href="javascript:;" id='ke1' class="jrkc" onclick="goc(event,{$vo.id},{$vo.cost});">关注课程</a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 3 ">
+                              <a href="javascript:;" id='ke1' class="jrkc" onclick="goc(event,{$vo.id},{$vo.cost});">关注课程</a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 1 ">
+                              <a href="javascript:;" id='ke' class="jrkc" onClick="log_url(event,'{:U('Course/void',array('cid'=>$vo['id']))}','phone_public_pageNavigation')" style="display:none;">开始上课</a> 
+                              </if>
+                              <if condition="$vo.mark_bit eq 0 ">
+                              <a href="javascript:;" class="jrkc" style="background-color:#dedede; display:none;" id='ke'>敬请期待</a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 3 ">
+                              <a href="javascript:;" class="jrkc" style="background-color:#dedede; display:none;" id='ke'>敬请期待</a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 2 ">
+                              <a target="_blank" href="http://{$vo.href}" id='ke' class="jrkc" style="background-color:#FC0;display:none;">去上课</a>
+                              </if>
+                              
+                              <if condition="$vo.cost gt 0 ">
+                              <a href="javascript:;" class="jrkc1" id='code' onclick="check_login('{:U('Pay/index',array('cid'=>$vo['id'],'type'=>'course'))}')" >积分兑换课程</a>
+                              </if>
+                              
+                              <if condition="$user_course_add neq null ">
+                              
+                              	<script>
+								
+										var div = document.getElementById("ke1");
+	
+										div.style.display="none";
+										
+										var div1=document.getElementById("ke");
+										
+										div1.style.display="block";
+										
+										var div1=document.getElementById("code");
+										
+										div1.style.display="none";
+								
+								</script>
+                              
+                              </if>
+    
+    <div style="width:640px; height:98px;"></div>
+    </volist>
+</div>
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/course/phone_course_details.js"> </script>
+<script>
+var url='__URL__/';
+var url_login='{:U("Index/phone_login")}';
+var url_weixin='{:U("Index/url_weixin")}';
+var url_log="{:U('Index/log')}";
+</script>
+<script type="text/javascript">
+		wx.config({    
+		debug: false,    
+		appId: '{$appid_fenxiang}',    
+		timestamp: '{$timestamp_fenxiang}',    
+		nonceStr: '{$nonceStr_fenxiang}',    
+		signature: '{$signature_fenxiang}',    
+		jsApiList: [    
+		'checkJsApi',    
+		'onMenuShareTimeline',    
+		'onMenuShareAppMessage',    
+		'onMenuShareQQ',    
+		'onMenuShareWeibo',      
+		]    
+		});
+		
+		wx.ready(function(){
+		
+		wx.onMenuShareTimeline({
+		title: '{$title_fenxiang}', // 分享标题
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		wx.onMenuShareAppMessage({
+		title: '{$title_fenxiang}', // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		type: '', // 分享类型,music、video或link，不填默认为link
+		dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		//alert("谢谢分享");
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});  
+		
+		wx.onMenuShareQQ({
+		title: '{$title_fenxiang}', // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		
+		
+		wx.onMenuShareWeibo({
+		title: '{$title_fenxiang}', // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		
+		})
+</script>

@@ -1,0 +1,416 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<volist name="course" id="vo">
+<title>{$vo.title}</title>
+</volist>
+
+<link rel="stylesheet" href="__PUBLIC__/css/phone_kecheng.css" />
+<style type="text/css">
+.jifen{ width:100%; font-size:26px;color: #ff2a00 !important; float:left; margin-bottom:10px;}
+.jifen span{ font-size:20px; font-weight:400; color:#525252; text-decoration:line-through;}
+.jrkc_dh{
+	display:block;
+	height:100px;
+    width:180px;
+	background:#fff;
+	float:left;
+    line-height:94px;
+    text-align: center;
+    color: #ff8c1c;
+    font-size: 28px;
+    font-weight: 700;
+}
+.jrkc_1{
+	display:block;
+	height:100px;
+    width:460px;
+	background:#ff8c1c;
+	float:left;
+    line-height:94px;
+    text-align: center;
+    color: #fff;
+    font-size: 28px;
+    font-weight: 700;
+}
+.exchange{ width: 640px;
+    background: #fff;
+    height: 100px;
+    line-height: 58px;
+    text-align: center;
+    color: #ff8c1c;
+    border-top: 1px solid #dedede;
+    font-size: 28px;
+    font-weight: 700;
+    position: fixed;
+    bottom: 0px;
+    left:0px;
+}
+.k_xiaojie1{ width:100%; height:auto; padding:0px 0px 20px;}
+.k_section1{
+background: #f7f7f7;
+width: 92%;
+height: 64px;
+font-size: 28px;
+line-height: 64px;
+color: #333;
+padding: 0 4%;}
+.k_section1 span{ margin-left:20px;}
+.k_xiaojie1 ul{ width:100%; height:auto; margin-top:15px; margin-bottom:30px;}
+.k_xiaojie1 ul li{ 
+width: 87.5%;
+padding: 8px 30px 8px 50px;
+overflow: hidden;}
+.k_xiaojie1>ul>li>a.k_dianji{ color:#333; font-size:24px; display:block; overflow:hidden;}
+.k_dianji1 p{ 
+font-size:24px; color:#666; line-height:60px; float:left; width:400px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin:0px !important;}
+.k_dianji1 span{ 
+float: right;
+color: #999;
+line-height: 60px;
+font-size: 20px;}
+.k_dianji1 span img{ 
+width: 25px;
+margin-left: 20px;
+float: right;
+margin-top: 16px; }
+</style>
+</head>
+
+<body>
+<div class="warpper" style="background:#fff; position:relative;">
+<include file="Public:phone_head_xin" />
+	<volist name="course" id="vo">
+    <div class="k_bj">
+    <if condition="$vo.cc_code eq null ">
+    	<img src="__ROOT__/{$vo.image}"/>
+    </if>
+    <if condition="$vo.cc_code neq null ">
+    	<script src="http://p.bokecc.com/player?vid={$void}&siteid=B73CC50AF38DFD67&autoStart=true&width=640&height=375&playerid=78F3CEA674B99498&playertype=2" type="text/javascript"></script>
+    </if>
+    </div>
+    <div class="k_tab">
+        <ul>
+           <a  href="javascript:;">
+              <li>
+                  <div class="k_active" id="xiangqing_head" onclick="chang('xiangqing');">课程简介</div>
+             </li>
+           </a>
+           <a  href="javascript:;">
+              <li>
+                  <div id="dagang_head" onclick="chang('dagang');">课程大纲</div>
+             </li>
+           </a>
+           <a  href="javascript:;">
+              <li>
+                  <div id="tuijian_head" onclick="chang('tuijian');" >授课教师</div>
+             </li>
+           </a>
+        </ul>
+    </div> 
+    <!--课程详情-->
+    <div class="k_detail" style="" id="xiangqing">
+         <p class="chuang" style="height:auto !important;">{$vo.title}</p>
+         <div class="k_xinxi">
+         	  <if condition="$user_course_add eq null ">   	
+              <div class="jifen" style="margin-bottom:30px;">
+              <p style="float:left; color:#6f6f6f !important; "><img style="width:34px; margin-right:8px; margin-top:3px;" src="__PUBLIC__/image/denote1.png"/></p>
+                   <p style="color:#ff2a00 !important; font-size:30px !important; float:left;">{$vo.cost}积分<span style="text-decoration:none !important;color:#ff2a00 !important;"></span></p>
+                   <if condition="$vo.yuanjifen gt 0 ">
+                   <span style=" font-size:20px !important; margin-top:8px; color:#999 !important; float:left; "><span style="text-decoration:none !important; margin-right:5px;margin-left:5px;">/</span><span>{$vo.yuanjifen}</span></if>
+
+              </div>
+              </if>
+              <if condition="$user_course_add neq null ">   	
+              <div class="jifen" style="margin-bottom:20px;">
+              <p style="float:left; color:#6f6f6f !important; float:left;"><img style="width:34px; margin-right:8px; margin-top:3px;"  src="__PUBLIC__/image/denote1.png"/></p>
+                   <p style="color:#ff2a00 !important; float:left; font-size:30px !important;">选课成功
+                   </p>
+
+              </div>
+            </if>
+             <p class="k_kke"><if condition="$vo.start_time elt time() "><span>开课时间：</span></if><if condition="$vo.start_time gt time() "><span>更新时间：</span></if>{$vo.start_time|default=time()|date='Y-m-d',###}</p>
+             <if condition="$course_user_end_time neq null "> 
+             <p class="k_kke" style="color:#2c8aff;">结课时间：&nbsp;{$course_user_end_time|default=time()|date='Y-m-d',###}</p>
+			 </if>
+             <p class="k_kcap"><span>课程安排：</span>{$vo.anpai}</p>
+             <p class="k_kcap"><span>课程来源：</span>{$vo.source}</p>
+             <p class="k_kcap"><span>主讲教师：</span>{$vo.teacher_name}</p>
+             <p class="k_kcap"><span>语言：</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$vo.language}</p>
+             <p class="k_biaoq"><span>课程标签：</span>{$tagname}</p>
+         </div>
+         </volist>
+       <!--<div class="skls">
+             <p class="chuang1">授课老师</p>
+             <volist name="teacher" id="vo">
+             <div class="k_teacher">
+                  <div class="tx_poto"><img src="__ROOT__{$vo.image}" /></div>
+                  <div class="k_right">
+                      <p>{$vo.name}<span>{$vo.job}</span></p>
+                      <p>{$vo.brief}</p>
+                  </div>
+             </div>
+             </volist>
+         </div> -->
+         <volist name="course" id="vo"> 
+         <div class="skls">
+             <p class="chuang1">课程简介</p>
+             <div class="k_wz" style="word-break:break-all;">
+             	{$vo.brief}
+                <br></br>
+             </div>
+         </div>
+         
+         <div class="skls">
+             <p class="chuang1">课程概要</p>
+             <div class="k_wz">
+             	{$vo.summary}
+                <br></br>
+             </div>
+         </div>
+    </div>
+    <!--课程详情end-->
+    
+    <!--课程大纲-->
+    <div  style="display:none; padding-top:30px;" id="dagang">
+   
+            <div class="k_xiaojie1">
+             <!--循环-->
+                <volist name="add" id="vo">
+                     <if condition="$vo['is_zhangjie'] eq 0 ">
+                     <div class="k_section1">{$vo.name}</div>
+                     </if>
+                     <if condition="$vo['is_zhangjie'] neq 0 ">
+                     <ul>
+                     <li>
+                     <a class="k_dianji1" href="javascript:;" onclick="add_user_look({$vo.id})">
+                     <p>{$vo.name}</p>
+                     
+                     <span>
+                      <?php if($vo['show'] !=0 && $user_course_add !=1){ echo '<img src="__PUBLIC__/image/lock.png" />';}elseif($vo['show_time']>$nowtime){echo '<img src="__PUBLIC__/image/lock.png" />';}else{echo '<img src="__PUBLIC__/image/bofan_list.png" />';}?>
+                     
+                     </sapn>
+                     
+                     <if condition="$vo['show_time'] gt $nowtime ">
+                     <span>敬请期待</span>
+                     </if>
+                     </a>
+                     </li>
+                     </ul>
+                     </if>
+             </volist>	
+                     
+                                
+                                              
+              
+        <!--end循环-->
+     </div>            
+<!--         <ul> 
+            <li>
+                <p>{$vo.outline}<br></br>
+            
+            </p>
+            </li>
+			
+            
+         </ul>-->
+    </div>
+    </volist>
+    <!--课程大纲end-->
+    
+    <!--相关推荐-->
+    <div class="k_xgtj" style="display:none;" id="tuijian">
+        <!-- <ul>
+         	<volist name="list_c" id="vo">
+            <a href="javascript:;" onClick="log_url(event,'{:U('Course/course_details',array('cid'=>$vo['id']))}','courseInfo_recommendation')">
+
+            <li>
+                <div class="k_bj1"><img src="__ROOT__/{$vo.image}"/></div>
+                <p>{$vo.title}</p>
+            </li>
+            </a>
+            </volist>
+         </ul>-->
+         
+             
+             <volist name="teacher" id="vo">
+             <a href="{:U('Teacher/alltutor',array('tid'=>$vo['id']))}" >
+             <div class="k_teacher">
+                  <div class="tx_poto"><img src="__ROOT__{$vo.image}" /></div>
+                  <div class="k_right">
+                      <p>{$vo.name}<span>{$vo.job}</span></p>
+                      <p>{$vo.brief}</p>
+                  </div>
+             </div>
+             </a>
+             </volist>
+         
+    </div>
+    <!--相关推荐end-->
+     <volist name="course" id="vo">
+                    <!--积分兑换与预览课程-->
+                        <div class="exchange">
+                              <if condition="$vo.cost gt 0 ">
+                             
+                              <a href="javascript:;" class="jrkc_dh"  id='ke1' onClick="check_login('{:U('Course/void',array('cid'=>$vo['id']))}')">预览课程</a> 
+                              
+                             </if>
+                             <if condition="$vo.cost gt 0 ">
+                              <a href="javascript:;" class="jrkc_1" id='code' onClick="check_login('{:U('Pay/index',array('cid'=>$vo['id'],'type'=>'course'))}')" >积分兑换课程</a>
+                              </if>
+                         </div>
+                          <!--积分兑换与预览课程-->
+                          
+     						 <if condition="$vo.cost eq 0 ">	 
+    						  <if condition="$vo.mark_bit eq 1 ">
+                              <a href="javascript:;" id='ke1' class="jrkc" onclick="goc(event,{$vo.id},{$vo.cost});" >加入课程</a> 
+                              </if>
+                              <if condition="$vo.mark_bit eq 0 ">
+                              <a href="javascript:;" id='ke1' class="jrkc" onclick="goc(event,{$vo.id},{$vo.cost});">加入课程</a>
+                              </if>
+                              
+                              <if condition="$vo.mark_bit eq 2 ">
+                              <a href="javascript:;" id='ke1' class="jrkc" onclick="goc(event,{$vo.id},{$vo.cost});">关注课程</a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 3 ">
+                              <a href="javascript:;" id='ke1' class="jrkc" onclick="goc(event,{$vo.id},{$vo.cost});">关注课程</a>
+                              </if>
+                              </if>
+                              <if condition="$vo.mark_bit eq 1 ">
+                              <a href="javascript:;" id='ke' class="jrkc" onClick="log_url(event,'{:U('Course/void',array('cid'=>$vo['id']))}','phone_public_pageNavigation')" style="display:none;">开始上课</a> 
+                              </if>
+                              <if condition="$vo.mark_bit eq 0 ">
+                              <a href="javascript:;" class="jrkc" style="background-color:#dedede; display:none;" id='ke'>敬请期待</a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 3 ">
+                              <a href="javascript:;" class="jrkc" style="background-color:#dedede; display:none;" id='ke'>敬请期待</a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 2 ">
+                              <a target="_blank" href="http://{$vo.href}" id='ke' class="jrkc" style="background-color:#FC0;display:none;">去上课</a>
+                              </if>
+                              
+                              
+                              
+                              <if condition="$user_course_add neq null ">
+                              
+                              	<script>
+								
+										var div = document.getElementById("ke1");
+	
+										div.style.display="none";
+										
+										var div1=document.getElementById("ke");
+										
+										div1.style.display="block";
+										
+										var div1=document.getElementById("code");
+										
+										div1.style.display="none";
+								
+								</script>
+                              
+                              </if>
+    
+    <div style="width:640px; height:98px;"></div>
+    </volist>
+</div>
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/course/phone_course_details.js"> </script>
+<script>
+var url='__URL__/';
+var url_login='{:U("Index/phone_login")}';
+var url_weixin='{:U("Index/url_weixin")}';
+var url_log="{:U('Index/log')}";
+
+</script>
+<script type="text/javascript">
+		wx.config({    
+		debug: false,    
+		appId: '{$appid_fenxiang}',    
+		timestamp: '{$timestamp_fenxiang}',    
+		nonceStr: '{$nonceStr_fenxiang}',    
+		signature: '{$signature_fenxiang}',    
+		jsApiList: [    
+		'checkJsApi',    
+		'onMenuShareTimeline',    
+		'onMenuShareAppMessage',    
+		'onMenuShareQQ',    
+		'onMenuShareWeibo',      
+		]    
+		});
+		
+		wx.ready(function(){
+		
+		wx.onMenuShareTimeline({
+		title: '{$title_fenxiang}', // 分享标题
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		wx.onMenuShareAppMessage({
+		title: '{$title_fenxiang}', // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		type: '', // 分享类型,music、video或link，不填默认为link
+		dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		//alert("谢谢分享");
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});  
+		
+		wx.onMenuShareQQ({
+		title: '{$title_fenxiang}', // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		
+		
+		wx.onMenuShareWeibo({
+		title: '{$title_fenxiang}', // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		
+		})
+</script>

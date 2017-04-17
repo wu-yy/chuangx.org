@@ -1,0 +1,386 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta property="qc:admins" content="255332764063051675456375636" />
+<meta property="wb:webmaster" content="14529c2b95b45b38" />
+<meta http-equiv="x-ua-compatible" content="ie=7" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="学堂在线“中国创业学院”频道是由清华大学和学堂在线共同发起的创业教育平台，通过线上与线下、课堂与实训、院校教师与行业专家相结合的教育模式，为学习者提供创意、创新、创业相关的教育培训服务。"/>
+<meta name="keywords" content="创业学院, 中国创业学院, chuangx, chuangedu, , 学堂在线, 创一, 创一教育, 创业, MOOC, 在线课程, 混合式学习" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+<title>中国创业学院</title>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<link href="__PUBLIC__/css/shouyedaohang.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/js/koala.min.1.5.js"></script>
+
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+
+<script src="__PUBLIC__/js/index/index.js"></script>
+<script src="__PUBLIC__/js/index/zhuce1.js"></script>
+<style>
+a{   cursor:pointer; margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+.sy_cyds ul li p{ position:relative !important; top:-5px !important; font-weight:800; left:0px;background:none !important; color:#333 !important;}
+.p1{ color:#666 !important; font-weight:normal !important; font-size:9px !important;}
+
+元素 {
+}
+.focus .D1fBt .current, .focus .D1fBt a:hover {
+    background: #999 none repeat scroll 0% 0%;
+}
+
+.focus .D1fBt a {
+    position: relative;
+    display: inline;
+    width: 12px;
+    height: 12px;
+    border-radius: 7px;
+    margin: 0px 5px;
+    color: #B0B0B0;
+    font: 12px/15px "宋体";
+    text-decoration: none;
+    text-align: center;
+    outline: 0px none;
+    float: left;
+    background: #D9D9D9 none repeat scroll 0% 0%;
+	display:none;
+}
+
+.sy_ganhuo ul li p {
+    font-size: 15px !important;
+    width: 270px !important;
+    float: left;
+	line-height:24px;
+    height:auto !important;
+    overflow:visible !important;
+    padding-top:0px !important;
+    color: #fff;
+	  /*word-break:break-all;*/
+    word-wrap:break-word;/*wenjing*/
+	display: inline;
+}
+.sy_ganhuo ul li {
+    width: 270px;
+	height:auto !important;
+	overflow:hidden;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+.sy_cyds ul li {
+    width: 100%;
+    height: 150px !important;
+    width: 85px;
+    margin: 4px;
+    float: left;
+}
+span.p1{ height:28px !important;overflow:hidden !important; line-height:13px !important; margin-top:5px !important;} 
+.sy_cyds ul li span {
+    line-height: 13px !important; word-break:break-all !important;}
+</style>
+<script>
+
+/*window.onbeforeunload = function(){
+      return "必您确定要退出页面吗？";
+
+       } */
+
+</script>
+</head>
+
+<body style=" width:100%; margin:0 auto !important;" >
+
+<div class="wapper" style=" width:100% !important;">
+     <include file="Public:head" />  <!--包含模板文件，that is the file home/view/public/head.html-->
+     <div class="sy_st">
+          <div class="sy_left">
+     <div id="fsD1" class="focus">
+
+	<div id="D1pic1" class="fPic">
+    <noempty name="balist"> <!---->
+    <foreach name="balist" item="vo">
+		<div class="fcon">
+			<a href="javascript:;" onClick="log_url(event,'{$vo.url}','main_banner')"><img src="__ROOT__/Uploads/{$vo.picurl}" /></a>
+			<!--<span class="shadow"><a href="{$vo.url}">{$vo.title}</a></span>-->
+		</div>
+        
+        </foreach>
+     </noempty>
+	</div>
+	
+	<div class="fbg">
+		<div class="D1fBt" id="D1fBt">
+        <noempty name="balist">
+    <foreach name="balist" item="vo">
+		<a href="javascript:void(0)" <if condition="$key eq 0"> class="current" </if> ><i>{$key+1}</i></a>
+        
+        </foreach>
+		 </noempty>	
+			<!--<a href="javascript:void(0)"><i>2</i></a>
+			<a href="javascript:void(0)"><i>3</i></a>
+			<a href="javascript:void(0)"><i>4</i></a>-->
+		</div>
+	</div>
+    <span class="prev"></span>
+	<span class="next"></span>
+    </div>
+              
+                  <div class="tab">
+                        <ul class="tabs" style="width:700px;">
+                             <li><a href="javascript:;">精彩课程</a></li>
+                             <!--<li><a href="javascript:;">最新课程</a></li>-->
+<!--                             <li><a href="#">即将开始</a></li>-->
+                        
+                        </ul>
+                        <a href="{:U('Course/index')}"  style="position:relative; z-index:99 !important;"> 
+                       		<div class="more" style="margin-top:-33px; float:right !important;" >更多</div>
+                       </a>  <!--点击更多进入到href[/Home/Course/index.html],更多课程；函数U('地址','参数','伪静态','是否跳转','显示域名')完成对url地址的组装-->
+                      <!-- / tabs -->
+                      <div class="tab_content">
+                      <div class="tabs_item">
+                         
+                              <ul>
+                                  <volist name="list_nice_course" id="vo">  <!--对变量名称为name的中的每一个循环变量id进行访问操作-->
+                                  <li> <!--javascript:是伪协议，表示什么都不执行；但是一般情况下会加上事件回调,eg:onClick;写href时为了出现手型光标-->
+                                  	<a href="javascript:;"  class="thumbnail" onClick="log_url(event,'{:U('Course/course_details',array('cid'=>$vo['id']))}','main_courseRecommended')">
+                                                         <!--跳转到Course/course_details下的某一页面，根据cid标示-->
+                                            <img src="__ROOT__/{$vo.image}"/> <!--被点击的图片-->
+                                        <div class="caption">
+                                            <h6>{$vo.title}</h6>
+                                            <!--<div class="pull-right">
+                                                 <span class="subhead-content">{$vo.nu_add}&nbsp;关注</span>
+                                                 <span class="subhead-fenge">|</span>
+                                                 <span class="subhead-content"><span class="sy_fen">{$vo.score}</span>&nbsp;评分</span>
+                                            </div>-->
+                                        </div>
+                                     </a>
+                                  </li>
+                                  </volist>
+                                  
+                              </ul>
+                              
+                      </div>
+                       <!-- / tabs_item1 --> <!--精彩课程里面带有“新课”标志的课程-->
+                      <div class="tabs_item">
+                         
+                              <ul>
+                                 <volist name="new_course" id="vo1">
+                                  <li>
+                                      <a href="javascript:;" class="thumbnail" onClick="log_url(event,'{:U('Course/course_details',array('cid'=>$vo1['id']))}','main_courseRecommended')">
+                                        <img src="__ROOT__/{$vo1.image}"/>
+                                      <!--  {$urllocal}/{$vo1.image}<br/>-->
+                                           
+                                        <div class="caption">
+                                            <h6>{$vo1.title}</h6>
+                                            <div class="pull-right">
+                                                <!-- <span class="subhead-content">{$vo.nu_add}&nbsp;关注</span>
+                                                 <span class="subhead-fenge">|</span>
+                                                 <span class="subhead-content"><span class="sy_fen">{$vo.score}</span>&nbsp;评分</span>-->
+                                            </div>
+                                        </div>
+                                     </a>
+                                  </li>
+                                  </volist>
+                                  
+                              </ul>
+                              
+                      </div>
+                      
+                     </div>
+  <!-- / tab_content -->
+                   </div>
+               <div class="sy_zx" onClick="log1('main_news')">
+                   <div class="sy_list">最新资讯</div>
+                   <div class="more1" style="margin-top: 2px !important;"><a href="{:U('Information/index')}">更多</a></div>
+                   <div class="sy_list_content">
+                       <ul>
+                       		<volist name="information_new_nu" id="vo">
+                            <li>
+                            <a href="{:U('Information/information_details',array('id'=>$vo['id']))}">
+                            <a href="javascript:;"  onClick="log_url(event,'{:U('Information/information_details',array('id'=>$vo['id']))}','main_news')">
+                                <img class="sy_zx_pic" src="__ROOT__/{$vo.img}"/>
+                                <div class="sy_caption" style="height:auto !important; overflow:hidden;">
+                                    <h6 class="sy_zx_title">{$vo.title}</h6> <!--图片的title，黑体-->
+                                    <div class="sy_tips">
+                                        <span class="sy_zx_time">{$vo.time_ad}</span><!--图片的放置事件-->
+                                        <div class="pull-right1">
+                                               <img src="__PUBLIC__/image/guanzhushu.png"/> <!--表示用户的图片-->
+                                               <span class="subhead-content">{$vo.nu_add}</span> <!--表示观看用户的数目-->
+                                         </div>
+                                        <p class="sy_zx_brief" style="height:auto !important;">{$vo.brief}</p> <!--咨询简介-->
+                                    </div>
+                                </div>
+                              </a>
+                            </li>
+                            </volist>
+                       </ul>
+                   </div>
+              </div>
+          </div>
+          <div class="sy_right" >
+              <div class="sy_ganhuo" onClick="log1('main_infoRecommended')">
+                  <div class="sy_gh_tips">
+                      <p>创业干货</p>
+<!--                      <span>更多</span>-->
+                  </div>
+                  <ul>
+                  
+                  <foreach name="drysaltery" item="vo"><!--列成每一个li-->
+                      
+                      <li>
+                      <!--仍是跳转到infomation_detials,和资讯很学-->
+                      <a href="javascript:;" onClick="log_url(event,'{$vo.url}','main_infoRecommended')">
+                      <!--<if condition="$vo[picurl] eq ''">
+                       <img src="__PUBLIC__/image/moren1.jpg" />
+                      <else />
+                          <img src="__ROOT__/Uploads/{$vo.picurl}" />
+                      </if>-->
+                          <p>{$vo.title}</p>
+                          </a>
+                      </li>
+                       
+                      
+                  </foreach>    
+                     
+                  </ul>
+              </div>
+             <if condition="$null_huodong neq 1 "><!--!=1， 不过整个变量是在哪里声明的啊？？？？-->
+             <div class="sy_huodong" onClick="log1('main_activity')"><!--这里的onclick是作用于整个div的，但是log1()怎么找？就是像这种在外部文件声明的函数怎么找？外部文件也很多-->
+                   
+                   <div class="sy_hd_tips">
+                      <p>最新活动</p>
+                  </div>
+                  
+                  <ul style="display:inline-block !important;">
+                     	<volist name="huodong" id="vo">
+                        
+                      <li><!--本来应该有若干条目的，但是实际只有一张图片，点击转到百度首页？？？？-->
+                         <a href="javascript:;" onClick="log_url(event,'{$vo.url}','main_activity')">
+                          <img style="margin-bottom:13px;" src="__ROOT__/{$vo.img}" /></a>
+                      </li>
+                      
+                      </volist>
+                  </ul>
+              </div>
+             </if> 
+              <div class="sy_cyds" style="position: relative;" onClick="log1('main_tutor')">
+                   <div class="sy_cy_tips">
+                      <p>创业导师</p>
+                      <span><a href="{:U('Teacher/alltutor_list')}" style="color:#999;">更多</a></span>
+                  </div>
+                  <ul>
+                     <foreach name="teacherlist" item="tvo">
+                     <a href="{:U('Teacher/alltutor',array('tid'=>$tvo['id']))}">
+                      <li>
+                      <if condition="$tvo[image] eq ''">
+                      <img src="__PUBLIC__/image/moren.jpg" />
+                      <else />
+                          <img src="__ROOT__{$tvo.image}" />
+                       </if>
+                          <p><span style="font-size: 13px;">{$tvo.name}</span> <span class="p1" style=" color:#666 !important; height:38px !important;">{$tvo.job}</span></p>
+                         
+                      </li>
+                      </a>
+                     </foreach>
+                      
+                    
+                  </ul> 
+              </div>
+          </div>
+          
+     </div>
+
+    <include file="Public:foot" />
+   
+</div>
+<script>
+//for weixin share not working
+//date 2017.4.1
+//name Bright Zhang
+var shareTitle = "中国创业学院";
+var descContent  = "中国创业学院|清华创新企业、管理与领导力精品课程伴你成长";
+var url = window.location.href;
+
+function shareFriend() { 
+WeixinJSBridge.invoke('sendAppMessage',{ 
+"appid": "", 
+"img_url": "", 
+"img_width": "120", 
+"img_height": "120", 
+"link": url, 
+"desc": descContent, 
+"title": shareTitle 
+}, function(res) { 
+_report('send_msg', res.err_msg); 
+}) 
+} 
+function shareTimeline() { 
+WeixinJSBridge.invoke('shareTimeline',{ 
+"img_url": "", 
+"img_width": "120", 
+"img_height": "120", 
+"link": url, 
+"desc": descContent, 
+"title": shareTitle 
+}, function(res) { 
+_report('timeline', res.err_msg); 
+}); 
+} 
+function shareWeibo() { 
+WeixinJSBridge.invoke('shareWeibo',{ 
+"content": descContent, 
+"url": url, 
+}, function(res) { 
+_report('weibo', res.err_msg); 
+}); 
+} 
+// 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。 
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() { 
+ 
+// 发送给好友 
+WeixinJSBridge.on('menu:share:appmessage', function(argv){ 
+shareFriend(); 
+}); 
+ 
+// 分享到朋友圈 
+WeixinJSBridge.on('menu:share:timeline', function(argv){ 
+shareTimeline(); 
+}); 
+ 
+// 分享到微博 
+WeixinJSBridge.on('menu:share:weibo', function(argv){ 
+shareWeibo(); 
+}); 
+}, false); 
+</script>
+
+
+</body>
+</html>
+<script type="text/javascript">
+Qfast.add('widgets', { path: "__PUBLIC__/js/terminator2.2.min.js", type: "js", requires: ['fx'] });  
+Qfast(false, 'widgets', function () {
+	K.tabs({
+		id: 'fsD1',   //焦点图包裹id  
+		conId: "D1pic1",  //** 大图域包裹id  
+		tabId:"D1fBt",  
+		tabTn:"a",
+		conCn: '.fcon', //** 大图域配置class       
+		auto: 1,   //自动播放 1或0
+		effect: 'fade',   //效果配置
+		eType: 'click', //** 鼠标事件
+		pageBt:true,//是否有按钮切换页码
+		bns: ['.prev', '.next'],//** 前后按钮配置class                          
+		interval: 3000  //** 停顿时间  
+	}) 
+})  
+
+</script>

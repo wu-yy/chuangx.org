@@ -1,0 +1,5 @@
+[ 2016-03-21T17:40:49+08:00 ] 211.100.46.71 /home/index/test_user
+: SQL: SELECT * FROM `uinfo` WHERE `userid` = 6379 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT * FROM `uinfo` WHERE `userid` = 6379 LIMIT 1   [ RunTime:0.0026s ]
+SQL: SELECT * FROM `user` WHERE `id` = 6379 LIMIT 1   [ RunTime:0.0016s ]
+

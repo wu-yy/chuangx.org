@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>积分充值</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pcpay.css"/>
+	
+</head>
+<body>
+	<div class="wechartPay">
+		<div class="payTitle">
+			<div class="wepayWard">微信支付</div>
+			<div class="wepayContent">
+				<div class="money">应付金额:<span class="amount">{$money}</span>元</div>
+				<p class="orderNumber">请您及时处理，以便订单尽快处理！订单号:
+					<span class="ordernumberID">{$nu}</span>
+				</p>
+			</div>
+		</div>
+		<div class="backBar">
+			<a class="back" href="{:U('index',array('cid'=>$cid,'type'=>'course'))}">返回&nbsp;&nbsp;-&nbsp;选择其他支付方式
+            </a>
+		</div>
+		<div class="payImg">
+			<div class="payImg_left">
+				<img class="twoCode" src="{:U('weixin_erweima',array('data'=>$code_url))}"/>
+				<img class="showCode" src="__PUBLIC__/image/shaomiao.png"/>
+			</div>
+			<div class="payImg_right">
+				<img src="__PUBLIC__/image/shouji.png"/>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/pay/weixin.js" type="text/javascript"></script>
+<script>
+
+var ur='__URL__/';
+var order_id="{$order_id}";
+
+var t=setInterval("fukuan()",3000);
+
+function fukuan()
+{
+	$.post(ur+"weixin_result", {order_id:window.order_id},
+			function(data,status)
+				{
+					if(data=='course')
+					{
+						window.location.href="__URL__/payment/nu/6/type/wx";
+						
+						Window.clearInterval();	
+					}
+					if(data=='vip')
+					{
+						window.location.href="__URL__/paymentvip/nu/6/type/wx";
+						
+						Window.clearInterval();	
+					}
+					
+				}
+			   );
+}
+</script>

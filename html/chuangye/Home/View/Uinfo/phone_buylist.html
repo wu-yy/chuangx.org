@@ -1,0 +1,129 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>我的积分</title>
+
+<link rel="stylesheet" href="__PUBLIC__/css/phone_style.css" />
+<style type="text/css">
+.j_content{ width:640px; padding:30px 0px; height:auto;}
+.j_text{ width:600px; margin-bottom:40px; margin-left:20px;line-height:68px; height:64px; overflow:hidden; font-size:28px; color:#888; background:#eeeff3; border-radius:8px; border:1px solid #dedede;}
+.j_text input{ width:450px; float:left; height:64px; padding:8px; background:transparent; border:none; color:#888;font-size:28px;}
+.j_text a{ font-size:28px; color:#fff; height:64px; line-height:64px; text-align:center; width:150px; background:#8f4ef0; float:left;}
+.score_list{ width:640px;}
+.score_list ul{ width:100%;}
+.score_list ul li{ width:100%;  height:180px; border-bottom:1px solid #ccc; overflow:hidden; }
+.j_left{ width:120px; margin-left:20px; height:120px; float:left; margin-top:30px;}
+.j_left img{width:100%; height:100%; object-fit:cover; -moz-object-fit:cover; -webkit-object-fit:cover;}
+.j_middle{ width:350px; margin:30px 10px 30px 20px; float:left;}
+.j_middle p{ font-size:28px; color:#333;  width:350px; height:80px; overflow:hidden;}
+.j_middle span{ font-size:20px; color:#999; display:block; float:left;  width:140px; margin-top:16px;}
+.j_middle div{ font-size:20px; color:#999; display:block;  float:left;  width:200px; margin-top:16px;}
+.j_right{ font-size:33px; margin-right:20px; color:#b61010; float:left; width:100px; text-align:right; margin-top:30px;line-height:120px;}
+.j_right1{ font-size:33px; margin-right:20px; color:#0f9c18; float:left; width:100px; text-align:right; margin-top:30px;line-height:120px;}
+.jifeng{ width:600px; height:50px; padding:0px 20px 50px; overflow:hidden; font-size:30px; font-weight:700;}
+.jifeng img{ float:left; margin-top:3px;}
+.jifeng span{ float:left; color:#888; font-weight:normal !important; margin-left:10px; margin-right:20px;}
+.jifeng p{ float:left; color:#F30;}
+</style>
+<script type="text/javascript" src="__PUBLIC__/js/koala.min.1.5.js"></script>
+
+</head>
+
+<body style="background:#fff; height:100%;">
+<include file="Public:phone_head_xin" />
+<div class="warpper"   style="position:relative; height:100%;">
+     <div class="j_content">
+          <div class="jifeng"><img src="__PUBLIC__/image/integration.png"/><span>当前积分:</span><p>{$jifen}</p></div>
+          <div class="j_text">
+              <input type="text" id="text" placeholder="请输入充值码" />
+              <a href="javascript:;" onclick="phone_sum1()" name="chongzhi" id="chongzhi">积分充值</a>
+          </div>
+          <div class="score_list">
+             <ul>
+             	<volist name="list" id="vo">
+                 <if condition="$vo.type eq 1 ">	
+                 <li>
+                      <div class="j_left"><img src="__PUBLIC__/image/cykc.png"/></div>
+                      <div class="j_middle">
+                          <p style="height:78px;">{$vo.title}</p>
+                          <span>{$vo.time|default=time()|date='Y-m-d',###}</span>
+                          <div>截止至：{$vo.end_time|default=time()|date='Y-m-d',###}</div>
+                      </div>
+                      <div class="j_right1"><span>{$vo.spend}</span></div>
+                 </li>
+                 </if>
+                 <if condition="$vo.type eq 4 ">
+                 <li>
+                      <div class="j_left"><img src="__PUBLIC__/image/jqjf.png"/></div>
+                      <div class="j_middle">
+                          <p style="height:78px;">加入群组赠送积分</p>
+                          <span>{$vo.time|default=time()|date='Y-m-d',###}</span>
+                      </div>
+                      <div class="j_right"><span>+{$vo.spend}</span></div>
+                 </li>
+                 </if>
+                 <if condition="$vo.type eq 3 ">
+                 <li>
+                      <div class="j_left"><img src="__PUBLIC__/image/czjf.png"/></div>
+                      <div class="j_middle">
+                          <p style="height:78px;">积分码兑换积分</p>
+                          <span>{$vo.time|default=time()|date='Y-m-d',###}</span>
+                      </div>
+                      <div class="j_right"><span>+{$vo.spend}</span></div>
+                 </li>
+                 </if>
+                 <if condition="$vo.type eq 5 ">
+                 <li>
+                      <div class="j_left"><img src="__PUBLIC__/image/czjf.png"/></div>
+                      <div class="j_middle">
+                          <p style="height:78px;">积分充值</p>
+                          <span>{$vo.time|default=time()|date='Y-m-d',###}</span>
+                      </div>
+                      <div class="j_right"><span>+{$vo.spend}</span></div>
+                 </li>
+                 </if>
+                 <if condition="$vo.type eq 6 ">
+                 <li>
+                      <div class="j_left"><img src="__PUBLIC__/image/hyjf.png"/></div>
+                      <div class="j_middle">
+                          <p style="height:78px;">开通会员</p>
+                          <span>{$vo.time|default=time()|date='Y-m-d',###}</span>
+                      </div>
+                      <div class="j_right"><span>{$vo.spend}</span></div>
+                 </li>
+                 </if>
+                 <if condition="$vo.type eq 0 ">
+                 <li>
+                      <div class="j_left"><img src="__PUBLIC__/image/zcjf.png"/></div>
+                      <div class="j_middle">
+                          <p style="height:78px;">注册赠送积分</p>
+                          <span>{$vo.time|default=time()|date='Y-m-d',###}</span>
+                      </div>
+                      <div class="j_right"><span>+{$vo.spend}</span></div>
+                 </li>
+                 </if>
+                 </volist>
+             </ul>
+          </div>  
+     </div>
+</div>
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/uinfo/uinfo_group.js" type="text/javascript"></script>
+<script>
+	var url='__URL__/';
+</script>

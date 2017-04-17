@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<style>
+.us_zx_pic1{ width:172px !important; height:110px !important;}
+.p_right{padding-right:10px !important;}
+.pages a {
+    float: left;
+    display: block;
+    margin-right:0px !important;
+}
+.p_no{padding:0px 4px;}
+
+.pages ul {
+    float: left;
+    overflow: hidden;
+    margin-right: 10px !important;
+}
+/*新样式*/
+
+
+.pager {
+    text-align: center;
+    height: 94px;
+}
+.pagination {
+    padding-left: 0px;
+    margin: 20px 0px;
+    border-radius: 4px;
+    display: inline-block;
+}
+.pagination > li {
+    display: inline;
+}
+.pagination > .active > span:focus {
+    color: #8040FF;
+    background-color: #EEE;
+    border-color: #DDD;
+    text-decoration: underline;
+}
+.pagination-sm > li > a {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.pagination > li > a {
+    color: #999;
+}
+.pagination-sm > li > a, .pagination-sm > li > a {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.pagination > li > a, .pagination > li > a {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857;
+    text-decoration: none;
+    background-color: #fafafa;
+    border: 1px solid #DDD;
+	margin:4px;
+    margin-left: -1px;
+}
+a{ color:#999;}
+.p_active{ background-color:#62379E !important;color: #fff !important; text-outline:#62379E !important;text-decoration:underline !important;}
+.tabs_item ul { overflow:hidden; }
+.tabs_item ul li {
+    margin-right: 13px !important;
+    margin-left: 13px !important;}
+</style>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div class="tabs_item"  style="width:94%; margin:0px 3% !important; overflow:hidden !important; height:auto !important;" onClick="log1('course_list')" >
+                         	
+                              <ul>
+                              <volist name="list" id="vo">
+                                  <li><a href="javascript:;" class="thumbnail" onClick="log_url1(event,'{:U('Course/course_details',array('cid'=>$vo['id']))}','course_list')">	
+                                      
+                                            <img src="__ROOT__/{$vo.image}"/>
+                                        <div class="caption">
+                                            <h6>{$vo.title}</h6>
+                                            <div class="pull-right">
+                                                 <!--<span class="subhead-content">{$vo.nu_add}人&nbsp;关注</span>
+                                                 <span class="subhead-fenge">|</span>
+                                                 <span class="subhead-content"><span class="sy_fen">{$vo.score}</span>&nbsp;评分</span>-->
+                                                <!-- <span class="subhead-content">关注课程所需积分&nbsp;{$vo.cost}</span>
+                                                 <br />
+                                                 <span class="subhead-content">课程反回积分&nbsp;{$vo.back_credit}</span>-->
+                                            </div>
+                                        </div>
+                                     </a>
+                                  </li>
+                                  </volist>
+                                 
+							  </ul>
+							  
+
+							</div>
+                            <div class="pager" style=" width:100%; margin:0 auto !important; text-align:center !important;">
+                              <ul style="display: inline-block; margin-top:30px;" class="pagination-sm pagination">
+                                 <li><a href="javascript:;" onClick="num(event,1);">首页</a><li>
+                                 <if condition="$nu neq 1 ">
+                                 <li><a href="javascript:;" onClick="num1(event,{$nu});">上一页</a><li>
+                                 </if>
+                                 <volist name="arr" id="vo">
+                                 <if condition="$vo.number eq $nu ">
+                                 <li><a href="javascript:;" onClick="num(event,{$vo.number});" class="p_active">{$vo.number}</a><li>						</if>
+                                 <if condition="$vo.number neq $nu ">
+                                 <li><a href="javascript:;" onClick="num(event,{$vo.number});" >{$vo.number}</a><li>						</if>	
+                                 </volist>
+                                 <if condition="$nu neq $add_nu ">
+                                 <li><a href="javascript:;" onClick="num2(event,{$nu});">下一页</a><li>
+                                 </if>
+                                 <li><a href="javascript:;" onClick="num(event,{$add_nu});">尾页</a><li>
+
+                             </ul>
+                        </div>
+                            
+							 <!--<div class="pages" style=" width:100%; margin:0 auto !important; text-align:center !important;">
+                        <a class="p_right" href=""><img src="../image/pre.png"/ ></a>
+                            <ul style="display: inline-block;">
+                            	<volist name="arr" id="vo">
+                                <if condition="$vo.number eq $nu ">
+                                 <a class="p_no" href="javascript:;" onClick="num({$vo.number});"><li class="p_active">{$vo.number}</li> </a>							</if>
+								<if condition="$vo.number neq $nu ">
+                                 <a class="p_no" href="javascript:;" onClick="num({$vo.number});"><li>{$vo.number}</li> </a>
+								</if>
+                                 </volist>
+                           </ul>
+                       <a class="p_right" href=""><img src="../image/next.png"/></a>
+                    </div>-->
+							
+</body>
+</html>
+<script>
+
+function num(e,a)
+{	
+	e.cancelBubble = true;
+	var ur="{:U('Course/num')}";
+	var obj = {};
+		obj.key = "value";
+		$.post(ur+"?n="+a, obj,
+			function(data,status)
+				{
+					if(data==1)
+					{
+						window.location.reload();
+					}
+					else
+					{
+						alert('网络繁忙，请稍后再试');	
+					}
+				}
+			   );
+	log_url2(e,a,'course_ref');	
+}
+function num1(e,a)
+{	
+	e.cancelBubble = true;
+	var a=a-1;
+	var ur="{:U('Course/num')}";
+	var obj = {};
+		obj.key = "value";
+		$.post(ur+"?n="+a, obj,
+			function(data,status)
+				{
+					if(data==1)
+					{
+						window.location.reload();
+					}
+					else
+					{
+						alert('网络繁忙，请稍后再试');	
+					}
+				}
+			   );
+	log_url2(e,a,'course_ref');			   
+}
+function num2(e,a)
+{	
+	e.cancelBubble = true;
+	var a=a+1;
+	var ur="{:U('Course/num')}";
+	var obj = {};
+		obj.key = "value";
+		$.post(ur+"?n="+a, obj,
+			function(data,status)
+				{
+					if(data==1)
+					{
+						window.location.reload();
+					}
+					else
+					{
+						alert('网络繁忙，请稍后再试');	
+					}
+				}
+			   );
+	log_url2(e,a,'course_ref');			   
+}
+function log1(head)
+{
+	var url=window.location.href;
+	var Jump_page='none';
+	var ur="{:U('Index/log')}";
+		var obj = {};
+		obj.key = "value";
+		$.post(ur, {'head': head,'Jump_page':Jump_page,'url':url},
+			function(data,status)
+				{
+					
+				}
+			   );
+}
+function log_url1(e,Jump_page,head)
+{
+	var url=window.location.href;
+	var ur="{:U('Index/log')}";
+		var obj = {};
+		obj.key = "value";
+		$.post(ur, {'head': head,'Jump_page':Jump_page,'url':url},
+			function(data,status)
+				{
+				}
+			   );
+	window.top.location=Jump_page; 			   
+			   e.cancelBubble = true;
+}
+function log_url2(e,Jump_page,head)
+{
+	var url=window.location.href;
+	var ur="{:U('Index/log')}";
+		var obj = {};
+		obj.key = "value";
+		$.post(ur, {'head': head,'Jump_page':Jump_page,'url':url},
+			function(data,status)
+				{
+				}
+			   ); 			   
+			   e.cancelBubble = true;
+}
+</script>

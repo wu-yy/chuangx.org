@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+ <link href="__PUBLIC__/Admin/js/advanced-datatable/__PUBLIC__/Admin/css/demo_page.css" rel="stylesheet" />
+  <link href="__PUBLIC__/Admin/js/advanced-datatable/__PUBLIC__/Admin/css/demo_table.css" rel="stylesheet" />
+  <link rel="stylesheet" href="__PUBLIC__/Admin/js/data-tables/DT_bootstrap.css" />
+
+  <link href="__PUBLIC__/Admin/css/style.css" rel="stylesheet">
+  <link href="__PUBLIC__/Admin/css/style-responsive.css" rel="stylesheet">
+  
+  <script src="__PUBLIC__/Admin/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/Admin/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="__PUBLIC__/Admin/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="__PUBLIC__/Admin/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Admin/js/modernizr.min.js"></script>
+<script src="__PUBLIC__/Admin/js/jquery.nicescroll.js"></script>
+<style>
+.span6{ display:none;}
+body{ background:none !important;}
+ .icon-edit{font-size:18px; margin-right:10px; color:#49586E !important;}
+	 .icon-wid{ width:15%;}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+    $("#checkedAll").on('click',function () {
+
+            if ($(this).attr("checked")) { // 全选 
+
+                $("input[name='checkbox_name[]']").each(function () {
+                    $(this).attr("checked", true);
+                });
+            }
+            else { // 取消全选 
+
+                $("input[name='checkbox_name[]']").each(function () {
+                    $(this).attr("checked", false);
+                });
+            }
+        });
+		
+		
+	
+	 $("#pldel").click(function(e){
+		   var ids = new Array();
+		    $(".checked").each(function(){
+		    	if($(this).attr('checked')) {
+		    		ids.push($(this).val());
+		    	}
+		    })
+		    if(ids.length >0 ){
+		    	var delurl = "{:U('Users/dellists')}";
+		    	$.ajax({
+		    		type:'POST',
+		    		url: delurl,
+		    		data:{id:ids},
+		    		success:function(data){
+		    			if(data.status == '1') {
+		    				 alert('删除成功！');
+		    				 location.reload();
+		    			} else if(data.status == '0')  {
+		    				alert('删除失败!');
+		    			}
+		    		},
+		    		dataType:'json'
+		    	})
+		    }else{
+				alert("你没有选择任何信息");
+				}
+		   
+		   
+		   })
+		
+		
+});
+
+</script>
+
+</head>
+
+<body >
+<div class="wrapper">
+<div class="row">
+        <div class="col-sm-12">
+        <section class="panel">
+        <header class="panel-heading">
+           用户管理
+           
+        </header>
+        <div class="panel-body">
+        <div class="adv-table">
+        <div class="clearfix">
+                   <!-- <div class="btn-group">
+                    <a href="{:U('Sysuser/addsysuser')}">
+                        <button id="editable-sample_new" class="btn btn-primary">
+                            添加 <i class="fa fa-plus"></i>
+                        </button>
+                        </a>
+                    </div>-->
+                    <div class="btn-group pull-right">
+                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">工具 
+                        <i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="{:U('Users/exportusers')}">导出Excel文件</a></li>
+                              <li><a href="{:U('Users/leadusers')}">导入Excel文件</a></li>
+                        </ul>
+                    </div>
+                </div>
+     <div style="height:100px; text-align:center;width: 100%;">
+     <form name="f2" id="f2" method="post" action="">
+     <div id="dynamic-table_filter" class="dataTables_filter" style="float:none; width:50%; margin:0 auto;"><label><span style="float:left;">Search:</span> <input aria-controls="dynamic-table" style="width:70%; float:left;" class="form-control" name="key" type="text"><input type="submit" class="btn btn-primary" style="float: right; width:15%;" value="search" /></label>
+     
+     </div>
+     </form>
+     </div>
+        
+       <table aria-describedby="dynamic-table_info" class="display table table-bordered table-striped dataTable" id="dynamic-table">
+        <thead>
+        <tr role="row">
+        <th><input type="checkbox" id="checkedAll" /></th>
+        <th   colspan="1" rowspan="1"  tabindex="0" role="columnheader" >用户昵称</th>
+        <th  colspan="1" rowspan="1" tabindex="0" role="columnheader" >真实姓名</th>
+        <th colspan="1" rowspan="1"  tabindex="0" role="columnheader" >最后一次登录时间</th>
+        <th  colspan="1" rowspan="1" tabindex="0" role="columnheader" >手机号</th>
+        
+        <th  colspan="1" rowspan="1"  tabindex="0" role="columnheader" >邮箱</th>
+        <th  colspan="1" rowspan="1"  tabindex="0" role="columnheader" >操作</th>
+        </tr>
+        </thead>
+        
+        <tfoot>
+       <!--<tr><td colspan="7"><a href="javascript:;" id="pldel" class="btn btn-primary">批量删除</a></td></tr>-->
+       <if condition="$count gt 15">
+        <tr><td colspan="7">{$page}</td></tr>
+        </if>
+        </tfoot>
+        <tbody aria-relevant="all" aria-live="polite" role="alert"><tr class="gradeA odd">
+        <foreach name="data" item="vo">
+        
+        <tr>
+        <td><input type="checkbox" name="checkbox_name[]" class="checked" value="{$vo.userid}" /></td>
+            <td class="  sorting_1">{$vo.nikename}</td>
+            <td class=" ">{$vo.username}</td>
+            <td class=" ">
+            {$vo.logintime|date='Y-m-d',###}
+            </td>
+            <td class="center hidden-phone ">{$vo.usermobilenum}</td>
+            <td class="center hidden-phone">{$vo.useremail}</td>
+              <td class="icon-wid">
+              	     <if condition="$vo['is_delect'] eq 0">
+                     <a class="icon-edit" title="查看详情"href="{:U('Users/detail', array('id'=>$vo['uid']))}" ><i class="fa fa-exclamation-circle"></i></a>
+                       <a class="icon-edit" title="重置密码" onclick="return window.confirm('是否确认将该用户密码重置为12345678？？');" href="{:U('Users/resetpwd', array('id'=>$vo['uid']))}" ><i class="fa fa-cog"></i></a>
+                       <b style="color:#903">
+                       <a class="icon-edit" style="margin-left:5px;" onclick="return window.confirm('是否确认将该用户信息全部删除？？');" href="{:U('Users/deluser', array('id'=>$vo['uid']))}"  >
+                       	<i class="fa fa-times-circle"></i>
+                       </a>
+                       </if>
+                       <if condition="$vo['is_delect'] eq 1">
+                       		已删除
+                       </if>
+                    </td>
+        </tr>
+        </foreach>
+       </tbody></table>
+       </div>
+        </div>
+        </div>
+        </section>
+        </div>
+        </div>
+
+</div>
+</body>
+</html>

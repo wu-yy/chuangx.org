@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/* CSS Document */
+<!--微课-->
+.w_left{ width:710px; float:left; overflow:hidden; margin-left:20px;}
+.w_content{ width:1080px; min-width:1080px; overflow:hidden; margin-top:20px;}
+.w_left>h3{ color:#000; width:100px; float:left; margin-top:4px; margin-left:10px;}
+.w_tab{ width:560px; height:auto; float:left; overflow:hidden;}
+.w_tab li{ width:auto; font-size:14px; float:left; margin-left:5px; margin-right:5px; position:relative;}
+.w_tab li input[type="radio"]{ visibility:hidden; display:block; top:4px; left:10px; position:absolute;}
+.w_tab li input[type="radio"]+label{ font-size:14px;  display:block; padding:4px 8px; border-radius:3px; text-align:center; margin-top:3px;}
+/*.w_tab li input[type="radio"]:checked+label{ font-size:14px; display:block;padding:4px 8px; position:relative; border-radius:3px; text-align:center;
+    background:#88a4ff; color:#fff;}*/
+.weike{ width:100%; height:auto; float:left; margin-top:10px;}
+.weike ul{ width:100%; overflow:hidden;}
+.weike ul li{ float:left; width:166px; float:left;}
+.weike a.w_ke{ width:146px; padding:10px 10px 0px; height:240px; display:inline-block; margin-bottom:10px; position:relative; z-index:1;}
+.weike a:hover{ background:#f2f3f7;}
+.w_ke img{ width:146px;}
+.w_ke>h4{ font-size:14px; color:#000; margin-top:5px;}
+.w_ke>p{ font-size:12px; position:absolute; bottom:18px; color:#999; margin-top:5px;}
+.w_right{ width:320px; float:left;}
+.w_right>h3{ color:#ff7200; margin-top:4px; margin-bottom:5px;}
+.w_level{ padding:2%; width:98%;}
+.w_level ul{ width:100%;}
+.w_level li{ width:100%; position:relative; border-bottom:1px solid #f1f1f1;}
+.w_level a.w_k{ width:100%; display:inline-block; padding:10px 0px;} 
+.rank{ float:left; margin-right:10px; width:24px; height:24px; line-height:24px; background:#ff7200; color:#fff; font-size:14px; text-align:center; }
+.w_k img.w_pic{ width:80px; height:80px; float:left;}
+.w_nei{ width:189px; float:left; margin-left:10px; position:relative; height:80px;}
+.w_nei p.w_p1{ font-size:14px; font-weight:700; color:#000; margin-bottom:10px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.w_nei p.w_p2{ font-size:14px; color:#666; height:20px; line-height:20px; display:block; float:left;}
+.w_p2>img{ margin-right:8px; margin-top:3px; float:left;}
+.w_laiy{ font-size:12px; color:#666; margin-top:10px; height:15px; width:100%; line-height:15px;overflow:hidden; position:absolute; bottom:0px;}
+.w_laiy>p.w_l1{ color:#666; height:15px; line-height:15px;width:40px; float:left; }
+.w_laiy>p.w_l2{ color:#623a9e; margin-left:3px; width:145px; height:15px; line-height:15px;overflow:hidden; display:inline-block;float:left; }
+.rank_gray{ float:left; margin-right:10px; width:24px; height:24px; line-height:24px; background:#bbbbbb; color:#fff; font-size:14px; text-align:center; }
+.w_nei_gray{ width:269px; float:left; margin-left:10px; position:relative; height:40px;}
+.w_nei_gray p.w_p1{ font-size:14px; font-weight:700; color:#000; margin-bottom:10px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.w_nei_gray p.w_p2{ font-size:14px; color:#666; height:20px; line-height:20px;}
+
+.w_laiy_gray{ font-size:12px; color:#666; margin-top:10px; height:15px; width:100%; line-height:15px;overflow:hidden; position:absolute; bottom:0px;}
+.w_laiy_gray>p.w_l1{ color:#666; height:15px; line-height:15px;width:40px; float:left; }
+.w_laiy_gray>p.w_l2{ color:#623a9e; margin-left:3px; width:206px; height:15px; line-height:15px;overflow:hidden; display:inline-block;float:left; }
+<!--bofang-->
+.w_bf_content{width:1080px; min-width:1080px; overflow:hidden; margin-top:20px;}
+/*loading*/
+.loading{position:absolute;width:810px; height:500px; background:#000; z-index: 999; border:0px !important;}
+.l_mask{width:810px; height:500px; position:absolute; z-index:99999;color:#7a7a7a;}
+.l_mask img{margin:0 auto; margin-top:80px; width:240px; margin-left:282px;}
+.l_mask p{ text-align:center;}
+/*bofang*/
+a{ text-decoration:none;}
+.sy_st h2{ line-height:50px; font-size:24px; text-align:left; width:100%;}
+.w_bf_content{ width:100%; height:500px; background:#2b2b2b; position:relative; z-index:1; overflow:hidden;}
+.w_bf{ width:810px; background:#000; float:left; clear:both; height:500px; border-right:5px solid #444;}
+.w_list{ width:255px; height:auto; padding:10px 0px 0px 10px; float:left;}
+.w_top{ width:96%; overflow:hidden; padding-bottom:10px; padding-right:10px;}
+.w_from {width:100%; font-size:14px; color:#fff; padding-bottom:10px;}
+.w_from>span{ height:16px; display:block; width:4px; background:#9927f9; float:left; margin-right:5px; margin-top:2px;}
+.w_top>h4{ color:#ff7200; text-align:left; width:160px; float:left; padding-bottom:10px; margin-right:20px;}
+.w_top>img{ width:36px; height:36px; border-radius:18px; float:left; margin-top:3px;}
+.w_teacher{ font-size:12px; width:194px; height:28px; line-height:28px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:#999; float:left; padding-top:7px; padding-left:10px;}
+.w_teacher>span{ padding-left:5px;}
+.w_botton{width:57px; padding:3px 2px; margin-top:6px; text-align:center; font-size:12px; border:1px solid #ff7200; color:#ff7200; border-radius:3px;}
+a.w_botton:hover{width:57px; padding:3px 2px; background:#ff7200; color:#fff; float:right; margin-top:6px; text-align:center; font-size:12px; border:1px solid #ff7200; border-radius:3px;}
+.w_bottom{ width:100%;}
+.w_bottom ul{ width:93%;/*overflow-y: scroll; overflow-x: hidden; max-height:343px;*/ }
+.w_bottom ul li{ width:92%; padding:1%; background:#525252; margin:5px 0px; color:#fff; padding:10px; overflow:hidden;}
+.w_tittle{ font-size:14px; line-height:26px; width:100%; color:#fff; float:left; margin-right:5px;}
+.w_view{ font-size:12px; color:#8d8d8d; float:left; width:62px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-top:7px;}
+.w_view>img{ float:left; width:18px; padding-top:3px; padding-right:5px;}
+/*brief*/
+.w_brief{ background:#f3f6f8; width:96.8%; height:auto; padding:1.6%;}
+.w_tl{ width:100%; overflow:hidden; padding-bottom:7px; }
+.w_tl>h3{ color:#ff7200; float:left;  padding-right:30px;padding-top:3px; font-size:18px;}
+.w_tl>p{ float:right; font-size:24px; padding-left:30px; color:#333;border-left:1px solid #ccc;}
+.w_tl>p>img{ width:30px; padding-right:8px;}
+.brief{ color:#333; font-size:12px; line-height:24px;}
+
+

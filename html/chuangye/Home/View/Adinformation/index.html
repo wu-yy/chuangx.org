@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">-->
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>资讯管理</title>
+
+  <!--dynamic table-->
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+  <link href="__PUBLIC__/houtaikecheng/js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+  <link href="__PUBLIC__/houtaikecheng/js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+  <link rel="stylesheet" href="__PUBLIC__/houtaikecheng/js/data-tables/DT_bootstrap.css" />
+  <!--pickers css-->
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-datepicker/css/datepicker-custom.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-timepicker/css/timepicker.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-colorpicker/css/colorpicker.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-datetimepicker/css/datetimepicker-custom.css" />
+
+  <link href="__PUBLIC__/houtaikecheng/css/style.css" rel="stylesheet">
+  <link href="__PUBLIC__/houtaikecheng/css/style-responsive.css" rel="stylesheet">
+  <link href="__PUBLIC__/houtaikecheng/css/style.css" rel="stylesheet">
+  <link href="__PUBLIC__/houtaikecheng/css/style-responsive.css" rel="stylesheet">
+  <style>
+.panel-body form {
+    margin-left: 40px !important;
+}
+  </style>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="sticky-header" style=" background:#EFF0F4 none repeat scroll 0% 0%;">
+          <div class="page-heading">
+            <h3>
+                资讯管理
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="__URL__/table">资讯列表</a>
+                </li>
+                <li class="active"> 添加资讯 </li>
+            </ul>
+        </div>
+         <div class="row" style="padding-top:0px; margin-left:0px;" >
+            <div class="col-lg-6" style="width:99%;">
+                <section class="panel">
+                    <header class="panel-heading">
+                       添加资讯
+                    </header>
+                    <div class="panel-body">
+                        <form name="form1" action="__URL__/upload" enctype="multipart/form-data" method="post" >
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">资讯名称</label>
+                                <input type="text" style="width:80%;" name="title" class="form-control" id="exampleInputEmail1" placeholder="请输入资讯名称">
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">初始访问量</label>
+                                <input type="text" style="width:80%;" name="nu" class="form-control" id="exampleInputEmail1" placeholder="请输入初始访问量">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFile">上传封面</label>
+                                <input type="file" name="photo" id="exampleInputFile">
+                                <p style="color:#ee0f19;" class="help-block">＊图片规格745x300px</p>
+                            </div>
+<!--                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Check me out
+                                </label>
+                            </div>-->
+
+                <div style="padding:0 !important;" class="col-md-12" >
+                    <section class="panel">
+                       <label for="ccomment" style="padding:0 !important;"  class="control-label col-lg-2">资讯内容</label>
+                        <div class="panel-body" style="padding:0 !important;" >
+                                <div class="form-group">
+                                    <div class="col-md-12" style="padding:0 !important;" >
+                                        <textarea class="wysihtml5 form-control" name="body" rows="9"></textarea>
+                                    </div>
+                                </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+                             
+                            <button style="width:150px !important; margin-left:60px; margin-bottom:40px !important;"  type="submit" class="btn btn-primary">提交</button>
+                        </form>
+
+                    </div>
+                </section>
+            </div>
+</div>
+<!-- Placed js at the end of the document so the pages load faster -->
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="__PUBLIC__/houtaikecheng/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/modernizr.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/jquery.nicescroll.js"></script>
+
+<!--pickers plugins-->
+<script type="text/javascript" src="__PUBLIC__/houtaikecheng/js/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/houtaikecheng/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/houtaikecheng/js/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/houtaikecheng/js/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/houtaikecheng/js/bootstrap-colorpicker/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/houtaikecheng/js/bootstrap-timepicker/js/bootstrap-timepicker.js"></script>
+
+<!--pickers initialization-->
+<script src="__PUBLIC__/houtaikecheng/js/pickers-init.js"></script>
+
+
+<!--common scripts for all pages-->
+<script src="__PUBLIC__/houtaikecheng/js/scripts.js"></script>
+
+
+<script type="text/javascript" src="__PUBLIC__/houtaikecheng/js/ckeditor/ckeditor.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/houtaikecheng/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+<script type="text/javascript" src="__PUBLIC__/houtaikecheng/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+
+<!--common scripts for all pages-->
+<script src="__PUBLIC__/houtaikecheng/js/scripts.js"></script>
+
+<script>
+    jQuery(document).ready(function(){
+         $('.wysihtml5').wysihtml5();
+    });
+</script>
+</body>
+</html>

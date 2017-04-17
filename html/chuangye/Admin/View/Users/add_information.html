@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link href="__PUBLIC__/css/table.css" rel="stylesheet">
+  <link href="__PUBLIC__/css/style-responsive.css" rel="stylesheet">
+  <script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+
+<style>
+<style>
+body{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 14px;line-height: 1.42857;
+color: #333;}
+.table{ overflow:hidden; margin-bottom:-10px !important;}
+.table li input{ width:auto; float:left; margin-bottom:10px; margin-left:5px;border-radius:3px 0px 0px 3px; }
+.table{ overflow:hidden; border-bottom:1px solid #dadada;}
+ul{ outline:none; list-style:none;}
+.table li{ width:auto; float:left;overflow:hidden; margin-bottom:10px; height:34px;margin-left:5px;}
+.label_ad{ font-size:18px; font-weight:700;}
+.table a{background: #E3E4E8 none repeat scroll 0% 0%;
+border-radius:0px 3px 3px 0px;
+color: #858582;
+float: left;
+padding: 10px;
+text-decoration: none;}
+</style>
+
+</head>
+
+<div class="wrapper" style="background: #EFF0F4 none repeat scroll 0% 0%;">
+            <div class="row">
+            <div class="col-sm-6" style="width:100%;">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div class="btn-group">
+                            <p class="label_ad">添加资讯</p>  
+                        </div>
+<!--                            <span class="tools pull-right">
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                                <a href="javascript:;" class="fa fa-times"></a>
+                                </span>-->
+                    </header>
+                    <div class="panel-body">
+                        <p>添加资讯</p>
+                        <ul class="table">
+                        	
+                            <volist name="list" id="vo"> 
+                        
+                            <li id="li{$vo.id}" style="width:100%;">
+                            	<input type="email" class="form-control" id="{$vo.id}" value="{$vo.title}" disabled="disabled" style="width:500px;">
+                                
+                                <a href="javascript:;" class="fa fa-times" onclick="del('{$vo.id}');"></a>
+                            </li>
+                            
+                            </volist>
+                            <div id='yiji'>
+
+                           </div>
+                            <li> <button id="editable-sample_new" style="margin-left:5px;" class="btn btn-primary" onclick="yiji_tianjia();">
+                            添加资讯 <i class="fa fa-plus"></i>
+                            </button></li>
+                           
+                        </ul>
+                    </div>
+                  
+                </section>
+            </div>
+
+        </div>
+        <!--body wrapper end-->
+		<script>
+			var gid="{$gid}";
+			
+			
+			function del(id)
+			{
+				
+				if(confirm("是否确认删除标签？"))
+				{
+					var ur="{:U('del_course')}";
+					var obj = {};
+					obj.key = "value";
+					$.post(ur+"?id="+id, obj,
+						function(data,status)
+							{
+								var arr=eval(data);
+								if(arr[0]==1)
+								{
+									var div = document.getElementById('li'+id);
+		
+									div.style.display="none";
+								}
+								else
+								{
+									alert(arr[1]);	
+								}	
+							}
+						   );
+					return;
+				
+				}
+				else
+				{
+					return;
+				} 
+				
+			}
+
+			function yiji_tianjia()
+			{
+					
+					var t = (new Date()).valueOf();
+					
+					var str='<li id="li'+t+'" style="width:100%;"><input type="email" class="form-control" id="'+t+'" placeholder="请输入资讯id" onchange="adtag_yiji('+t+');"></li>';
+					
+					var g=document.getElementById('yiji').innerHTML;
+					
+					document.getElementById("yiji").innerHTML = g+str;
+			}
+			
+			function adtag_yiji(id)
+			{
+					
+					var name=document.getElementById(id).value;
+					
+					if(!(name))
+					{
+						return;	
+					}
+					if(isNaN(name))
+					{
+						alert('输入资讯id只能为数字！');	
+						return;
+					}
+					var ur="{:U('add_information_group')}";
+					var obj = {};
+					obj.key = "value";
+					$.post(ur+"?name="+name+"&gid="+window.gid, obj,
+						function(data,status)
+							{
+								var arr=eval(data);
+
+								if(arr[0]==0)
+								{
+									
+									alert(arr[1]);
+									
+								}
+								else
+								{
+									var elem=document.getElementById("li"+id);
+									
+									elem.parentNode.removeChild(elem);
+									
+									
+									var a=arr[1];
+									
+									var b=arr[2];
+									
+									var str='<li id="li'+b+'" style="width:100%;"><input type="email" class="form-control" id="'+b+'" value="'+a+'" disabled="disabled" style="width:500px;"><a href="javascript:;" class="fa fa-times" onclick="del('+b+');"></a></li>';
+									
+									var g=document.getElementById('yiji').innerHTML;
+					
+									document.getElementById("yiji").innerHTML = g+str
+								}
+							}
+						   );
+					
+					
+			}
+			
+		</script>
+
+   

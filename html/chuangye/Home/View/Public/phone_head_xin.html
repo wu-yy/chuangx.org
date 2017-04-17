@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="__PUBLIC__/css/phone_course_style.css" />
+</head>
+<style type="text/css">
+.k_tx{ width:40px; height:40px; border-radius:100px; margin-left:30px; float:left; margin-right:10px; margin-top:16px;}
+.k_tx+p{ float:left; font-size:24px; width:140px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.k_tc{ font-size:24px; text-align:center; position:absolute; bottom:0px; border-top:1px solid #dcdcdc;}
+.nav_right ul { position:relative;}
+.nav_right ul { position:relative;}
+.m_nav{overflow: hidden;}
+.personal{width:60px;float: left;margin-left:40px;margin-top:15px;display: block;
+    border-radius: 50%;}
+.personal .img{width:60;height:60px;border-radius: 50%;}
+
+</style>
+<body>
+
+<div class="m_nav" style="border-bottom:1px solid #dedede !important;z-index: 9999;">
+
+   <a href="{:U('Index/index')}" class="shouye" style=" width:250px;float:left;margin-right:10px" ><img style="margin-top:23px !important; width:250px;margin-left:18px;"src="__PUBLIC__/image/log.png" /></a>
+  <!-- 链接的问题? -->
+       <a href="{:U('Course/index')}" style="float:left;margin-top:25px !important;margin-left:40px; color:#525252; font-size:24px;" ><b>课程</b></a>
+       <a href="{:U('Zhibo/index')}" style="float:left;margin-top:25px !important;margin-left:40px; color:#525252; font-size:24px;" ><b>直播</b>
+       </a>
+       <a href="{:U('Weike/index')}" style="float:left;margin-top:25px !important;margin-left:40px; color:#525252; font-size:24px;" ><b>微课</b></a>
+       <!--<a href="{:U('Assessment/index')}" style="float:left;margin-top:25px !important;margin-left:40px; color:#525252; font-size:24px;" ><b>测评</b></a>-->
+       <!-- 登陆切换 -->
+       <if condition="$username eq NULL ">
+       <a href="{:U('Index/phone_login')}" style="float:left;margin-top:25px !
+
+  important;margin-left:40px; color:#525252; font-size:24px;" ><b>登录</b></a>
+      </if>
+  	   <if condition="$username neq NULL ">
+       <a href="{:U('Uinfo/index')}" class="personal"><img class="img" src="{$userimg}"/></a>
+       </if>
+
+<!--     <a href="javascript:;" class="cebianlan" onclick="open_login()"><img src="__PUBLIC__/image/cebian.png"/></a>
+-->     <!--<a href="" class="cebianlan"><img src="__PUBLIC__/image/sousuo2.png"/></a>-->
+ </div>
+ 
+
+</body>
+</html>
+
+<script type="text/javascript" src="__PUBLIC__/js/phone_head.js"> </script>
+<script type="text/javascript" src="__PUBLIC__/js/url_jump.js"> </script>
+<script>
+var login='{:U("Index/phone_login")}';
+var url_weixin='{:U("Index/url_weixin")}';
+var url_userout='{:U("Index/userout")}';
+</script>

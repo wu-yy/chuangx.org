@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>会员中心</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pay/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pay/ass.css"/>
+
+</head>
+<body>
+	<div class="associatorContent" style="width:854px">
+		<div class="assConTit">会员中心</div>
+		<div class="assConDetail">
+			<div style="height:64px;">
+				<div class="assHeadBox">
+					<img class="assHead" src="{$userimg}"/>
+					<img class="assHeadSpan" src="__PUBLIC__/image/headspan.png">
+				</div>
+				<div class="assConWork">
+					<p class="p1">亲爱的<span></span>会员</p>
+					<p>您的会员截止日期为：{$end_time|default=time()|date='Y年m月d日',###}</p>
+                    <p>会员到期后需再次购买</p>
+					<a class="moreAss" href="javascript:;" onClick="ju('{:U('Pay/pay_vip')}')">立即续费</a>
+					<div class="inviolable">
+						<p class="invTit">会员权益</p>
+                        <p>-付费课程更多折扣</p>
+						<p>-可查看更多创业干货</p>
+						<p>-未来福利多多</p>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+function ju(url)
+{
+	window.top.location=url;	
+}
+</script>

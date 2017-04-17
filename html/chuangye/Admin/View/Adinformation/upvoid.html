@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+  <link href="__PUBLIC__/houtaikecheng/js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+  <link href="__PUBLIC__/houtaikecheng/js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+  <link rel="stylesheet" href="__PUBLIC__/houtaikecheng/js/data-tables/DT_bootstrap.css" />
+  <!--pickers css-->
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-datepicker/css/datepicker-custom.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-timepicker/css/timepicker.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-colorpicker/css/colorpicker.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-datetimepicker/css/datetimepicker-custom.css" />
+
+  <link href="__PUBLIC__/houtaikecheng/css/style.css" rel="stylesheet">
+  <link href="__PUBLIC__/houtaikecheng/css/style-responsive.css" rel="stylesheet">
+  <link href="__PUBLIC__/houtaikecheng/css/style.css" rel="stylesheet">
+  <link href="__PUBLIC__/houtaikecheng/css/style-responsive.css" rel="stylesheet">
+  <style>
+.panel-body form {
+    margin-left: 40px !important;
+}
+  </style>
+</head>
+
+<body class="sticky-header" style=" background:#EFF0F4 none repeat scroll 0% 0%;">
+	<!--<form name="form1" action="__URL__/upvoid" enctype="multipart/form-data" method="post" >
+	<volist name="list" id="vo"> 
+    
+    <img src="__ROOT__/{$vo.image}" height="100px" width="200px"><br />
+    <input name="id" value="{$vo.id}" style="display:none;">
+	<input name="name" class="form-control" id="{$vo.id}" value="{$vo.name}" style=" height:30px; width:300px;"><br /><br />
+    <input name="url" class="form-control" id="{$vo.id}" value="{$vo.void}" style=" height:30px; width:300px;" ><br />
+    
+    <label for="exampleInputFile">上传封面</label><br />
+    <input type="file" name="photo" id="exampleInputFile"><br />
+    <label for="exampleInputFile">上传视频</label><br />
+    <input type="file" name="void" id="exampleInputFile"><br />
+	
+    </volist>
+    <button  type="submit" class="btn btn-primary">提交</button>
+	</form>-->
+    <div class="page-heading">
+            <h3>
+                添加视频
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">视频列表</a>
+                </li>
+                <li class="active">添加视频</li>
+            </ul>
+        </div>
+         <div class="row" style="padding-top:0px; margin-left:0px;" >
+            <div class="col-lg-6" style="width:99%;">
+                <section class="panel">
+                    <header class="panel-heading">
+                       添加视频
+                    </header>
+                    <div class="panel-body">
+                        <form name="form1" action="__URL__/savevoids" enctype="multipart/form-data" method="post" >
+                        <volist name="list" id="vo"> 
+                       
+    					<input name="id" value="{$vo.id}" style="display:none;">
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">视频名称</label>
+                                <input name="name" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder=" {$vo.name}">
+                            </div>
+                            <img src="__ROOT__/{$vo.image}" height="100px" width="200px"><br />
+                            <div class="form-group">
+                                <label for="exampleInputFile">上传视频封面</label>
+                                <input type="file" id="exampleInputFile" name="photo">
+                                <p style="color:#ee0f19;" class="help-block">＊图片规格172x110px</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFile">上传视频文件</label>
+                                <input type="file" id="exampleInputFile" name="void">
+                                <p style="color:#ee0f19;" class="help-block">＊视频大小不超过3M</p>
+                            </div>
+                            
+                             <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">视频地址链接</label>
+                                <input name="url" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="{$vo.void}">
+                            </div>
+                            
+                            </volist>
+<!--                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Check me out
+                                </label>
+                            </div>-->
+            </div>
+                             
+                            <button style="width:150px !important; margin-left:60px; margin-bottom:40px !important;"  type="submit" class="btn btn-primary">提交</button>
+                        </form>
+
+                    </div>
+                </section>
+            </div>
+</div>
+</body>
+</html>

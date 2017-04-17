@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link href="__PUBLIC__/css/table.css" rel="stylesheet">
+  <link href="__PUBLIC__/css/style-responsive.css" rel="stylesheet">
+  <script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+
+<style>
+
+body{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 14px;line-height: 1.42857;
+color: #333;}
+.table{ overflow:hidden; margin-bottom:-10px !important;}
+.table li input{ width:auto; float:left; margin-bottom:10px; margin-left:5px;border-radius:3px 0px 0px 3px; }
+.table{ overflow:hidden; border-bottom:1px solid #dadada;}
+ul{ outline:none; list-style:none;}
+.table li{ width:auto; float:left;overflow:hidden; margin-bottom:10px; height:34px;margin-left:5px;}
+.label_ad{ font-size:18px; font-weight:700;}
+.table a{background: #E3E4E8 none repeat scroll 0% 0%;
+border-radius:0px 3px 3px 0px;
+color: #858582;
+float: left;
+padding: 10px;
+text-decoration: none;}
+</style>
+
+
+</head>
+
+        <!-- header section start-->
+      
+
+        <!--body wrapper start-->
+        <div class="wrapper" style="background: #EFF0F4 none repeat scroll 0% 0%;">
+            <div class="row">
+            <div class="col-sm-6" style="width:100%;">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div class="btn-group">
+                            <p class="label_ad">章节修改</p>  
+                        </div>
+<!--                            <span class="tools pull-right">
+                                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                                <a href="javascript:;" class="fa fa-times"></a>
+                                </span>-->
+                    </header>
+                    <div class="panel-body">
+                        <p>章节：</p>
+                        <ul class="table">
+                        	<div id='zhangjie'>
+                            <volist name="list" id="vo"> 
+                        
+                            <li id="li{$vo.id}"><input type="email" class="form-control" id="{$vo.id}" placeholder="{$vo.name}" onClick="getxiaojie({$vo.id},'{$vo.name}');" onChange="changename({$vo.id});"><a href="javascript:;" class="fa fa-times" onClick="del({$vo.id});"></a></li>
+                            
+                            
+                            </volist>
+                            
+                            </div>
+                            <li> <button id="editable-sample_new" style="margin-left:5px;" class="btn btn-primary" onclick="zhangjie_tianjia();">
+                            增加章节 <i class="fa fa-plus"></i>
+                            
+                           
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <p id="ppp">小节：</p>
+                        <ul class="table" id="ul1">
+                        	
+                        	<div id='erji'>
+
+                           </div>
+                            <li> <button id="editable-sample_new" style="margin-left:5px;" class="btn btn-primary" onClick="xiaojie_tianjia();">
+                            增加小节 <i class="fa fa-plus"></i>
+                            </button></li>
+                        </ul>
+                    </div>
+                    <div class="panel-body">
+                        <p id="ppp1">视频及图文信息</p>
+                        <ul class="table" id="ul2">
+                            <div id='sanji'>
+
+                           </div>
+                            
+                            <li> <button id="editable-sample_new" style="margin-left:5px;" class="btn btn-primary" onClick="addvoids();">
+                            添加视频 <i class="fa fa-plus"></i>
+                            </button></li>
+                            <li> <button id="editable-sample_new" style="margin-left:5px;" class="btn btn-primary" onClick="addtxt();">
+                            添加图文信息 <i class="fa fa-plus"></i>
+                            </button></li>
+                        </ul>
+                    </div>
+
+                </section>
+            </div>
+
+        </div>
+        <input type="hidden" id="zhangjievalue" />
+        <input type="hidden"id="xiaojievalue" />
+        <input type="hidden"id="cid" value="{$cid}" />
+<script type="text/javascript" src="__PUBLIC__/jedate/jedate.js"></script>
+<script type="text/javascript"> 
+	function jeDate1(name)
+	{
+		jeDate({
+		dateCell:"#dateinfo"+name,
+		format:"YYYY-MM-DD hh:mm:ss",
+		isinitVal:true,
+		isTime:true, //isClear:false,
+		minDate:"2014-09-19 00:00:00",
+		choosefun:function(elem, val) {changeshow_time(name);},     //选中日期后的回调, elem当前输入框ID, val当前选择的值
+		//clearfun:function(elem, val) {},      //清除日期后的回调, elem当前输入框ID, val当前选择的值
+		//okfun:function(elem, val) {alert(1)},         //点击确定后的回调, elem当前输入框ID, val当前选择的值
+		okfun:function(val){changeshow_time(name);}	
+		
+		
+		})
+		
+		
+	}
+</script>
+        <!--body wrapper end-->
+		<script>
+			document.getElementById('zhangjievalue').value='';
+			function getxiaojie(id,name)
+			{
+				clear();
+				clear1();
+				var ur="{:U('Incourse/getxiaojie')}";
+				document.getElementById('zhangjievalue').value=id;
+				document.getElementById('ppp').innerHTML="修改"+name+"的小节";
+				var obj = {};
+					obj.key = "value";
+					$.post(ur+"?id="+id, obj,
+						function(data,status)
+							{
+								var str= '';
+								var data = eval('('+data+')');
+								if(data)
+								{
+									for(var x in data){
+									var a = data[x]['name'];
+									var b = data[x]['id'];
+									var show = data[x]['show'];
+									var show_time = data[x]['show_time'];
+									var and_time = data[x]['and_time'];
+									if(show!=0)
+									{
+										var str='<li id="li'+b+'"><input type="email" class="form-control" id="'+b+'" placeholder="'+a+'" onclick="getvoid('+b+');" onchange="changename('+b+');"><input type="text" class="form-control" id="dateinfo'+b+'" placeholder="'+show_time+'" onclick="jeDate1('+b+');" ><input type="text" class="form-control" id="time'+b+'" placeholder="'+and_time+'" onchange="add_time('+b+');" ><a href="javascript:;" class="fa"onclick="show('+b+');"><img id="'+b+'show" style="width:20px !important; margin-bottom:5px;"  src="__PUBLIC__/image/VIEW_OFF.png"></a><a href="javascript:;" class="fa fa-times" onclick="del('+b+');"></a> </li>'+str;
+									}
+									else
+									{
+										var str='<li id="li'+b+'"><input type="email" class="form-control" id="'+b+'" placeholder="'+a+'" onclick="getvoid('+b+');" onchange="changename('+b+');"><input type="text" class="form-control" id="dateinfo'+b+'" placeholder="'+show_time+'"  onclick="jeDate1('+b+');" ><input type="text" class="form-control" id="time'+b+'" placeholder="'+and_time+'"  onchange="add_time('+b+');" ><a href="javascript:;" class="fa"onclick="show('+b+');"><img id="'+b+'show" style="width:20px !important; margin-bottom:5px;"  src="__PUBLIC__/image/VIEW.png"></a><a href="javascript:;" class="fa fa-times" onclick="del('+b+');"></a> </li>'+str;
+									}
+									
+									
+								}
+									document.getElementById("erji").innerHTML = str;
+								}
+								else
+								{
+									alert('未知错误');	
+								}
+							}
+						   );	
+
+			}
+			function add_time(id)
+			{
+				var a=document.getElementById('time'+id).value;
+				
+				if(!(a))
+				{
+					return;	
+				}
+					
+				if(confirm("是否确认修改标签？"))
+				{
+					
+					var ur="{:U('Incourse/saveaddtime')}";
+					var obj = {};
+					obj.key = "value";
+					$.post(ur+"?id="+id+"&name="+a, obj,
+						function(data,status)
+							{
+								if(!isNaN(data))
+								{
+									document.getElementById('time'+id).placeholder=a;
+									
+									document.getElementById('time'+id).value = '';
+									
+									return;
+								}
+								else
+								{
+									alert(data);	
+								}
+							}
+						   );
+					return;
+				
+				}
+				else
+				{
+					document.getElementById(id).value = '';
+					return;
+				}
+			}
+			function show(id)
+			{
+				var ur="{:U('Incourse/show_xiaojie')}";
+				
+				var obj = {};
+					obj.key = "value";
+					$.post(ur+"?id="+id, obj,
+						function(data,status)
+							{
+							
+								if(data==null)
+								{
+									alert('未知错误，修改失败');
+									return;
+								}
+							
+								if(data==1)
+								{
+									document.getElementById(id+"show").src='__PUBLIC__/image/VIEW_OFF.png';
+								}
+								else
+								{
+									document.getElementById(id+"show").src='__PUBLIC__/image/VIEW.png';
+								}
+							});
+				
+				
+			}
+			function getvoid(id)
+			{
+				clear1();
+				var ur="{:U('Incourse/getvoid1')}";
+				document.getElementById('xiaojievalue').value=id;
+
+				var obj = {};
+					obj.key = "value";
+					$.post(ur+"?id="+id, obj,
+						function(data,status)
+							{
+								var str= '';
+								var data = eval('('+data+')');
+								if(data)
+								{
+									for(var x in data){
+									var img = data[x]['image'];	
+									var a = data[x]['name'];
+									var b = data[x]['id'];
+									var type = data[x]['type'];
+									if(type==1)
+									{
+										var str='<li id="li1'+b+'">图文信息名称：'+a+'&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" onclick="savetxt('+b+')" >更改图文信息</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" onclick="shanchu('+b+')" >删除图文信息</button></li><br /><br /><br />'+str;	
+									}
+									else
+									{
+										var str='<li id="li1'+b+'">视频名称：'+a+'&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" onclick="savevoid('+b+')" >更改视频</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn btn-primary" onclick="shanchu('+b+')" >删除视频</button></li><br /><br /><br />'+str;
+									}
+									
+									
+									
+									}
+									document.getElementById("sanji").innerHTML = str;
+								}
+								else
+								{
+									alert('未知错误');	
+								}
+							}
+						   );	
+
+			}
+			function shanchu(id)
+			{
+				if(confirm("是否确认删除此视频？"))
+				{
+				var ur="{:U('Incourse/shanchu_xiaojie')}";
+					var obj = {};
+					obj.key = "value";
+					$.post(ur+"?id="+id, obj,
+						function(data,status)
+							{
+								if(data==1)
+								{
+									var div = document.getElementById('li1'+id);
+		
+									div.style.display="none";
+								}
+								
+							}
+						   );
+				}
+			}
+
+			function savevoid(id)
+			{
+				var url='__URL__/savevoid/id/'+id;
+				
+				window.open(url);
+				
+			}
+			function savetxt(id)
+			{
+				var url='__URL__/savetxt/id/'+id;
+				
+				window.open(url);
+				
+			}
+			function addvoids()
+			{
+				var id=document.getElementById('xiaojievalue').value;
+				
+				var url='__URL__/addvoids/id/'+id;
+				
+				/*top.location=url; */
+				window.open(url);
+			}
+			function addtxt()
+			{
+				var id=document.getElementById('xiaojievalue').value;
+				
+				var url='__URL__/addtxt/id/'+id;
+				
+				/*top.location=url; */
+				window.open(url);
+			}
+			function clear()
+			{
+				document.getElementById("erji").innerHTML = '';
+			}
+			function clear1()
+			{
+				document.getElementById("sanji").innerHTML = '';
+			}
+			function changename(id)
+			{
+				
+				var a=document.getElementById(id).value;
+				
+				if(!(a))
+				{
+					return;	
+				}
+					
+				if(confirm("是否确认修改标签？"))
+				{
+					
+					name(id,a);
+					return;
+				
+				}
+				else
+				{
+					document.getElementById(id).value = '';
+					return;
+				} 
+			}
+			function changeshow_time(id)
+			{
+				var a=document.getElementById('dateinfo'+id).value;
+				
+				if(!(a))
+				{
+					return;	
+				}
+					
+				if(confirm("是否确认修改标签？"))
+				{
+					
+					var ur="{:U('Incourse/saveshow_time')}";
+					var obj = {};
+					obj.key = "value";
+					$.post(ur+"?id="+id+"&name="+a, obj,
+						function(data,status)
+							{
+								if(!isNaN(data))
+								{
+									document.getElementById('dateinfo'+id).placeholder=a;
+									
+									document.getElementById('dateinfo'+id).value = '';
+									
+									return;
+								}
+								else
+								{
+									alert(data);	
+								}
+							}
+						   );
+					return;
+				
+				}
+				else
+				{
+					document.getElementById(id).value = '';
+					return;
+				}
+			}
+			function name(id,a)
+			{
+				var ur="{:U('Incourse/savename')}";
+					var obj = {};
+					obj.key = "value";
+					$.post(ur+"?id="+id+"&name="+a, obj,
+						function(data,status)
+							{
+								if(!isNaN(data))
+								{
+									document.getElementById(id).placeholder=a;
+									
+									document.getElementById(id).value = '';
+									
+									return;
+								}
+								else
+								{
+									alert(data);	
+								}
+							}
+						   );
+			}
+			function del(id)
+			{
+				
+				if(confirm("是否确认删除标签？"))
+				{
+					var ur="{:U('Incourse/dezhangjie')}";
+					var obj = {};
+					obj.key = "value";
+					$.post(ur+"?id="+id, obj,
+						function(data,status)
+							{
+								
+								
+								if(data==1)
+								{
+									var div = document.getElementById('li'+id);
+		
+									div.style.display="none";
+								}
+								else	
+								{
+									alert('删除失败');	
+								}
+							}
+						   );
+					return;
+				
+				}
+				else
+				{
+					return;
+				} 
+				
+			}
+			function xiaojie_tianjia()
+			{
+				
+					var a=document.getElementById('zhangjievalue').value;
+					
+					if(!(a))
+					{
+						alert('请选择一级分类');	
+						return;
+					}
+					
+					var t = (new Date()).valueOf();
+					
+					var str='<li id="li'+t+'"><input type="email" class="form-control" id="'+t+'" placeholder="添加标签" onchange="adxiaojie('+t+');"></li>';
+					
+					var g=document.getElementById('erji').innerHTML;
+					
+					document.getElementById("erji").innerHTML = g+str;
+			}
+			function zhangjie_tianjia()
+			{
+									
+					var t = (new Date()).valueOf();
+					
+					var str='<li id="li'+t+'"><input type="email" class="form-control" id="'+t+'" placeholder="添加标签" onchange="adzhangjie('+t+');"></li>';
+					
+					var g=document.getElementById('zhangjie').innerHTML;
+					
+					document.getElementById("zhangjie").innerHTML = g+str;
+			}
+			function adzhangjie(id)
+			{
+					
+					var name=document.getElementById(id).value;
+					
+					var cid=document.getElementById('cid').value;
+					
+					if(!(name))
+					{
+						return;	
+					}
+					var ur="{:U('Incourse/adzhangjie')}";
+					var obj = {};
+					obj.key = "value";
+					$.post(ur+"?name="+name+"&id="+cid, obj,
+						function(data,status)
+							{
+								
+								var b=data;
+								
+								if(!isNaN(data))
+								{
+									
+									var elem=document.getElementById("li"+id);
+									
+									elem.parentNode.removeChild(elem);
+									
+									
+									var a=name;
+									
+									var str='<li id="li'+b+'"><input type="email" class="form-control" id="'+b+'" placeholder="'+a+'" onclick="getxiaojie('+b+');" onchange="changename('+b+');"><a href="javascript:;" class="fa fa-times" onclick="del('+b+');"></a></li>';
+									
+									var g=document.getElementById('zhangjie').innerHTML;
+					
+									document.getElementById("zhangjie").innerHTML = g+str
+									
+								}
+								else
+								{
+									alert(data);
+								}
+							}
+						   );
+					return;
+					
+					
+			}
+			function adxiaojie(id)
+			{
+					
+					var name=document.getElementById(id).value;
+					
+					var cid=document.getElementById('cid').value;
+					
+					var is_zhangjie=document.getElementById('zhangjievalue').value;
+					
+					if(!(name))
+					{
+						return;	
+					}
+					var ur="{:U('Incourse/adxiaojie')}";
+					var obj = {};
+					obj.key = "value";
+					$.post(ur+"?name="+name+"&id="+cid+"&is_zhangjie="+is_zhangjie, obj,
+						function(data,status)
+							{
+								
+								var b=data;
+								if(!isNaN(data))
+								{
+									
+									var elem=document.getElementById("li"+id);
+									
+									elem.parentNode.removeChild(elem);
+									
+									
+									var a=name;
+									
+									var str='<li id="li'+b+'"><input type="email" class="form-control" id="'+b+'" placeholder="'+a+'" onclick="getvoid('+b+');" onchange="changename('+b+');"><input type="text" class="form-control" id="dateinfo'+b+'" onclick="jeDate1('+b+');" ><input type="text" class="form-control" id="time'+b+'" onchange="add_time('+b+');" ><a href="javascript:;" class="fa"onclick="show('+b+');"><img id="'+b+'show" style="width:20px !important; margin-bottom:5px;"  src="__PUBLIC__/image/VIEW.png"></a><a href="javascript:;" class="fa fa-times" onclick="del('+b+');"></a></li>';
+									
+									
+									var g=document.getElementById('erji').innerHTML;
+					
+									document.getElementById("erji").innerHTML = g+str
+									
+								}
+								else
+								{
+									alert(data);
+								}
+							}
+						   );
+					return;
+					
+					
+			}
+			
+		</script>
+
+   

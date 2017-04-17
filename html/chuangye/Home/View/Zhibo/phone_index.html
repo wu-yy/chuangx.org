@@ -1,0 +1,199 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<link rel="stylesheet" href="__PUBLIC__/css/phone_course_style.css" />
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<style>
+.load6 {
+	padding:20px 30px;
+  margin:5px auto 0;
+  width: 400px;
+  text-align: center;
+  color:#999;
+  font-size:24px;
+}
+.load6 > div {
+  width: 26px;
+  height: 26px;
+  background-color: #999;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+  animation: bouncedelay 1.4s infinite ease-in-out;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.load6 .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.load6 .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+<if condition="$is_phone eq 'ios'">
+.i_title{ height:78px !important;
+}
+</if>
+<if condition="$is_phone eq null">
+.i_title{ height:78px !important;
+}
+</if>
+</style>
+</head>
+
+<body>
+<div class="warpper" style="background:#fff; position:relative;"> 
+<include file="Public:phone_head_xin" />	
+   <div class="i_bj" style=" height:283px !important;">
+      <if condition=" $zhibo_id gt 0">
+   		<a href="javascript:;" onClick="log_url(event,'{:U('Zhibo/zhibo_details/',array('zid'=>$zhibo_id))}','zhibo_top')">
+           <if condition="$zhibo_img neq null"><img src="__ROOT__/{$zhibo_img}"/></if>
+           <p style="width: 600px !important;left: 20px !important;top: 330px !important;">{$zhibo_title}</p>
+        </a> 
+      <else /><p style="color:red">目前没有直播预告</p>    
+      </if>
+   </div>
+   <div class="i_list">
+       <ul id="ul">
+          <volist name="zhibo_next" id="vo">
+          <if condition="$vo.id neq $zhibo_id">
+           <a href="javascript:;" onClick="log_url(event,'{:U('Zhibo/zhibo_details/',array('zid'=>$vo['id']))}','zhibo_list')">
+           <li>
+               <div class="i_left">
+                    <if condition="$vo.image neq null"><img class="sy_zx_pic" src="__ROOT__/{$vo.image}"/>
+                    <elseif condition="$vo.jietu neq null"/><img class="sy_zx_pic" src="__ROOT__/{$vo.jietu}"/>
+                    </if>
+               </div>
+               <div class="i_right">
+                   <div class="i_title">{$vo.title}</div>
+                   <p style="color:#ff2a00">开课时间{$vo.start_time|default=time()|date='Y-m-d',###}</p>
+                   <div class="i_x"><p>{$vo.time_ad}</p><img src="__PUBLIC__/image/i_tx.png"/><span>{$vo.nu_add}</span></div>
+               </div>
+           </li>
+           </a>
+           </if>
+           </volist>
+       	   <volist name="zhibo_past" id="vo">
+           <if condition="$vo.id neq $zhibo_id">
+           <a href="javascript:;" onClick="log_url(event,'{:U('Zhibo/zhibo_details/',array('zid'=>$vo['id']))}','zhibo_list')">
+           <li> 
+               <div class="i_left">
+                    <if condition="$vo.image neq null"><img class="sy_zx_pic" src="__ROOT__/{$vo.image}"/>
+                    <elseif condition="$vo.jietu neq null"/><img class="sy_zx_pic" src="__ROOT__/{$vo.jietu}"/>
+                    </if>
+               </div>
+               <div class="i_right">
+                    <div class="i_title">{$vo.title}</div>
+                    <p style="color:#ff2a00">开课时间{$vo.start_time|default=time()|date='Y-m-d',###}</p>
+                    <div class="i_x"><p>{$vo.time_ad}</p><img src="__PUBLIC__/image/i_tx.png"/><span>{$vo.nu_add}</span></div>
+               </div>
+           </li>
+           </a>
+           </if>
+           </volist>
+       </ul>
+        <a href="javascript:;" onClick="getmore();">
+         <div class="load6" id="jiazai" style="font-size:24px;display:block;">
+        点击加载更多~
+        </div>
+        </a>
+   </div>
+
+</div>	  
+</body>
+</html>
+<script type="text/javascript">
+
+function log_url(e,Jump_page,head)  //log && url
+{
+  var url=window.location.href;//当前页面
+  var ur="{:U('Index/log')}";//where 
+    var obj = {};
+    obj.key = "value";
+    $.post(ur, {'head': head,'Jump_page':Jump_page,'url':url},
+      function(data,status)
+        {
+          window.location.href=Jump_page; //当前页面跳转大到新页面
+        }
+         );
+           
+         e.cancelBubble = true;
+}
+
+function aaa(e,b)
+{
+	var ur="{:U('Zhibo/zhibo_details')}";
+	var url=ur+"?zid="+b;
+	log_url(e,url,'zhibo_list');
+	 e.cancelBubble = true;	
+}
+	
+var a=2;
+function getmore()
+{	
+
+  var g=document.getElementById('ul').innerHTML;
+  var ur="{:U('Zhibo/get_moreZhi')}";
+  var obj = {};
+		obj.key = "value";
+		$.post(ur+"?n="+window.a, obj,
+			function(data,status)
+				{
+					var str="";
+					var data = eval('('+data+')');
+					if(data!=1)
+					{
+						for(var x in data)
+						{
+									var title = data[x]['title'];
+									var b = data[x]['id'];
+									var nu_add = data[x]['nu_add'];
+									var bod = data[x]['brief'];
+									var img=data[x]['img'];
+									var time_ad=data[x]['time_ad'];
+									var str='<a href="javascript:;" onClick="aaa(event,'+b+')"><li><div class="i_left"><img src="__ROOT__/'+img+'"/></div><div class="i_right"><div class="i_title">'+title+'</div><div class="i_x"><p>'+time_ad+'</p><img src="__PUBLIC__/image/i_tx.png"/><span>'+nu_add+'</span></div></div></li></a>'+str;
+						}
+						document.getElementById('ul').innerHTML=g+str;
+						window.a=a+1;
+						 dian();
+					}
+					else
+					{
+						document.getElementById('jiazai').innerHTML="已游览到最后一条";
+						 dian();
+					}
+				}
+			   );
+			   
+			  
+			   
+}
+
+
+</script>
+ <script src="__PUBLIC__/js/jquery.dotdotdot.min.js" type="text/javascript"></script>
+  
+<script>
+	
+	function dian()
+	{
+			$('.i_title').dotdotdot();
+	}
+	
+	dian();
+</script>	

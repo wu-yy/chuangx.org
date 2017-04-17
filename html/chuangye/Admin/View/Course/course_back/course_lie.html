@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+ .fivestars,.fivestars div{background:transparent url(__PUBLIC__/image/commstar.gif) repeat-x scroll left bottom;width:130px;}
+.fivestars{padding:0; position:relative; line-height:28px;display:inline-block;}
+.fivestars div{background-position:bottom center; text-indent:-9999px;}
+.fivestars div{background-position:left top; width:0px;}
+.us_zx_pic1{ width:172px !important; height:110px !important;}
+.p_right{padding-right:10px !important;}
+.pages a {
+    float: left;
+    display: block;
+    margin-right:0px !important;
+}
+.p_no{padding:0px 4px;}
+
+.pages ul {
+    float: left;
+    overflow: hidden;
+    margin-right: 10px !important;
+}
+</style>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+<div class="us_list_content" style=" padding:20px;">
+							<volist name="list" id="vo">
+                            <ul>
+                            <a href="#" onclick="window.top.location='__APP__/Home/Course/course_details/cid/{$vo.id}'">	
+                              <li>
+                                <img class="us_zx_pic1" src="__ROOT__/{$vo.image}"/>
+                                <div class="us_caption1" style="width:848px !important;">
+                                    <h6 class="us_zx_title">{$vo.title}</h6>
+                                    <div class="us_tips">
+                                                 <span class="us_subhead-content">  <img id="touxiang" src="__PUBLIC__/image/guanzhushu.png"/>{$vo.nu}</span>
+                                                <span class="us_subhead-content"><div class="fivestars" id="fivestars"><div class="autostars" id="autostars{$vo.id}">&nbsp;</div></div>&nbsp;<span class="sy_fen">{$vo.score}</span></span>
+                                                 <span class="us_subhead-content">老师：&nbsp;{$vo.teacher_name}</span>
+                                                 
+                                        <p class="us_zx_brief" style="width:828px;">{$vo.brief}</p>
+                                    </div>
+                                </div>
+                            </li> 
+                            </a>     
+                       </ul>
+                       <script type="text/javascript">
+
+						function changestars{$vo.id}(score)
+						{
+							var w=13; /* one star's width */
+							var totalw=w*score; /* score stars */
+							var aa=document.getElementById("autostars{$vo.id}");
+							aa.style.width=totalw+"px";
+						}	
+						
+						changestars{$vo.id}({$vo.score});
+						</script> 
+                       </volist>
+                   </div>
+                      <div class="pages">
+                        <a class="p_right" href=""><img src="__PUBLIC__/image/pre.png"/ ></a>
+                            <ul>
+                            	<volist name="arr" id="vo">
+                                <if condition="$vo.number eq $nu ">
+                                 <a class="p_no" href="javascript:;" onClick="num({$vo.number});"><li class="p_active">{$vo.number}</li> </a>							</if>
+								<if condition="$vo.number neq $nu ">
+                                 <a class="p_no" href="javascript:;" onClick="num({$vo.number});"><li>{$vo.number}</li> </a>
+								</if>
+                                 </volist>
+                           </ul>
+                       <a class="p_right" href=""><img src="__PUBLIC__/image/next.png"/></a>
+                    </div>
+
+
+</body>
+</html>
+<script>
+
+function num(a)
+{	
+	var ur="{:U('Course/num')}";
+	var obj = {};
+		obj.key = "value";
+		$.post(ur+"?n="+a, obj,
+			function(data,status)
+				{
+					if(data==1)
+					{
+						window.location.reload();
+					}
+					else
+					{
+						alert('网络繁忙，请稍后再试');	
+					}
+				}
+			   );
+}
+
+</script>

@@ -1,0 +1,97 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>中国创业学院</title>
+
+<link rel="stylesheet" href="__PUBLIC__/css/phone_style.css" />
+<style type="text/css">
+html{ font-family:"微软雅黑";}
+body{ padding:0px; margin:0px;}
+p{ margin:0px 0px 10px !important;}
+a{ text-decoration:none !important;}
+.back{ width:350px; height:350px; margin:0 auto; margin-top:200px; text-align:center;}
+.back img{ margin-bottom:20px; text-align:center;}
+.back p{ text-align:center; margin-bottom:50px !important; font-size:28px; color:#525252;}
+.anniu{ width:350px; height:80px; background:#e8e8e8; color:#62379e;font-size:28px; line-height:80px; text-align:center; display:block; border-radius:4px;}
+</style>
+</head>
+
+<body style="background:#f4f5f7; height:100%;">
+<div class="warpper"   style="position:relative; height:100%;">
+   <include file="Public:phone_head_xin" />
+   <if condition="$type eq 0 ">
+   <div class="back">
+      <img src="__PUBLIC__/image/fault.png"/>
+      <p>{$str}</p>
+      <p style=" font-size:22px; color:#999; margin-bottom:20px !important; margin-top:0px;" id='fanhui'>5s后自动返回上一页</p>
+       <a href="{:U('course/course_details',array('cid'=>$cid))}" class="anniu">返回</a>
+   </div>
+   </if>
+   <if condition="$type eq 1 ">
+   <div class="back">
+      <img src="__PUBLIC__/image/pay_success.png"/>
+      <p>{$str}</p>
+      <p style=" font-size:22px; color:#999; margin-top:30px; margin-bottom:20px !important;" id='fanhui'>5s后自动返回上一页</p>
+       <a href="{:U('course/course_details',array('cid'=>$cid))}" class="anniu">返回</a>
+   </div>
+   </if>
+   <!-- **kwonan  zhibo 回调-->
+   <if condition="$type eq 3 ">
+      <div class="back">
+         <img src="__PUBLIC__/image/pay_success.png"/>
+         <p>{$str}</p>
+         <p style=" font-size:22px; color:#999; margin-top:30px; margin-bottom:20px !important;" id='fanhui'>5s后自动返回上一页</p>
+         <a href="{:U('Zhibo/zhibo_details',array('zid'=>$cid))}" class="anniu">返回</a>
+      </div>
+   </if>
+</div>
+</body>
+</html>
+<script>
+
+ var url="{:U('course/course_details',array('cid'=>$cid))}";
+
+ 
+
+ 
+ var nu=6;
+ 
+ jump_re();	
+ 
+ var timer = setInterval("jump_re()",1000);
+ 
+//window.top.location='__URL__/voidplay_phone/cc_code/'+window.phone_code;
+
+	function jump_re()
+	{
+		if(window.nu>0)
+		{
+			window.nu--;
+			
+			document.getElementById('fanhui').innerHTML=window.nu+'s后自动返回上一页';
+			
+			return;
+		}
+		else
+		{
+			window.top.location=window.url;
+			
+			clearInterval(window.timer);
+			
+			return;
+		}
+	}
+</script>

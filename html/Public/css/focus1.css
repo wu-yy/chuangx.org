@@ -1,0 +1,131 @@
+
+.focusArea {
+	background: #fff url(../images/loading.gif) center no-repeat;
+	width: 765px;
+	height: 330px;
+	position: relative;
+	margin:20px auto;
+}
+.focusArea .bgGray, #indexFocus ul.indexFocusList li p, .litImgList li p {
+	background: url(../image/bgFocus.png) no-repeat;
+_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, src='../image/bgFocus.png');
+	_background: none;
+}
+#indexFocus .ui-ifPrevBtn {
+	background: url(../image/arrLeftFocus.png) no-repeat;
+_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, src='../image/arrLeftFocus.png');
+	_background: none;
+	float: left;
+}
+#indexFocus .ui-ifNextBtn {
+	background: url(../image/arrRigFocus.png) no-repeat;
+_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, src='../image/arrRigFocus.png');
+	_background: none;
+	float: right;
+}
+#indexFocus, #indexFocus .ui-ifPrevWrap .ui-prevImg, #indexFocus .ui-ifNextWrap .ui-nextImg {
+	display: none;
+	cursor: pointer;
+}
+#indexFocus .ui-ifPrevWrap, #indexFocus .ui-ifNextWrap {
+	position: absolute;
+	z-index: 99;
+	bottom: 145px;
+	background: rgba(0,0,0,0.5) none repeat scroll 0 0!important;
+filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=#64000000, endColorstr=#64000000);
+	width: 34px;
+	height: 56px;
+	overflow: hidden;
+	padding: 7px 0;
+}
+#indexFocus .ui-ifPrevBtn, #indexFocus .ui-ifNextBtn {
+	display: inline-block;
+	width: 34px;
+	height: 56px;
+	text-indent: -1000px;
+	overflow: hidden;
+}
+#indexFocus .cur {
+	background: rgba(0,0,0,0.8) none repeat scroll 0 0!important;
+filter:progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr=#64000000, endColorstr=#64000000);
+	width: 140px;
+}
+#indexFocus .cur .ui-prevImg, #indexFocus .cur .ui-nextImg {
+	display: inline-block;
+	width: 100px;
+	height: 56px;
+}
+#indexFocus .cur .ui-prevImg {
+	float: left;
+}
+#indexFocus .cur .ui-nextImg {
+	float: right;
+}
+#indexFocus .indexFocusCon {
+	width: 765px;
+	height: 330px;
+	overflow: hidden;
+	position: relative;
+	z-index: 0;
+}
+#indexFocus ul.indexFocusList li {
+	width: 765px;
+	height: 330px;
+	position: relative;
+	z-index: 0;
+}
+#indexFocus ul.indexFocusList li p {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	display: block;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	color: #fff;
+	text-indent: 20px;
+	font-family: Microsoft YaHei, SimHei;
+	font-size: 22px;
+}
+#indexFocus ul.indexFocusList li #indexFocus p {
+	position: absolute;
+	bottom: 30px;
+	color: #fff;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	font-size: 18px;
+	text-indent: 20px;
+}
+#indexFocus .indexFocusNum {
+	position: absolute;
+	z-index: 99;
+	right: 10px;
+	bottom: 10px;
+}
+#indexFocus .indexFocusNum a {
+	float: left;
+	display: inline-block;
+	width: 30px;
+	height: 4px;
+	border-radius:3px;
+	background: #eee;
+	text-indent: -100px;
+	overflow: hidden;
+	margin: 0 5px;
+}
+#indexFocus .ui-ifPrevWrap, .litImgList .ui-ifPrevWrap {
+	left: 0;
+}
+#indexFocus .ui-ifNextWrap, .litImgList .ui-ifNextWrap {
+	right: 0;
+}
+#indexFocus ul.indexFocusList, .litImgList ul.indexFocusList {
+	position: absolute;
+	z-index: 0;
+	left: 0;
+	top: 0;
+}
+#indexFocus .indexFocusNum .hover, .litImgList .indexFocusNum .hover {
+	background: #88a4ff;
+}

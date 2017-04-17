@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>资讯修改</title>
+
+
+
+  <link href="__PUBLIC__/houtaikecheng/css/style.css" rel="stylesheet">
+  <link href="__PUBLIC__/houtaikecheng/css/style-responsive.css" rel="stylesheet">
+  <link href="__PUBLIC__/houtaikecheng/css/style.css" rel="stylesheet">
+  <link href="__PUBLIC__/houtaikecheng/css/style-responsive.css" rel="stylesheet">
+  <style>
+.panel-body form {
+    margin-left: 40px !important;
+}
+  </style>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="sticky-header" style=" background:#EFF0F4 none repeat scroll 0% 0%;">
+          <div class="page-heading">
+            <h3>
+                资讯修改
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="__URL__/table/">资讯列表</a>
+                </li>
+                <li class="active"> <a href="__URL__/index/">添加资讯</a> </li>
+            </ul>
+        </div>
+         <div class="row" style="padding-top:0px; margin-left:0px;" >
+            <div class="col-lg-6" style="width:99%;">
+                <section class="panel">
+                    <header class="panel-heading">
+                       添加资讯
+                    </header>
+                    <volist name="list" id="vo">
+                    <div class="panel-body">
+                        <form name="form1" action="__URL__/upload_xiugai" id="myform" enctype="multipart/form-data" method="post" >
+                        	<input style="display:none" type="text" autocomplete="off" name="type_value" id="type_value" value="" />
+                            
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">资讯名称</label>
+                                <input type="text" style="width:80%;" name="title" class="form-control" id="exampleInputEmail1" placeholder="请输入资讯名称" value="{$vo.title}">
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">初始访问量</label>
+                                <input type="text" style="width:80%;" name="nu" class="form-control" id="exampleInputEmail1" placeholder="请输入初始访问量" value="{$vo.nu}">
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">修改优先等级（请输入整数，数值越大优先等级越高）</label>
+                                <input type="text" style="width:80%;" name="youxian" class="form-control" id="exampleInputEmail1" placeholder="" value="{$vo.mark_bit}">
+                            </div>
+                             <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">资讯简介</label>
+                                <input type="text" style="width:80%;" name="brief" value="{$vo.brief}" class="form-control" id="exampleInputEmail1" placeholder="请输入资讯简介">
+                            </div>
+                            <div class="form-group" style="width:100%; height:40px;">
+                                <div class="btn-group pull-right" style="float:left !important;">    
+                                   <button class="btn btn-default dropdown-toggle" style=" width:130px; " data-toggle="dropdown" id="type">选择文章类型
+                                   </button>
+                                    <ul class="dropdown-menu pull-right" style="right: -37px !important;">
+                                       <li><a href="javascript:;" onClick="type1(0);">资讯</a></li>
+                                       <li><a href="javascript:;" onClick="type1(1);">创业干货</a></li>
+                                    </ul>
+                                 </div>
+                            </div>
+                            <div style="width:100%;">
+                            	<img src="__ROOT__/{$vo.img}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFile">修改封面</label>
+                                <input type="file" name="photo" id="exampleInputFile">
+                                <p style="color:#ee0f19;" class="help-block">＊图片规格225x125px</p>
+                            </div>
+                           
+<!--                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Check me out
+                                </label>
+                            </div>-->
+							<input type="text" name="id" value="{$vo.id}" style="display:none;">
+                            <input type="text" name="qiezi" value="{$vo.img}" style="display:none;">
+
+                            <textarea id="body"  name="body" style="display:none;"></textarea>
+                 <script id="editor" type="text/plain" style="width:1024px;height:500px;"></script>
+
+            </div>
+                             
+                            <button style="width:150px !important; margin-left:60px; margin-bottom:40px !important;" type="button" onClick="sm();" class="btn btn-primary">提交</button>
+                        </form>
+
+                    </div>
+                </section>
+            </div>
+            
+</div>
+</body>
+</html>
+	<script src="__PUBLIC__/houtaikecheng/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/modernizr.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/jquery.nicescroll.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__ROOT__/bianji/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__ROOT__/bianji/ueditor.all.min.js"> </script>
+    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+    <script type="text/javascript" charset="utf-8" src="__ROOT__/bianji/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var ue = UE.getEditor('editor');
+	
+	//var text='{$vo.body}';
+//
+//	alert(text);
+
+	ue.ready(function() {
+    //设置编辑器的内容
+    ue.setContent('{$vo.body}');
+	
+});
+
+	function gethtml()
+	{
+		ue.ready(function() {
+
+		//获取html内容，返回: <p>hello</p>
+		var html = ue.getContent();
+		
+		document.getElementById("body").innerHTML = html;
+		
+		});	
+	} 
+	function sm()
+	{
+		gethtml();
+		
+		document.getElementById('myform').submit();
+	}
+	function type1(a)
+	{
+		var str='<i class="fa fa-angle-down"></i>';
+		
+		if(a==0)
+		{
+	
+			document.getElementById("type").innerHTML="资讯"+str;
+		}
+		if(a==1)
+		{
+	
+			document.getElementById("type").innerHTML="创业干货"+str;
+		}		
+		
+		document.getElementById("type_value").value=a;
+	}
+    type1({$vo.type});
+</script>
+</volist>

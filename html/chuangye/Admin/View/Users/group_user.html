@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link href="__PUBLIC__/css/table.css" rel="stylesheet">
+  <link href="__PUBLIC__/css/style-responsive.css" rel="stylesheet">
+  <script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+
+<style>
+<style>
+body{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 14px;line-height: 1.42857;
+color: #333;}
+.table{ overflow:hidden; margin-bottom:-10px !important;}
+.table li input{ width:auto; float:left; margin-bottom:10px; margin-left:5px;border-radius:3px 0px 0px 3px; }
+.table{ overflow:hidden; border-bottom:1px solid #dadada;}
+ul{ outline:none; list-style:none;}
+.table li{ width:auto; float:left;overflow:hidden; margin-bottom:10px; height:34px;margin-left:5px;}
+.label_ad{ font-size:18px; font-weight:700;}
+.table a{background: #E3E4E8 none repeat scroll 0% 0%;
+border-radius:0px 3px 3px 0px;
+color: #858582;
+float: left;
+padding: 10px;
+text-decoration: none;}
+</style>
+
+</head>
+
+<div class="wrapper" style="background: #EFF0F4 none repeat scroll 0% 0%;">
+            <div class="row">
+            <div class="col-sm-6" style="width:100%;">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <div class="btn-group">
+                            <p class="label_ad">添加群组用户</p>  
+                        </div>
+                    </header>
+                    <div class="panel-body">
+                        <p>添加群组用户</p>
+                        <ul class="table">
+                        	
+                            <volist name="list" id="vo"> 
+                        
+                            <li id="li{$vo.id}" style="width:100%;">
+                            	<input type="email" class="form-control" id="{$vo.id}" disabled="disabled" value=" 手机号：{$vo.usermobilenum}  邮箱号：{$vo.useremail}" style="width:500px;">
+                                <if condition="$vo.type eq 1 ">
+                                <a href="javascript:;" onclick="top_user_group('{$vo.uid}');" id='{$vo.uid}'>设置为管理员</a>
+                                </if>
+                                <if condition="$vo.type eq 2 ">
+                                <a href="javascript:;" onclick="top_user_group('{$vo.uid}');" id='{$vo.uid}'>取消管理员</a>
+                                </if>
+                                <a href="javascript:;" class="fa fa-times" onclick="del('{$vo.id}');" style="margin-left:10px;">删除</a>
+                            </li>
+                            
+                            </volist>
+                            <div id='yiji'>
+
+                           </div>
+                            <li> <button id="editable-sample_new" style="margin-left:5px;" class="btn btn-primary" onclick="yiji_tianjia();">
+                            添加群组用户 <i class="fa fa-plus"></i>
+                            </button></li>
+                           
+                        </ul>
+                    </div>
+                  
+                </section>
+            </div>
+
+        </div>
+        <!--body wrapper end-->
+		<script>
+			var gid="{$gid}";
+			
+			function del(id)
+			{
+				
+				if(confirm("是否确认删除标签？"))
+				{
+					var ur="{:U('del_group_user')}";
+					var obj = {};
+					obj.key = "value";
+					$.post(ur+"?id="+id, obj,
+						function(data,status)
+							{
+								var arr=eval(data);
+								if(arr[0]==1)
+								{
+									var div = document.getElementById('li'+id);
+		
+									div.style.display="none";
+								}
+								else
+								{
+									alert(arr[1]);	
+								}	
+							}
+						   );
+					return;
+				
+				}
+				else
+				{
+					return;
+				} 
+				
+			}
+			
+			function top_user_group(id)
+			{
+					var url='__URL__/top_user_group';
+					
+					$.post(url, {'uid': id,'gid':window.gid},
+						function(data,status)
+							{
+								if(data==1)
+								{
+									document.getElementById(id).innerHTML = '设置为管理员';
+								}
+								if(data==2)
+								{
+									document.getElementById(id).innerHTML = '取消管理员';	
+								}
+								if(data==0)
+								{
+									alert('修改失败，未知错误');	
+								}
+							}
+						   );		
+			}
+			
+			function yiji_tianjia()
+			{
+					
+					var t = (new Date()).valueOf();
+					
+					var str='<li id="li'+t+'" style="width:100%;"><input type="email" class="form-control" id="'+t+'" placeholder="输入用户邮箱或手机号" onchange="adtag_yiji('+t+');"></li>';
+					
+					var g=document.getElementById('yiji').innerHTML;
+					
+					document.getElementById("yiji").innerHTML = g+str;
+			}
+			
+			function adtag_yiji(id)
+			{
+					
+					var name=document.getElementById(id).value;
+					
+					if(!(name))
+					{
+						return;	
+					}
+
+					var ur="{:U('Users/add_group_user')}";
+					var obj = {};
+					obj.key = "value";
+					$.post(ur+"?name="+name+"&gid="+window.gid, obj,
+						function(data,status)
+							{
+								var arr=eval(data);
+
+								if(arr[0]==0)
+								{
+									
+									alert(arr[1]);
+									
+								}
+								else
+								{
+									var elem=document.getElementById("li"+id);
+									
+									elem.parentNode.removeChild(elem);
+									
+									
+									var a=arr[2];
+									
+									var c=arr[3];
+									
+									var d=arr[4];
+									
+									var b=arr[1];
+									
+									var str='<li id="li'+b+'" style="width:100%;"><input type="email" class="form-control" id="'+b+'" disabled="disabled" value=" 手机号：'+a+'  邮箱号：'+c+'" style="width:500px;"><a href="javascript:;" onclick="top_user_group('+d+');" id="'+d+'">设置为管理员</a><a href="javascript:;" class="fa fa-times" onclick="del('+b+');" style="margin-left:10px;"></a></li>';
+									
+									var g=document.getElementById('yiji').innerHTML;
+					
+									document.getElementById("yiji").innerHTML = g+str
+								}
+							}
+						   );
+					
+					
+			}
+			
+		</script>
+
+   

@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+<title>中国创业学院</title>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/posterTvGrid.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/weike.css">
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<style>
+.w_left{ width:710px; float:left; overflow:hidden; margin-left:20px;}
+.w_tab li input[type="radio"] + label {cursor: pointer;}
+</style>
+
+</head>
+
+<body>
+<div class="wapper" style="background-color:#fff;min-width: 1080px;">
+     <include file="Public:head" />
+     <div class="sy_st" style="padding-top:10px !important;"  >
+         <div id="posterTvGrid86804" style="margin:10px auto 0 auto; width:960px !important;border-bottom:1px solid #f1f1f1;"></div>
+         <div class="w_content">
+              <div class="w_left">
+                  <h3>标签：</h3>
+                  
+                  <ul class="w_tab">
+                  		<li onclick="tag('all','__URL__/weike/id/')">
+                           <input type="radio" value="1"  name="radioinput" />
+                           <label for="checkinput" id="laball" >全部</label>
+                       </li>
+                  		<volist name='weike_tag' id='vo'>
+                        
+                       <li onclick="tag('{$vo.id}','__URL__/weike/id/{$vo.id}')">
+                           <input type="radio" value="1"  name="radioinput" />
+                           <label for="checkinput" id="lab{$vo.id}" >{$vo.name}</label>
+                       </li>
+                       </volist>
+                  </ul>
+                  <iframe src="__URL__/weike"  frameborder="0" scrolling="no" id="external-frame"
+   onload="iFrameHeight(this)" style="width:100%;">
+                  </iframe>
+                  
+                  
+              </div>
+              
+              <!--right-->
+              <div class="w_right">
+                  <h3>热门播放：</h3>
+                  <ul class="w_level">
+                  	<volist name="weike_paiming" id='vo'>
+                    <if condition="$vo['number'] elt 3 "> 
+                      <li>
+                         <a href="javascript:;" class="w_k" onclick="log_url(event,'__URL__/bofang/id/{$vo.id}','lec_recommendation')">
+                             <div class="rank">{$vo.number}</div>
+                             <img class="w_pic" src="__ROOT__/{$vo.image}"/>
+                             <div class="w_nei">
+                                 <p class="w_p1">{$vo.title}</p>
+                                 <!--<p class="w_p2"><img src="__PUBLIC__/image/kan1.png"/><span>{$vo.look_nu}</span></p>-->
+                                 <div class="w_laiy"><p class="w_l1">来源于</p><p class="w_l2">{$vo.name}</p> </div>
+                             </div>
+                          </a>
+                      </li>
+                     </if>
+                      <!--热门播放3名以后-->
+                      <if condition="$vo['number'] gt 3 "> 
+                      <li>
+                         <a href="javascript:;" class="w_k" onclick="log_url(event,'__URL__/bofang/id/{$vo.id}','lec_recommendation')">
+                             <div class="rank_gray">{$vo.number}</div>
+                             <div class="w_nei_gray">
+                                 <p class="w_p1">{$vo.title}</p>
+                                 <div class="w_laiy_gray"><p class="w_l1">来源于</p><p class="w_l2">{$vo.name}</p> </div>
+                             </div>
+                          </a>
+                      </li>
+                      </if>
+                      </volist>
+                  </ul>
+              </div>
+         </div>
+     </div>
+  </div>
+<include file="Public:foot" />
+     </div>
+
+
+</body>
+</html>
+<!--banner-->
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.1.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/posterTvGrid.js"> </script>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/index/zhuce.js"></script>
+<script type="text/javascript">
+var posterTvGrid86804 = new posterTvGrid('posterTvGrid86804',{className: "posterTvGrid"},[
+		<volist name="weike_top1" id="vo">
+		{$vo.left}"img":"{$vo.img}","title":"","url":"{$vo.url}"{$vo.right},
+		</volist>
+	]
+);
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/weike/index.js"> </script>
+<script>
+	tag('all','__URL__/weike');
+	
+</script>
+<!--banner end-->

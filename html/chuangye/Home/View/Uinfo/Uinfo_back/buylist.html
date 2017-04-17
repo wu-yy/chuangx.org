@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>中国创业学院</title>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/20160516style.css"/>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style3.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/20160516style.css.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<!--<link rel="stylesheet" href="../Public/css/style20151231.css"/>-->
+<style>
+#us_pic img { margin-top: 18px !important;}
+.us_logo {margin-top: 9px;height: 50px;}
+.us_notic { padding:0px;}
+.us_begin {
+    display: block;
+    width: 120px !important;
+    height: 40px !important ;
+    line-height: 40px !important;}
+.table_title {
+    color: #888888;
+	 background:#f8f8f8;
+    padding: 4px;
+    size: 14px;
+    font-size: 14px;
+    margin-left: 45px;
+}
+.z_tab tr td {
+    border: none !important;
+    padding: 10px !important;
+	vertical-align: middle !important;
+    text-align: center;
+    border-bottom: 1px solid #f1f1f1 !important;
+}
+.us_list_content_msg {
+    height: 118px;
+    width: 864px;
+    border-bottom: 3px solid #f3f3f3;
+}
+.us_list_content_msg_3 {
+    float: left;
+    margin-top: 20px !important;
+    width: 135px;
+    text-align: center;
+}
+.us_list_content_msg_2 {
+    float: left;
+    margin-left: 19px;
+    margin-top: 18px !important;
+    width: 180px;
+}
+.us_list_content_msg_4 {
+    float: left;
+    margin-top: 20px !important;
+    width: 240px;
+    text-align: center;
+}
+.image {
+    width: 82px;
+    height: 82px;
+    margin-left:0px !important;
+    margin-top: 18px !important;
+}
+.us_list_content_msg_5 {
+    float: left;
+    margin-top: 20px !important;
+    width: 80px;
+    text-align: right;
+}
+.us_list_content_msg_5 {
+    float: left;
+    margin-top: 20px;
+    width: 80px;
+    text-align:center !important;
+}
+
+</style>
+</head>
+
+<body>
+<div class="wapper" >
+     <div class="us_st"  style=" margin-top:0px !important;" >
+          
+         <div class="us_user_content" >
+              <div class="us_right_nav" id="div" style="width:100% !important; float:left; width:78% !important;">
+                  <div class="us_list" >积分</div>
+                  <div class="us_list2" >
+						<div class="us_list2_1">
+							<div class="us_list2_1_1"><font style="font-size:14px; color:#000;">可用积分</font></div>
+							<div class="us_list2_1_2"><font style="font-size:30px; color:#0f9c18; font-weight:bold;" id="font">{$jifen}</font></div>
+						</div>
+						<div class="us_list2_2">
+							<div class="us_list2_3_form">
+								<div class="chongzhialt"><font style="font-size:14px; color:#888888;margin-left:75px;">请输入充值码</font>
+                            </div>
+                            <div class="text">
+                                <input id="text"  value="" />
+                            </div>
+                            <div class="button">
+                                <a href="javascript:;"><input style="border:none !important;" class="us_list2_3_button" type="button" name="chongzhi" id="chongzhi" value="积分充值" onclick="sum1()"/></a>
+                            </div>
+                            <p style="margin-left: 80px;height: 28px;margin-top: 50px;color: #f30a0a;font-size: 14px; font-weight:normal !important;line-height: 12px;" id="error1"></p>
+					    </div>
+				 </div>
+			</div>
+				  <tbody>
+				  <table  class="z_tab" border="1" cellpadding="2" cellspacing="1" style="margin-bottom:100px; width:100% !important;" class="table_top" >
+						<tr class="table_title">
+                         <th style=" text-align:left;">积分用途/来源</th>
+                         <th>积分变化</th>
+                        <th>时间</th>
+                        <th> 备注</th>
+                     </tr>
+                   <!--     <div class="table_title">
+													
+							
+							   
+							
+						</div>-->
+				  <volist name="list" id="vo">
+                  <if condition="$vo.type eq 1 ">	
+	              <tr class="us_list_content_msg">
+                      <td>
+		              	<div class="us_list_content_msg_1" style=" float:left;"><img style="margin-left:0px !important;" class="image" src="__PUBLIC__/image/cykc.png" alt="" />
+                        </div>
+		              	<div class="us_list_content_msg_2" style=" float:left; text-align:left !important;">
+		              		<div class="us_list_content_msg_2_1">
+                            	<font style="font-size:18px; color:#000000; font-weight:bold;">{$vo.title} </font>
+                            </div>
+		              		<div class="us_list_content_msg_2_2">
+                            	<font style="font-size:14px; color:#888888;">截止日期：{$vo.end_time|default=time()|date='Y-m-d',###}</font>
+                            </div>
+		              	</td>
+		              	<td><div class="us_list_content_msg_3">
+                        	<font style="font-size:18px; color:#b61010;">{$vo.spend}</font>
+                        </div>
+                        	</td>
+		              	<td><div class="us_list_content_msg_4">
+                        	<font style="font-size:14px; color:#888888;">{$vo.time|default=time()|date='Y-m-d',###}</font>
+                        </div>
+                        </td>
+		              		<td><div class="us_list_content_msg_5">
+                        	<font style="font-size:14px; color:#888888;font-align:center;">课程兑换</font>
+                        </div>
+                        </td>
+                        
+	              </tr>
+                  </if>
+                   <if condition="$vo.type eq 4 ">	
+	              <tr class="us_list_content_msg">
+						<td><div class="us_list_content_msg_1">
+                        	<img class="image" src="__PUBLIC__/image/jqjf.png" alt="" />
+                        </div>
+		              	<div class="us_list_content_msg_2">
+		              		<div class="us_list_content_msg_2_3">
+                            	<font style="font-size:18px; color:#000000; font-weight:bold;">加入群组赠送积分 </font>
+                            </div>
+		              	</div>
+                        </td>
+		              <td>	<div class="us_list_content_msg_3">
+                        	<font style="font-size:18px; color:#b61010;">+{$vo.spend}</font>
+                        </div></td>
+		              	<td><div class="us_list_content_msg_4">
+                        	<font style="font-size:14px; color:#888888;">{$vo.time|default=time()|date='Y-m-d',###}</font>
+                        </div></td>
+		              	<td><div class="us_list_content_msg_5">
+                        	<font style="font-size:14px; color:#888888;">获得</font>
+                        </div></td>
+				   </tr>
+                  </if>
+                  
+                  
+                  <if condition="$vo.type eq 3 ">	
+	              <tr class="us_list_content_msg">
+						<td><div class="us_list_content_msg_1">
+                        	<img class="image" src="__PUBLIC__/image/czjf.png" alt="" />
+                        </div>
+		              	<div class="us_list_content_msg_2">
+		              		<div class="us_list_content_msg_2_3">
+                            	<font style="font-size:18px; color:#000000; font-weight:bold;">积分码添加积分</font>
+                            </div>
+		              	</div>
+                        </td>
+		              <td>	<div class="us_list_content_msg_3">
+                        	<font style="font-size:18px; color:#b61010;">+{$vo.spend}</font>
+                        </div></td>
+		             <td> 	<div class="us_list_content_msg_4">
+                        	<font style="font-size:14px; color:#888888;">{$vo.time|default=time()|date='Y-m-d',###}</font>
+                        </div></td>
+		              	<td><div class="us_list_content_msg_5">
+                        	<font style="font-size:14px; color:#888888;">获得</font>
+                       	</div></td>
+				  </tr>
+                  </if>
+                  
+                  
+                  
+	              <!--<div class="us_list_content_msg">
+                  
+						<div class="us_list_content_msg_1">
+                        	<img class="image" src="__PUBLIC__/image/cykc.png" alt="" />
+                        </div>
+                        
+		              	<div class="us_list_content_msg_2">
+		              		<div class="us_list_content_msg_2_1">
+                            	<font style="font-size:18px; color:#000000; font-weight:bold;">创业思维运用 </font>
+                            </div>
+		              		
+		              		<div class="us_list_content_msg_2_2">
+                            	<font style="font-size:14px; color:#888888;">截止日期：2016-07-01</font>
+                            </div>
+		              	
+		              	</div>
+		              	<div class="us_list_content_msg_3">
+                        	<font style="font-size:18px; color:#0f9c18;">-50</font>
+                        </div>
+		              	<div class="us_list_content_msg_4">
+                        	<font style="font-size:14px; color:#888888;">2016-05-25 18:00</font>
+                        </div>
+		              	<div class="us_list_content_msg_5">
+                        	<font style="font-size:14px; color:#888888;">使用</font>
+                        </div>
+					  </div>-->
+                      
+                      
+                      
+                   <if condition="$vo.type eq 0 ">   
+		           <tr class="us_list_content_msg">
+                   
+						<td><div class="us_list_content_msg_1">
+                        	<img class="image" src="__PUBLIC__/image/zcjf.png" alt="" />
+                        </div>
+                        
+		              	<div class="us_list_content_msg_2">
+		              		<div class="us_list_content_msg_2_3">
+                            	<font style="font-size:18px; color:#000000; font-weight:bold;">注册赠送积分 </font>
+                            </div>
+		              	</div>
+                       </td> 
+		              	<td><div class="us_list_content_msg_3">
+                        	<font style="font-size:18px; color:#b61010;">+{$vo.spend}</font>
+                        </div></td>
+                        
+		              <td>	<div class="us_list_content_msg_4">
+                        	<font style="font-size:14px; color:#888888;">{$vo.time|default=time()|date='Y-m-d',###}</font>
+                        </div></td>
+		              	
+                       <td> <div class="us_list_content_msg_5">
+                        	<font style="font-size:14px; color:#888888;">获得</font>
+                        </div></td>
+				   </div>     
+                   </if>
+              </volist>         		
+              </table>  
+              </tbody>          
+          </div>
+             
+          </div>
+     </div>
+     
+</div>
+
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/uinfo/uinfo_group.js" type="text/javascript"></script>
+<script>
+	var url='__URL__/';
+</script>

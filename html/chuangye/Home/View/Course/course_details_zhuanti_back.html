@@ -1,0 +1,731 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+  <volist name="course" id="vo">
+    <title>{$vo.title}</title>
+  </volist>
+  <link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+  <link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+  <link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+  <style>
+  .fivestars,.fivestars div{background:transparent url(__PUBLIC__/image/commstar.gif) repeat-x scroll left bottom;width:130px;}
+  .fivestars{padding:0; position:relative; line-height:28px;display:inline-block;}
+  .fivestars div{background-position:bottom center; text-indent:-9999px;}
+  .fivestars div{background-position:left top; width:0px;}
+  .kc_xg ul li img {height: 179px !important;width: 280px;}
+  .kc_xg ul li {height:179px;width: 300px;}
+  .pst{font-size: 16px;font-weight: 700;color: #000;margin-top: 10px;}
+  .kc_xg ul li {margin: 0 auto;width: 100%;width: 246px;margin: 20px 0px 40px 0px;padding-bottom: 20px;height:auto !important;}
+  .loading{position:absolute;width:450px; height:270px; background:#000; top:92px; left:20px;z-index: 9; border:0px !important;}
+  .l_mask{position:absolute; z-index:99999;color:#7a7a7a; left:150px; top:0px; text-align:center;}
+  .l_mask img{margin:0 auto; padding-top:0px !important; width:200px;}
+  .kc_xq_wz_top a { margin-bottom:10PX !important; }
+  .kc_xq_wz_top .teachername{display:inline-block; max-width:250px;word-break:keep-all; overflow:hidden;text-overflow:ellipsis;}
+  .jifen{ width:100%; font-size:14px;color: #ff2a00 !important;  float:left; margin-bottom:20px;}/*font-weight:normal !important;*/
+  .jifen span{ font-size:14px; font-weight:400; color:#525252; text-decoration:line-through;}
+  .kc_xq_mv {height:304px !important;}
+  .kc_jj{color: #999;padding: 10px 20px 20px;margin-bottom: 20px;background-color: #fff;}
+  .kc_jj p {color: #999;font-size: 14px;line-height: 30px;margin-top: 10px;margin-bottom: 20px;}
+  .kc_ganhuo ul li{ border-bottom:0px !important; overflow:hidden !important;    padding:18px 0px 5px !important;}
+  .kc_ganhuo ul li p {width: 185px !important; vertical-align:middle; line-height:20px !important;}
+  .kc_ganhuo ul li {width: 275px !important; height:auto !important; border-bottom:1px solid #dedede;}
+  .t_jie{ font-size:12px; display:block;border-bottom: 1px solid #dadada; word-break:break-all; color:#999; width:79%; float:right; height:80px; padding-bottom:10px;  line-height:20px; }
+  .triangle{ width:0px; height:0px; border-left:4px solid transparent; border-right:4px solid transparent; border-top:6px solid #2c8aff; float:left; margin:16px 5px 0px 98px;}
+  .kc_top {padding: 10px 20px 0px !important;}
+  .griangle{ width:0px; height:0px; border-left:4px solid transparent; border-right:4px solid transparent; border-bottom:6px solid #2c8aff; float:left; margin:16px 5px 0px 98px;}
+  .triangle+p{ color:#2c8aff !important; font-size:12px !important; float:left !important; font-weight:normal !important;}
+  .griangle+p{ color:#2c8aff !important; font-size:12px !important; float:left !important; font-weight:normal !important;}
+  .t_tou{ width:100%;overflow:hidden; padding:4px 0px; text-align:center; display:block; color:#2c8aff;}
+  .kc_ganhuo ul {width: 106% !important;   overflow:hidden !important; }
+  .kc_xq_wz_top {font-size: 16px !important; line-height:25px !important; font-size:14px !important;}/*font-weight:normal !important;*/
+  .kc_xq_wz_bottom {font-size: 16px !important;font-weight:normal !important; font-size:14px !important;}
+  .kc_one {width: 100%;overflow: hidden;font-size:12px; line-height:20px; font-weight:normal !important; margin-bottom:10px;}
+  .kc_one p {float: left; margin-right: 60px;color: #999; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+  .kc_one p span { color:999 !important;}
+  .kc_xq_box {width: 1038px;height: auto;margin-top: 18px !important;overflow: hidden;}
+  .jf11 {font-size: 14px;font-weight: 400;color: #525252;text-decoration: line-through;}
+  .kc_xq_top {line-height: 45px !important; border-bottom:0px !important;}
+
+  .abutton{display: block; width:504px !important; color:#fff !important; float:left;height: 34px !important;line-height: 34px !important;font-weight:normal !important; font-size:14px;
+    background-color: #dc2438;margin-top: 10px; margin-bottom: 30px; color: #fff; text-align: center; border-radius: 4px;}
+    .jjie_top{ font-size:14px; color:#000 !important;margin-bottom: 4px;}
+  .jjie_tip{ font-size:12px; word-break:break-all !important; width:518px !important;  height:53px !important; line-height:18px; color:#999 !important;/*font-weight:normal !important;display: -webkit-box; -webkit-line-clamp:2;-webkit-box-orient:vertical;box-orient:vertical;*/}
+  .kc_xq_wz_top p { color: #000 ;}
+  .kc_xq_wz_top p span { color: #999 !important; }/*font-weight:normal !important;*/
+  .kc_one p { margin-right: 40px !important;}
+  .kc_two p {width: 530px;float: left;margin-right:30px; color: #999; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+  .ckds{display:block; text-align:center !important; color:#62379e ; border:1px solid #62379e; border-radius:4px; height:30px; line-height:30px; width:278px; font-weight:normal; font-size:14px !important;}
+  a.ckds:hover{display:block; background:#62379e; opacity:0.4; text-align:center !important; color:#fff !important; border:1px solid #62379e; border-radius:4px; height:30px; line-height:30px; width:278px; font-weight:normal; font-size:14px !important;}
+  .kc_xq_wz { width: 518px !important;font-family: "黑体";font-weight: bolder;margin-bottom:0 !important;font-size: 14px;}
+  .kc_xq_mv {width: 500px !important;}
+  .brief{ padding:0px 0px 8px; margin-bottom:10px;height: 117px;}/*border-bottom:1px solid #f0f0f0; */
+  .short{width: 238px !important;float:left; background:#f4f4f4 !important; border:1px solid #dedede !important; color:#999 !important;}
+  .short1{float:left;margin-right:25px;background: #dc2438;}
+  .tabs_itema {width: 745px;overflow:hidden;}
+  .tabs_itema ul { width: 100%;height: auto;overflow:hidden;}
+  .tabs_itema ul li { width: 166px;margin-top:35px;  margin-right: 5px; margin-left: 5px;  float: left;  border-bottom:none; margin-bottom: 20px;}/*height: 145px;*/
+  .tabs_itema ul li img { width: 166px; height: 110px;}
+  .kc_dagang p{margin: 0 !important;}
+  .captiona { margin-top: 8px;}
+  div.captiona h6 {  font-size: 16px;color: #000; height: 48px; overflow: hidden;}
+  .k_xiaojie{ width:100%; height:auto;}
+  .k_section{ margin-top:20px; background:#f7f7f7; width:96%; height:44px; font-size:14px; line-height:44px; color:#333; padding:0 2%;}
+  .k_section span{ margin-left:10px;}
+  .k_xiaojie ul{ width:100%; height:auto; margin-top:5px; margin-bottom:5px;}
+  .k_xiaojie ul li{ width:92%; padding:8px 0px 8px 50px; overflow:hidden;}
+  .k_xiaojie>ul>li>a.k_dianji{ color:#333; font-size:12px; display:block; overflow:hidden;}
+  .k_dianji p{ font-size:12px; color:#666; line-height:30px; float:left; width:400px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin:0px !important;}
+  .k_dianji span{ float:right; color:#999; line-height:30px; font-size:12px;}
+  .k_dianji span img{ width:14px; margin-left:10px; float:right; margin-top:5px; }
+  .tab_content .tabs_item{padding-top:0;}
+  .tab_content .tabs_item .jifen{color:#dc2438}
+  .name-span{display:inline-block;font-style: normal;float: left;}
+  </style>
+
+  <script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+  <script src="__PUBLIC__/js/index/sea.js" type="text/javascript" data-main="focus.js"></script>
+  <script src="__PUBLIC__/js/index/index.js"></script>
+  <script src="__PUBLIC__/js/index/zhuce.js"></script>
+<!--just to test html5 video player-->
+ <link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
+<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<!--by Bright Zhang-->
+
+
+</head>
+
+<body>
+  <div class="wapper" style="background-color:#ececec; min-width:1080px;">
+   <include file="Public:head" />
+   <volist name="course" id="vo">
+     <div class="kc_de_nav">
+      <div class="kc_de_content">
+       <div class="kc_kk"><a href="javascript:;" onClick="log_url(event,'{:U('Index/homepage')}','public_pageNavigation')">首页</a></div>
+       <ul>
+         <li><span>></span><a href="javascript:;" onClick="log_url(event,'{:U('Course/index')}','public_pageNavigation')">课程</a></li>
+         <li><span>></span>{$vo.title}</li>
+       </ul>
+     </div>
+   </div>
+   <div class="sy_st" style=" margin-top:80px !important;">
+    <div class="kc_top" style="width:1038px !important; position:relative; margin-top:20px !important;">
+     <div class="kc_xq_top">
+       <p>{$vo.title}</p>
+       <div class="kc_one">
+        <!--<p>已关注：<span>{$vo.nu_add}</span></p>-->
+        <p style="max-width:250px; color:#999 !important;">课程来源<span style="padding:0px 5px; color:#999 !important;">|</span><span style=" color:#999 !important;">{$vo.source}</span></p>
+        <p>课程标签<span style="padding:0px 5px; color:#999 !important;">|</span><span style="color:#2c8aff;">{$tagname}  </span></p>
+      </div>
+    </div>
+    <div class="kc_xq_box">
+     <if condition="$vo.cc_code eq null ">
+
+      <div class="kc_xq_mv" style=" background-image:url(__ROOT__/{$vo.image});filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale');  -moz-background-size:100% 100%;  background-size:100% 100%; ">
+      </div>
+    </if>
+    <if condition="$vo.cc_code neq null ">
+
+      <div class="kc_xq_mv loading" id="loading" >
+       <div class="l_mask">
+        <img src="__PUBLIC__/image/jiazai.gif" /> 
+        <p>loading...</p> 
+      </div>
+    </div>
+    <div class="kc_xq_mv" onclick="phone();" id="course_img" style=" background-image:url(__ROOT__/{$vo.image});filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale');  -moz-background-size:100% 100%;  background-size:100% 100%; display:none; ">
+    </div>
+     <!--Bright Zhang Add this just for test-->
+                     <div>
+                               <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+                                  poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+                                    <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+                                    <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'>
+                                </video>
+                                <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+                      </div>
+   <!---->
+    <div class="kc_xq_mv"  id="player" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale');  -moz-background-size:100% 100%;  background-size:100% 100%;">
+    </div>
+    <div class="kc_xq_mv"  id="player1" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale');  -moz-background-size:100% 100%;  background-size:100% 100%; display:none;">
+      <script src="http://p.bokecc.com/player?vid={$void}&siteid=B73CC50AF38DFD67&autoStart=true&width=450&height=270&playerid=78F3CEA674B99498&playertype=2" type="text/javascript"></script>
+    </div>
+  </if>
+  <div class="kc_xq_wz" onclick="log1('courseInfo_intro')">
+    <div class="kc_xq_wz_top">
+      <div style="float:left; width:100%;">
+        <div class="brief">
+          <p class="jjie_top">课程简介</p>
+          <p class="jjie_tip" style=" width:518px; height:53px; overflow:hidden !important; word-break:break-all;" id="dot1" >
+            {$vo.brief}
+          </p>
+
+        </div>
+        <if condition="$user_course_add eq null ">   
+         <div class="jifen">
+           <p style="float:left; color:#000 !important;font-weight:700 !important; margin-right:10px;"><img src="__PUBLIC__/image/denote1.png"/></p>
+           <p style="color:#dc2438 !important; font-size:16px !important;">{$vo.cost}积分
+             <span style="text-decoration:none !important;color:#ff2a00 !important; width:100px; float:left; display:block;"><if condition="$vo.yuanjifen gt 0 "></span><span class="jf11" style="text-decoration:none !important; margin-right:5px;">/</span><span class="jf11">{$vo.yuanjifen}</span></if></p>
+
+           </div>
+         </if>
+         <if condition="$user_course_add neq null "> 
+          <div class="jifen">
+           <p style="float:left; color:#000 !important;font-weight:700 !important; margin-right:10px;"><img src="__PUBLIC__/image/denote1.png"/></p>
+           <p style="color:#ff2a00 !important; font-size:16px !important;">
+            选课成功
+          </p>
+        </div>
+      </if>
+    </div>
+                            <!--<div style="float:left;">
+                              <span class="us_subhead-content" style="float:left;"><div class="fivestars" id="fivestars"><div class="autostars" id="autostars">&nbsp;</div></div>&nbsp;<span class="sy_fen" style="font-size:26px;">{$vo.score}</span></span>  
+                            </div>--> 
+                            <!--<div style="float:left;">
+                              <span class="us_subhead-content">关注课程所需积分&nbsp;{$vo.cost}</span>
+                                                 
+                              <span class="us_subhead-content">课程反回积分&nbsp;{$vo.back_credit}</span 
+                            ></div>
+                          </div>-->
+                          <script type="text/javascript">
+
+                          function changestars(score)
+                          {
+                           var w=13; /* one star's width */
+                           var totalw=w*score; /* score stars */
+                           var aa=document.getElementById("autostars");
+                           aa.style.width=totalw+"px";
+                         }	
+
+                         changestars({$vo.score});
+                         </script>  
+                         <div style="width: 510px;">
+                          <div style="float:left;margin-bottom:20px;">
+                            <if condition="$vo.start_time elt time() ">
+                              <p class="kc_hong" style="color: #dc2438 !important; margin-bottom:4px;">开课时间：{$vo.start_time|default=time()|date='Y-m-d',###}
+                               
+                              </p>
+                            </if>  
+                            <if condition="$vo.start_time gt time() ">
+                              <p class="kc_hong" >更新时间：{$vo.start_time|default=time()|date='Y-m-d',###} 
+                                <if condition="$user_course_add neq null ">
+                                  <span style="color:#2c8aff; float:right;">有效期：{$course_user_end_time|default=time()|date='Y-m-d',###}</span>
+                                </if>
+                              </p>
+                            </if>  
+                            <p style=" color:#000 !important;margin-bottom:4px;">课程安排：<span>{$vo.anpai}</span></p>
+                          </div>
+                          <div style="float:right;">
+                            <p style=" color:#000 !important;margin-bottom:4px;">语言：<span>{$vo.language}</span></p>
+                            <p style=" color:#000 !important;margin-bottom:4px;"><i class="name-span">主讲教师：</i><span class="teachername"> {$vo.teacher_name}</span></p>
+                          </div>
+                        </div>
+                        <!-- <div class="kc_xq_wz_bottom">
+                        <div class="kc_tree">
+                                <p style=" color:#000 !important;margin-bottom:4px;">语言：<span>{$vo.language}</span></p>
+                                
+                            </div>
+                            <div class="kc_two">
+                                <p style=" color:#000 !important;margin-bottom:4px;">主讲教师：<span> {$vo.teacher_name}</span></p>
+                            </div>
+                            
+                          </div> -->
+                        </div>
+                        <if condition="$user_course_add eq null ">
+                          <a href="javascript:;" class="abutton short1" id='ke1' onclick="check_login(event,'{:U('Pay/index',array('cid'=>$vo['id'],'type'=>'course'))}' )" >积分兑换课程</a>
+                        </if>
+                        <if condition="$user_course_add neq null ">  
+                          <a href="javascript:;" class="abutton short1" id='ke' >兑换成功</a>
+                        </if>
+                     </div> 
+                   </div>
+                 </div>
+                 <div class="kc_bottom">
+                  <div class="kc_left">
+                    <div class="tab_content">
+                      <div class="tabs_item">
+                        </div>
+                        <!--相关课程-->
+                        <div class="kc_dagang" onclick="log1('courseInfo_syllabus')">
+                          <div  class="kc_gai" style="overflow:hidden;">
+                           <span style="float:left;">查看课程</span>
+                         </div>
+                         <div class="tabs_itema">
+                          <ul>
+                           <volist name="list_c" id="vo">
+                            <li>
+                              <a href="{:U('Course/course_details',array('cid'=>$vo['id']))}">
+                                <img src="__ROOT__/{$vo.image}" />
+                                <div class="captiona">
+                                  <h6>{$vo.title}</h6>
+                                  <p class="jifen">{$vo.cost}积分</p>
+                                  <p>开课时间{$vo.start_time|default=time()|date='Y-m-d',###}</p>
+                                </div>
+                              </a>
+                            </li>
+                          </volist>
+                        </ul>
+                      </div>
+                  </p>
+                </div>
+              </div>
+            </volist> 
+          </div>
+            <div class="kc_right" >
+             <div class="kc_ganhuo" onclick="log1('courseInfo_tutor')" >
+              <div class="kc_gh_tips">
+                <p>授课老师</p>
+                <!-- <span>全部</span>-->
+              </div>
+              <ul id="kc_right" style="max-height:700px;">
+                <volist name="teacher" id="vo">
+                  <a href="{:U('Teacher/alltutor',array('tid'=>$vo['id']))}">
+                    <li>
+                      <img style="margin-bottom:10px;width:48px;height:48px;" src="__ROOT__{$vo.image}" />
+                      <p>{$vo.name}</p>
+                      <p style="font-size:12px !important; font-weight:600 !important; color:#999 !important; height:24px !important;">{$vo.job}</p>
+
+                      <div style="width:100%;"><span  class="t_jie"  id="{$vo.id}brief">{$vo.brief}</span></div>
+                    </li>   
+                  </a>
+                </volist>
+              </ul>
+              <div class="kc_gh_tips">
+                <a href="javascript:;" class="ckds" onclick="look_teacher()" id="look_teacher">查看全部导师>></a>
+                <!-- <span>全部</span>-->
+              </div>
+            </div>
+
+              </div>
+            </div>   
+          </div>
+          <script src="__PUBLIC__/js/jquery.dotdotdot.min.js" type="text/javascript"></script>
+
+          <script>
+          $(function() {
+            $('.t_jie').dotdotdot();
+          });
+          </script>	
+
+          <script type="text/javascript" src="__PUBLIC__/js/swfobject.js"></script>
+          <script>
+          var xxx="{$cid}";
+          var a="{$void}";
+          var url='';
+          var width=500;
+          var height=304;
+          var count_teacher={$count_teacher};
+          var nu_count_teacher=count_teacher*170+42;
+          if(nu_count_teacher>750)
+          {	
+           document.getElementById('kc_right').style.height=''+nu+'px ';	
+
+         }
+         else
+         {
+           document.getElementById('kc_right').style.height='auto';	
+           document.getElementById('look_teacher').innerHTML='导师已全部加载';
+         }
+
+         function look_teacher()
+         {
+           if(window.nu_count_teacher<=750)
+           {
+            return;	
+          }
+          var kc_right=document.getElementById('kc_right').style.maxHeight;
+          if(kc_right=='700px')
+          {
+            document.getElementById('kc_right').style.maxHeight="100000px";
+            document.getElementById('look_teacher').innerHTML='收起>>';
+          }
+          else
+          {
+            document.getElementById('kc_right').style.maxHeight="700px";
+            document.getElementById('look_teacher').innerHTML='查看全部导师>>';	
+          }
+
+        }
+
+        </script>
+        <script type="text/javascript" src="__PUBLIC__/js/phone_cc.js"></script>
+
+        <script type="text/javascript">
+        function on_cc_player_init(vid, objectId ){
+          var config = {};
+          config.rightmenu_enable = 0;
+
+          config.on_player_seek = "custom_seek";
+          config.on_player_fullscreen = "custom_fullscreen";
+
+          config.player_plugins = {
+           Subtitle : {
+            url : window.url, 
+            size : 20, 
+            color : 0xFFFFFF,
+            surroundColor : 0x3c3c3c,
+            bottom : 0.05, 
+            autoScale: false,
+            font : "微软雅黑", 
+            code : "utf-8",
+				//bgColor :0x000000,
+				//bgAplha :0.5, 
+				//allowFullScreen: true
+			}
+		};
+		var player = getSWF(objectId);
+		player.setConfig(config);
+	}
+	function getSWF(objectId) { 
+   if (window.document[ objectId ]) {
+     return window.document[ objectId ];
+   } else if (navigator.appName.indexOf("Microsoft") == -1) {
+     if (document.embeds && document.embeds[ objectId ]) {
+      return document.embeds[ objectId ];
+    }
+  } else {
+    return document.getElementById( objectId );
+  }
+}
+
+	//	功能：创建播放器flash，需传递所需参数，具体参数请参考api文档
+
+
+
+//	-------------------
+//	调用者：flash
+//	功能：播放器加载完毕时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+function on_spark_player_ready() {
+
+  var div1=document.getElementById("loading");	
+
+  div1.style.display="none";
+}
+
+//	-------------------
+//	调用者：flash
+//	功能：播放器开始播放时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+function on_spark_player_start() {
+  var id=window.xxx;
+  log_url2('course_id='+id+'   act:player_start','courselnfo_intro');
+
+}
+
+//	-------------------
+//	调用者：flash
+//	功能：播放器暂停时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+function on_spark_player_pause() {
+  var id=window.xxx;
+  log_url2('course_id='+id+'   act:player_pause','courselnfo_intro');
+}
+function custom_seek(from,to){
+  var id=window.xxx;
+  log_url2('course_id='+id+'   act:player_seek from:'+from+'to:'+to,'courselnfo_intro');
+}
+function custom_fullscreen(flag)
+{
+  if(flag==1)
+  {
+   var id=window.xxx;
+   log_url2('course_id='+id+'   act:player_fullscreen action:open','courselnfo_intro');	
+ }
+ else
+ {
+   var id=window.xxx;
+   log_url2('course_id='+id+'   act:player_fullscreen action:close','courselnfo_intro');		
+ }
+}
+//	-------------------
+//	调用者：flash
+//	功能：播放器暂停后，继续播放时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+function on_spark_player_resume() {
+  var id=window.xxx;
+  log_url2('course_id='+id+'   act:player_resume','courselnfo_intro');
+}
+
+//	-------------------
+//	调用者：flash
+//	功能：播放器播放停止时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+function on_spark_player_stop() {
+  var id=window.xxx;
+  log_url2('course_id='+id+'   act:player_stop','courselnfo_intro');
+}
+
+	function player_play() { //	调用播放器开始播放函数
+		document.getElementById("playerswf").spark_player_start();
+	}
+	function player_pause() { //	调用播放器暂停函数
+		document.getElementById("playerswf").spark_player_pause();
+	}
+	function player_resume() { //	调用播放器恢复播放函数
+		document.getElementById("playerswf").spark_player_resume();
+	}
+
+
+  </script>
+
+  <include file="Public:foot" />
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+function add_user_look(e,id)
+{
+	
+	var ur="{:U('Course/shanghuo')}";
+	var obj = {};
+  obj.key = "value";
+  $.post(ur, obj,
+   function(data,status)
+   {
+     if(data==0)
+     {
+
+      jump_login(e);
+
+      document.getElementById("pwuser").innerHTML ="请登录后观看视频！";
+
+      return;
+
+    }
+    else
+    {
+
+     var ur="{:U('Course/ajax_add_user_look')}";
+     $.post(ur, {'xiaojie':id},
+      function(data,status)
+      {
+        window.location.href='__URL__/void/cid/{$cid}';
+      }
+      );
+
+   }
+ }
+ );
+
+
+}
+function teacher_brief(id)
+{	
+	var hie=document.getElementById(id+'brief').style.height;
+	
+	if(hie=='auto')
+	{
+		document.getElementById(id+'brief').style.height='';
+		
+		document.getElementById(id+'chakan').innerHTML='查看全部';	
+		
+		document.getElementById(id+'t').style.display='block';
+		
+		document.getElementById(id+'g').style.display='none';
+		
+		
+	}
+	else
+	{
+		document.getElementById(id+'brief').style.height='auto';
+		
+		document.getElementById(id+'chakan').innerHTML='收起';
+		
+		document.getElementById(id+'t').style.display='none';
+		
+		document.getElementById(id+'g').style.display='block';	
+	}
+
+}
+
+function check_cost(cid,cost)
+{
+	var ur="{:U('Course/check_credit_log')}";
+	var obj = {};
+  obj.key = "value";
+  $.post(ur+"?cid="+cid, obj,
+   function(data,status)
+   {
+     if(data==1)
+     {
+      alert(data);	
+    }
+    else
+    {
+      if(confirm("您还没有购买本课程，该课程价值"+cost+"积分，是否购买"))
+      {	
+       jump_url(cid);
+     }
+   }
+ }
+ );	
+}
+
+function jump_url(cid)
+{
+	var ur="{:U('Course/check_credit')}";
+	var obj = {};
+  obj.key = "value";
+  $.post(ur+"?cid="+cid, obj,
+   function(data,status)
+   {
+     if(data==0)
+     {
+      alert("余额不足");	
+    }
+    if(data==1)
+    {
+      alert("购买成功");
+      var div = document.getElementById("ke1");
+
+      div.style.display="none";
+
+      var div1=document.getElementById("ke");
+
+      div1.style.display="block";	
+    }
+    if(data==2)
+    {
+      alert("购买失败");	
+    }
+  }
+  );
+}
+
+function index()
+{
+	var div=document.getElementById("void");
+	
+	div.style.display='block';
+
+	action();		         
+}
+function action()
+{ 
+  thePlayer.play(true);  
+  this.value = '暂停';  
+}
+function closeindex()
+{
+	
+	var div=document.getElementById("void");
+	
+	div.style.display='none';
+	
+	
+}	
+
+function goc(e,cid,cost)
+{	
+  e.cancelBubble = true;
+
+  var ur="{:U('Course/shanghuo')}";
+  var obj = {};
+  obj.key = "value";
+  $.post(ur+"?cid="+cid, obj,
+   function(data,status)
+   {
+     if(data==0)
+     {
+
+      jump_login(e);
+
+      document.getElementById("pwuser").innerHTML ="请登录后观看视频！";
+
+    }
+    else
+    {
+      if(cost>0)
+      {
+							//check_cost(cid,cost);
+							return;
+						}
+						else
+						{
+							guanzhu(cid);	
+						}
+					}
+					log_url2('follow_course','courseInfo_intro');
+				}
+        );
+
+
+}
+function check_login(e,Jump_page)
+{
+
+	var ur="{:U('Course/shanghuo')}";
+	var obj = {};
+  obj.key = "value";
+  $.post(ur, obj,
+   function(data,status)
+   {
+     if(data==0)
+     {
+
+      jump_login(e);
+
+      document.getElementById("pwuser").innerHTML ="请登录后观看视频！";
+
+    }
+    else
+    {
+      window.location.href=Jump_page;
+    }
+
+  }
+  );
+
+
+}
+function guanzhu(cid)
+{
+	var ur="{:U('Course/guanzhu')}";
+	var obj = {};
+	obj.key = "value";
+	$.post(ur+"?cid="+cid, obj,
+		function(data,status)
+   {
+    if(data==0)
+    {
+     alert('关注失败');	
+   }
+   else
+   {
+     if(data=='timeout')
+     {
+      alert('您所在群组暂无此课');	
+    }
+    else
+    {
+      var div = document.getElementById("ke1");
+
+      div.style.display="none";
+
+      var div1=document.getElementById("ke");
+
+      div1.style.display="block";	
+
+      div1.click();	
+    }
+
+  }
+}
+);
+}
+
+</script>

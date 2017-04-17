@@ -1,0 +1,77 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>信息中心</title>
+
+<link rel="stylesheet" href="__PUBLIC__/css/phone_style.css" />
+<style type="text/css">
+.i_pic{ width:640PX; position:relative; height:300PX; background-image:url(__PUBLIC__/image/home_backgroug.png);}
+.i_topic{ position:absolute; top:48px; left:250px; width:120px; height:120px; border-radius:240px; overflow:hidden;}
+.i_topic img{ width:100%; height:100%; object-fit:cover; -moz- object-fit:cover; -webkit- object-fit:cover;}
+.genhuan a{ position:absolute; width:270px; height:65px; line-height:65px; text-align:center; color:#fff; 
+border:2px solid #fff; border-radius:8px; size: #fff; font-size:28px; margin-top:30px; display:block; top:150px; left:175px;}
+.i_list{ width:100% ; height:auto; background:#f4f5f7;}
+.i_list ul{ width:100%;}
+.i_list ul li{ width:600px; height:auto !important; padding:20px; border-bottom:1px solid #ccc; overflow:hidden; line-height:60px;}
+.j_name{ font-size:28px; color:#888; float:left;}
+.j_content{ font-size:24px; color:#333; float:right; text-align:right !important; width:400px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.next_page1{ float:right;}
+.next_page1 img{ margin-top:20px; margin-left:20px;}
+</style>
+<script type="text/javascript" src="__PUBLIC__/js/koala.min.1.5.js"></script>
+
+</head>
+
+<body style="background:#f4f5f7; height:100%;">
+<include file="Public:phone_head_xin" />
+<div class="warpper"   style="position:relative; height:100%;"> 
+     <div class="i_pic">
+          <div class="i_topic">
+          	<if condition="$image eq NULL ">
+                <img src="__PUBLIC__/image/moren.jpg"/>
+            </if>
+            <if condition="$image neq NULL ">
+            	<img src="{$image}"/>
+            </if>
+          </div>
+          <!--<div class="genhuan"><a href="">更换头像</a></div>-->
+     </div>
+     <div class="i_list">
+         <ul>
+             <li>
+                  <div class="j_name"><p>昵称</p></div> 
+                  <!--<div class="next_page1"><img  src="__PUBLIC__/image/next_page.png"/></div>-->
+                  <div class="j_content">{$nname}</div>
+                  
+             </li>
+             <li>
+                  <div class="j_name"><p>真实姓名</p></div> 
+                  <!--<div class="next_page1"><img  src="__PUBLIC__/image/next_page.png"/></div>-->
+                  <div class="j_content">{$uname}</div>
+                  
+             </li>
+             <li>
+                  <div class="j_name"><p>个人简介</p></div> 
+                 <!-- <div class="next_page1"><img  src="__PUBLIC__/image/next_page.png"/></div>-->
+                  <div class="j_content">{$jianjie}</div>
+                  
+             </li>
+         </ul>
+     </div>
+<div style="font-size:24px; color:#999; text-align:center; position:fixed; bottom:50px; width:100%;">个人信息可在PC端网页版中国创业学院进行修改</div>  
+</div>
+</body>
+</html>

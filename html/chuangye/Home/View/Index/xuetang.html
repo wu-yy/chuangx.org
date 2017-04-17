@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script>
+	var ur='http://www.xuetangx.com/api/oauth2/access_token/';
+	var redirect_uri='http://test.chuangx.org/index.php/home/index/xuetang';
+	var code='{$code}';
+	var client_id='{$client_id}';
+	var client_secret='{$client_secret}';
+	$.ajax({
+            url:ur,
+            async:false, 
+			type:'post',
+			data:{"nonce":'cyxu',"code":code,"redirect_uri":redirect_uri,"grant_type":'authorization_code','client_id':client_id,'client_secret':client_secret},            
+            success:function(data)
+			{
+           		alert(data);
+					
+            }
+		 }); 
+</script>
+<body>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>会员中心</title>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pay/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pay/ass.css"/>
+	<style type="text/css">
+	.removeObstacles{width: 146px;margin: 42px auto;}
+	.pointAssImg{width: 146px;height: 146px;border-radius: 50%;}
+	.removeObstacles span{display: block;height: 50px;line-height: 50px;color: #b6b6b6;text-align: center;}
+	.illumeAss{display: block;width: 130px;height: 36px;line-height: 36px;color: white;background: #edd08a;text-align: center;border-radius: 3px;font-size: 15px;font-weight: bold;margin-top: 22px;}
+	</style>
+</head>
+<body>
+	<div class="associatorContent">
+		<div class="assConTit">会员中心</div>
+		<div class="removeObstacles">
+			<img class="pointAssImg" src="{$userimg}"/>
+			<span>立即点亮我的vip</span>
+			<a class="moreAss" href="javascript:;" onClick="ju('{:U('Pay/pay_vip')}')">申请会员</a>
+			<div class="inviolable">
+				<p class="invTit">会员权益</p>
+                <p>-付费课程更多折扣</p>
+				<p>-可查看更多创业干货</p>
+				<p>-未来福利多多</p>
+			</div>
+		</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+function ju(url)
+{
+	window.top.location=url;	
+}
+</script>

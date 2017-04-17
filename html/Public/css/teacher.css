@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/*---------------------------
+      teacher STYLES 
+----------------------------*/
+.tc_content{ width:1080px; height:auto; margin-top:50px;}
+.tc_content ul{ width:1080px;}
+.tc_content ul li{
+	 width:1020px;
+	 height:auto;
+	 background-color:#fff;
+	 padding:20px;
+	 overflow:hidden;
+	 margin-bottom:20px;}
+.tc_top{ width:100%;overflow:hidden;}
+.tc_top img{
+	width: 68px;
+    height: 68px;
+    border-radius: 34px;
+    background: #F5F5F5 url("../image/bn1.png") no-repeat scroll 0% 0%;
+    float: left;
+    margin-right: 10px;}
+.tc_t_left{ width:50%; float:left; line-height:33px;}
+.tc_t_left p{width:100%;
+    font-size: 18px;
+    font-weight: 700;
+    float: left;
+    overflow: hidden;
+    color: #666;
+}
+.tc_t_left p span{font-size: 16px;
+    color: #999;
+    margin-left: 20px;}
+.tc_t_right{ width:133px; height:40px; color:#fff;
+    background-color:#62379e; display:block; text-align:center; line-height:40px;
+	float:right; border-radius:3px; margin-top:20px;}
+.tc_bottom{ width:100%; height:auto; color:#999;  margin-top:20px; height:50px;}
+.tc_bottom p{line-height:28px; height:50px;
+        overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;}

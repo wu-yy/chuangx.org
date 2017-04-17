@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<style>
+.us_zx_pic1{ width:172px !important; height:110px !important;}
+.p_right{padding-right:10px !important;}
+.pages a {
+    float: left;
+    display: block;
+    margin-right:0px !important;
+}
+.p_no{padding:0px 4px;}
+
+.pages ul {
+    float: left;
+    overflow: hidden;
+    margin-right: 10px !important;
+}
+</style>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<div class="tabs_item"  style="width:1095px;">
+                         	<volist name="list" id="vo">
+                              <ul>
+                                  <li>
+                                      <a href="#" onclick="window.top.location='__APP__/Home/Course/course_details/cid/{$vo.id}'">
+                                            <img src="__ROOT__/{$vo.image}"/>
+                                        <div class="caption">
+                                            <h6>{$vo.title}</h6>
+                                            <div class="pull-right">
+                                                 <span class="subhead-content">{$vo.nu}人&nbsp;关注</span>
+                                                 <span class="subhead-fenge">|</span>
+                                                 <span class="subhead-content"><span class="sy_fen">{$vo.score}</span>&nbsp;评分</span>
+                                            </div>
+                                        </div>
+                                     </a>
+                                  </li>
+                                 
+							  </ul>
+							  </volist>
+
+							</div>
+							 <div class="pages">
+                        <a class="p_right" href=""><img src="__PUBLIC__/image/pre.png"/ ></a>
+                            <ul>
+                            	<volist name="arr" id="vo">
+                                <if condition="$vo.number eq $nu ">
+                                 <a class="p_no" href="javascript:;" onClick="num({$vo.number});"><li class="p_active">{$vo.number}</li> </a>							</if>
+								<if condition="$vo.number neq $nu ">
+                                 <a class="p_no" href="javascript:;" onClick="num({$vo.number});"><li>{$vo.number}</li> </a>
+								</if>
+                                 </volist>
+                           </ul>
+                       <a class="p_right" href=""><img src="__PUBLIC__/image/next.png"/></a>
+                    </div>
+							
+</body>
+</html>
+<script>
+
+function num(a)
+{	
+	var ur="{:U('Course/num')}";	
+	var obj = {};
+		obj.key = "value";
+		$.post(ur+"?n="+a, obj,
+			function(data,status)
+				{
+					if(data==1)
+					{
+						window.location.reload();
+					}
+					else
+					{
+						alert('网络繁忙，请稍后再试');	
+					}
+				}
+			   );
+}
+
+</script>

@@ -1,0 +1,274 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>中国创业学院</title>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style1.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+
+<style>
+#send {
+    height:37px !important;
+    line-height:37px !important;
+}
+.p_send {
+    height:37px !important;
+    line-height: 37px !important;
+	padding:0px 8px !important;
+	text-align:center !important;
+}
+.us_safe {width: 100%; margin-bottom:20px;}
+.us_safe ul{ width:100%; height:auto; overflow:hidden;}
+.us_safe ul a{ color:#717171;}
+.us_safe ul li{ width:11%; padding:20px 0px; margin:0px 20px 0px 0px; font-size:16px; color:#717171; float:left;text-align:center;}
+.s_active{ width:10%; padding:20px 0px; margin:0px 20px 0px 0px; font-size:16px; color:#7542bd !important; border-top:4px solid #7542bd; text-align:center;}  
+.s_bd{ width:94%; height:auto;padding:2%;  overflow:hidden; }
+.bdwx{ padding:8px 20px; color:#000; background:#eeeded; margin-top:20px;border-radius:4px;}
+.wx_bd{ width:200px; margin:0 auto; text-align:center; height:180px; float:left;}
+</style>
+</head>
+
+<body style="background:#fff; width:100%;">
+    <div class="us_right_nav" style="width:100% !important;">
+        <div class="us_list" style=" position:fixed; top:0px; color:#000;">安全中心</div>
+        <div class="us_safe" style="margin-top:40px;">
+            <ul>
+                <a href="__URL__/security_center"><li>
+                     绑定第三方账户
+                </li></a>
+                <a href="__URL__/phone"><li>
+                     绑定手机
+                </li></a>
+                <if condition="$phone_nu neq NULL "> 
+                
+                <a href="__URL__/mail"><li>
+                     绑定邮箱
+                </li></a>
+                <a href="__URL__/pw"><li class="s_active">
+                     修改密码
+                </li></a>
+                
+                </if>
+            </ul>               
+        </div>
+			<div style=" position:absolute; background:#f2f2f2; height:280px; width:384px; z-index:99; left:180px; top:20px; display:none;" id="show_code" >
+                     <a href="javascript:;" onclick="none_code()"  style="position:absolute; top:0px; left:357px; z-index:999 !important; height:28px; width:28px;"><img src="__PUBLIC__/image/gb11.png" /></a>
+                	<li id="imagecode" style="width:100%; height:50px; color:#F00; list-style:none !important; padding-top:15px; text-align:center;">
+                    </li>
+                	<li class="nostyle" style="overflow:hidden; margin-bottom:10px; position:relative;">
+                           
+                           <div class="sy_yzm_sr" style=" foalt:left !important; background:#fff; border-radius:0px;">
+                                <input class="sy_shuruk_yzm" id="picyzm"name="zcdl" maxlength="4" type="text" placeholder="请输入图形验证码"/>
+                             </div>
+                                <!--<a style=" display:inline; margin-left:10px !important; border:none !important;display: inline; width:133px; height:64px; float:left;" href="javascript:;" onclick="huoqu();"><img style="width:130px;border:none !important;" id="sendd" src=""/></a>-->
+                         <a href="javascript:void(change_code());"  style="display:block; text-align:center; float:left; ">        
+                         		<img style="width:130px !important; height:62px; margin-left:10px; " src="{:U('Uinfo/verify')}" id="codes" alt="点击刷新"  /> </a>
+                         	
+                             
+                   </li>
+                		<input type="button" class="ps_begin" style="margin-left:40px !important; width:309px !important;" value="确定" onclick="checkcode();"  />
+                </div>
+              <div class="us_right_nav" style="width:100% !important;">
+                   <div class="us_list_content" style=" margin:3% 0%; !important;">
+                        
+                        <div style=" width:100%; overflow:hidden;">
+                            <div class="ps_left">请输入手机号</div>
+                            <input name="srk" type="text" class="ps_name" id="index_user" value="" placeholder="请输入已绑定手机号" maxlength="11" />
+							<div id='username' style=" float: left;width: 20%;font-size: 12px;color: #FF0000;text-align: left;padding: 20px 0px; margin-top:10px;">
+							</div>
+                        </div>
+                        <div style=" width:100%; overflow:hidden;">
+                            <div class="ps_left">验证码</div>
+                            
+                            <input name="srk" type="text" class="ps_name" id='yzm' style=" width:30% !important;border-radius:4px 0px 0px 4px;" value="" maxlength="4" placeholder="请输入验证码"/>
+                            <a href="javascript:;" onclick="huoqu()">
+                             <div class="ps_yzm p_send" id="send"  style="width:initial;border-radius:0px 4px 4px 0px; ">获取验证码</div>
+                        </div>
+                        	</a>
+
+                   </div>
+                    <input type="button" class="ps_begin" value="下一步" onclick="subb();"  />
+                       
+             
+              </div>
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/uinfo/phone.js" type="text/javascript"></script>
+<script type="text/javascript">
+function subb()
+{
+	var code = document.getElementById("yzm").value;
+	var t=window.yanzhengma;
+	if(!t)
+	{
+		document.getElementById("username").innerHTML = "请发送验证码！！";
+		var t=setTimeout("clearusername()",2000);	
+		return;
+	}
+	if(!code)
+	{
+		document.getElementById("username").innerHTML = "请填写短息验证码";	
+		var t=setTimeout("clearusername()",2000);
+		return;	
+	}
+	var ur="{:U('Uinfo/check_yzm')}";
+		 $.ajax({
+            url:ur,
+            async:false, 
+			type:'post',
+			data:{"rank":code},            
+            success:function(data) {
+           		if(data==1)
+				{
+					 window.location.href="{:U('Uinfo/password')}"; 
+				}
+				else
+				{
+					document.getElementById("username").innerHTML = "短信验证码错误";	
+					var t=setTimeout("clearusername()",2000);
+					return;
+				}
+					
+             }
+		 }); 		 
+}
+	
+function checkName(name){
+
+	document.getElementById("username").innerHTML = "";	
+	var ur="{:U('Uinfo/checkphone')}";
+	var obj = {};
+		obj.key = "value";
+		$.post(ur+"?name="+name, obj,
+			function(data,status)
+				{
+					if(data==0)
+					{
+						document.getElementById("username").innerHTML = "输入手机号错误！！";
+						
+						return;
+					}
+					else
+					{
+						check_g_phone();	
+					}
+				}
+			   );
+}
+function check_g_phone()
+{
+	var ur="{:U('Uinfo/check_uinfo')}";
+	var name='phone';
+	$.post(ur, {'name': name,},
+		function(data,status)
+			{
+				if(data==0)
+				{
+					document.getElementById("show_code").style.display="block";	
+					change_code();
+				}
+				else
+				{
+					sends();	
+				}
+			}
+		   );		   
+}
+function checkcode()
+{
+	var a=document.getElementById("picyzm").value;	
+	if(!a)
+	{
+		document.getElementById("imagecode").innerHTML = "验证码不能为空！！";
+		var t=setTimeout("document.getElementById('imagecode').innerHTML='';",2000);
+		return;			
+	}
+	var b='g_phone';	
+	var ur="{:U('Uinfo/checkcode')}";
+
+			 var obj = {};
+				obj.key = "value";
+				$.post(ur+"?pw="+a+"&name="+b, obj,
+					function(data,status)
+					{
+						if(data==0)
+						{
+							document.getElementById("imagecode").innerHTML = "验证码错误！！";
+							var t=setTimeout("document.getElementById('imagecode').innerHTML='';",2000);	
+							return;
+						}
+						else
+						{
+							document.getElementById("imagecode").innerHTML = "验证码正确";
+							var t=setTimeout("none_code();sends();",2000);
+							return;
+						}
+					}
+					);
+}
+function none_code()
+{
+	document.getElementById("show_code").style.display="none";	
+}
+function change_code(){
+	//	alert(125485);
+	var verifyURL = '{:U("Uinfo/verify", '','')}';
+	$("#codes").attr("src",verifyURL+'/'+Math.random());
+	log_url1('image_identifying_code','user_courseList');
+	return false;
+}
+function yzm(name)
+{	
+
+		var ur="{:U('Uinfo/yzm')}";
+		var dd;
+		 $.ajax({
+            url:ur,
+            async:false, 
+			type:'post',
+			data:{"name":name},            
+            success:function(data) {
+           		dd=data;
+					
+             }
+		 });     
+           return dd;
+
+}
+
+function check_yzm()
+{	
+		var yzm = document.getElementById("yzm").value;
+		var ur="{:U('Index/check_yzm')}";
+		var obj = {};
+		obj.key = "value";
+		$.post(ur+"?rank="+yzm, obj,
+			function(data,status)
+				{
+					if(data==1)
+					{
+						subtel();
+					}
+					else
+					{
+						document.getElementById("username").innerHTML = "验证码错误！！";
+						var t=setTimeout("clearusername()",2000);
+					}	
+				}
+			   );
+
+}
+function jump()
+{
+	var name = document.getElementById("index_user").value;
+    
+	 window.location.reload();
+		
+}
+	
+</script>
+

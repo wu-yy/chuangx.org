@@ -1,0 +1,284 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>中国创业学院</title>
+<link rel="stylesheet" href="__PUBLIC__/css/phone_course_style.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/phone_style.css" />
+<script type="text/javascript" src="__PUBLIC__/js/koala.min.1.5.js"></script>
+
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+
+<script src="__PUBLIC__/js/index/index.js"></script>
+<script src="__PUBLIC__/js/index/zhuce1.js"></script>
+<style type="text/css">
+
+/*.hui_top{ position:absolute; bottom:300px; right:30px;}*/
+</style>
+<style>
+a{   cursor:pointer; margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+.sy_cyds ul li p{ position:relative !important; top:-5px !important; font-weight:800; left:0px;background:none !important; color:#333 !important;}
+.p1{ color:#666 !important; font-weight:normal !important; font-size:9px !important;}
+
+元素 {
+}
+.focus .D1fBt .current, .focus .D1fBt a:hover {
+    background: #999 none repeat scroll 0% 0%;
+}
+
+.focus .D1fBt a {
+    position: relative;
+    display: inline;
+    width: 12px;
+    height: 12px;
+    border-radius: 7px;
+    margin: 0px 5px;
+    color: #B0B0B0;
+    font: 12px/15px "宋体";
+    text-decoration: none;
+    text-align: center;
+    outline: 0px none;
+    float: left;
+    background: #D9D9D9 none repeat scroll 0% 0%;
+	display:none;
+}
+
+.sy_ganhuo ul li p {
+    font-size: 15px !important;
+    width: 270px !important;
+    float: left;
+	line-height:24px;
+    height:auto !important;
+    overflow:visible !important;
+    padding-top:0px !important;
+    color: #fff;
+	word-break:break-all;
+	display: inline;
+}
+.sy_ganhuo ul li {
+    width: 270px;
+	height:auto !important;
+	overflow:hidden;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+.sy_cyds ul li {
+    width: 100%;
+    height: 134px !important;
+    width: 85px;
+    margin: 4px;
+    float: left;
+}
+.ganhuop{
+	width: 600px;
+	padding: 24px 0px;
+	font-size: 26px;
+	color: #3c373f;
+	border-bottom: 1px solid #dcdcdc;
+	}
+.in_cent img{ margin-left:5px; width:25px;}
+<if condition="$is_phone eq 'ios'">
+.i_title{ height:78px !important;
+}
+</if>
+<if condition="$is_phone eq null">
+.i_title{ height:78px !important;
+}
+</if>
+</style>
+</head>
+
+<body>
+<div class="warpper" style="background:#fff; position:relative;"> 
+ <include file="Public:phone_head_xin" />	
+   <div class="i_bj">
+           <div id="fsD1" class="focus">
+    
+            <div id="D1pic1" class="fPic">
+                <noempty name="balist">
+                <foreach name="balist" item="vo">
+                    <div class="fcon">
+                        <a href="{$vo.url}" onClick="log_url(event,'{$vo.url}','main_banner')"><img src="__ROOT__/Uploads/{$vo.picurl}" /></a>
+                        <!--<span class="shadow"><a href="{$vo.url}">{$vo.title}</a></span>-->
+                    </div>
+                    
+                    </foreach>
+                 </noempty>
+            </div>
+            
+            <div class="fbg">
+                <div class="D1fBt" id="D1fBt">
+                    <noempty name="balist">
+                    <foreach name="balist" item="vo">
+                    <a href="javascript:void(0)" <if condition="$key eq 0"> class="current" </if> ><i>{$key+1}</i></a>
+                    
+                    </foreach>
+                     </noempty>	
+                    <!--<a href="javascript:void(0)"><i>2</i></a>
+                    <a href="javascript:void(0)"><i>3</i></a>
+                    <a href="javascript:void(0)"><i>4</i></a>-->
+                </div>
+            </div>
+            <span class="prev"></span>
+            <span class="next"></span>
+        </div>
+   </div>
+   <!--精彩课程-->
+   <div class="i_list1">
+        <div class="in_lian"> <p>精彩课程</p> <a href="{:U('Course/index')}">更多</a></div>
+       <ul>
+           <volist name="list_nice_course" id="vo">
+           	  <a href="{:U('Course/course_details',array('cid'=>$vo['id']))}">	
+                <li>
+                        <div class="i_left1"><img src="__ROOT__/{$vo.image}"/></div>
+                        <p class="h_tips">{$vo.title}</p>
+                </li>
+              </a> 
+           </volist>  
+        </ul>
+        
+    </div>
+    <!--精彩课程end-->
+    
+     <!--创业干货-->
+     <div class="in_gh">
+         <h2>创业干货</h2>
+         <div id="homepage_chuangyeganhuo" style=" width:600px; height:247px; overflow:hidden;">
+             <foreach name="drysaltery" item="vo">
+                <a href="{$vo.url}">	
+                    <p>{$vo.title}</p>
+                </a> 
+             </foreach>
+         </div>
+         <div class="in_cent" onclick="zhankai('homepage_chuangyeganhuo','247px')"><span id="homepage_chuangyeganhuo_zi">展开全部</span><img src="__PUBLIC__/image/k_xia.png" id="homepage_chuangyeganhuo_img"/></div>
+     </div>
+     <!--创业干货end-->
+     
+     <!--最新活动-->
+     <if condition="$null_huodong eq null ">
+      <div class="i_list2">
+        <div class="in_lian"> <p>最新活动</p> </div>
+       <ul>
+       	   <volist name="huodong" id="vo">	
+               <li>
+               		<a href="{$vo.url}">
+                    	<div class="i_left1"><img src="__ROOT__/{$vo.img}"/></div>
+                    </a>
+               </li>
+           </volist>
+
+        </ul>
+        
+      </div>
+     </if> 
+     <!--最新活动end-->
+     
+     <!--创业导师-->
+     <div class="i_list4">
+        <div class="in_lian" > <p>创业导师</p> <a href="{:U('Teacher/alltutor_list')}">更多</a></div>
+       <ul id="homepage_teacher" style=" width:600px; height:261px; overflow:hidden;">
+       	   
+               <foreach name="teacherlist" item="tvo">	
+               <a href="{:U('Teacher/alltutor',array('tid'=>$tvo['id']))}" style="color:#333;">
+               <li>
+                    <div class="i_left4"><img src="__ROOT__{$tvo.image}" /></div>
+                    <p class="h_tips4">{$tvo.name}</p>
+                    <span>{$tvo.job}</span>
+               </li>
+               </a>
+               </foreach>
+        </ul>
+        <!--<div class="in_cent" onclick="zhankai('homepage_teacher','247px')"><span id="homepage_teacher_zi">展开全部</span><img src="__PUBLIC__/image/k_xia.png" id="homepage_teacher_img"/></div>-->
+        
+    </div>
+     <!--创业导师end-->
+     
+     <!--最新资讯-->
+   <div class="i_list">
+   <div class="in_lian"> <p>最新资讯</p> <a href="{:U('Information/index')}">更多</a></div>
+       <ul>
+       	   <volist name="information_new_nu" id="vo"> 	
+           		<a href="{:U('Information/information_details',array('id'=>$vo['id']))}">
+               <li>
+                   <div class="i_left"><img src="__ROOT__/{$vo.img}"/></div>
+                   <div class="i_right">
+                         <div class="i_title">{$vo.title}</div>
+                         <div class="i_x"><p>{$vo.time_ad}</p><img src="__PUBLIC__/image/i_tx.png"/><span>{$vo.nu_add}</span></div>
+                   </div>
+               </li>
+               </a>
+           </volist>
+           
+       </ul>
+   </div>
+     <!--最新资讯end-->
+   <div class="in_foot">
+       <p>北京创一教育科技有限公司版权所有 </p>
+       <p>京ICP备15066256号</p>
+       <p>京公网安备11010802020180号</p>
+   </div>
+<!--   <a href="" class="hui_top"><img src="__PUBLIC__/image/hui_top.png"/></a>
+--></div>
+</body>
+</html>
+<script type="text/javascript">
+Qfast.add('widgets', { path: "__PUBLIC__/js/terminator2.2.min.js", type: "js", requires: ['fx'] });  
+Qfast(false, 'widgets', function () {
+	K.tabs({
+		id: 'fsD1',   //焦点图包裹id  
+		conId: "D1pic1",  //** 大图域包裹id  
+		tabId:"D1fBt",  
+		tabTn:"a",
+		conCn: '.fcon', //** 大图域配置class       
+		auto: 1,   //自动播放 1或0
+		effect: 'fade',   //效果配置
+		eType: 'click', //** 鼠标事件
+		pageBt:true,//是否有按钮切换页码
+		bns: ['.prev', '.next'],//** 前后按钮配置class                          
+		interval: 6000  //** 停顿时间  
+	}) 
+})  
+function zhankai(name,height)
+{
+	var h=document.getElementById(name).style.height;
+	if(h!='auto')
+	{
+		document.getElementById(name+'_zi').innerHTML='收起';
+		document.getElementById(name+'_img').src='__PUBLIC__/image/k_shang.png';
+		document.getElementById(name).style.height='auto';	
+	}
+	else
+	{
+		document.getElementById(name+'_zi').innerHTML='展开全部';
+		document.getElementById(name+'_img').src='__PUBLIC__/image/k_xia.png';
+		document.getElementById(name).style.height=height;				
+	}
+	//alert(name);
+	//alert(height);
+}
+</script>
+	  <script src="__PUBLIC__/js/jquery.dotdotdot.min.js" type="text/javascript"></script>
+  
+      <script>
+			$(function() {
+				$('.i_title').dotdotdot();
+			});
+	  </script>	

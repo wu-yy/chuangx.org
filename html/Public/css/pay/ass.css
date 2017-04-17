@@ -1,0 +1,12 @@
+.associatorContent{width: 622px;height: 676px;background: white;}
+	.assConTit{height: 39px;line-height: 30px;font-size: 18px;border-bottom: 1px solid #c4c3c3;}
+	.assConDetail{padding: 37px 0 0 43px;}
+	.assHeadBox{width: 64px;height: 64px;position: relative;float: left;}
+	.assHead{width: 64px;height: 64px;border-radius: 50%;}
+	.assHeadSpan{position: absolute;top:-4px;right: -7px;}
+	.assConWork{height: 64px;float: left;margin-left: 30px;}
+	.assConWork .p1{font-size: 17px;line-height: 42px;}
+	.moreAss{display: block;width: 130px;height: 38px;line-height: 38px;border-radius: 3px;color: white;background: #ff4918;text-align: center;font-size: 16px;margin-top: 18px;}
+	.inviolable{margin-top: 50px;}
+	.inviolable p{line-height: 30px;color: #333;}
+	.inviolable .invTit{font-size: 16px;color: #edd08a;margin-bottom: 7px;}

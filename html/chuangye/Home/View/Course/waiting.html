@@ -1,0 +1,82 @@
+<!doctype html>
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<title></title>
+<style type="text/css">
+*{ margin:0; padding:0; background:#fff;}
+p{ margin:10px !important;}
+    @media screen and (min-width:650px){
+        .wrap{ margin:0 auto; text-align:center; color:#888; padding-top:140px; width:100%; height:450px; }
+        .poic img{ width:140px;}
+        .wait{ font-size:14px; }
+		.wai1t{ font-size:12px; color:#66F; display:none !important; }
+        .wait span{ color:#F00;}
+		.backnext{ width:220px; height:70px; border:1px solid #ddd; color:#999; display:none !important; border-radius:6px;  font-size:26px; line-height:70px; text-align:center; margin:0 auto;margin-top:20px;}
+    }
+	 @media screen and (max-width:650px){
+        .wrap{ margin:0 auto; text-align:center; color:#888; padding-top:180px; width:100%; height:450px;}
+        .poic img{ width:200px;}
+        .wait{ font-size:26px; }
+		.wai1t{ font-size:22px; color:#66F;display:block !important; }
+        .wait span{ color:#F00;}
+		.backnext{ width:220px; height:70px; border:1px solid #ddd; color:#999; display:block !important; border-radius:6px;  font-size:26px; line-height:70px; text-align:center; margin:0 auto;margin-top:20px;}
+    }
+
+</style>
+</head>
+
+<body>
+<if condition="$is_phone eq 1 ">
+<include file="Public:phone_head_xin" />
+</if>
+<div class="wrap">
+
+<div class="poic"><img src="__PUBLIC__/image/WAITING.png"/></div>
+<p class="wait">敬请期待</p>
+<p class="wait">开课时间：{$t|default=time()|date='Y年m月d日 H:m',###}</span></p>
+
+<p class="wai1t" id='fanhui'>5s自动返回</p>
+<a  class="backnext" href="__URL__/void/cid/{$id}">返回上一页</a>
+
+</div>
+    
+</body>
+</html>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<if condition="$is_phone eq 1 ">
+<script>
+ var url='__URL__/void/cid/{$id}';
+ var nu=6;
+ var str='s后自动返回';	 
+ jump_re();	
+ 
+ var timer = setInterval("jump_re()",1000);
+ 
+//window.top.location='__URL__/voidplay_phone/cc_code/'+window.phone_code;
+
+	function jump_re()
+	{
+		if(window.nu>0)
+		{
+			window.nu--;
+			document.getElementById('fanhui').innerHTML=window.nu+window.str;
+			return;
+		}
+		else
+		{
+			window.top.location=window.url;
+			
+			clearInterval(window.timer);
+			
+			return;
+		}
+	}
+</script>
+</if>
+    <![endif]

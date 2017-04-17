@@ -1,0 +1,132 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<link rel="stylesheet" href="__PUBLIC__/css/phone_course_style.css" />
+<style>
+.btn{ width:100%; height:auto; overflow:hidden;}
+.pre{ width:320px; margin:20px 20px; width:215px; padding:20px; float:left; text-align:center; font-size:24px; color:#88a4ff; border:2px solid #88a4ff;}
+.next{ width:320px; margin:20px 20px; width:215px; padding:20px; float:left;text-align:center; font-size:24px;color:#88a4ff; border:2px solid #88a4ff;}
+.i_content{ width:600px; padding:20px;}
+.i_btop img{ max-width:600px !important; margin:10px 0px !important; text-align:center; width:auto !important;}
+</style>
+</head>
+
+<body style="background:#fff;">
+<volist name="getinfor" id="vo">
+<div class="warpper" style="background:#fff !important; position:relative; width:640px !important;"> 
+	<include file="Public:phone_head_xin" />	
+    <div class="i_content">
+   <h1 class="i_top">{$vo.title}</h1>
+   <P class="i_time">资讯&nbsp;&nbsp;|&nbsp;&nbsp;<span> {$vo.time|date='Y-m-d H:m:i',###}</span></P>
+   <div class="i_btop">{$vo.body}</div>
+   <if condition="$vo['type'] eq 0 ">
+   <div class="btn">
+   	  <if condition="$upid eq NULL ">
+      <div class="pre" style="color: #6c707e;border: 2px solid #6c707e;"><&nbsp;&nbsp;没有了</div>
+      </if>
+      <if condition="$upid neq NULL ">	 
+      <a class="pre" href="{:U('Information/information_details/',array('id'=>$upid))}"><&nbsp;&nbsp;上一篇</a>
+      </if>
+      <if condition="$downid eq NULL ">
+      <div class="pre" style="color: #6c707e;border: 2px solid #6c707e;">&nbsp;&nbsp;没有了></div>
+      </if>
+      <if condition="$downid neq NULL ">
+      <a class="next" href="{:U('Information/information_details/',array('id'=>$downid))}">下一篇&nbsp;&nbsp;></a>
+      </if>
+   </div>
+   </if>	
+   </div>
+</div>	
+</volist>  
+</body>
+</html>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+		wx.config({    
+		debug: false,    
+		appId: '{$appid_fenxiang}',    
+		timestamp: '{$timestamp_fenxiang}',    
+		nonceStr: '{$nonceStr_fenxiang}',    
+		signature: '{$signature_fenxiang}',    
+		jsApiList: [    
+		'checkJsApi',    
+		'onMenuShareTimeline',    
+		'onMenuShareAppMessage',    
+		'onMenuShareQQ',    
+		'onMenuShareWeibo',      
+		]    
+		});
+		
+		wx.ready(function(){
+		
+		wx.onMenuShareTimeline({
+		title: '{$title_fenxiang}', // 分享标题
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		wx.onMenuShareAppMessage({
+		title: '{$title_fenxiang}', // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		type: '', // 分享类型,music、video或link，不填默认为link
+		dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		//alert("谢谢分享");
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});  
+		
+		wx.onMenuShareQQ({
+		title: '{$title_fenxiang}', // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		
+		
+		wx.onMenuShareWeibo({
+		title: '{$title_fenxiang}', // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		
+		})
+</script>

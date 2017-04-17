@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style1.css"/>
+<link href="__PUBLIC__/css/focus1.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common1.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/kecheng.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/cs_begin.css"/>
+</head>
+
+<body>
+
+					<div class="cs_b_top" id="player">
+                        
+                    </div>
+					
+                    <div class="cs_b_bottom">
+                        <a class="a1" href="javascript:;" onclick="jian();"></a>
+                        <ul>
+							<volist name="xiaojie" id="vo">
+								<a href="javascript:;" onclick="abc('{$vo.image}','{$vo.void}');" id="{$vo.id}" style="display:none;"><li><img src="__ROOT__/{$vo.image}"  style="margin-top:0px;width:100%; height:100%;"/></li></a>
+							</volist>
+                        </ul>
+                        <a class="a2" href="javascript:;" onclick="add();"></a>
+    				</div>
+					
+                    <script type="text/javascript" src="__ROOT__/jwplayer/jwplayer.js"></script>
+					<script type="text/javascript">
+            			var a="{$void}";
+						var b="{$image}";
+                      thePlayer = jwplayer("player").setup({
+                            skin: "__ROOT__/jwplayer/glow.zip", //填写皮肤swf文件的直链地址
+                            stretching: "fill", //锁定高宽比填满屏幕
+                            flashplayer: "__ROOT__/jwplayer/player.swf", //调用播放器
+                            image: "__ROOT__/"+b, //视频预览图片
+                            width: 847, //播放器宽
+                            height: 443,
+                            levels: [{file: a}] ////调用视频文件
+                        });
+						 
+                    </script>
+					
+</body>
+</html>
+
+        <script type="text/javascript">
+//        var thePlayer;  //保存当前播放器以便操作  
+//        $(function() {  
+//            thePlayer = jwplayer('container').setup({  
+//                flashplayer: 'js/plugins/mediaplayer-5.7/player.swf',  
+//                file: 'js/plugins/mediaplayer-5.7/video.mp4',  
+//                width: 500,  
+//                height: 350,  
+//                dock: false  
+//            });  
+//              
+//            //播放 暂停  
+//            $('.player-play').click(function() {  
+//                if (thePlayer.getState() != 'PLAYING') {  
+//                    thePlayer.play(true);  
+//                    this.value = '暂停';  
+//                } else {  
+//                    thePlayer.play(false);  
+//                    this.value = '播放';  
+//                }  
+//            });  
+//              
+//            //停止  
+//            $('.player-stop').click(function() { thePlayer.stop(); });  
+//              
+//            //获取状态  
+//            $('.player-status').click(function() {  
+//                var state = thePlayer.getState();  
+//                var msg;  
+//                switch (state) {  
+//                    case 'BUFFERING':  
+//                        msg = '加载中';  
+//                        break;  
+//                    case 'PLAYING':  
+//                        msg = '正在播放';  
+//                        break;  
+//                    case 'PAUSED':  
+//                        msg = '暂停';  
+//                        break;  
+//                    case 'IDLE':  
+//                        msg = '停止';  
+//                        break;  
+//                }  
+//                alert(msg);  
+//            });  
+//              
+//            //获取播放进度  
+//            $('.player-current').click(function() { alert(thePlayer.getPosition()); });  
+//      
+//            //跳转到指定位置播放  
+//            $('.player-goto').click(function() {  
+//                if (thePlayer.getState() != 'PLAYING') {    //若当前未播放，先启动播放器  
+//                    thePlayer.play();  
+//                }  
+//                thePlayer.seek(30); //从指定位置开始播放(单位：秒)  
+//            });  
+//              
+//            //获取视频长度  
+//            var b=$('.player-length').click(function() { alert(thePlayer.getDuration()); }); 
+//			alert(b); 
+//        });  
+        </script> 
+        <script type="text/javascript">
+		
+		var aaa=0;
+		
+		var   tmp=0;
+		
+		function abc(a,b)
+		{
+			
+			jwplayer("player").setup({
+                skin: "__ROOT__/jwplayer/glow.zip", //填写皮肤swf文件的直链地址
+                stretching: "fill", //锁定高宽比填满屏幕
+                flashplayer: "__ROOT__/jwplayer/player.swf", //调用播放器
+                image: "__ROOT__/"+a, //视频预览图片
+                width: 847, //播放器宽
+                height: 443,
+                levels: [{file: b}] ////调用视频文件
+            });
+
+		}
+		
+		aadd();
+		
+		function add()
+		{
+			
+			if(aaa<tmp-3)
+			{
+			
+			window.aaa=aaa+3;
+			
+			aadd();
+			}
+		}
+		function jian()
+		{
+			
+			if(aaa>0)
+			{
+			
+			window.aaa=aaa-3;
+			
+			aadd();
+			}
+		}
+
+		function aadd()
+		{
+			
+	    	var   arrayOfDocFonts;        
+		  if   (document.all   ||   document.getElementById)   {            
+		  arrayOfDocFonts   =   document.getElementsByTagName("a");        
+		  }    
+
+		  var nu=new Array();
+		  if(tmp==0)
+		  {
+		  for(var   i=0;i   <   arrayOfDocFonts.length;i++)    
+		  {    
+		  if(arrayOfDocFonts[i].id!="")    
+		  	{	
+				nu[tmp]=+arrayOfDocFonts[i].id;    
+				window.tmp=tmp+1;    
+			}
+		  } 
+		  window.nu=nu;
+		  }
+		shuaxin();
+		}
+		function shuaxin()
+		{
+		
+		 for(var   i=0;i   <  nu.length ;i++) 
+		  {
+				document.getElementById(nu[i]).style.display='none'; 
+		  }
+		  for(var   i=aaa;i   <   aaa+3;i++) 
+		  {
+				document.getElementById(nu[i]).style.display='block'; 
+				
+		  }	
+			
+		}
+		</script>
+ 

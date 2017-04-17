@@ -1,0 +1,470 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style1.css"/>
+<link href="__PUBLIC__/css/focus1.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common1.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/kecheng.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20160125.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/cs_begin.css"/>
+<style type="text/css">
+html{ background:#fff;}
+.loading{position:absolute;width:780px; height:450px; background:#000; top:73px; left:1px;z-index: 999; border:0px !important;}
+.l_mask{ width:780px; height:450px; position:absolute; z-index:99999;color:#7a7a7a;}
+.l_mask img{margin:0 auto; margin-top:80px; width:200px;}
+/*txt*/
+.b_jie{ background:#fff !important;}
+.text {width: 737px; word-wrap:break-word; word-break:normal;height:auto;background-color: #fff; padding:20px;margin-bottom: 30px;margin: 15px;border: 1px solid #d4d4d4; }
+.text img{max-width:700px; }
+.cs_b_top_0126 { margin-bottom:30px;}
+
+.nav_box{float:left; width:650px; height:56px; position:relative; background:#f1f1f1 !important;}
+.nav_box ol{ position:absolute; top:0px; left:0px; box-sizing:border-box; display:table;height:56px; width:100%;
+ margin:0 auto;}
+.nav_box ol li{ display:table-cell; min-width:20px;}
+.nav_box ol li a{ width:100%; height:56px; text-align:center; background-position:center; background-repeat:no-repeat;
+display:block; position:relative; cursor:pointer;}
+.nav_box ol li a img{ text-align:center; margin:0 auto; margin-top:16px; width:22px; height:20px;}
+
+</style>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+</head>
+
+<body>
+       <div class="b_jie">
+           <a class="a1" href="javascript:;" onclick="jian();"><div class="bleft"><img style=" margin-top:20px;" src="__PUBLIC__/image/bleft.png"/></div></a>
+              <div class="nav_box">
+                  <ol>
+                <volist name="xiaojie" id="vo">
+            	<if condition="$vo.type eq 0 "> 
+                       <li>
+                           <a class="list_act" id="a{$vo.id}" href="javascript:;" onclick="abc('{$vo.cc_code}','{$vo.id}','{$vo.srt}');" id="{$vo.id}" ><img src="__PUBLIC__/image/ac_mv.png"/></a>
+                       </li>
+                 </if>
+                <if condition="$vo.type eq 1 "> 
+                       <li>
+                           <a class="list_act" id="a{$vo.id}" href="javascript:;" onclick="txt('{$vo.id}');" id="{$vo.id}" ><img src="__PUBLIC__/image/text.png"/></a>
+                       </li>
+              </if>                
+			   </volist>
+                  </ol>
+              </div>
+    
+
+           <a class="a2" href="javascript:;" onclick="add();"><div class="bright" style="float:left;"><img style=" margin-top:20px;" src="__PUBLIC__/image/bright.png"/></div></a>
+       </div>
+       <if condition="$type eq 1">
+       <div class="cs_b_top_0126 loading" id="loading" >    
+           <div class="l_mask" id="loading1">
+               <img src="__PUBLIC__/image/jiazai.gif" /> 
+               <p>loading...</p> 
+           </div>      
+            <div id="loading2" style="display:none; width:100%; height:100%;" onclick="phone();">
+           		<img src="__PUBLIC__/image/chuang.jpg" /> 
+        </div>   
+       </div>
+       
+		<div class="cs_b_top_0126" id="player" >             
+       </div>
+       </if>
+       <if condition="$type neq 1">
+       <div class="cs_b_top_0126 loading" id="loading" style="display:none;">    
+           <div class="l_mask" id="loading1">
+               <img src="__PUBLIC__/image/jiazai.gif" /> 
+               <p>loading...</p> 
+           </div>      
+            <div id="loading2" style="display:none; width:100%; height:100%;" onclick="phone();">
+           		<img src="__PUBLIC__/image/chuang.jpg" /> 
+        </div>   
+       </div>
+       
+		<div class="cs_b_top_0126" id="player" style="display:none;" >             
+       </div>
+       </if>
+       
+       <!--文本-->
+        <div class="text" id="text" style="display:none;">
+		
+        </div>
+		<div style="height:50px; width:100%">
+        
+        </div>
+		
+	</body>
+</html>				
+                   
+                   
+                   
+                   
+                   
+                   
+
+     <script type="text/javascript" src="__PUBLIC__/js/swfobject.js"></script>         
+<script type="text/javascript">
+function IsPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+	function on_cc_player_init(vid, objectId ){
+		var config = {};
+		config.rightmenu_enable = 0;
+		
+	config.on_player_seek = "custom_seek";
+	config.on_player_fullscreen = "custom_fullscreen";
+/*	config.on_player_ready = "custom_player_ready";
+	config.on_player_start = "custom_player_start";
+	config.on_player_pause = "custom_player_pause";
+	config.on_player_resume = "custom_player_resume";
+	config.on_player_stop = "custom_player_stop";*/
+		
+		config.player_plugins = {
+			Subtitle : {
+				url : window.url, 
+				size : 20, 
+				color : 0xFFFFFF,
+				surroundColor : 0x3c3c3c,
+				bottom : 0.05, 
+				autoScale: false,
+				font : "微软雅黑", 
+				code : "utf-8",
+				//bgColor :0x000000,
+				//bgAplha :0.5, 
+				//allowFullScreen: true
+			}
+		};
+		var player = getSWF(objectId);
+		player.setConfig(config);
+		window.url='';
+	}
+	function getSWF(objectId) { 
+	if (window.document[ objectId ]) {
+	    return window.document[ objectId ];
+	} else if (navigator.appName.indexOf("Microsoft") == -1) {
+	    if (document.embeds && document.embeds[ objectId ]) {
+	    	return document.embeds[ objectId ];
+	    }
+	} else {
+		return document.getElementById( objectId );
+	}
+}
+
+	//	功能：创建播放器flash，需传递所需参数，具体参数请参考api文档
+
+/*	var swfobj=new SWFObject('http://union.bokecc.com/flash/player.swf', 'playerswf', '780', '450', '8');
+	swfobj.addVariable( "videoid" , a);	//	spark_videoid,视频所拥有的 api id
+	swfobj.addVariable( "mode" , "api");	//	mode, 注意：必须填写，否则无法播放
+	swfobj.addVariable( "autostart" , "false");	//	开始自动播放，true/false
+	swfobj.addVariable( "jscontrol" , "true");	//	开启js控制播放器，true/false
+	swfobj.addParam('allowFullscreen','true');
+	swfobj.addParam('allowScriptAccess','always');
+	swfobj.addParam('wmode','transparent');
+	swfobj.write('player');*/
+
+//	-------------------
+//	调用者：flash
+//	功能：播放器加载完毕时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+	function on_spark_player_ready() {
+		
+		var div1=document.getElementById("loading");	
+		
+		div1.style.display="none";
+	}
+	
+//	-------------------
+//	调用者：flash
+//	功能：播放器开始播放时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+	function on_spark_player_start() {
+		var id=window.xxx;
+		log_x('player_id='+id+'   act:player_start','courseBrowser_player');
+	
+	}
+	
+//	-------------------
+//	调用者：flash
+//	功能：播放器暂停时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+	function on_spark_player_pause() {
+		var id=window.xxx;
+		log_x('player_id='+id+'   act:player_pause','courseBrowser_player');
+	}
+	function custom_seek(from,to){
+		var id=window.xxx;
+		log_x('player_id='+id+'   act:player_seek from:'+from+'to:'+to,'courseBrowser_player');
+	}
+	function custom_fullscreen(flag)
+	{
+		if(flag==1)
+		{
+			var id=window.xxx;
+			log_x('player_id='+id+'   act:player_fullscreen action:open','courseBrowser_player');	
+		}
+		else
+		{
+			var id=window.xxx;
+			log_x('player_id='+id+'   act:player_fullscreen action:close','courseBrowser_player');		
+		}
+	}
+//	-------------------
+//	调用者：flash
+//	功能：播放器暂停后，继续播放时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+	function on_spark_player_resume() {
+		var id=window.xxx;
+		log_x('player_id'+id+'   act:player_resume','courseBrowser_player');
+	}
+	
+//	-------------------
+//	调用者：flash
+//	功能：播放器播放停止时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+	function on_spark_player_stop() {
+		var id=window.xxx;
+		log_x('player_id='+id+'   act:player_stop','courseBrowser_player');
+	}
+
+	function player_play() { //	调用播放器开始播放函数
+		document.getElementById("playerswf").spark_player_start();
+	}
+	function player_pause() { //	调用播放器暂停函数
+		document.getElementById("playerswf").spark_player_pause();
+	}
+	function player_resume() { //	调用播放器恢复播放函数
+		document.getElementById("playerswf").spark_player_resume();
+	}
+
+</script>   
+
+					
+  
+        <script type="text/javascript"> 
+		
+		var onclikxid;
+		
+		var aaa=0;
+		
+		var void_id;
+		
+		var   tmp=0;
+		
+		var xxx;
+		
+		var phone_code;
+		
+		function abc(b,id,str)
+		{
+			
+			document.getElementById('loading').style.display='block';
+							
+			document.getElementById('player').style.display='block';
+							
+			document.getElementById('text').style.display='none';
+			
+			window.void_id=id;
+			
+			if(IsPC())	
+			{
+			
+				var swfobj=new SWFObject('http://union.bokecc.com/flash/player.swf', 'playerswf', '780', '450', '8');
+		
+				swfobj.addVariable( "videoid" , b);	//	spark_videoid,视频所拥有的 api id
+				swfobj.addVariable( "mode" , "api");	//	mode, 注意：必须填写，否则无法播放
+				swfobj.addVariable( "autostart" , "false");	//	开始自动播放，true/false
+				swfobj.addVariable( "jscontrol" , "true");	//	开启js控制播放器，true/false
+				
+				swfobj.addParam('allowFullscreen','true');
+				swfobj.addParam('allowScriptAccess','always');
+				swfobj.addParam('wmode','transparent');
+				swfobj.write('player');
+			
+			}
+			else
+			{
+				
+				document.getElementById('loading1').style.display='none';
+				
+				document.getElementById('loading2').style.display='block';
+				
+				window.phone_code=b;
+				
+			}
+			
+			window.url=str;
+			
+			var div1=document.getElementById("loading");	
+		
+			div1.style.display="block";
+			
+			course_look_add(id);
+			
+			log_x('player_id='+id,'courseBrowser_section');
+			
+
+			var dd=window.xxx;
+			
+			document.getElementById('a'+dd).style.background="#f1f1f1";	
+
+			document.getElementById('a'+id).style.background="#fff";
+			
+			window.xxx=id;
+			
+			
+		}
+		function phone()
+		{
+			window.top.location='__URL__/voidplay_phone/cc_code/'+window.phone_code; 		
+		}
+		var a1="{$void}";
+		var url1='{$srt}';
+		var id1="{$xid}";
+		window.xxx="{$xid}";
+		<if condition="$type eq 1">
+		abc(a1,id1,url1);
+		</if>
+		<if condition="$type neq 1">
+		txt(id1);
+		</if>
+
+		log_x('player_id={$xid}','courseBrowser_player');
+		
+		function course_look_add(id)
+		{
+			var ur="{:U('Course/course_look_add')}";
+			var obj = {};
+				obj.key = "value";
+				$.post(ur+"?xid="+id, obj,
+					function(data,status)
+						{
+						}
+					   );
+
+		}
+		aadd();
+		
+		function add()
+		{
+			
+			if(aaa<tmp-3)
+			{
+			
+			window.aaa=aaa+3;
+			
+			aadd();
+			}
+		}
+		function jian()
+		{
+			
+			if(aaa>0)
+			{
+			
+			window.aaa=aaa-3;
+			
+			aadd();
+			}
+		}
+
+		function aadd()
+		{
+			
+	    	var   arrayOfDocFonts;        
+		  if   (document.all   ||   document.getElementById)   {            
+		  arrayOfDocFonts   =   document.getElementsByTagName("a");        
+		  }    
+
+		  var nu=new Array();
+		  if(tmp==0)
+		  {
+		  for(var   i=0;i   <   arrayOfDocFonts.length;i++)    
+		  {    
+		  if(arrayOfDocFonts[i].id!="")    
+		  	{	
+				nu[tmp]=+arrayOfDocFonts[i].id;    
+				window.tmp=tmp+1;    
+			}
+		  } 
+		  window.nu=nu;
+		  }
+		shuaxin();
+		}
+		function shuaxin()
+		{
+		
+		 for(var   i=0;i   <  nu.length ;i++) 
+		  {
+				document.getElementById(nu[i]).style.display='none'; 
+		  }
+		  for(var   i=aaa;i   <   aaa+3;i++) 
+		  {
+				document.getElementById(nu[i]).style.display='block'; 
+				
+		  }	
+			
+		}
+		function log_x(Jump_page,head)
+		{
+			var url=window.location.href;
+			var ur="{:U('Index/log')}";
+				var obj = {};
+				obj.key = "value";
+				$.post(ur, {'head': head,'Jump_page':Jump_page,'url':url},
+					function(data,status)
+						{
+						}
+					   );			   
+		}
+		function txt(id)
+		{
+			
+			var ur="{:U('Course/gettext')}";
+			
+			var dd=window.xxx;
+			
+			$.post(ur, {'id': id},
+					function(data,status)
+						{
+							document.getElementById('loading').style.display='none';
+							
+							document.getElementById('player').style.display='none';
+							
+							document.getElementById('text').style.display='block';
+							
+							document.getElementById('text').innerHTML=data;
+/*							
+							document.getElementById("external-frame").src="www.baidu.com";*/
+							
+						}
+					   );
+			window.xxx=id;		   
+					   
+			document.getElementById('a'+dd).style.background="#f1f1f1";	
+
+			document.getElementById('a'+id).style.background="#fff";	
+			
+					   
+		}
+		
+		</script>

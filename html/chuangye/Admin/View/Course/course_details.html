@@ -1,0 +1,533 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+<title>中国创业学院</title>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<style>
+ .fivestars,.fivestars div{background:transparent url(__PUBLIC__/image/commstar.gif) repeat-x scroll left bottom;width:130px;}
+.fivestars{padding:0; position:relative; line-height:28px;display:inline-block;}
+.fivestars div{background-position:bottom center; text-indent:-9999px;}
+.fivestars div{background-position:left top; width:0px;}
+.kc_xg ul li img {
+    height: 179px !important;
+    width: 280px;
+}
+.kc_xg ul li {
+    height:179px;
+    width: 300px;}
+	.pst{
+		font-size: 16px;
+font-weight: 700;
+color: #000;
+margin-top: 10px;
+		
+		}
+.kc_xg ul li {
+    margin: 0 auto;
+    width: 100%;
+    width: 246px;
+    margin: 20px 0px 40px 0px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dadada;
+	height:auto !important;
+}
+.loading{position:absolute;width:450px; height:270px; background:#000; top:92px; left:20px;z-index: 9; border:0px !important;}
+.l_mask{position:absolute; z-index:99999;color:#7a7a7a; left:130px; top:0px; text-align:center;}
+.l_mask img{margin:0 auto; padding-top:0px !important; width:200px;}
+</style>
+
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/index/sea.js" type="text/javascript" data-main="focus.js"></script>
+<script src="__PUBLIC__/js/index/index.js"></script>
+<script src="__PUBLIC__/js/index/zhuce.js"></script>
+
+<!--just to test html5 video player-->
+ <!--<link href="http://vjs.zencdn.net/5.8.8/video-js.css" rel="stylesheet">
+<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>-->
+<!--by Bright Zhang-->
+
+</head>
+
+<body>
+<div class="wapper" style="background-color:#ececec; min-width:1080px;">
+     <include file="Public:head" />
+     <volist name="course" id="vo">
+     <div class="kc_de_nav">
+        <div class="kc_de_content">
+         <div class="kc_kk"><a href="javascript:;" onClick="log_url(event,'{:U('Index/homepage')}','public_pageNavigation')">首页</a></div>
+         <ul>
+             <li><span>></span><a href="javascript:;" onClick="log_url(event,'{:U('Course/index')}','public_pageNavigation')">课程</a></li>
+             <li><span>></span>{$vo.title}</li>
+         </ul>
+        </div>
+     </div>
+     <div class="sy_st">
+          <div class="kc_top" style="width:1038px !important; position:relative;">
+               <div class="kc_xq_top">{$vo.title}</div>
+               <div class="kc_xq_box">
+               		<if condition="$vo.cc_code eq null ">
+                    
+                    <div class="kc_xq_mv" style=" background-image:url(__ROOT__/{$vo.image});filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale');  -moz-background-size:100% 100%;  background-size:100% 100%; ">
+                    </div>
+                    </if>
+                    <if condition="$vo.cc_code neq null ">
+                    
+                    <div class="kc_xq_mv loading" id="loading">
+                         <div class="l_mask">
+                              <img src="__PUBLIC__/image/jiazai.gif" /> 
+                              <p>loading...</p> 
+                         </div>
+                    </div>
+                    
+                    <div class="kc_xq_mv"  id="player" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale');  -moz-background-size:100% 100%;  background-size:100% 100%; ">
+
+                    </div>
+                    <!--Bright Zhang Add this just for test-->
+                    <!--<div>
+                    	 <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+			  poster="http://vjs.zencdn.net/v/oceans.png" data-setup="{}">
+			    <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+			    <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm'>
+		  </video>
+		  <script src="http://vjs.zencdn.net/5.8.8/video.js"></script>
+                    </div>-->
+                    <!---->
+                    </if>
+                    <div class="kc_xq_wz" onclick="log1('courseInfo_intro')">
+                        <div class="kc_xq_wz_top">
+                            <div style="float:left; margin-right:200px;">
+                              <p class="kc_hong">开课时间：{$vo.start_time|default=time()|date='Y-m-d',###} </p>
+                              
+                              <p>课程安排：<span>{$vo.anpai}</span></p>
+                             
+                              <if condition="$vo.mark_bit eq 1 ">
+                              <a href="javascript:;" id='ke1' onclick="goc(event,{$vo.id},{$vo.cost});" >加入课程</a> 
+                              </if>
+                              <if condition="$vo.mark_bit eq 0 ">
+                              <a href="javascript:;" id='ke1' onclick="goc(event,{$vo.id},{$vo.cost});">加入课程</a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 2 ">
+                              <a href="javascript:;" id='ke1' onclick="goc(event,{$vo.id},{$vo.cost});">关注课程</a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 3 ">
+                              <a href="javascript:;" id='ke1' onclick="goc(event,{$vo.id},{$vo.cost});">关注课程</a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 1 ">
+                              <a href="javascript:;" id='ke' onClick="log_url(event,'{:U('Course/void',array('cid'=>$vo['id'],'kcname'=>$vo['title']))}','public_pageNavigation')" style="display:none;">开始上课</a> 
+                              </if>
+                              <if condition="$vo.mark_bit eq 0 ">
+                              <a href="javascript:;" style="background-color:#dedede; display:none;" id='ke'>敬请期待</a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 3 ">
+                              <a href="javascript:;" style="background-color:#dedede; display:none;" id='ke'>敬请期待</a>
+                              </if>
+                              <if condition="$vo.mark_bit eq 2 ">
+                              <a target="_blank" href="http://{$vo.href}" id='ke' style="background-color:#FC0;display:none;">去上课</a>
+                              </if>
+                              
+                              <if condition="$user_course_add neq null ">
+                              
+                              	<script>
+								
+										var div = document.getElementById("ke1");
+	
+										div.style.display="none";
+										
+										var div1=document.getElementById("ke");
+										
+										div1.style.display="block";
+								
+								</script>
+                              
+                              </if>
+                              
+                            </div>
+                            <!--<div style="float:left;">
+                              <span class="us_subhead-content" style="float:left;"><div class="fivestars" id="fivestars"><div class="autostars" id="autostars">&nbsp;</div></div>&nbsp;<span class="sy_fen" style="font-size:26px;">{$vo.score}</span></span>  
+                            </div>--> 
+                            <!--<div style="float:left;">
+                              <span class="us_subhead-content">关注课程所需积分&nbsp;{$vo.cost}</span>
+                                                 
+                              <span class="us_subhead-content">课程反回积分&nbsp;{$vo.back_credit}</span 
+                            ></div>
+                        </div>-->
+                         <script type="text/javascript">
+
+						function changestars(score)
+						{
+							var w=13; /* one star's width */
+							var totalw=w*score; /* score stars */
+							var aa=document.getElementById("autostars");
+							aa.style.width=totalw+"px";
+						}	
+						
+						changestars({$vo.score});
+						</script>  
+                        <div class="kc_xq_wz_bottom">
+                            <div class="kc_one">
+                                <!--<p>已关注：<span>{$vo.nu_add}</span></p>-->
+                                <p style="width:250px;">课程来源：<span>{$vo.source}</span></p>
+                            </div>
+                            <div class="kc_two">
+                                <p>教师：<span> {$vo.teacher_name}</span></p>
+                            </div>
+                            <div class="kc_tree">
+                                <p>语言：<span>{$vo.language}</span></p>
+                                <p>课程标签：<span style="color:#2c8aff;">{$tagname}  </span></p>
+                            </div>
+                        </div>
+                    </div>
+               </div> 
+           </div>
+           </div>
+           <div class="kc_bottom">
+                <div class="kc_left">
+                    <div class="kc_gaishu" onclick="log1('courseInfo_brief')">
+                        <div class="kc_gai">课程概要</div>
+                        <p>{$vo.summary}</p>
+                    </div>
+                    <div class="kc_dagang" onclick="log1('courseInfo_syllabus')">
+                        <div class="kc_gai">课程大纲</div>
+                        <p>{$vo.outline}
+</p>
+                    </div>
+                </div>
+                </volist> 
+                <div class="kc_right" >
+                     <div class="kc_ganhuo" onclick="log1('courseInfo_tutor')">
+                        <div class="kc_gh_tips">
+                            <p>授课老师</p>
+                           <!-- <span>全部</span>-->
+                        </div>
+                      <ul>
+                        <volist name="teacher" id="vo">
+                        <a href="javascript:;">
+                        <li>
+                            <img src="__ROOT__{$vo.image}" />
+                            <p>{$vo.name}<span>{$vo.job}</span></p>
+                            <p>{$vo.firm}</p>
+                        </li>
+                        </a>
+                        </volist>
+                      </ul>
+                  </div>
+                  <div class="kc_xg" onclick="log1('courseInfo_recommendation')">
+                       <div class="kc_xg_tips">
+                          <p>相关课程</p>
+                          <!--<span>更多</span>-->
+                      </div>
+                   <ul>
+                      <volist name="list_c" id="vo">
+                      <a href="javascript:;" onClick="log_url(event,'{:U('Course/course_details',array('cid'=>$vo['id']))}','courseInfo_recommendation')">
+                      <li>
+                          <img src="__ROOT__/{$vo.image}" />
+                          <p class="pst">{$vo.title}</p>
+                      </li>
+                      </a>
+                      </volist>
+                      
+                  </ul>
+              </div>
+                </div>
+           </div>   
+     </div>
+
+        
+    	
+         <script type="text/javascript" src="__PUBLIC__/js/swfobject.js"></script> 
+<script type="text/javascript">
+	var xxx="{$cid}";
+                      var url='{$srt}';
+	function on_cc_player_init(vid, objectId ){
+		var config = {};
+		config.rightmenu_enable = 0;
+		
+	config.on_player_seek = "custom_seek";
+	config.on_player_fullscreen = "custom_fullscreen";
+/*	config.on_player_ready = "custom_player_ready";
+	config.on_player_start = "custom_player_start";
+	config.on_player_pause = "custom_player_pause";
+	config.on_player_resume = "custom_player_resume";
+	config.on_player_stop = "custom_player_stop";*/
+		
+		config.player_plugins = {
+			Subtitle : {
+				url : window.url, 
+				size : 20, 
+				color : 0xFFFFFF,
+				surroundColor : 0x3c3c3c,
+				bottom : 0.05, 
+				autoScale: false,
+				font : "微软雅黑", 
+				code : "utf-8",
+				//bgColor :0x000000,
+				//bgAplha :0.5, 
+				//allowFullScreen: true
+			}
+		};
+		var player = getSWF(objectId);
+		player.setConfig(config);
+	}
+	function getSWF(objectId) { 
+	if (window.document[ objectId ]) {
+	    return window.document[ objectId ];
+	} else if (navigator.appName.indexOf("Microsoft") == -1) {
+	    if (document.embeds && document.embeds[ objectId ]) {
+	    	return document.embeds[ objectId ];
+	    }
+	} else {
+		return document.getElementById( objectId );
+	}
+}
+
+	//	功能：创建播放器flash，需传递所需参数，具体参数请参考api文档
+	var a="{$void}";
+	var swfobj=new SWFObject('http://union.bokecc.com/flash/player.swf', 'playerswf', '450', '270', '8');
+	swfobj.addVariable( "videoid" , a);	//	spark_videoid,视频所拥有的 api id
+	swfobj.addVariable( "mode" , "api");	//	mode, 注意：必须填写，否则无法播放
+	swfobj.addVariable( "autostart" , "false");	//	开始自动播放，true/false
+	swfobj.addVariable( "jscontrol" , "true");	//	开启js控制播放器，true/false
+	swfobj.addParam('allowFullscreen','true');
+	swfobj.addParam('allowScriptAccess','always');
+	swfobj.addParam('wmode','transparent');
+	swfobj.write('player');
+
+//	-------------------
+//	调用者：flash
+//	功能：播放器加载完毕时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+	function on_spark_player_ready() {
+		
+		var div1=document.getElementById("loading");	
+		
+		div1.style.display="none";
+	}
+	
+//	-------------------
+//	调用者：flash
+//	功能：播放器开始播放时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+	function on_spark_player_start() {
+		var id=window.xxx;
+		log_url2('course_id='+id+'   act:player_start','courselnfo_intro');
+	
+	}
+	
+//	-------------------
+//	调用者：flash
+//	功能：播放器暂停时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+	function on_spark_player_pause() {
+		var id=window.xxx;
+		log_url2('course_id='+id+'   act:player_pause','courselnfo_intro');
+	}
+	function custom_seek(from,to){
+		var id=window.xxx;
+		log_url2('course_id='+id+'   act:player_seek from:'+from+'to:'+to,'courselnfo_intro');
+	}
+	function custom_fullscreen(flag)
+	{
+		if(flag==1)
+		{
+			var id=window.xxx;
+			log_url2('course_id='+id+'   act:player_fullscreen action:open','courselnfo_intro');	
+		}
+		else
+		{
+			var id=window.xxx;
+			log_url2('course_id='+id+'   act:player_fullscreen action:close','courselnfo_intro');		
+		}
+	}
+//	-------------------
+//	调用者：flash
+//	功能：播放器暂停后，继续播放时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+	function on_spark_player_resume() {
+		var id=window.xxx;
+		log_url2('course_id='+id+'   act:player_resume','courselnfo_intro');
+	}
+	
+//	-------------------
+//	调用者：flash
+//	功能：播放器播放停止时所调用函数
+//	时间：2010-12-22
+//	说明：用户可以加入相应逻辑
+//	-------------------
+	function on_spark_player_stop() {
+		var id=window.xxx;
+		log_url2('course_id='+id+'   act:player_stop','courselnfo_intro');
+	}
+
+	function player_play() { //	调用播放器开始播放函数
+		document.getElementById("playerswf").spark_player_start();
+	}
+	function player_pause() { //	调用播放器暂停函数
+		document.getElementById("playerswf").spark_player_pause();
+	}
+	function player_resume() { //	调用播放器恢复播放函数
+		document.getElementById("playerswf").spark_player_resume();
+	}
+
+						 
+                    </script>
+
+<include file="Public:foot" />
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+
+function check_cost(cid,cost)
+{
+	var ur="{:U('Course/check_credit_log')}";
+	var obj = {};
+		obj.key = "value";
+		$.post(ur+"?cid="+cid, obj,
+			function(data,status)
+				{
+					if(data==1)
+					{
+						alert(data);	
+					}
+					else
+					{
+						if(confirm("您还没有购买本课程，该课程价值"+cost+"积分，是否购买"))
+						{	
+							jump_url(cid);
+						}
+					}
+				}
+				);	
+}
+
+function jump_url(cid)
+{
+	var ur="{:U('Course/check_credit')}";
+	var obj = {};
+		obj.key = "value";
+		$.post(ur+"?cid="+cid, obj,
+			function(data,status)
+				{
+					if(data==0)
+					{
+						alert("余额不足");	
+					}
+					if(data==1)
+					{
+						alert("购买成功");
+						var div = document.getElementById("ke1");
+	
+						div.style.display="none";
+							
+						var div1=document.getElementById("ke");
+							
+						div1.style.display="block";	
+					}
+					if(data==2)
+					{
+						alert("购买失败");	
+					}
+				}
+				);
+}
+
+function index()
+{
+	var div=document.getElementById("void");
+	
+	div.style.display='block';
+           
+	action();		         
+}
+function action()
+{ 
+                    thePlayer.play(true);  
+                    this.value = '暂停';  
+}
+function closeindex()
+{
+	
+	var div=document.getElementById("void");
+	
+	div.style.display='none';
+	
+	
+}	
+
+function goc(e,cid,cost)
+{	
+
+	 e.cancelBubble = true;
+	 
+	var ur="{:U('Course/shanghuo')}";
+	var obj = {};
+		obj.key = "value";
+		$.post(ur+"?cid="+cid, obj,
+			function(data,status)
+				{
+					if(data==0)
+					{
+						
+						jump_login(e);
+						
+						document.getElementById("pwuser").innerHTML ="请登陆后观看视频！";
+							
+					}
+					else
+					{
+						if(cost>0)
+						{
+							check_cost(cid,cost);
+						}
+						else
+						{
+							guanzhu(cid);	
+						}
+					}
+					log_url2('follow_course','courseInfo_intro');
+				}
+			   );
+			   
+			   
+}
+function guanzhu(cid)
+{
+	var ur="{:U('Course/guanzhu')}";
+	var obj = {};
+	obj.key = "value";
+	$.post(ur+"?cid="+cid, obj,
+		function(data,status)
+			{
+				if(data==0)
+				{
+					alert('关注失败');	
+				}
+				else
+				{
+					var div = document.getElementById("ke1");
+	
+						div.style.display="none";
+							
+						var div1=document.getElementById("ke");
+							
+						div1.style.display="block";			
+				}
+			}
+			);
+}
+</script>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+
+
+
+
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            font-family: "微软雅黑"
+        }
+
+        .w {
+            /*width: 1080px;*/
+            margin: 0 auto;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            background: #ececec;
+        }
+
+        .f {
+            float: left;
+        }
+        .bar_wrap {
+            width: 100%;
+            height: 77px;
+            border-top: 1px solid #afafaf;
+            position: fixed;
+            top: 40px;
+            z-index: 99;
+            overflow: hidden;
+            background: #fff;
+        }
+        .bar {
+          width: 1080px;
+            height: 48px;
+            overflow: hidden;
+        }
+        .bar span {
+            margin-top: 15px;
+            display: inline-block;
+            font-size: 16px;
+            color: #999;
+            margin-right: 5px;
+            font-family: "微软雅黑";
+        }
+        .content_wrap {
+            min-width: 1080px;
+            height: auto;
+            background: #ececec;
+            padding-top: 30px;
+            padding-bottom: 100px;
+            margin-top:118px;
+        }
+        .content_h {
+            width: 1020px;
+            padding: 30px;
+            background: #fff;
+        }
+
+        .content_h h3 {
+            margin-bottom: 20px;
+        }
+
+        .tutor_list {
+            width: 100%;
+        }
+
+        .tutor_list li {
+            border: 1px solid #ececec;
+            height: 160px;
+            margin-bottom: 16px;
+            padding-left: 50px;
+            padding-right: 40px;
+            background: #f7f7f7;
+            padding-top: 30px;
+        }
+
+        .img_wrap {
+            width: 110px;
+            height: 110px;
+            position: relative;
+            background: #e4e2e3;
+            border-radius: 50%;
+            margin-right: 30px;
+        }
+
+        .img_wrap img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
+
+        .tutor_r {
+            width: 740px;
+        }
+
+        .tutor_r h3 {
+            font-size: 24px;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        .tutor_r span {
+            font-size: 12px;
+            color: #828282;
+            margin-top: 9px;
+            display: inline-block;
+        }
+
+        .tutor_c {
+            margin-top: 16px;
+        }
+
+        .tutor_c p {
+            font-size: 12px;
+            line-height: 16px;
+            color: #9f9f9f;
+            word-break: break-all;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            /** 对象作为伸缩盒子模型显示 **/
+            -webkit-box-orient: vertical;
+            /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+            -webkit-line-clamp: 2;
+            /** 显示的行数 **/
+            overflow: hidden;
+            /** 隐藏超出的内容 **/
+        }
+
+        .more {
+            margin-top: 10px;
+        }
+
+        a {
+            font-size: 12px;
+            color: #562cb2;
+            text-decoration: none;
+        }
+		.us_zx_pic1{ width:172px !important; height:110px !important;}
+.p_right{padding-right:10px !important;}
+.pages a {
+    float: left;
+    display: block;
+    margin-right:0px !important;
+}
+.p_no{padding:0px 4px;}
+
+.pages ul {
+    float: left;
+    overflow: hidden;
+    margin-right: 10px !important;
+}
+/*新样式*/
+
+
+.pager {
+    text-align: center;
+    height: 94px;
+}
+.pagination {
+    padding-left: 0px;
+    margin: 20px 0px;
+    border-radius: 4px;
+    display: inline-block;
+}
+.pagination > li {
+    display: inline;
+}
+.pagination > .active > span:focus {
+    color: #8040FF;
+    background-color: #EEE;
+    border-color: #DDD;
+    text-decoration: underline;
+}
+.pagination-sm > li > a {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.pagination > li > a {
+    color: #999;
+}
+.pagination-sm > li > a, .pagination-sm > li > a {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.pagination > li > a, .pagination > li > a {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857;
+    text-decoration: none;
+    background-color: #fafafa;
+    border: 1px solid #DDD;
+	margin:4px;
+    margin-left: -1px;
+}
+a{ color:#999;}
+.p_active{ background-color:#62379E !important;color: #fff !important; text-outline:#62379E !important;text-decoration:underline !important;}
+.tabs_item ul { overflow:hidden; }
+.tabs_item ul li {
+    margin-right: 13px !important;
+    margin-left: 13px !important;}
+    </style>
+</head>
+<body>
+    <div class="bar_wrap">
+        <include file="Public:head" />
+        <div class="bar w">
+            <span>创业导师</span>
+            <span>></span>
+            <span>导师列表</span>
+        </div>
+    </div>
+    <div class="content_wrap">
+        <div class="content_h w">
+            <h3>全部导师</h3>
+            <ul class="tutor_list">
+                    <volist name="list" id="vo">
+                        <li>
+                            <div class="img_wrap f">
+                                <img class="photo" src="__ROOT__{$vo.image}" alt="">
+                           </div>
+                           <div class="tutor_r f">
+                                <div class="title">
+                                	<h3 class="f">{$vo.name}</h3>
+                                	<span>{$vo.job}</span>
+                                </div>
+                                <div class="tutor_c">
+                                	<p>{$vo.brief}</p>
+                                </div>
+                                <div class="more">
+                                	<a href="{:U('alltutor',array('tid'=>$vo['id']))}">查看更多》</a>
+                                </div>
+                            </div>
+                        </li>
+                    </volist>
+            </ul>
+        </div>
+        <!--<div class="pager" style=" width:100%; margin:0 auto !important; text-align:center !important;">
+                              <ul style="display: inline-block; margin-top:30px;" class="pagination-sm pagination">
+                                 <li><a href="{:U('Teacher/alltutor_list',array('nu'=>1))}">首页</a><li>
+                                 <if condition="$nu neq 1 ">
+                                 <li><a href="{:U('Teacher/alltutor_list',array('nu'=>$nu-1))}">上一页</a><li>
+                                 </if>
+                                 <volist name="arr" id="vo">
+                                 <if condition="$vo eq $nu ">
+                                 <li><a href="{:U('Teacher/alltutor_list',array('nu'=>$vo))}"  class="p_active">{$vo}</a><li>						</if>
+                                 <if condition="$vo neq $nu ">
+                                 <li><a href="{:U('Teacher/alltutor_list',array('nu'=>$vo))}"  >{$vo}</a><li>						</if>	
+                                 </volist>
+                                 <if condition="$nu neq $end ">
+                                 <li><a href="{:U('Teacher/alltutor_list',array('nu'=>$nu+1))}">下一页</a><li>
+                                 </if>
+                                 <li><a href="{:U('Teacher/alltutor_list',array('nu'=>$end))}" >尾页</a><li>
+
+                             </ul>
+                        </div>-->
+    </div>
+    
+</body>
+
+</html>

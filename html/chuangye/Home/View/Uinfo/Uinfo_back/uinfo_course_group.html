@@ -1,0 +1,70 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>中国创业学院</title>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/20160516style.css"/>
+
+<style type="text/css">
+
+</style>
+</head>
+
+<body style="background:#fff; width:100%;">
+    <div class="us_right_nav" style="width:100% !important;">
+        <div class="us_list" style=" position:fixed; top:0px; color:#000;">群组</div>
+        <volist name='list' id='vo'>
+         <div class="zu_detail">
+             <div class="zu_left">
+                <p class="zu_ming">{$vo.name}</p>
+                <p class="zu_ren"> {$count}人<span>（上限人数{$vo.max_nu}）</span></p>
+             </div>
+             <div class="zu_right"><div style="float:right"><img src="__ROOT__/{$vo.image}" width="120px" height="120px"/></div></div>
+         </div> 
+         </volist>
+         <div class="zu_list">
+             <ul>
+                 <a href=""><li class="zu_act">群组课程</li></a>
+                 <a href="__URL__/uinfo_user_group/gid/{$gid}"><li>群成员</li></a>
+             </ul>
+         </div>
+         <div class="zu_ke">
+             <ul>
+             	<volist name='add_bao' id='vo'>
+                 <li>
+                    <div class="zu_left1"><img src="__ROOT__/{$vo.image}"/></div>
+                    <div class="zu_middle">
+                        <p class="zu_ti">{$vo.title}（课程包）</p>
+                        <p class="zu_cj">创建时间：{$vo.time|default=time()|date='Y-m-d',###}</p>
+                        <p class="zu_jz">截至时间：{$vo.end_time|default=time()|date='Y-m-d',###}</p>
+                    </div>
+<!--                    <div class="zu_right1">
+                       <a href="" class="zu_xiang1">详情</a>
+                    </div>-->
+                 </li>
+                 </volist>
+             	<volist name='course_group' id='vo'>
+                 <li>
+                    <div class="zu_left1"><img src="__ROOT__/{$vo.image}"/></div>
+                    <div class="zu_middle">
+                        <p class="zu_ti">{$vo.title}</p>
+                        <p class="zu_cj">创建时间：{$vo.time|default=time()|date='Y-m-d',###}</p>
+                        <p class="zu_jz">截至时间：{$vo.end_time|default=time()|date='Y-m-d',###}</p>
+                    </div>
+<!--                    <div class="zu_right1">
+                       <a href="" class="zu_xiang1">详情</a>
+                    </div>-->
+                 </li>
+                 </volist>
+                 
+             </ul>
+         </div>
+          
+   </div>
+</body>
+</html>

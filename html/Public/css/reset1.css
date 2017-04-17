@@ -1,0 +1,23 @@
+    body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,th,td,p,blockquote,pre,form,fieldset,legend,input,button,textarea,hr{margin:0;padding:0}
+    body,button,input,select,textarea{ font:14px/1.5 "Microsoft YaHei",arial, verdana, sans-serif}
+    h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+    li{list-style:none;}
+    fieldset,img{border:0;}
+    table{border-collapse:collapse;border-spacing:0;}
+    button,input,select,textarea{font-size:100%;}
+    legend{color:#000;}
+    small{font-size:12px;}
+    hr{border:none;height:1px;}
+    a{text-decoration:none;}
+    a:hover{text-decoration:underline;}
+
+    .content{width: 100%;text-align: center;margin-top:1rem ;}
+        .tit{width: 100%;background: white;padding: 2rem 0;border-bottom: 1px solid #cbcbcb;border-top: 1px solid #cbcbcb;}
+        .name{font-size: 1.1rem;margin-bottom:1rem; font-weight:bold;}
+        .money{font-size: 2rem;}
+        .proMessage{height:3.5rem;padding:0 1rem;background: white;display: flex;
+            align-items: center;justify-content: space-between;
+            border-bottom: 1px solid #cbcbcb;font-weight:bold;}
+        .tabName{font-size: 1rem;color: #999;}
+        .productName{width: 12rem;height: 2em;line-height: 2em;font-size: 1rem;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+        .button{width: 20rem;height: 3.5rem;line-height: 3.5rem;margin:7rem auto 0;font-size: 1.3rem;color: white;text-align: center;background: #3aae3f;border-radius: 0.2rem;}

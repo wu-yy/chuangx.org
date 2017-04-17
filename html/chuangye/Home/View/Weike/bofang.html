@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+<title>{$name}</title>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/posterTvGrid.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/weike.css">
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<style type="text/css">
+.kc_de_nav {z-index: 99;}
+.kc_kk a {margin-right: 0px !important;text-align: center;}
+.kc_de_content ul li {margin-right: 0px !important;}
+.kc_de_content ul li span {margin: 0px 5px;}
+.sy_st{ margin-top:110px !important;}
+.suipian_video .video_contain .right .header #scroll {
+    border-radius: 3px;
+    margin-top:0px;
+    position: relative;
+    width: 255px;
+    height: 342px;
+}
+.suipian_video .video_contain .right .header #scroll .viewport {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.suipian_video .video_contain .right .header #scroll .scrollbar {
+	height:342px !important;
+    position: absolute;
+    float: right;
+    right: 9px;
+    z-index: 2;
+    width: 8px;
+}
+.suipian_video .video_contain .right .header #scroll .scrollbar .track {
+	height:342px !important;
+    height: 100%;
+    width: 10px;
+    position: relative;
+    padding: 1px 0px;
+    border-left: 7px solid #2b2b2b;
+}
+.suipian_video .video_contain .right .header #scroll .scrollbar .thumb {
+    background: #464646;
+	border-radius:50px;
+	top:10px;
+    width: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0px;
+}
+.suipian_video .video_contain .right .header #scroll .viewport {
+    width: 255px;
+    height: 341px;
+    border-radius: 3px;
+    overflow: hidden;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+.suipian_video .video_contain .right .header #scroll .viewport .overview {
+    border-radius: 3px;
+    moz-user-select: -moz-none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0;
+    margin: 0;
+}
+</style>
+</head>
+
+<body>
+<div class="wapper" style="background-color:#fff;min-width: 1080px;">
+     <include file="Public:head" />
+     <!--路径-->
+     <div class="kc_de_nav">
+        <div class="kc_de_content">
+           <div class="kc_kk"><a href="javascript:;" onClick="log_url(event,'{:U('Index/index')}','public_pageNavigation')">首页</a></div>
+             <ul>
+                <li><span>></span><a href="javascript:;" onClick="log_url(event,'{:U('Weike/index')}','public_pageNavigation')">微课</a></li>
+                <li><span>></span>{$name}</li>
+            </ul>
+         </div>
+      </div>
+      <!--路径end-->
+      <!--播放区域-->
+     <div class="sy_st suipian_video" style="padding-top:10px !important; margin-top:80px !important;"  >
+        <h2>{$name}</h2>
+         <div class="w_bf_content video_contain">
+             <div class="w_bf">
+                 
+                <div class="cs_b_top_0126 loading" id="loading">    
+                       <div class="l_mask">
+                          <img src="__PUBLIC__/image/jiazai.gif" /> 
+                         <p>loading...</p> 
+                       </div>          
+                  </div>
+                  
+                  <div class="cs_b_top_0126" id="player" > </div>
+                  <div class="cs_b_top_0126"  id="player1" style="display:none;">
+						<script src="http://p.bokecc.com/player?vid={$cc_code}&siteid=B73CC50AF38DFD67&autoStart=true&width=810&height=500&playerid=78F3CEA674B99498&playertype=2" type="text/javascript"></script>
+				</div>
+             </div>
+             <div class="w_list right">
+             <div class="header">
+                  <div class="w_top">
+                     <if condition="$type1 eq 3 ">
+                      <p class="w_from"><span></span>视频来源于：</p>
+                      <h4>{$nm}</h4>
+                      <if condition="$type eq 3 ">
+                      <a href="javascript:;" class="w_botton" style="float:left !important;" onclick="log_url(event,'{$ws}','lecBrowser_intro')">+加入课程</a>
+                 	  </if>	
+                    </if>  
+                       <volist name="teacher" id="vo">	
+                       <a href="{:U('Teacher/alltutor',array('tid'=>$vo['id']))}">
+                      <div style="width:100%; overflow:hidden; margin-bottom:10px;">	
+                      <img style="width: 36px;height: 36px;border-radius: 18px;float: left;margin-top: 3px;" src="__ROOT__{$vo.image}" />
+                      <p class="w_teacher">{$vo.name}<span>{$vo.job}</span></p>
+                      </div>
+                      </a>
+                      </volist>
+                      
+                  </div>
+                  <p class="w_from"><span></span>相关推荐：</p>
+                  <div class="w_bottom"  id="scroll">
+                    <div class="viewport">
+                      <div class="scrollbar">
+							     <div class="track">
+							        <div style="top:10px;" class="thumb">
+									</div></div></div>
+                       <div class="overview" style=" width:100%;">
+                      <ul>
+                      <volist name="xiangguan" id="vo">
+                      <a href="javascript:;" onclick="log_url(event,'__URL__/bofang/id/{$vo.id}','lecBrowser_recommendation')">
+                              <li class="clearfix">
+                                  <p class="w_tittle">{$vo.title}</p>
+                                  <!--<p class="w_view"><img src="__PUBLIC__/image/kan1.png"/>{$vo.add_look}</p>-->
+                              </li>
+                         </a>
+                          </volist>
+						
+                      </ul>
+                      </div>
+                     </div>
+                    </div>
+                 </div>
+             </div>     
+          </div>
+        <!--简介-->
+        <div class="w_brief" onclick="log_url2('none','lecBrowser_brief')">
+<!--           <div class="w_tl">
+               <h3>简介：</h3>
+               <p><img src="__PUBLIC__/image/kan1.png"/><span>{$look_nu}</span></p>
+           </div>-->
+           <p class="brief">简介：{$brief}</p>
+        </div>
+        <!--简介end--> 
+     
+      </div>
+
+        
+
+<include file="Public:foot" />
+</div>
+
+<!--美化滚动条-->
+<script id="requirejs" src="__PUBLIC__/js/require.js"></script>
+<script src="__PUBLIC__/js/appCommon.js"></script>
+<script src="__PUBLIC__/js/fragmentVideo.js"> </script></body>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/index/zhuce.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/swfobject.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/js/weike/bofang.js"></script> 
+<script type="text/javascript">
+	
+	var xxx="{$cid}";
+    var url='{$srt}';
+	var a="{$cc_code}";
+	var width=810;
+	var height=500;
+						 
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/phone_cc.js"></script>
+</html>
+
+<!--banner-->

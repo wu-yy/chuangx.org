@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+<title>中国创业学院</title>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/infromation.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<style>
+a{ color:#666;}
+.if_kc ul li img{ height:158px !important;}
+</style>
+
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/index/sea.js" type="text/javascript" data-main="focus.js"></script>
+<script src="__PUBLIC__/js/index/index.js"></script>
+<script src="__PUBLIC__/js/index/zhuce.js"></script>
+
+<script type="text/javascript">
+var w,h,className;
+function getSrceenWH(){
+	w = $(window).width();
+	h = $(window).height();
+	$('#dialogBg').width(w).height(h);
+}
+
+window.onresize = function(){  
+	getSrceenWH();
+}  
+$(window).resize();  
+
+
+</script>
+</head>
+
+<body>
+<div class="wapper"  style="min-width: 1080px;">
+     <include file="Public:head" />
+     <div class="sy_st">
+          <div class="if_left">
+              <div class="if_left_top">
+                   <a href="javascript:;" onClick="log_url(event,'{:U('Information/information_details/',array('id'=>$toutiao_id))}','info_top')">
+                        <img src="__ROOT__/{$toutiao_img}"/>
+                        <p>{$toutiao_title}</p>
+                   </a>
+              </div>    
+              <div class="sy_list_content" onclick="log1('info_list')">
+                       <ul id="ul">
+                       
+                       <volist name="getinfor_renqi" id="vo">
+                            <li>
+                            
+                            <a href="javascript:;" onClick="log_url(event,'{:U('Information/information_details/',array('id'=>$vo['id']))}','info_list')">
+                                <img class="sy_zx_pic" src="__ROOT__/{$vo.img}"/>
+                                <div class="sy_caption" style="height: 140px; overflow:hidden;">
+                                    <h6 class="sy_zx_title">{$vo.title}</h6>
+                                    <div class="sy_tips">
+                                        <span class="sy_zx_time">{$vo.time_ad}</span>
+                                        <div class="pull-right1">
+                                               <img src="__PUBLIC__/image/guanzhushu.png"/>
+                                               <span class="subhead-content">{$vo.nu_add}</span>
+                                         </div>
+                                        <p class="sy_zx_brief" >{$vo.brief}</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </li>
+                           </volist> 
+
+                       </ul>
+                   </div>
+                  <div class="if_jiazai" id="jiazai" style="  border: 1px solid #666;text-align: center;color: #666;"> <a href="javascript:;" onclick="getinfo();"><div style="width:100%; height:100%;">加载更多</div></a></div>
+          </div>
+          <div class="if_right">
+               <div class="if_bn">
+               		<volist name="banner" id="vo">
+                    <a href="javascript:;" onClick="log_url(event,'{$vo.url}','info_ad')"><img src="__ROOT__/{$vo.img}" /></a>
+                    </volist>
+               </div>
+               <div class="if_kc" onclick="log1('info_recommendation')">
+               <a href="javascript:;" onClick="log_url(event,'{:U('Course/index')}','info_recommendation')">
+                   <div class="if_kc_tips">
+                      <p>精彩课程</p>
+                     <!-- <span>更多</span>-->
+                  </div>
+                  </a>
+                  <ul>
+                      <volist name="list_nice_course" id="vo">
+                      <a href="javascript:;" onClick="log_url(event,'{:U('Course/course_details',array('cid'=>$vo['id']))}','info_recommendation')">
+                      <li>
+                          <img src="__ROOT__/{$vo.image}" />
+                          <p>{$vo.title}</p>
+                      </li>
+                      </a>
+                      </volist>
+                      
+                  </ul>
+              </div>
+          </div>
+     </div>
+<include file="Public:foot" />
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+function aaa(e,b)
+{
+	var ur="{:U('Information/information_details')}";
+	var url=ur+"?id="+b;
+	log_url(e,url,'info_list');
+	 e.cancelBubble = true;	
+}
+	
+var a=2;
+function getinfo()
+{	
+
+  var g=document.getElementById('ul').innerHTML;
+  var ur="{:U('Information/getinfor_renqi')}";
+  var obj = {};
+		obj.key = "value";
+		$.post(ur+"?n="+a, obj,
+			function(data,status)
+				{
+					var str="";
+					var data = eval('('+data+')');
+					if(data!=1)
+					{
+						for(var x in data)
+						{
+									var title = data[x]['title'];
+									var b = data[x]['id'];
+									var nu_add = data[x]['nu_add'];
+									var bod = data[x]['brief'];
+									var img=data[x]['img'];
+									var time_ad=data[x]['time_ad'];
+									var str='<li><a href="javascript:;" onClick="aaa(event,'+b+')"><img class="sy_zx_pic" src="__ROOT__/'+img+'"/><div class="sy_caption" style="height: 140px; overflow:hidden;"><h6 class="sy_zx_title">'+title+'</h6><div class="sy_tips"><span class="sy_zx_time">'+time_ad+'</span><div class="pull-right1"><img src="__PUBLIC__/image/guanzhushu.png"/> <span class="subhead-content">'+nu_add+'</span> </div><p class="sy_zx_brief">'+bod+'</p></div></div></a></li>'+str;
+						}
+						document.getElementById('ul').innerHTML=g+str;
+						window.a=a+1;
+					}
+					else
+					{
+						document.getElementById('jiazai').innerHTML="已游览到最后一条";
+					}
+				}
+			   );
+			   
+}
+</script>

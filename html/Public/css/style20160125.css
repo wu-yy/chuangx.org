@@ -1,0 +1,125 @@
+@charset "UTF-8";
+/*播放页面*/
+
+.cs_b_left_0125 {
+	width: 1080px;
+    height: auto;
+    overflow: hidden;
+    margin-top: 0px;
+    float: left;
+    height: auto;
+    bottom: 0px;
+    background-color: #fff;
+    color: #FFF;
+    font-size: 16px;
+	width: 268px !important;
+
+}
+
+.cs_ba{
+    width:89% !important;
+    background: #fff none repeat scroll 0% 0%;
+    line-height: 32px;
+ /*   height: 40px;*/
+	padding:5px 15px 5px;
+	border-bottom:1px solid #cccccc;
+	text-align: left;
+    color: #373945;
+    font-size: 18px;
+	overflow:hidden;
+}
+.cs_ba p{ float:left;}
+.cs_ba span{ width:150px;float:left; margin-left:10px;}
+
+.cs_ba2{
+	padding:5px 15px 5px;
+    width:89% !important;
+    line-height: 32px;
+	text-align: left;
+    color: #373945;
+    font-size: 18px;
+	overflow:hidden;
+	border-bottom:1px solid #cccccc;
+}
+.cs_ba2 p{ float:left;}
+.cs_ba2 span{ width:150px;float:left; margin-left:10px;}
+.cs_b_left_0125  ul {
+	background:#ecf0f5;
+	color:#373945;
+    margin-left: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+	    width: 100%;
+    line-height: 30px;
+	border-bottom:1px solid #cccccc;
+}
+.b_active{ background:#9198ab; color:#fff !important;}
+.cs_b_left_0125  ul li{
+color: #373945;
+padding:5px 20px 5px 40px;
+line-height: 32px;
+/*height: 40px;*/
+width: 78%;}
+.cs_b_left_0125  a {
+    position: relative;
+}
+.cs_b_lef_0125 t a {
+    color: #FFF;
+}
+.arrow_right {
+    width: 0px;
+    height: 0px;
+    border-left: 10px solid #7D31C5;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    position: absolute;
+    top: 7px;
+    left: -25px;
+}
+.cs_b_right_0125  {
+    width: 808px;
+    height: 573px;
+    float: left;
+    background-color: #000;
+}
+.kc_de_nav_0125  {
+    line-height: 50px;
+    color: #999;
+    width: 100%;
+    background-color: #FFF;
+    position: fixed;
+    top: 70px;
+}
+.kc_kk a {
+    margin-right: 0px !important;
+    text-align: center;
+}
+.kc_de_content {
+    width: 1080px;
+    height: 100%;
+    margin: 0px auto;
+}
+.cs_b_top_0126 {
+    width: 777px;
+    height: 448px;
+/*    background-color: #88A4FF;*/
+	background-color:#000;
+    text-align: center;
+    margin-bottom: 10px;
+	margin:15px;
+	border:1px solid #d4d4d4;
+}
+.b_jie{ width:779px;
+border:1px solid #d4d4d4;
+border-radius:3px;
+height:56px;
+margin:0 auto;
+margin:15px;}
+.bleft{ margin:0 auto; width:58px; height:58px; text-align:center; float:left; border-right:1px solid #e8ecf3;}
+.bright{ margin:0 auto; width:58px; height:58px; text-align:center; float:right;border-left:1px solid #e8ecf3;}
+.b_jie ul{ width:779px;}
+.noline{border-right:none !important;}
+.b_jie ul li{ width:178px; margin:18px; float:left; text-align:center;border-right:1px solid #e8ecf3;}
+
+/*播放页面end*/
+

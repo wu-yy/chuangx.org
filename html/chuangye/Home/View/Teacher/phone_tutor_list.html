@@ -1,0 +1,76 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>导师列表</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/phone_tutor_list.css">
+<style type="text/css">
+.biaoti{ width:100%; text-align:left;background:#fff; padding:20px 0px; height:50px;}
+.biaoti p{ border-left:8px solid #6e18ee; line-height:50px; color:#6e18ee; font-size:30px; }
+.detail_list1{ width:600px; margin-left:20px;}
+.tutor_lis1t{ width:100%; height:auto; margin-top:20px;}
+.tutor_lis1t ul{ width:100%;}
+.tch_list{ width:92%; border:1px solid #dedede; height:150px; background:#fff; border-radius:3px; margin-bottom:20px; padding:4%;}
+.img_wrap1{ width:100px; height:100px; border-radius:100px; border:3px solid #f5f5f5; overflow:auto; float:left; }
+.img_wrap1 img{ width:100%; height:100%; object-fit:cover; -moz-object-fit:cover; -webkit-object-fit:cover;}
+.tutor_r1{ width:425px; float:left; margin-left:20px;}
+.title1{ width:100%; height:30px; line-height:30px;}
+.title1 h3{ float:left; color:#000;font-size:28px; max-width:225px; display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-right:30px;}
+.title1 span{ font-size:22px; color:#999; display:block;  max-width:200px;  display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.tutor_c1{ width:100%; height:105px; margin-top:18px; overflow:hidden;}
+.tutor_c1 p{ width:100%; font-size:26px; color:#999; word-break:break-all; height:105px;
+display: block;  overflow:hidden;word-break: break-all;line-height:34px;}
+</style>
+</head>
+<body style="background:#f4f5f7; height:100%;">
+<include file="Public:phone_head_xin" />
+<div class="warpper"   style="position:relative; height:100%;">
+     <div class="biaoti">
+         <p>&nbsp;&nbsp;全部导师</p>   
+     </div>
+        	
+        <div class="detail_list1">
+          <ul class="tutor_lis1t">
+          	<volist name="list" id="vo">
+              <a href="{:U('alltutor',array('tid'=>$vo['id']))}">
+              <li class="tch_list">
+                  <div class="img_wrap1 f">
+                      <img class="photo1" src="__ROOT__{$vo.image}" alt="">
+                  </div>
+                  <div class="tutor_r1 f">
+                      <div class="title1">
+                          <h3 class="f">{$vo.name}</h3>
+                          <span>{$vo.job}</span>
+                      </div>
+                      <div class="tutor_c1">
+                          <p class="tch_det">{$vo.brief}</p>
+                      </div>
+                  </div>
+              </li>
+              </a>
+              </volist>
+          </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+ <script src="__PUBLIC__/js/jquery.dotdotdot.min.js" type="text/javascript"></script>
+  
+      <script>
+			$(function() {
+				$('.tch_det').dotdotdot();
+			});
+	  </script>	

@@ -1,0 +1,48 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{$kcname}</title>
+<link rel="stylesheet" href="__PUBLIC__/css/phone_style.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/phone_void.css" />
+<style type="text/css">
+.k_lb{ position:absolute;top:90px; left:0px; z-index:1000;}
+.k_word img{max-width:640px; }
+</style>
+</head>
+<body>
+
+  <!--视频-->
+  <if condition="$type eq 0 "> 
+   <div class="kechena">
+     	<script src="http://p.bokecc.com/player?vid={$cc_code}&siteid=B73CC50AF38DFD67&autoStart=true&width=640&height=356&playerid=78F3CEA674B99498&playertype=2" type="text/javascript"></script>
+   </div>
+  </if> 
+  <!--文本-->
+  <if condition="$type eq 1 "> 
+  <div class="k_word">
+  	{$body}
+  </div>
+  </if>
+  <!--分节-->
+  
+
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/course/phone_void.js"> </script>
+<script>
+var public='__PUBLIC__/';
+</script>

@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>Dynamic Table</title>
+
+  <!--dynamic table-->
+
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/houtaikecheng/js/bootstrap-datetimepicker/css/datetimepicker-custom.css" />
+  <link href="__PUBLIC__/houtaikecheng/css/style.css" rel="stylesheet">
+  <link href="__PUBLIC__/houtaikecheng/css/style-responsive.css" rel="stylesheet">
+
+   <script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+   
+   
+
+<style>
+.panel-body form{ margin-left:40px !important;}
+.form-group input{ width:40%;}
+
+body{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 14px;line-height: 1.42857;
+color: #333;}
+.table{ overflow:hidden; margin-bottom:-10px !important; }
+.table li input{ width:auto; float:left; margin-bottom:10px; margin-left:5px;border-radius:3px 0px 0px 3px; }
+.table{ overflow:hidden; margin-left:0px !important;}
+ul{ outline:none; list-style:none;}
+.table li{ width:auto; float:left;overflow:hidden; margin-bottom:10px; height:34px;margin-left:5px;}
+.label_ad{ font-size:18px; font-weight:700;}
+.table a{background: #E3E4E8 none repeat scroll 0% 0%;
+border-radius:0px 3px 3px 0px;
+color: #858582;
+float: left;
+padding: 10px;
+text-decoration: none;}
+
+
+</style>
+
+</head>
+<body class="sticky-header" style=" background:#EFF0F4 none repeat scroll 0% 0%;">
+          <div class="page-heading">
+            <h3>
+                课程管理
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="__URL__/table">课程列表</a>
+                </li>
+                <li class="active"> 添加课程 </li>
+            </ul>
+        </div>
+         <div class="row" style="padding-top:0px; margin-left:0px;" >
+            <div class="col-lg-6" style="width:99%;">
+                <section class="panel">
+         <form name="form1" action="__URL__/upload_xiugai" enctype="multipart/form-data" method="post" >
+                    <div class="panel-body">
+							<volist name="list" id="vo">
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">课程名称</label>
+                                <input type="text" name="name" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="请输入课程名称" value="{$vo.title}">
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">课程简称</label>
+                                <input type="text" name="forshort" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="请输入课程简称" >
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">专题按钮名称</label>
+                                <input type="text" name="botton_name" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="请输入专题按钮名称" value="{$vo.botton_name}">
+                            </div>
+                            <div class="form-group" style="overflow:hidden;">
+                                    <label class="control-label col-md-3" style=" width:100%;padding:0 !important;">开课时间</label>
+                                    <div class="col-md-4" style="width:80%;padding:0 !important;">
+                                        <input class="datainp" id="indate" type="text" placeholder="只显示年月" value="" style="display:none;"  readonly>
+<input style="width:100%;" type="text" size="16"name="time" id="dateinfo" type="text" placeholder="{$vo.start_time|date="Y-m-d H:i:s",###}"  readonly class="form_datetime form-control">
+                                    </div>
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">课程来源</label>
+                                <input type="text" name="laiyuan" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="请输入课程来源" value="{$vo.source}">
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">初始访问量</label>
+                                <input type="text" style="width:80%;" name="nu" class="form-control" id="exampleInputEmail1" placeholder="请输入初始访问量" value="{$vo.nu}">
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">课程优先等级</label>
+                                <input type="text" style="width:80%;" name="bit" class="form-control" id="bit" placeholder="必须为数字，数字越大优先等级越高" value="{$vo.youxianji}">
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">评分</label>
+                                <input type="text" style="width:80%;" name="score" class="form-control" id="exampleInputEmail1" placeholder="请输入评分" value="{$vo.score}">
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">语言</label>
+                                <input type="text" name="yuyan" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="请输入课程语言" value="{$vo.language}">
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">关注课程所需积分数</label>
+                                <input type="text" name="cost" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="请输入关注课程所需积分数" value="{$vo.cost}">
+                            </div>
+                           <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">课原积分</label>
+                                <input type="text" name="yuanjifen" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="请输入课程原积分" value="{$vo.yuanjifen}">
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">学习完课程返还积分数</label>
+                                <input type="text" name="back_credit" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="请输入学习完课程返还积分数" value="{$vo.back_credit}">
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">课程安排</label>
+                                <input type="text" name="anpai" style="width:80%;" value="{$vo.anpai}" class="form-control" id="exampleInputEmail1" placeholder="课程安排">
+                            </div>
+                            <div class="form-group" style="width:100%; height:40px;">
+                                <div class="btn-group pull-right" style="float:left !important;">
+                                	<if condition="$vo.show_course eq 0 "> 
+                                   <button class="btn btn-default dropdown-toggle" style=" width:130px; " data-toggle="dropdown" id="type">显示连载课
+                                   </if>
+                                   
+                                   <if condition="$vo.show_course eq  1"> 
+                                   <button class="btn btn-default dropdown-toggle" style=" width:130px; " data-toggle="dropdown" id="type">隐藏连载课
+                                   </if>
+                                   
+                                   
+                                      <i class="fa fa-angle-down"></i>
+                                   </button>
+                                    <ul class="dropdown-menu pull-right" style="right: -37px !important;">
+                                       <li><a href="javascript:;" onClick="type1(0);">显示连载课</a></li>
+                                       <li><a href="javascript:;" onClick="type1(1);">隐藏连载课</a></li>
+                                    </ul>
+                                 </div>
+                            </div>
+                            <div class="form-group" style="width:100%; height:40px;">
+                                <div class="btn-group pull-right" style="float:left !important;">
+                                	<if condition="$vo.mark_bit eq 0 "> 
+                                   <button class="btn btn-default dropdown-toggle" style=" width:130px; " data-toggle="dropdown" id="shangke">站内课
+                                   </if>
+                                   
+                                   <if condition="$vo.mark_bit eq 1 "> 
+                                   <button class="btn btn-default dropdown-toggle" style=" width:130px; " data-toggle="dropdown" id="shangke">站内课
+                                   </if>
+                                   
+                                   <if condition="$vo.mark_bit eq 2 "> 
+                                   <button class="btn btn-default dropdown-toggle" style=" width:130px; " data-toggle="dropdown" id="shangke">站外课
+                                   </if>
+                                    <if condition="$vo.mark_bit eq 3 "> 
+                                   <button class="btn btn-default dropdown-toggle" style=" width:130px; " data-toggle="dropdown" id="shangke">站外课
+                                   </if>
+                                      <i class="fa fa-angle-down"></i>
+                                   </button>
+                                    <ul class="dropdown-menu pull-right" style="right: -37px !important;">
+                                       <li><a href="javascript:;" onClick="shangke(0);">站内课</a></li>
+                                       <li><a href="javascript:;" onClick="shangke(3);">站外课</a></li>
+                                    </ul>
+                                 </div>
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">添加站外课链接</label>
+                                <input type="text" name="zhanwai" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="例：www.baidu.com" value="{$vo.href}">
+                            </div>
+                            <!--<div class="form-group">
+                                <label for="exampleInputFile">上传视频</label>
+                            	<input type="file" name="void" id="exampleInputFile" onchange="fileChange(this);">
+                              <p style="color:#ee0f19;" class="help-block">＊图片规格190x120px</p>
+                             
+                            </div> 
+                            <div class="form-group">
+                            
+                            	<label for="exampleInputFile">已有视频地址？请填写</label>
+                            	<input type="text" name="void_url" style=" width:200px;" >
+                            
+                            </div>-->
+                            	
+                            <div style="width:100%;">
+                            	<img src="__ROOT__/{$vo.image}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFile">上传封面</label>
+                                <input type="file" id="exampleInputFile" name="photo">
+                                <p style="color:#ee0f19;" class="help-block">＊图片规格450x270px</p>
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">添加预览视频code</label>
+                                <input type="text" name="void_url1" style="width:80%;" class="form-control" id="exampleInputEmail1" value="{$vo.cc_code}" >
+                            </div>
+<!--                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Check me out
+                                </label>
+                            </div>-->
+                           
+                             <div class="form-group ">
+                                        <div class="panel-body">
+                                            <ul style="margin-left:-20px !important; margin-top:20px;" class="table">
+                                                  
+                                                  <li onClick="tianjiabiaoqian();"> <button type="button"  style="margin-left:5px;" class="btn btn-primary" id="button_biaoqian">
+                                                  添加标签+
+                            </button></li>
+                        </ul>
+                    </div>
+                             </div>
+                             <div id="biaoqian" style="width:100%; display:none;" >
+                             <ul  id="bianhao_ul" style="margin-left:0px !important;" class="table">
+                             
+                             	
+                             
+                             
+                             </ul>
+                             <a href="javascript:;" onClick="del();"><button type="button"  style=" margin-left:50px;  margin-top: 20px; margin-bottom: 20px; float: left;" class="btn btn-primary">
+                             	清除标签
+                             </button>
+                             </a>
+                             </div>
+                              <div class="form-group ">
+                        <div class="panel-body">
+                                            <ul style="margin-left:-30px !important;" class="table">
+                                                  
+                                                  <li onClick="tianjiajiaoshi_top();"> <button type="button"  style="margin-left:5px;" class="btn btn-primary" id="button_jiaoshi_top" >
+                                                  添加主讲教师+
+                            </button></li>
+                        </ul>
+                    </div>
+                             </div>
+                             <div id="jiaoshi_top" style="width:100%; display:none; " >
+                             <ul  id="jiaoshi_ul_top" style="margin-left:0px !important;" class="table">
+                             
+                             	
+                             
+                             
+                             </ul>
+                             <a href="javascript:;" onClick="del_jiaoshi_top();"><button type="button"  style=" margin-left:50px;  margin-top: 20px; margin-bottom: 20px; float: left;" class="btn btn-primary">
+                             	清除主讲教师
+                             </button>
+                             </a>
+                             </div>     
+                       <div class="panel-body">
+                                            <ul style="margin-left:-30px !important;" class="table">
+                                                  
+                                                  <li onClick="tianjiajiaoshi();"> <button type="button"  style="margin-left:5px;" class="btn btn-primary" id="button_jiaoshi" >
+                                                  添加客串教师+
+                            </button></li>
+                        </ul>
+                    </div>
+                             </div>
+                             <div id="jiaoshi" style="width:100%; display:none; " >
+                             <ul  id="jiaoshi_ul" style="margin-left:0px !important;" class="table">
+                             
+                             	
+                             
+                             
+                             </ul>
+                             <a href="javascript:;" onClick="del_jiaoshi();"><button type="button"  style=" margin-left:50px;  margin-top: 20px; margin-bottom: 20px; float: left;" class="btn btn-primary">
+                             	清除客串教师
+                             </button>
+                             </a>
+                             </div>
+                             <div class="panel-body">
+                                            <ul style="margin-left:-15px !important;" class="table">
+                                                  
+                                                  <li onClick="cla_kechuangjiaoshi();"> <button type="button"  style="margin-left:5px;" class="btn btn-primary" id="cla_kechuangjiaoshi" >
+                                                  清除客串教师
+                           								</button>
+                                                  </li>
+                        		</ul>
+                    </div>
+                             
+                             
+                             <br />
+                             <br />
+                             <div class="form-group ">
+                                        <label style=" width:100%;padding:0 !important;" for="ccomment" class="control-label col-lg-2">课程简介</label>
+                                        <div class="col-lg-10" style=" width:100%;padding:0 !important;">
+                                            <textarea  class="form-control " id="ccomment" name="jianjie" required>{$vo.brief}</textarea>
+                                        </div>
+                             </div>
+                             
+                             <div class="form-group ">
+                                        <label style=" width:100%;padding:0 !important;" for="ccomment" class="control-label col-lg-2">课程概述</label>
+                                        <div class="col-lg-10" style=" width:100%;padding:0 !important;">
+                                            <textarea  class="form-control " id="ccomment" name="gaishu" required>{$vo.summary}</textarea>
+                                        </div>
+                             </div>
+                             <div class="row">
+                <div style="padding:0 !important;" class="col-md-12" >
+                    <section class="panel">
+                       <label for="ccomment"  class="control-label col-lg-2">课程大纲</label>
+                        <div class="panel-body" >
+                            
+                                <div class="form-group">
+                                    <div class="col-md-12" style="padding:0px !important;" >
+                                        <textarea name="dagang" class="wysihtml5 form-control" rows="9">{$vo.outline}</textarea>
+                                    </div>
+                                </div>
+                           
+                        </div>
+                    </section>
+                </div>
+                
+              </div>
+              <input style="display:none" type="text" autocomplete="off" name="biaoqian" id="biaoqian_value" />
+              <input style="display:none" type="text" autocomplete="off" name="jiaoshi" id="jiaoshi_value" />
+              <input style="display:none" type="text" autocomplete="off" name="kechengbao" id="kechengbao_value" value="" />
+              <input style="display:none" type="text" autocomplete="off" name="shangke_value" id="shangke_value" value="{$vo.mark_bit}" />
+              <input style="display:none" type="text" autocomplete="off" name="type_value" id="type_value" value="{$vo.show_course}" />
+              <input style="display:none" type="text" autocomplete="off" name="course" id="course" value="{$course}" />
+              <input style="display:none" type="text" autocomplete="off" name="jiaoshi_top" id="jiaoshi_value_top" value="" />
+              <input style="display:none" type="text" autocomplete="off" name="cla_kechuangjiaoshi" id="cla_kechuangjiaoshi_value" value="" />
+
+              
+                            
+</form>
+                             
+                            <button  style="width:150px !important; margin-left:40px; " type="button" class="btn btn-primary" onClick="change();" >提交</button>
+                            
+                        
+
+                    </div>
+                </section>
+            </div>
+            </volist>
+</div>
+
+
+</body>
+</html>
+<script src="__PUBLIC__/houtaikecheng/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/modernizr.min.js"></script>
+<script src="__PUBLIC__/houtaikecheng/js/jquery.nicescroll.js"></script>
+
+
+<script type="text/javascript" src="__PUBLIC__/jedate/jedate.js"></script>
+<script type="text/javascript"> 
+    //jeDate.skin('gray');
+	jeDate({
+		dateCell:"#indate",//isinitVal:true,
+		format:"YYYY-MM",
+		isTime:false, //isClear:false,
+		minDate:"2015-10-19 00:00:00",
+		maxDate:"2016-11-8 00:00:00"
+	})
+    jeDate({
+		dateCell:"#dateinfo",
+		format:"YYYY-MM-DD hh:mm:ss",
+		isinitVal:true,
+		isTime:true, //isClear:false,
+		minDate:"2014-09-19 00:00:00",
+		okfun:function(val){alert(val)}
+	})
+	document.getElementById('dateinfo').value='';
+	</script>
+<script type="text/javascript"> 
+function change()
+{
+	var a=document.getElementById('bit').value;
+	
+	if(isNaN(a))
+	{
+		alert('优先级必须为整数');
+		
+		return;
+	}
+	else
+	{
+		document.form1.submit();
+	}
+	
+} 
+function tianjiabiaoqian()
+{
+
+	var div = document.getElementById('biaoqian').style.display;
+	
+	if(div=='none')
+	{
+		var a=document.getElementById('biaoqian');
+		
+		a.style.display="block";
+		
+		document.getElementById("button_biaoqian").innerHTML="收起标签-";
+		
+	}
+	else
+	{
+		var a=document.getElementById('biaoqian');
+		
+		a.style.display="none";	
+		
+		document.getElementById("button_biaoqian").innerHTML="添加标签+";
+				
+	}
+		var va=document.getElementById('biaoqian_value').value;
+		
+		if(!(va))
+		{
+			gettag();
+		}
+		
+
+}
+function tianjiajiaoshi()
+{
+
+	var div = document.getElementById('jiaoshi').style.display;
+	
+	if(div=='none')
+	{
+		var a=document.getElementById('jiaoshi');
+		
+		a.style.display="block";
+		
+		document.getElementById("button_jiaoshi").innerHTML="收起客串教师-";
+		
+	}
+	else
+	{
+		var a=document.getElementById('jiaoshi');
+		
+		a.style.display="none";	
+		
+		document.getElementById("button_jiaoshi").innerHTML="添加客串教师+";
+				
+	}
+	var va=document.getElementById('jiaoshi_value').value;
+		
+	if(!(va))
+	{
+		getteacher()
+	}
+
+}
+function tianjiajiaoshi_top()
+{
+
+	var div = document.getElementById('jiaoshi_top').style.display;
+	
+	if(div=='none')
+	{
+		var a=document.getElementById('jiaoshi_top');
+		
+		a.style.display="block";
+		
+		document.getElementById("button_jiaoshi_top").innerHTML="收起主讲教师-";
+		
+	}
+	else
+	{
+		var a=document.getElementById('jiaoshi_top');
+		
+		a.style.display="none";	
+		
+		document.getElementById("button_jiaoshi_top").innerHTML="添加主讲教师+";
+				
+	}
+	var va=document.getElementById('jiaoshi_value_top').value;
+		
+	if(!(va))
+	{
+		getteacher_top()
+	}
+
+}
+function gettag()
+{
+	$.post("__URL__/gettag/", 
+		function(data,status)
+			{
+				var str= '';
+				var data = eval('('+data+')');
+				if(data)
+				{
+					for(var x in data){
+					var a = data[x]['name'];
+					var b = data[x]['id'];
+					var c = data[x]['code'];
+					var str='<li > <button type="button"  style="margin-left:5px;  background-color: #06F;" class="btn btn-primary" id="'+b+'" onClick="bianse('+b+','+c+')" >'+a+'</button></li>'+str;
+					
+					}
+					document.getElementById("bianhao_ul").innerHTML = str;
+				}
+				else
+				{
+					alert('未知错误');	
+				}
+			}
+		   );	
+}
+function getteacher()
+{
+	$.post("__URL__/getteacher/", 
+		function(data,status)
+			{
+				var str= '';
+				var data = eval('('+data+')');
+				if(data)
+				{
+					for(var x in data){
+					var a = data[x]['name'];
+					var b = data[x]['id'];
+					var str='<li > <button type="button"  style="margin-left:5px;  background-color: #06F;" class="btn btn-primary" id="t'+b+'" onClick="bianse_jiaoshi('+b+')" >'+a+'</button></li>'+str;
+					
+					}
+					document.getElementById("jiaoshi_ul").innerHTML = str;
+				}
+				else
+				{
+					alert('未知错误');	
+				}
+			}
+		   );	
+}
+function getteacher_top()
+{
+	$.post("__URL__/getteacher/", 
+		function(data,status)
+			{
+				var str= '';
+				var data = eval('('+data+')');
+				if(data)
+				{
+					for(var x in data){
+					var a = data[x]['name'];
+					var b = data[x]['id'];
+					var str='<li > <button type="button"  style="margin-left:5px;  background-color: #06F;" class="btn btn-primary" id="t'+b+'_top" onClick="bianse_jiaoshi_top('+b+')" >'+a+'</button></li>'+str;
+					
+					}
+					document.getElementById("jiaoshi_ul_top").innerHTML = str;
+				}
+				else
+				{
+					alert('未知错误');	
+				}
+			}
+		   );	
+}
+function bianse(id,code)
+{
+	
+	var div=document.getElementById(id);	
+	div.style.backgroundColor="#374152";
+	var va=document.getElementById('biaoqian_value').value;
+	if(va)
+	{
+		var str='{"id":"'+id+'","code":"'+code+'"},'+va;
+	}
+	else
+	{
+		var str='{"id":"'+id+'","code":"'+code+'"}';
+	}
+	var vb=document.getElementById('biaoqian_value').value=str;
+	
+}
+var nu_bianse_jiaoshi=1;
+function bianse_jiaoshi(id)
+{
+	
+	var div=document.getElementById('t'+id);
+	var color=div.style.backgroundColor;
+	if(color=="rgb(55, 65, 82)")
+	{
+		return;	
+	}	
+	div.style.backgroundColor="#374152";
+	var str_in=div.innerHTML;
+	div.innerHTML=window.nu_bianse_jiaoshi+'.'+str_in;
+	window.nu_bianse_jiaoshi++;
+	
+	var va=document.getElementById('jiaoshi_value').value;
+	if(va)
+	{
+		var str=va+',{"id":"'+id+'"}';
+	}
+	else
+	{
+		var str='{"id":"'+id+'"}';
+	}
+	var vb=document.getElementById('jiaoshi_value').value=str;
+	
+	
+}
+var nu_bianse_jiaoshi_top=1;
+function bianse_jiaoshi_top(id)
+{
+	
+	var div=document.getElementById('t'+id+'_top');
+	var color=div.style.backgroundColor;
+	if(color=="rgb(55, 65, 82)")
+	{
+		return;	
+	}	
+	div.style.backgroundColor="#374152";
+	var str_in=div.innerHTML;
+	div.innerHTML=window.nu_bianse_jiaoshi_top+'.'+str_in;
+	window.nu_bianse_jiaoshi_top++;
+	
+	var va=document.getElementById('jiaoshi_value_top').value;
+	if(va)
+	{
+		var str=va+',{"id":"'+id+'"}';
+	}
+	else
+	{
+		var str='{"id":"'+id+'"}';
+	}
+	var vb=document.getElementById('jiaoshi_value_top').value=str;
+	
+	
+}
+function del()
+{
+	gettag();
+	document.getElementById('biaoqian_value').value='';
+}
+function del_jiaoshi()
+{
+	getteacher();
+	window.nu_bianse_jiaoshi=1;
+	document.getElementById('jiaoshi_value').value='';
+}
+function del_jiaoshi_top()
+{
+	getteacher_top();
+	window.nu_bianse_jiaoshi_top=1;
+	document.getElementById('jiaoshi_value_top').value='';
+}
+function shangke(a)
+{
+	var str='<i class="fa fa-angle-down"></i>';
+	
+	if(a==1)
+	{
+
+		document.getElementById("shangke").innerHTML="站内课"+str;
+			
+		document.getElementById("shangke_value").value=1;
+	}
+	
+	if(a==0)
+	{
+
+		document.getElementById("shangke").innerHTML="站内课"+str;
+			
+		document.getElementById("shangke_value").value=0;
+	}
+	if(a==2)
+	{
+
+		document.getElementById("shangke").innerHTML="站外课"+str;
+			
+		document.getElementById("shangke_value").value=2;
+	}
+	if(a==3)
+	{
+
+		document.getElementById("shangke").innerHTML="站外课"+str;
+			
+		document.getElementById("shangke_value").value=3;
+	}		
+	
+}
+function type1(a)
+{
+	var str='<i class="fa fa-angle-down"></i>';
+	
+	if(a==0)
+	{
+
+		document.getElementById("type").innerHTML="显示连载课"+str;
+	}
+	if(a==1)
+	{
+
+		document.getElementById("type").innerHTML="隐藏连载课"+str;
+	}		
+	
+	document.getElementById("type_value").value=a;
+	
+}
+function tianjiakechengbao()
+{
+
+	var div = document.getElementById('kechengbao').style.display;
+	
+	if(div=='none')
+	{
+		var a=document.getElementById('kechengbao');
+		
+		a.style.display="block";
+		
+		document.getElementById("button_kechengbao").innerHTML="收起课程包-";
+		
+	}
+	else
+	{
+		var a=document.getElementById('kechengbao');
+		
+		a.style.display="none";	
+		
+		document.getElementById("button_kechengbao").innerHTML="添加课程包+";
+				
+	}
+		var va=document.getElementById('kechengbao_value').value;
+		
+		if(!(va))
+		{	
+			getkechengbao();
+		}
+		
+
+}
+function getkechengbao()
+{
+	$.post("__URL__/getkechengbao", 
+		function(data,status)
+			{
+				var str= '';
+				var data = eval('('+data+')');
+				if(data)
+				{
+					for(var x in data){
+					var a = data[x]['name'];
+					var b = data[x]['id'];
+					var c = data[x]['code'];
+					var str='<li > <button type="button"  style="margin-left:5px;  background-color: #06F;" class="btn btn-primary" id="kechengbao'+b+'" onClick="addkechengbao('+b+','+c+')" >'+a+'</button></li>'+str;
+					
+					}
+					document.getElementById("kechengbao_ul").innerHTML = str;
+				}
+				else
+				{
+					alert('未知错误');	
+				}
+			}
+		   );	
+}
+function addkechengbao(id,code)
+{
+	
+	var div=document.getElementById('kechengbao'+id);	
+	div.style.backgroundColor="#374152";
+	var va=document.getElementById('kechengbao_value').value;
+	if(va)
+	{
+		var str='{"id":"'+id+'","code":"'+code+'"},'+va;
+	}
+	else
+	{
+		var str='{"id":"'+id+'","code":"'+code+'"}';
+	}
+	var vb=document.getElementById('kechengbao_value').value=str;
+	
+}
+function del_kechengbao()
+{
+	getkechengbao();
+	document.getElementById('kechengbao_value').value='';
+}
+function cla_kechuangjiaoshi()
+{
+	var value=document.getElementById('cla_kechuangjiaoshi_value').value;
+	if(value)
+	{
+		document.getElementById('cla_kechuangjiaoshi_value').value='';	
+	}
+	else
+	{
+		document.getElementById('cla_kechuangjiaoshi_value').value=1;	
+	}
+	var value1=document.getElementById('cla_kechuangjiaoshi_value').value;
+	if(value1)
+	{
+		document.getElementById('cla_kechuangjiaoshi').style.backgroundColor='rgb(255, 8, 8)';	
+	}
+	else
+	{
+		document.getElementById('cla_kechuangjiaoshi').style.backgroundColor='#424F63';	
+	}
+}
+
+</script> 

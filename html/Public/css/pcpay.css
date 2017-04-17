@@ -1,0 +1,17 @@
+body{background: #ececec;}
+	.wechartPay{width: 1020px;height:610px;background: white;margin:46px auto 0;
+		box-shadow:0 0 15px #e2e2e2;}
+		.payTitle{height: 109px;border-bottom: 1px dashed #ccc;background: #f3f5f6;padding: 0 30px;}
+		.wepayWard{height: 109px;line-height: 109px;font-size: 28px;float: left;}
+		.wepayContent{height: 109px;float: right;text-align: right;}
+		.amount{font-size: 22px;color: #f00;}
+		.money{height: 70px;font-size: 18px;line-height: 80px;}
+		.orderNumber{color: #999;}
+		.backBar{height: 60px;line-height: 60px;margin-left: 30px;color: #0090ff;}
+		.backBar a{color: #0090ff;font-size: 16px;}
+		.payImg{padding: 0 160px 0 200px;}
+		.payImg_left{float: left;margin-top: 20px;}
+		.twoCode{display: block;width: 280px;height: 280px;}
+		.showCode{display: block;width: 280px;margin-top: 17px;}
+		.payImg_right{float: right;}
+		.payImg_right img{display: block;width: 320px;}

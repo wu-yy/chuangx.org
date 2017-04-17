@@ -1,0 +1,84 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>中国创业学院</title>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/20160516style.css"/>
+
+<style type="text/css">
+.zu_tu {
+    width: 30px !important;
+    height: 30px !important;
+    border: 1px solid #999;
+    color: #999;
+    text-align: center;
+    line-height: 26px;
+    display: block;
+    border-radius: 100px;
+    font-size: 22px;
+    float: left;
+    margin-top: 6px;
+}
+</style>
+</head>
+
+<body style="background:#fff; width:100%;">
+    <div class="us_right_nav" style="width:100% !important;">
+        <div class="us_list" style=" position:fixed; top:0px; color:#000;">群组</div>
+        <volist name='list' id='vo'>
+         <div class="zu_detail">
+             <div class="zu_left">
+                <p class="zu_ming">{$vo.name}</p>
+                <p class="zu_ren"> {$count}人<span>（上限人数{$vo.max_nu}）</span></p>
+             </div>
+             <div class="zu_right"><div style="float:right"><img src="__ROOT__/{$vo.image}" width="120px" height="120px"/></div></div>
+         </div> 
+         </volist>
+         <div class="zu_list">
+             <ul>
+                 <a href="__URL__/uinfo_course_group/gid/{$gid}"><li >群组课程</li></a>
+                 <a href=""><li class="zu_act">群成员</li></a>
+             </ul>
+         </div>
+         <div class="zu_add">
+            <a href="" class="zu_tj"><div class="zu_tu">+</div><p>添加新成员</p></a>
+           <div class="z_yqm">
+               <div class="z_shu">
+                <input type="text"  class="z_put1" id='input' placeholder="请输入成员手机号"/>
+                <button class="z_but" onclick="adtag_yiji()">添加新成员</button>
+               </div>
+               <p class="z_tips" id="error"></p>
+            </div>
+         </div>
+         
+<table  class="z_tab" border="1" cellpadding="2" cellspacing="1" style="margin-bottom:100px; width:80% !important;">
+  <tr>
+    <th style=" text-align:left;">昵称</th>
+    <th>真实姓名</th>
+    <th>电话</th>
+    <!--<th>操作</th>-->
+  </tr>
+  <volist name='group_user' id='vo'>
+  <tr>
+    <td><if condition="$image neq NULL "><img class="z_tx" src="{$vo.image}"/></if><if condition="$image eq NULL "><img class="z_tx" src="__PUBLIC__/image/moren.jpg"/></if><p style="margin-top:6px; float:left;">{$vo.nikename}</p></td>
+    <td>{$vo.username}</td>
+    <td>{$vo.usermobilenum}</td>
+     <!--<td><a href=""  class="zu_xiang2">详情</a></td>-->
+  </tr>
+  </volist>
+</table>
+          
+   </div>
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/uinfo/uinfo_user_group.js" type="text/javascript"></script>
+<script>
+	var url='__URL__/';
+	var gid='{$gid}';
+</script>

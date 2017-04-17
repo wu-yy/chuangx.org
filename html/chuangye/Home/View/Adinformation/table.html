@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">-->
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>课程列表</title>
+	<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+  <!--data table-->
+  <link rel="stylesheet" href="__PUBLIC__/incourse/js/data-tables/DT_bootstrap.css" />
+
+  <link href="__PUBLIC__/incourse/css/style.css" rel="stylesheet">
+  <link href="__PUBLIC__/incourse/css/style-responsive.css" rel="stylesheet">
+  <style>
+     .icon-edit{font-size:18px; margin-right:10px;}
+	 .icon-wid{ width:15%;}
+	 /* Search */
+#Search{margin:20px auto; margin-bottom:20px;}
+.text{margin-bottom:20px;}
+#Search input{margin-bottom:20px;float:left;width:140px;background-color:#F7F8F9;border:1px solid;border-color:#c2c0c0 #cccaca #d1cfcf;font-size:14px;line-height:1.8;
+	
+	border-radius:3px 0 0 3px;
+	-moz-border-radius:3px 0 0 3px;
+	-webkit-border-radius:3px 0 0 3px;
+	
+	box-shadow:0 1px #fff, inset 0 1px rgba(34,25,25,0.05);
+	-moz-box-shadow:0 1px #fff, inset 0 1px rgba(34,25,25,0.05);
+	-webkit-box-shadow:0 1px #fff, inset 0 1px rgba(34,25,25,0.05);
+}
+#Search input:focus{
+	background-color:#fff;
+	box-shadow:0 1px #fff, inset 0 1px rgba(34,25,25,0.1);
+	-moz-box-shadow:0 1px #fff, inset 0 1px rgba(34,25,25,0.1);
+	-webkit-box-shadow:0 1px #fff, inset 0 1px rgba(34,25,25,0.1);
+}
+#Search a{
+	float:left;margin-left:-1px;padding:6px 7px 1px 7px;min-height:17px;_height:17px;border:1px solid;border-color:#c2c0c0 #cccaca #d1cfcf;
+	
+	border-radius:0 3px 3px 0;
+	-moz-border-radius:0 3px 3px 0;
+	-webkit-border-radius:0 3px 3px 0;
+	
+	box-shadow:0 1px rgba(255,255,255,0.9), inset 0 0 2px rgba(255,255,255,0.75);
+	-moz-box-shadow:0 1px rgba(255,255,255,0.9), inset 0 0 2px rgba(255,255,255,0.75);
+	-webkit-box-shadow:0 1px rgba(255,255,255,0.9), inset 0 0 2px rgba(255,255,255,0.75);
+}
+#Search a:active{
+	box-shadow:inset 0 1px 1px rgba(34,29,29,0.15);
+	-moz-box-shadow:inset 0 1px 1px rgba(34,29,29,0.15);
+	-webkit-box-shadow:inset 0 1px 1px rgba(34,29,29,0.15);
+}
+  </style>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="sticky-header" style="background: #EFF0F4 none repeat scroll 0% 0%;">
+
+    <!-- left side start-->
+   
+    <!-- left side end-->
+    
+
+
+        <!-- header section start-->
+        
+        <!-- header section end-->
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                课程列表
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="__URL__/index/">课程录入</a>
+                </li>
+                <li class="active">课程列表</a></li>
+            </ul>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+           <div class="row">
+                <div class="col-sm-12">
+                <section class="panel">
+                <header class="panel-heading">
+                    咨询列表
+                    
+                </header>
+                <div class="panel-body">
+                <div class="adv-table editable-table ">
+                <div class="clearfix">
+                    <div class="btn-group">
+                        <button id="editable-sample_new" class="btn btn-primary">
+                            添加 <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="btn-group pull-right">
+                        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">工具 
+                        <i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="#">导出Excel文件</a></li>
+                        </ul>
+                    </div>
+                </div>
+                    
+               
+                
+                <table class="table table-striped table-hover table-bordered" style=" margin-top:20px;" id="editable-sample">
+                <thead>
+                <tr>
+                    <th>标题</th>
+                    <th>优先级</th>
+                    <th>录入时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                 
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="list" id="vo">
+                <tr class="">
+                    <td>{$vo.title}</td>
+                    <td>{$vo.mark_bit}</td>
+                    <td>{$vo.time|date="y年m月d日",###}</td>
+                    <td class="center" id="shanchu{$vo.id}"><if condition="$vo.is_delect neq 1 "> 未删除 </if><if condition="$vo.is_delect eq 1 "> 已删除 </if></td>
+                    <td class="icon-wid">
+                       <a  >&nbsp;&nbsp;&nbsp;<i class="fa fa-edit"></i></a>
+                       <a class="icon-edit" href="__URL__/xiugai/id/{$vo.id}">修改<i class="fa fa-exclamation-circle"></i></a>
+                       <div id="sh{$vo.id}" style="float:right; margin-right:10px;">
+                       <if condition="$vo.is_delect neq 1 ">
+                       <a class="icon-edit" href="javascript:;" onClick="del({$vo.id});">删除<i class="fa fa-times-circle"></i></a>
+                       </if>
+                       <if condition="$vo.is_delect eq 1 ">
+                       <a class="icon-edit" href="javascript:;" onClick="sav({$vo.id});">恢复<i class="fa fa-times-circle"></i></a>
+                       </if>
+                       </div>
+                    </td>
+                    
+                </tr>
+                
+                </volist>
+                
+                
+
+<!--                <tr class="">
+                    <td>Waren</td>
+                    <td>gufet</td>
+                    <td>622</td>
+                    <td class="center">author</td>
+                    <td><a class="edit" href="javascript:;">Edit</a></td>
+                    <td><a class="delete" href="javascript:;">Delete</a></td>
+                </tr>-->
+                </tbody>
+                </table>
+                </div>
+                </div>
+                </section>
+                </div>
+                </div>
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="__PUBLIC__/incourse/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/incourse/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="__PUBLIC__/incourse/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="__PUBLIC__/incourse/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/incourse/js/modernizr.min.js"></script>
+<script src="__PUBLIC__/incourse/js/jquery.nicescroll.js"></script>
+
+<!--data table-->
+<script type="text/javascript" src="__PUBLIC__/incourse/js/data-tables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="__PUBLIC__/incourse/js/data-tables/DT_bootstrap.js"></script>
+
+<!--common scripts for all pages-->
+<script src="__PUBLIC__/incourse/js/scripts.js"></script>
+
+<!--script for editable table-->
+<script src="__PUBLIC__/incourse/js/editable-table.js"></script>
+
+<!-- END JAVASCRIPTS -->
+<script>
+    jQuery(document).ready(function() {
+       //EditableTable.init();
+    });
+</script>
+<script>
+    function del(id)
+	{
+		if(confirm("是否确认删除资讯？"))
+		{
+			var obj = {};
+					obj.key = "value";
+					$.post("__URL__/del/id/"+id, obj,
+						function(data,status)
+							{
+								
+								if(data==1)
+								{
+									document.getElementById("shanchu"+id).innerHTML = "已删除";
+									
+									document.getElementById("sh"+id).innerHTML = '<a class="icon-edit" href="javascript:;" onClick="sav('+id+');">恢复<i class="fa fa-times-circle"></i></a>;'
+								}
+								else
+								{
+									alert("删除失败，未知错误");	
+								}
+							}
+						   );
+						   
+		}
+
+	}
+	function sav(id)
+	{
+		if(confirm("是否确认删除资讯？"))
+		{
+			var obj = {};
+					obj.key = "value";
+					$.post("__URL__/sav/id/"+id, obj,
+						function(data,status)
+							{
+								
+								if(data==1)
+								{
+									document.getElementById("shanchu"+id).innerHTML = "未删除";	
+									
+									document.getElementById("sh"+id).innerHTML ='<a class="icon-edit" href="javascript:;" onClick="del('+id+');">删除<i class="fa fa-times-circle"></i></a>'
+								}
+								else
+								{
+									alert("恢复失败，未知错误");	
+								}
+							}
+						   );
+						   
+		}
+
+	}
+</script>
+
+</body>
+</html>

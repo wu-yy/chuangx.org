@@ -1,0 +1,302 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>绑定手机号</title>
+
+<link rel="stylesheet" href="__PUBLIC__/css/phone_style.css" />
+<style type="text/css">
+ul{ text-decoration:none !important; list-style:none !important;list-style-type:none !important;}
+.biaoti{ width:100%; text-align:left;background:#fff; padding:20px 0px; height:50px;}
+.biaoti p{ border-left:8px solid #6e18ee; line-height:50px; color:#6e18ee; font-size:30px; }
+.i_list3{ width:100% !important; padding:0px !important; height:auto !important; }
+.i_list3 ul{ width:100% !important;background:#fff; list-style-type: !important; list-style:none !important;}
+.i_list3 ul li{ width:600px !important;height:auto !important; padding:20px !important; border-bottom:1px solid #ccc; overflow:hidden !important; line-height:60px !important;}
+.j_name{ font-size:28px; color:#888; float:left;}
+.j_content{ font-size:24px; color:#333; float:right; text-align:right !important; width:400px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.next_page1{ float:right;}
+.next_page1 img{ margin-top:20px; margin-left:20px;}
+.j_name input{width:600px; float:left; height:64px; padding:8px; background:transparent; border:none; color:#888;font-size:28px;}
+.j_name1 input{width:370px; float:left; height:64px; padding:8px; background:transparent; border:none; color:#888;font-size:28px;}
+.j_name2 a{width:212px; text-align:center; border-left:1px solid #dedede !important; float:left; height:54px; padding:8px; background:transparent; border:none; color:#88a4ff;font-size:28px;}
+.j_anniu{ width:600px; margin:80px 20px 30px 20px; background:#88a4ff !important; border-radius:8px; color:#fff; font-size:34px; height:98px; line-height:98px; text-align:center;}
+.j_anniu1{ width:600px; margin:20px 20px 30px 20px; background:#transparent !important; border-radius:8px; color:#88a4ff; font-size:34px; height:98px; line-height:98px; text-align:center; border:2px solid #88a4ff;}
+<!--xin-->
+.p_jue{ width:300px; font-size:28px; text-align:center; margin:0 auto; margin-top:30px; line-height:44px; color:#888;}
+.c_tu{ text-align:center; margin:0 auto;}
+.c_tu img{ text-align:center; width:250px; margin-top:180px;}
+.full{ width:500px;z-index:999; margin:0 auto; padding:20px; background:#transparent !important; text-align:center; height:35px; border-radius:0px 0px 8px 8px; font-size:28px; color:#993b16;}
+.ps_begin {
+    display: block;
+    width: 180px;
+    height: 60px;
+    line-height:60px;
+    background-color: #829df7 !important;
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    margin-top:30px;
+    font-size:24px;
+    border: none;
+    margin-left: 16.8%;
+}
+</style>
+<script type="text/javascript" src="__PUBLIC__/js/koala.min.1.5.js"></script>
+
+</head>
+
+<body style="background:#f4f5f7; height:100%;">
+
+<include file="Public:phone_head_xin" />
+<div class="warpper"   style="position:relative; height:100%;">
+     <div class="biaoti">
+         <p>&nbsp;&nbsp;安全中心</p>   
+     </div>
+        
+     <!--绑定成功-->
+     <if condition="$type eq 0">
+       <div class="i_list3" style="z-index:9999;">
+           <div class="c_tu"><img src="__PUBLIC__/image/success.png" /></div>
+          <p style=" width:300px; font-size:28px; text-align:center; margin:0 auto; margin-top:30px; line-height:44px; color:#888;">你已绑定手机号，请到PC网页端进行修改</p>
+       </div>
+      </if> 
+        <!--绑定成功end-->
+        
+       <if condition="$type eq 1">
+        
+<!--tangchu\\--> 
+<div style=" position:absolute; background:#f2f2f2; height:390px; width:384px; z-index:99; left:120px; top:40px; display:none;" id="show_code" >
+
+ <a href="javascript:;" onclick="none_code()"  style="position:absolute; top:0px; left:337px; z-index:999 !important; height:48px; width:48px;"><img style="width:48px;" src="__PUBLIC__/image/gb11.png" />
+ </a>
+<div id="imagecode" style="width:100%; height:50px; color:#F00; list-style:none !important; padding-top:15px; text-align:center;">
+</div>
+
+<div class="nostyle" style="overflow:hidden; margin-bottom:10px; position:relative;"> 
+                         
+<div class="sy_yzm_sr" style=" foalt:left !important; margin-left:37px; width:312px; float:left; height:78px; line-height:78px; text-align:left; border-radius:0px;">
+<input class="sy_shuruk_yzm" style="height:78px; border:1px solid #dedede !important; width:100% !important; line-height:78px; text-align:center !important; font-size:28px;" id="picyzm"name="zcdl" maxlength="4" type="text" placeholder="请输入图形验证码"/>
+</div>
+
+<!--<a style=" display:inline; margin-left:10px !important; border:none !important;display: inline; width:133px; height:64px; float:left;" href="javascript:;" onclick="huoqu();"><img style="width:130px;border:none !important;" id="sendd" src=""/></a>-->
+<a href="javascript:void(change_code());"  style="display:block; margin-left:37px; text-align:center; float:left; ">
+<img style="width:311px !important; height:80px; border:1px solid #dedede;" src="{:U('Uinfo/verify')}" id="codes" alt="点击刷新"  />
+</a>
+ </div>
+<input type="button" class="ps_begin" style="margin-left:40px !important; height:80px !important; line-height:80px !important;margin-top: 50px !important; font-size:28px !important; appearance:none !important; -webkit-appearance:none !important; -moz-appearance:none !important;  width:309px !important;" value="确定" onclick="checkcode();"  />
+</div>
+<!--tangchu//-->
+ <form action="__URL__/up_phone" name="form1" id="form1">         
+      <div class="i_list3">
+<!--提示错误-->
+        <div class="full1" style="z-index:999; display:block;"><p class="full" id='username'></p></div>
+<!--提示错误end-->
+         <ul>
+             <li>
+                  <div class="j_name"><input name="srk"  maxlength="11" type="tel" id="index_user" placeholder="请输入手机号"/></div> 
+	
+             </li>
+             <li>
+                  <div class="j_name1"><input name="srk" type="text" id='yzm' maxlength="4" placeholder="验证码"/></div>
+ 
+                  <div class="j_name2"><a href="javascript:;" onclick="huoqu();" id="send">获取验证码</a></div>
+                  
+             </li>
+             
+         </ul>
+         
+         <a href="javascript:;" class="j_anniu" onclick="subb();">绑定手机号</a>
+         <a href="__URL__/index" class="j_anniu1">取消</a>
+     </div>
+     </form>
+     </if>
+     
+  
+</div>
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/uinfo/phone.js" type="text/javascript"></script>
+<script>
+function subb()
+{
+	var code = document.getElementById("yzm").value;
+	var t=window.yanzhengma;
+	if(!t)
+	{
+		document.getElementById("username").innerHTML = "请发送验证码！！";
+		var t=setTimeout("clearusername()",2000);	
+		return;
+	}
+	if(!code)
+	{
+		document.getElementById("username").innerHTML = "请填写短息验证码";	
+		var t=setTimeout("clearusername()",2000);
+		return;	
+	}
+	var ur="{:U('Uinfo/check_yzm')}";
+		 $.ajax({
+            url:ur,
+            async:false, 
+			type:'post',
+			data:{"rank":code},            
+            success:function(data) {
+           		if(data==1)
+				{
+					change_phone();	
+				}
+				else
+				{
+					document.getElementById("username").innerHTML = "短信验证码错误";	
+					var t=setTimeout("clearusername()",2000);
+					return;
+				}
+					
+             }
+		 }); 		 
+}
+
+function checkName(){
+
+	var name = document.getElementById("index_user").value;
+	var ur="{:U('Index/checkname')}";
+
+	var obj = {};
+		obj.key = "value";
+		$.post(ur+"?name="+name, obj,
+			function(data,status)
+				{
+
+					if(data!=0)
+					{
+						document.getElementById("username").innerHTML = "该用户已注册！！";
+						
+						var t=setTimeout("clearusername()",2000);
+						
+						return;
+					}
+					else
+					{
+						check_g_phone();
+					}
+				}
+			   );
+}
+function check_g_phone()
+{
+	var ur="{:U('Uinfo/check_uinfo')}";
+	var name='g_phone';
+	$.post(ur, {'name': name,},
+		function(data,status)
+			{
+				if(data==0)
+				{
+					document.getElementById("show_code").style.display="block";	
+					change_code();
+				}
+				else
+				{
+					sends();	
+				}
+			}
+		   );		   
+}
+function yzm(name)
+{	
+
+		var ur="{:U('Uinfo/yzm')}";
+		var dd;
+		 $.ajax({
+            url:ur,
+            async:false, 
+			type:'post',
+			data:{"name":name},            
+            success:function(data) {
+           		dd=data;
+					
+             }
+		 });     
+           return dd;
+
+}
+function checkcode()
+{
+	var a=document.getElementById("picyzm").value;	
+	if(!a)
+	{
+		document.getElementById("imagecode").innerHTML = "验证码不能为空！！";
+		var t=setTimeout("document.getElementById('imagecode').innerHTML='';",2000);
+		return;			
+	}
+	var b='g_phone';	
+	var ur="{:U('Uinfo/checkcode')}";
+
+			 var obj = {};
+				obj.key = "value";
+				$.post(ur+"?pw="+a+"&name="+b, obj,
+					function(data,status)
+					{
+						if(data==0)
+						{
+							document.getElementById("imagecode").innerHTML = "验证码错误！！";
+							var t=setTimeout("document.getElementById('imagecode').innerHTML='';",2000);	
+							return;
+						}
+						else
+						{
+							document.getElementById("imagecode").innerHTML = "验证码正确";
+							var t=setTimeout("none_code();sends();",2000);
+							return;
+						}
+					}
+					);
+}
+function none_code()
+{
+	document.getElementById("show_code").style.display="none";	
+} 
+function change_phone()
+{
+
+			 var ur="{:U('Uinfo/up_phone')}";
+
+			 var obj = {};
+				obj.key = "value";
+				$.post(ur, obj,
+					function(data,status)
+					{
+						if(data==1)
+						{
+							document.getElementById("username").innerHTML = "绑定手机成功";	
+							var t=setTimeout("clearusername();top.document.location.href='{:U('Uinfo/index')}';",2000);
+							
+						}
+						else
+						{
+							document.getElementById("username").innerHTML = "绑定手机失败";	
+							var t=setTimeout("clearusername()",2000);
+							return;	
+						}
+					}
+					);	
+}
+function change_code(){
+	//	alert(125485);
+	var verifyURL = '{:U("Uinfo/verify", '','')}';
+	$("#codes").attr("src",verifyURL+'/'+Math.random());
+	log_url1('image_identifying_code','user_courseList');
+	return false;
+}
+</script>

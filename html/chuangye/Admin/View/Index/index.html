@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="keywords" content="admin, dashboard, bootstrap, template, flat, modern, theme, responsive, fluid, retina, backend, html5, css, css3">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>AdminX</title>
+
+  <!--icheck-->
+  <link href="__PUBLIC__/Admin/js/iCheck/skins/minimal/minimal.css" rel="stylesheet">
+  <link href="__PUBLIC__/Admin/js/iCheck/skins/square/square.css" rel="stylesheet">
+  <link href="__PUBLIC__/Admin/js/iCheck/skins/square/red.css" rel="stylesheet">
+  <link href="__PUBLIC__/Admin/js/iCheck/skins/square/blue.css" rel="stylesheet">
+
+  <!--dashboard calendar-->
+  <link href="__PUBLIC__/Admin/css/clndr.css" rel="stylesheet">
+
+
+  <!--common-->
+  <link href="__PUBLIC__/Admin/css/style.css" rel="stylesheet">
+  <link href="__PUBLIC__/Admin/css/style-responsive.css" rel="stylesheet">
+
+
+
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <!-- left side start-->
+    <div class="left-side sticky-left-side">
+
+        <!--logo and iconic logo start-->
+        <div class="logo">
+            <a href="http://www.touchdelight.cn/cyxy/" target="_blank"><img src="__PUBLIC__/Admin/images/logo.png" alt=""></a>
+        </div>
+
+        <div class="logo-icon text-center">
+            <a href="http://www.touchdelight.cn/cyxy/" target="_blank"><img src="__PUBLIC__/Admin/images/logo_icon.png" alt=""></a>
+        </div>
+        <!--logo and iconic logo end-->
+
+        <div class="left-side-inner">
+
+            <!-- visible to small devices only -->
+            <div class="visible-xs hidden-sm hidden-md hidden-lg">
+                <div class="media logged-user">
+                    <img alt="" src="__PUBLIC__/Admin/images/photos/user-avatar.png" class="media-object">
+                    <div class="media-body">
+                        <h4><a href="#">John Doe</a></h4>
+                        <span>"Hello There..."</span>
+                    </div>
+                </div>
+
+                <h5 class="left-nav-title">Account Information</h5>
+                <ul class="nav nav-pills nav-stacked custom-nav">
+                  <li><a href="#"><i class="fa fa-cog"></i> <span>全局控制</span></a></li>
+                  <li><a href="#"><i class="fa fa-sign-out"></i> <span>退出登录</span></a></li>
+                </ul>
+            </div>
+
+            <!--sidebar nav start-->
+            <ul class="nav nav-pills nav-stacked custom-nav">
+            
+             <volist name="menu" id="vo">
+              <li <empty name="vo[nlist]"><else /> class="menu-list" </empty>  ><a href="{:U($vo['url'])}" target="right"><i class="fa {$vo.class}"></i> <span>{$vo.nodename}</span>  </a>
+              <empty name="vo[nlist]"><else /> 
+                  
+                    <ul class="sub-menu-list">
+                    <volist name="vo[nlist]" id="voo">
+                        <li><a href="{:U($voo['url'])}" target="right"> {$voo.nodename}</a></li>
+                    
+                        </volist>
+                    </ul>
+                    </empty>
+                </li>
+            </volist>
+            
+           
+ <!--           <foreach name="menu" item="vo">
+            
+                <li <if condition="$key eq 0">class="active"</if> ><a href="{:U($vo['url'])}" target="right" ><i class="fa {$vo.class}"></i> <span>{$vo.nodename}</span></a>
+                   
+                </li>
+</foreach>-->
+           
+             
+            </ul>
+            <!--sidebar nav end-->
+
+        </div>
+    </div>
+    <!-- left side end-->
+    <div class="header-section">
+
+            <!--toggle button start-->
+           <a class="toggle-btn"><i class="fa fa-bars"></i></a>
+            <!--toggle button end-->
+
+          
+
+            <!--notification menu start -->
+            <div class="menu-right">
+                <ul class="notification-menu">
+                    
+                    
+                    <li>
+                        <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                          <!--  <img src="__PUBLIC__/Admin/images/photos/user-avatar.png" alt="" />-->
+                            {$username}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+ 
+                            <li><a href="#"><i class="fa fa-cog"></i> 全局控制</a></li>
+                            <li><a href="{:U('Login/logout')}"><i class="fa fa-sign-out"></i>退出登录</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!--notification menu end -->
+
+        </div>
+    
+    <!-- main content start-->
+    <div class="main-content" style=" display:table-cell;position: absolute;
+         left: 0px;
+         right: 0px;
+          height: auto; bottom:10px; top:50px;
+          background-color: #F1F1F1; min-height:100px; padding-top:0px !important;" >
+    <iframe src="{:U($url)}" name="right" id="iframepage" frameborder="no"  style="width: 100%;
+height: 100%;" allowtransparency="true" scrolling="auto" marginheight="0"
+            marginwidth="0" ></iframe>
+</div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="__PUBLIC__/Admin/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/Admin/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="__PUBLIC__/Admin/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="__PUBLIC__/Admin/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Admin/js/modernizr.min.js"></script>
+<script src="__PUBLIC__/Admin/js/jquery.nicescroll.js"></script>
+
+<!--easy pie chart-->
+<script src="__PUBLIC__/Admin/js/easypiechart/jquery.easypiechart.js"></script>
+<script src="__PUBLIC__/Admin/js/easypiechart/easypiechart-init.js"></script>
+
+<!--Sparkline Chart-->
+<script src="__PUBLIC__/Admin/js/sparkline/jquery.sparkline.js"></script>
+<script src="__PUBLIC__/Admin/js/sparkline/sparkline-init.js"></script>
+
+<!--icheck -->
+<script src="__PUBLIC__/Admin/js/iCheck/jquery.icheck.js"></script>
+<script src="__PUBLIC__/Admin/js/icheck-init.js"></script>
+
+<!-- jQuery Flot Chart-->
+<script src="__PUBLIC__/Admin/js/flot-chart/jquery.flot.js"></script>
+<script src="__PUBLIC__/Admin/js/flot-chart/jquery.flot.tooltip.js"></script>
+<script src="__PUBLIC__/Admin/js/flot-chart/jquery.flot.resize.js"></script>
+<script src="__PUBLIC__/Admin/js/flot-chart/jquery.flot.pie.resize.js"></script>
+<script src="__PUBLIC__/Admin/js/flot-chart/jquery.flot.selection.js"></script>
+<script src="__PUBLIC__/Admin/js/flot-chart/jquery.flot.stack.js"></script>
+<script src="__PUBLIC__/Admin/js/flot-chart/jquery.flot.time.js"></script>
+<script src="__PUBLIC__/Admin/js/main-chart.js"></script>
+
+<!--common scripts for all pages-->
+<script src="__PUBLIC__/Admin/js/scripts.js"></script>
+
+
+</body>
+</html>

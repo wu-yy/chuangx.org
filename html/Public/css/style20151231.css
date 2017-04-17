@@ -1,0 +1,376 @@
+@charset "UTF-8";
+/*首页*/
+.sy_company01 ul li{width: 150px;
+margin-right: 10px;
+height: 40px;
+float: left;
+margin-bottom: 10px;}
+.sy_company01 p {
+    font-size: 18px;
+    text-align: left;
+    color: #FFF;
+    margin-bottom: 30px;
+}
+.sy_f_about01 ul {
+    width: 100%;
+    margin-top: 30px;}
+.sy_f_about01 ul li {
+    width: 100px;
+    text-align: left;
+    font-size: 12px;
+    color: #FFF;
+    float: left;
+    margin-bottom: 20px;
+}
+.sy_f_about01 ul li a {
+    color: #959595;
+}
+
+.sy_company01 ul li img{width: 150px;
+margin-right: 10px;
+height: 40px;
+float: left;
+margin-bottom: 10px;}
+.sy_f_about01{width: 234px;
+height: auto;
+overflow: hidden;
+float: left;}
+.sy_company01{width: 548px;
+height: auto;
+float: left;
+overflow: hidden;
+margin-right: 20px;
+margin-left: 70px;}
+.sy_cyds ul li p{ font-size:14px; color:#fff; line-height:25px; position:absolute; left:0px;
+ bottom:0px; background:url(../image/bgFocus.png) no-repeat; padding:5px; width:89%; }
+.sy_cyds ul li p span{ font-size:14px; width:100%; display:block; overflow:hidden; height:18px;}
+.p1{ font-size:12px !important;}
+.sy_cyds ul li{ position:relative;}
+.tabs_item{ padding: 20px 0px 0px;}
+.tabs_item ul li{width: 172px;
+height: 210px;
+margin-right: 5px;
+margin-left: 5px;
+float: left;
+border-bottom:none !important;
+margin-bottom: 20px;}
+#nav li:hover ul li a{background: #f8f8f8 none repeat scroll 0% 0% !important;}
+#nav li:hover ul li a:hover{background: #dedede none repeat scroll 0% 0% !important;}
+/*登录／注册*/
+.send11{
+  display: block;
+  border: 1px solid #c1c1c1;
+  width: 135px;
+  height: 62px;
+  line-height: 62px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0 auto;
+  background-color: #6739b6;
+  color: #fff;
+  float: left;
+ 
+  margin-left: 8px;
+  margin-bottom: 15px;
+  box-shadow: #eae6ee 1px 1px 2px;
+  -mozbox-shadow: #eae6ee 1px 1px 2px;
+  -ms-box-shadow: #eae6ee 1px 1px 2px;
+  -o-box-shadow: #eae6ee 1px 1px 2px;
+  -webkit-box-shadow: #eae6ee 1px 1px 2px;
+}
+.sy_shuruk{padding: 16px 15px !important; margin:0px !important;border-radius: 5px;}
+.sy_name{height: 33px !important;padding: 10px !important;margin:0px !important;border-radius: 5px;}
+.sy_shuru ul li{height: 52px !important;line-height: 52px !important;}
+.sy_zc_shuruk{padding: 16px 15px !important;margin:0px !important;border-radius: 5px;}
+.sy_yzm_sr{height: 52px !important;line-height: 52px !important;}
+/*#send{height: 50px !important;line-height: 50px !important;}*/
+.sy_shuruk_yzm{padding: 16px 15px !important;margin:0px !important;border-radius: 5px;width: 135px !important;}
+#sendd {
+	border-radius: 5px;
+    display: block;
+    border: 1px solid #C1C1C1;
+    width: 135px;
+    height: 52px;
+    line-height: 52px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 0px auto 15px 8px;
+	margin:0px !important;
+    color: #FFF;
+    float: left;
+    box-shadow: 1px 1px 2px #EAE6EE;
+}
+sy_zc_shuruk.input{box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border linear 0.2s, box-shadow linear 0.2s;}
+/*input[name='zcdl']:focus{border:#62379e 1px solid;
+		 transition: outline(linear,0.25s) border-color(linear,0.25s);
+		 box-shadow:#dacbd7 1px 1px 2px;
+	    -mozbox-shadow:#dacbd7 1px 1px 2px;
+	    -ms-box-shadow:#dacbd7 1px 1px 2px;
+	    -o-box-shadow:#dacbd7 1px 1px 2px;
+	    -webkit-box-shadow:#dacbd7 1px 1px 2px;}*/
+input[name='anniu']:hover{
+	background:#829df7;
+		 transition: outline(linear,0.25s) border-color(linear,0.25s);
+		 box-shadow:#688bfc 3px 3px 3px;
+	    -mozbox-shadow:#688bfc 3px 3px 3px;
+	    -ms-box-shadow:#688bfc 3px 3px 3px;
+	    -o-box-shadow:#688bfc 3px 3px 3px;
+	    -webkit-box-shadow:#688bfc 3px 3px 3px;}
+/*课程*/
+.cs_content{padding: 20px 0px 10px !important;width: 1060px !important;}
+.st-container{ padding:0px 20px 0px !important;}
+.st-container1{ padding:0px 20px 0px !important;}
+.us_caption1{ width:830px !important;}
+.us_zx_pic1{ width:172px !important; height:110px !important;}
+.kc_kk a{margin-right:0px !important; text-align:center;}
+.kc_de_content ul li { margin-right:0px !important;}
+.kc_de_content ul li span{ margin:0px 5px;}
+.kc_de_nav{ z-index:99;}
+.sy_right1 ul{ z-index:9999;}
+.us_begin{
+    display: block;
+    width: 150px !important;
+    height: 40px !important;
+    line-height: 40px !important; margin-top:10px !important;}
+.us_list{ color:#000 !important;}
+.us_zx_brief {padding-top: 0px !important; width:auto; !important;}
+.us_tips {
+  margin-top: 5px;
+}
+/*about*/
+.about_us article {
+	width: 100%;
+	padding-bottom: 100px
+}
+
+.about_us .banner {
+	height: 302px;
+	background: url("/static/images/about_bg.3fa7c94edab2.jpg") no-repeat 50% 50%
+}
+
+.about_us article .wrap {
+	margin: 50px auto 0
+}
+
+.about_us article .wrap>div {
+	width: 760px;
+	padding: 0 20px
+}
+
+.about_us article .wrap>div h3 {
+	padding: 20px 0 10px;
+	font-size: 24px;
+	color: #333;
+	font-weight: 900
+}
+
+.about_us article .wrap>div h3 a.toggle_lang {
+	float: right;
+	font-size: 14px;
+	color: #414141;
+	font-weight: normal
+}
+
+.about_us article .wrap>div p {
+	line-height: 25px;
+	font-size: 14px;
+	text-indent: 2em
+}
+
+.about_us article .wrap>div p a {
+	color: #762fe8
+}
+
+.about_us article .wrap>div #about_us_en_ p {
+	text-indent: 0
+}
+
+.about_us article .wrap>div h4 {
+	font-size: 16px;
+	color: #333;
+	padding: 30px 0 5px
+}
+
+.about_us article .wrap>div>div {
+	display: none
+}
+
+.about_us article .wrap>div #leadership_ p {
+	text-indent: 0
+}
+
+.about_us article .wrap>nav {
+	width: 260px;
+	padding: 20px 0 0 0
+}
+
+.about_us article .wrap>nav li {
+	width: 220px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	margin: 0 20px;
+	height: 50px;
+	line-height: 50px
+}
+
+.about_us article .wrap>nav li a {
+	font-size: 20px;
+	display: block;
+	width: 220px;
+	height: 50px;
+	color: #333
+}
+
+.about_us article .wrap>nav li a:hover {
+	background: #762fe8;
+	color: #fff
+}
+
+.about_us article .wrap>nav li.on a {
+	background: #762fe8;
+	color: #fff
+}
+
+.about_us article .wrap>nav li.on a:hover {
+	background: #762fe8
+}
+
+.about_us article .wrap .leader_info1 {
+	padding-top: 40px
+}
+
+.about_us article .wrap .leader_info1 li {
+	margin-bottom: 70px;
+	overflow: hidden
+}
+
+.about_us article .wrap .leader_info1 li .head_img {
+	float: left;
+	width: 180px
+}
+
+.about_us article .wrap .leader_info1 li .info {
+	padding-left: 85px;
+	overflow: hidden
+}
+
+.about_us article .wrap .leader_info1 li .info h4 {
+	font-size: 24px;
+	font-weight: bold;
+	color: #762fe8;
+	padding: 0
+}
+
+.about_us article .wrap .leader_info1 li .info p {
+	padding: 0
+}
+
+.about_us article .wrap .leader_info1 li .info p.job {
+	font-size: 12px;
+	color: #333;
+	margin-bottom: 10px
+}
+
+.about_us article .wrap .leader_info2 {
+	padding-top: 40px
+}
+
+.about_us article .wrap .leader_info2 li {
+	margin-bottom: 75px;
+	border-bottom: 1px solid #e0e0e0
+}
+
+.about_us article .wrap .leader_info2 li .head_img {
+	width: 405px
+}
+
+.about_us article .wrap .leader_info2 li .head_img img {
+	display: block;
+	margin: 0 auto
+}
+
+.about_us article .wrap .leader_info2 li .info {
+	overflow: hidden;
+	width: 330px
+}
+
+.about_us article .wrap .leader_info2 li .info h4 {
+	font-size: 24px;
+	font-weight: bold;
+	color: #762fe8;
+	padding: 0
+}
+
+.about_us article .wrap .leader_info2 li .info p {
+	padding: 0
+}
+
+.about_us article .wrap .leader_info2 li .info p.job {
+	font-size: 12px;
+	color: #333;
+	margin-bottom: 10px
+}
+
+.about_us article .wrap .leader_info3 {
+	padding-top: 35px
+}
+
+.about_us article .wrap .leader_info3 li {
+	width: 220px;
+	margin-left: 70px;
+	float: left
+}
+
+.about_us article .wrap .leader_info3 li:first-child {
+	margin-left: 0
+}
+
+.about_us article .wrap .leader_info3 li .head_img {
+	margin-bottom: 25px
+}
+
+.about_us article .wrap .leader_info3 li .head_img img {
+	display: block;
+	margin: 0 auto
+}
+
+.about_us article .wrap .leader_info3 li .info h4 {
+	font-size: 24px;
+	font-weight: bold;
+	color: #762fe8;
+	padding: 0
+}
+
+.about_us article .wrap .leader_info3 li .info p {
+	padding: 0
+}
+
+.about_us article .wrap .leader_info3 li .info p.job {
+	font-size: 12px;
+	color: #333;
+	margin-bottom: 10px
+}
+
+.about_us #contact {
+	padding-top: 30px
+}
+
+.about_us #contact h3 {
+	padding-top: 0
+}
+
+.about_us #contact p {
+	line-height: 1.8em;
+	text-indent: 0
+}
+
+.about_us #question img {
+	display: block;
+	margin: 20px auto 50px
+}
+.wrap {
+	width: 1066px;
+	margin: 0 auto
+}
+.fl{ float:left;}

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>创业家天性测评——中国创业学院出品</title>
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+<script type="text/javascript" src="__PUBLIC__/js/index/jquery1.9.1.js"></script>
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+<script type="text/javascript" src="__PUBLIC__/js/assessment/quiz.js"> </script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<style>
+#quiz-container {margin: auto;}
+.center{text-align:center}
+.main-quiz-holder{padding: 5px 0 0 0;}
+.main-quiz-holder * { margin: auto;}
+.slider-container {font-size: 140%;padding: 10px;clear: both;}
+.question{padding: 5px;margin: 5px 20px;}
+.answers {margin: 0px;padding: 5px;list-style: none;}
+.answers li {padding: 5px;margin:0 20px;color: #4c4c4c;}
+.answers label {cursor: pointer;font-weight: normal}
+.result-keeper {margin: 0 auto;display:block;}
+</style>
+<script>
+var init={'questions':[
+ {'question':' 在你<b>做决策</b>时，你更偏好 ','items':['团队和谐最重要 ','团队和谐是达到目的的手段 ']},
+ {'question':' 在你做决策时，你更偏好 ','items':['因为“感觉对”而采取行动 ','因为“合乎逻辑”而采取行动 ']},
+ {'question':' 在你做决策时，你更偏好 ','items':['优先考虑人 ','优先考虑事 ']},
+ {'question':' 在你做决策时，你更偏好 ','items':['喜欢和谐的关系 ','喜欢做对的事 ']},
+ {'question':' 在你做决策时，你更偏好 ','items':['达成共识再决策 ','根据自己的思考来决策 ']},
+ {'question':' 在你做决策时，你更偏好 ','items':['首先相信自己的情感 ','首先相信自己的理智 ']},
+ {'question':' 在你做决策时，你更偏好 ','items':['无法容忍人际冲突 ','能够接受人际冲突 ']},
+ {'question':' 在你<b>获取信息</b>时，你更偏好 ','items':['依靠我的内心觉察 ','依靠我的观察 ']},
+ {'question':' 在你获取信息时，你更偏好 ','items':['更多地考虑“可能是什么” ','更多地考虑“事实是什么” ']},
+ {'question':' 在你获取信息时，你更偏好 ','items':['喜欢创造 ','喜欢常识 ']},
+ {'question':' 在你获取信息时，你更偏好 ','items':['依靠灵感采取行动 ','依靠谨慎分析采取行动 ']},
+ {'question':' 在你获取信息时，你更偏好 ','items':['喜欢琢磨抽象的概念 ','喜欢琢磨事实和数据 ']},
+ {'question':' 在你获取信息时，你更偏好 ','items':['注重全局 ','注重细节 ']},
+ {'question':' 在你获取信息时，你更偏好 ','items':['喜欢大的想法 ','喜欢具体的现实 ']}
+]};
+
+jQuery(function(){
+	$('#quiz-container').jquizzy({
+        questions: init.questions
+    });
+});
+</script>
+<link rel="stylesheet" href="__PUBLIC__/css/phone_style.css" />
+</head>
+
+<body>
+
+     <include file="Public:phone_head_xin" />
+
+<div class="header">
+
+<p align="center" style="color:#FFA500;margin-top:20px;margin-bottom:20px;font-size:185%;"><b>创业家天性测评</b></p>
+</div>
+
+<div id='quiz-container'></div>
+
+<div class="footer">
+<p align="center" style="color:#C0C0C0;margin-top:50px;margin-bottom:20px;font-size:150%;">
+<a href="http://chuangx.org/Home/Weike/index.html">~~点击学习清华创业在线课程~~</a>
+</p>
+</div>
+
+</body>
+</html>
+
+ <script type="text/javascript">
+ 
+		wx.config({    
+		debug: false,    
+		appId: '{$appid_fenxiang}',    
+		timestamp: '{$timestamp_fenxiang}',    
+		nonceStr: '{$nonceStr_fenxiang}',    
+		signature: '{$signature_fenxiang}',    
+		jsApiList: [    
+		'checkJsApi',    
+		'onMenuShareTimeline',    
+		'onMenuShareAppMessage',    
+		'onMenuShareQQ',    
+		'onMenuShareWeibo',      
+		]    
+		});
+		
+		wx.ready(function(){
+		
+		wx.onMenuShareTimeline({
+		title: window.title_fenxiang, // 分享标题
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		wx.onMenuShareAppMessage({
+		title: window.title_fenxiang, // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		type: '', // 分享类型,music、video或link，不填默认为link
+		dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		//alert("谢谢分享");
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});  
+		
+		wx.onMenuShareQQ({
+		title: window.title_fenxiang, // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		
+		
+		wx.onMenuShareWeibo({
+		title: window.title_fenxiang, // 分享标题
+		desc: '{$desc_fenxiang}', // 分享描述
+		link: '{$url_fenxiang}', // 分享链接
+		imgUrl: '{$img_fenxiang}', // 分享图标
+		success: function () { 
+		// 用户确认分享后执行的回调函数
+		},
+		cancel: function () { 
+		// 用户取消分享后执行的回调函数
+		}
+		});
+		
+		})
+
+		</script>

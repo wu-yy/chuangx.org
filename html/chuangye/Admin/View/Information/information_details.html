@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+<title>中国创业学院</title>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/infromation.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/index/sea.js" type="text/javascript" data-main="focus.js"></script>
+<script src="__PUBLIC__/js/index/index.js"></script>
+<script src="__PUBLIC__/js/index/zhuce.js"></script>
+
+<script type="text/javascript">
+var w,h,className;
+function getSrceenWH(){
+	w = $(window).width();
+	h = $(window).height();
+	$('#dialogBg').width(w).height(h);
+}
+
+window.onresize = function(){  
+	getSrceenWH();
+}  
+$(window).resize();  
+
+
+</script>
+<style>
+.if_kc ul li img{ height:158px !important;}
+img{max-width:745px;}
+</style>
+</head>
+
+<body>
+<div class="wapper" style="background-color:#fff;min-width: 1080px;">
+     <include file="Public:head" />
+     <div class="kc_de_nav">
+     	<volist name="getinfor" id="vo">
+        <div class="kc_de_content">
+         <div class="kc_kk"><a href="javascript:;" onClick="log_url(event,'{:U('Index/homepage')}','public_pageNavigation')">首页</a></div>
+         <ul>
+             <li><span>></span><a href="javascript:;" onClick="log_url(event,'{:U('Information/index')}','public_pageNavigation')">资讯列表</a></li>
+             <li><span>></span>{$vo.title}</li>
+         </ul>
+        </div>
+     </div>
+     <div class="sy_st">
+            <div class="if_dt_left">
+                <div class="if_dt_top" onclick="log1('infoContent_reader')">
+                    <div class="if_tips">{$vo.title}</div>
+                    <div class="if_times">资讯 | {$vo.time|date='Y-m-d H:m:i',###}</div>
+                    <!--<img class="if_banner" src="__ROOT__/{$vo.img}"/>-->
+                    <p>{$vo.body}</p>
+                </div>
+                <if condition="$upid eq NULL ">
+                
+               			上一篇：<span>没有了</span>
+                
+                </if>
+                <if condition="$upid neq NULL ">
+
+                <a class="if_xia" href="javascript:;" onClick="log_url(event,'{:U('Information/information_details/',array('id'=>$upid))}','infoContent_ref')">上一篇：<span>{$upname}</span></a>
+                
+                </if>
+                <if condition="$downid eq NULL ">
+                
+               			下一篇：<span>没有了</span>
+                
+                </if>
+                <if condition="$downid neq NULL ">
+                <a class="if_xia" href="javascript:;" onClick="log_url(event,'{:U('Information/information_details/',array('id'=>$downid))}','infoContent_ref')">下一篇：<span>{$downname}</span></a>
+                </if>
+            </div> 
+            </volist>
+            <div class="if_dt_right">
+              <div class="if_bn">
+                    <volist name="banner" id="vo">
+                    <a href="javascript:;" onClick="log_url(event,'{$vo.url}','infoContent_ad')"><img src="__ROOT__/{$vo.img}" /></a>
+                    </volist>
+                </div>
+                <div class="if_kc" onclick="log1('infoContent_recommendation')">
+                    <a href="javascript:;" onClick="log_url(event,'{:U('Course/index')}','infoContent_recommendation')">
+                   <div class="if_kc_tips">
+                      <p>精彩课程</p>
+<!--                      <span>更多</span>-->
+                  </div>
+                  </a>
+                  <ul>
+                      <volist name="list_nice_course" id="vo">
+                      <a href="javascript:;" onClick="log_url(event,'{:U('Course/course_details',array('cid'=>$vo['id']))}','infoContent_recommendation')">
+                      <li>
+                          <img src="__ROOT__/{$vo.image}" />
+                          <p>{$vo.title}</p>
+                      </li>
+                      </a>
+                      </volist>
+                      
+                  </ul>
+              </div>
+            </div> 
+     </div>
+     <include file="Public:foot" />
+</div>
+
+
+</body>
+</html>

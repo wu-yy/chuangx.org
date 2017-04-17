@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/posterTvGrid.css">
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/weike.css">
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<style>
+.w_left{ width:710px; float:left; overflow:hidden; margin-left:20px;}
+ .fivestars,.fivestars div{background:transparent url(__PUBLIC__/image/commstar.gif) repeat-x scroll left bottom;width:130px;}
+.fivestars{padding:0; position:relative; line-height:28px;display:inline-block;}
+.fivestars div{background-position:bottom center; text-indent:-9999px;}
+.fivestars div{background-position:left top; width:0px;}
+.us_zx_pic1{ width:172px !important; height:110px !important;}
+.p_right{padding-right:10px !important;}
+.pages a {
+    float: left;
+    display: block;
+    margin-right:0px !important;
+}
+.p_no{padding:0px 4px;}
+
+.pages ul {
+    float: left;
+    overflow: hidden;
+    margin-right: 10px !important;
+}
+/*新样式*/
+
+
+.pager {
+    text-align: center;
+    height: 94px;
+}
+.pagination {
+    padding-left: 0px;
+    margin: 20px 0px;
+    border-radius: 4px;
+    display: inline-block;
+}
+.pagination > li {
+    display: inline;
+}
+.pagination > .active > span:focus {
+    color: #8040FF;
+    background-color: #EEE;
+    border-color: #DDD;
+    text-decoration: underline;
+}
+.pagination-sm > li > a {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.pagination > li > a {
+    color: #999;
+}
+.pagination-sm > li > a, .pagination-sm > li > a {
+    padding: 5px 10px;
+    font-size: 12px;
+}
+.pagination > li > a, .pagination > li > a {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857;
+    text-decoration: none;
+    background-color: #fafafa;
+    border: 1px solid #DDD;
+	margin:4px;
+    margin-left: -1px;
+}
+a{ color:#999;}
+.p_active{ background-color:#62379E !important;color: #fff !important; text-outline:#62379E !important;text-decoration:underline !important;}
+</style>
+</head>
+
+<body>
+				<div class="weike">
+                            <ul>
+                            	<volist name="weike" id="vo">
+                                <li>
+                                    <a href="javascript:;" class="w_ke" name="w_kecheng" onClick="log_url(event,'__URL__/bofang/id/{$vo.id}','lec_list')">
+                                        <img src="__ROOT__/{$vo.image}" height="146px" width="146px"/>
+                                        <h4>{$vo.title}</h4>
+                                        <!--<p>来源于{$vo.name}</p>-->
+                                    </a>
+                                </li>
+                                </volist>
+                                
+                            </ul>
+                  </div>
+                  <if condition="$add_nu egt 2 ">
+                   <div class="pager" style=" width:100%; margin:0 auto !important; text-align:center !important;">
+                              <ul style="display: inline-block; margin-top:30px;" class="pagination-sm pagination">
+                              	
+                                 <li><a href="javascript:;" onClick="num(1);">首页</a><li>
+                                 <if condition="$nu neq 1 ">
+                                 <li><a href="javascript:;" onClick="num1({$nu});">上一页</a><li>
+                                 </if>
+                                 <volist name="arr" id="vo">
+                                 <if condition="$vo.number eq $nu ">
+                                 <li><a href="javascript:;" onClick="num({$vo.number});" class="p_active">{$vo.number}</a><li>						</if>
+                                 <if condition="$vo.number neq $nu ">
+                                 <li><a href="javascript:;" onClick="num({$vo.number});" >{$vo.number}</a><li>						</if>	
+                                 </volist>
+                                 <if condition="$nu neq $add_nu ">
+                                 <li><a href="javascript:;" onClick="num2({$nu});">下一页</a><li>
+                                 </if>
+                                 <li><a href="javascript:;" onClick="num({$add_nu});">尾页</a><li>
+                                 
+
+                             </ul>
+                        </div>
+                  </if>      
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/weike/weike.js"> </script>
+<script>
+	var url='{:U("num")}';
+	var url1="{:U('Index/log')}";
+
+</script>

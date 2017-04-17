@@ -1,0 +1,124 @@
+<!DOCTYPE html __PUBLIC__ "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width"/>
+
+<meta name="viewport" id="viewportid" content="target-densitydpi=285,width=640,user-scalable=no">
+
+<script async type="text/javascript"></script><script>if(window.innerWidth>640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=285,width=640,user-scalable=no');if(window.innerWidth<640)document.getElementById('viewportid').setAttribute('content','target-densitydpi=320,width=640,user-scalable=no');</script> 
+
+<meta name="apple-touch-fullscreen" content="no">
+
+<meta content="telephone=no" name="format-detection">
+
+<meta name="apple-mobile-web-app-capable" content="no">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>{$kcname}</title>
+<link rel="stylesheet" href="__PUBLIC__/css/phone_style.css" />
+<link rel="stylesheet" href="__PUBLIC__/css/phone_void.css" />
+<style type="text/css">
+.k_lb{top:90px; left:0px; }
+.div1{
+    width: 640px;
+    height: auto !important;
+    line-height: 94px;
+    color: #000;
+    font-size: 30px;
+    text-align: left;
+    border-bottom: 1px solid #cccccc;
+}
+.k_jie p {
+    max-width:449px;
+    float: left;
+    font-size: 26px !important;
+    color: #333;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+.k_jiang p {
+    width: 449px;
+    float: left;
+    font-size: 30px !important;
+    color: #000;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+.jqqd{height: 100%;color:#bbb; font-size:22px; line-height: 36px;
+display: flex;flex-direction:column;align-items: center;justify-content: center;}
+.k_jie ol li img { float:right; margin-top:36px;}
+.k_jie ol li {
+	overflow:hidden;
+    width: 600px;
+    padding: 0px 20px;
+    border-bottom: 1px solid #cccccc;
+}	
+</style>
+</head>
+<body>
+<div class="warpper" style="background:#fff; position:relative;">
+<include file="Public:phone_head_xin" />
+    <div class="l_top">
+          <p>{$kcname}</p>
+      </div>
+
+
+  <div class="k_lb" id="mulu" style=" height:auto">
+           <div class="div1">
+           <volist name="add" id="vo">
+          	<if condition="$vo.is_zhangjie eq 0 ">    
+               <a href="javascript:;" class="k_jiang" onclick="zhangjie({$vo.id});">
+                   <p>{$vo.name}</p>
+                   <img id='{$vo.id}_img' src="__PUBLIC__/image/k_xia.png"/>
+               </a>
+             </if>  
+               <if condition="$vo.is_zhangjie neq 0 ">  
+               <a href="javascript:;" style="display:none;" class="k_jie" name="{$vo.is_zhangjie}" id="xiaojie" onclick="jump('{$vo.id}')">
+                   <ol id="{$vo.id}">
+                       <li>
+                           <p >{$vo.name}</p>
+                           
+                           <if condition="$course_type eq 1 ">
+                           <img src="__PUBLIC__/image/play.png"/>
+                           </if>
+                           
+                           <if condition="$course_type neq 1 ">
+                           <if condition="$vo['show'] neq 0 ">
+                           <img src="__PUBLIC__/image/lock.png" width="19px" height="22px"/>
+                           </if>
+                           </if>
+                           <if condition="$course_type neq 1 ">
+                           <if condition="$vo['show'] eq 0 ">
+                           <img src="__PUBLIC__/image/play.png"/>
+                           </if>
+                           </if>
+                              <div class="jqqd">
+                              	<if condition="$vo['show_time'] gt $nowtime ">
+                                <span>（敬请期待）</span>
+                                </if>
+                                <span></span>
+                              </div>
+                           
+                           <span class="playTime"></span>
+                       </li>
+                    </ol>   
+                </a>
+               </if> 
+               </volist> 
+           </div>
+
+  </div>
+ 
+</div>
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/course/phone_void.js"> </script>
+<script>
+var public='__PUBLIC__/';
+var url='__URL__/';
+zhangjie('{$zhangjie_id}');
+get_xiaojie('{$xiaojie_id}');
+</script>

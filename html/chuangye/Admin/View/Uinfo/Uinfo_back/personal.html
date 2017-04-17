@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>中国创业学院</title>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+
+</head>
+
+<body style="background:#fff; width:100%;">
+
+              <div class="us_right_nav" style="width:100% !important;">
+                   <div class="us_list" style=" position:fixed; top:0px; width:100% !important;">个人信息</div>
+                   <div class="us_list_content" style=" margin:4% 0%; !important;">
+                   		    <form name="form1" action="__URL__/upload" enctype="multipart/form-data" method="post" >
+                        <div class="ps_left">个人头像</div>
+                        <div class="ps_pic">
+                             <img src="{$image}"/>
+                             <img src="__PUBLIC__/image/shangchuan.png"/>
+                             <input type="file" name="photo" style="  position: absolute;width: 130px; height: 130px;line-height: 40px;font-size: 23px;opacity: 0;z-index: 2; float: left; margin-left: -150px;" onchange="change()" />
+                        </div>
+                        
+                            </form>
+                        <div style=" width:100%; overflow:hidden;">
+                            <div class="ps_left">昵称</div>
+                            <input name="srk" type="text" class="ps_name" id="nikename" value=""  maxlength="10" placeholder="{$nname}"/>
+                            <div id='error' style=" float: left;width: 20%;font-size: 12px;color: #FF0000;text-align: left;padding: 30px 0px;">
+							</div>
+                        </div>
+                        <div style=" width:100%; overflow:hidden;">
+                            <div class="ps_left">真实姓名</div>
+                            <input name="srk" type="text" class="ps_name" id="username" value=""  maxlength="10" placeholder="{$uname}"/>
+                            <div id='error1' style=" float: left;width: 20%;font-size: 12px;color: #FF0000;text-align: left;padding: 30px 0px;">
+							</div>
+                        </div>
+                        <div style=" width:100%; overflow:hidden;">
+                            <div class="ps_left">个人简介</div>
+                            <textarea name="srk"  class="ps_ms" id="jianjie" maxlength="30" placeholder="{$jianjie}" ></textarea>
+                            <div id='error2' style=" float: left;width: 20%;font-size: 12px;color: #FF0000;text-align: left;padding: 30px 0px;">
+							</div>
+                        </div>
+                   </div>
+                    <input type="button" class="ps_begin" value="确认保存" onclick="check();"  />
+                       
+             
+              </div>
+</body>
+</html>
+<script src="__PUBLIC__/js/uinfo/personal.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script>
+
+function insertuinfo()
+{	
+		var nikename = document.getElementById("nikename").value;
+	
+		var username = document.getElementById("username").value;
+	
+		var jianjie = document.getElementById("jianjie").value;
+	
+		var obj = {};
+		obj.key = "value";
+		$.post("__APP__/Home/Uinfo/insertuinfo/nikename/"+nikename+"/username/"+username+"/jianjie/"+jianjie, obj,
+			function(data,status)
+				{
+					if(data==1)
+					{
+						document.getElementById("error").innerHTML = "修改成功";
+						setTimeout("jump()",2000);
+					}
+					else
+					{
+						document.getElementById("error").innerHTML = "修改失败，未知错误";
+						var t=setTimeout("clearusername()",2000);
+					}	
+				}
+			   );
+
+}
+function jump()
+{
+    
+	 window.location.reload();
+		
+}
+function change()
+{
+	document.form1.submit();	
+}
+</script>

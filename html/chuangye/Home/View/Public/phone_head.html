@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<link rel="stylesheet" href="__PUBLIC__/css/phone_course_style.css" />
+</head>
+<style type="text/css">
+.k_tx{ width:40px; height:40px; border-radius:100px; margin-left:30px; float:left; margin-right:10px; margin-top:16px;}
+.k_tx+p{ float:left; font-size:24px; width:140px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.k_tc{ font-size:24px; text-align:center; position:absolute; bottom:0px; border-top:1px solid #dcdcdc;}
+.nav_right ul { position:relative;}
+</style>
+<body>
+
+<div class="m_nav" style="border-bottom:1px solid #dedede !important;">
+     <a href="{:U('Index/index')}" class="shouye" style=" width:218px;float:left;" ><img style="margin-top:23px !important; width:200px;margin-left:18px;" src="__PUBLIC__/image/log.png" /></a>
+     <a href="{:U('Course/index')}" style="float:left;margin-top:25px !important;margin-left:40px; color:#525252; font-size:24px;" ><b>课程</b></a>
+     <a href="{:U('Weike/index')}" style="float:left;margin-top:25px !important;margin-left:40px; color:#525252; font-size:24px;" ><b>微课</b></a>
+     <a href="{:U('information/index')}" style="float:left;margin-top:25px !important;margin-left:40px; color:#525252; font-size:24px;" ><b>资讯</b></a>
+     <a href="{:U('Assessment/index')}" style="float:left;margin-top:25px !important;margin-left:40px; color:#525252; font-size:24px;" ><b>测评</b></a>
+
+<!--     <a href="javascript:;" class="cebianlan" onclick="open_login()"><img src="__PUBLIC__/image/cebian.png"/></a>
+-->     <!--<a href="" class="cebianlan"><img src="__PUBLIC__/image/sousuo2.png"/></a>-->
+ </div>
+ <!--侧边栏-->
+   <nav class="nav_list" id='nav_list' style=" display:none;">
+         <div class="nav_right">
+            <ul>
+            	<if condition="$username eq NULL ">
+                 <li><a href="javascript:;" style="margin-left:5%;" onClick="url_jump('{:U('Index/phone_login')}')">&nbsp;&nbsp;登录</a><span>|</span><a href="javascript:;" onClick="url_jump('{:U('Index/phone_signin')}')">注册&nbsp;&nbsp;</a></li>
+                 </if>
+                 <if condition="$username neq NULL ">
+                 <li> <img class="k_tx" src="{$userimg}" /><p>{$username}</p></li>
+                 </if>
+                 <if condition="$phone_head eq 'index' ">
+                 <a href="javascript:;" style="background-color:#6e49a4;"><li style="color:#FFF;">首页</li></a>
+                 </if>
+                 <if condition="$phone_head neq 'index' ">
+                 <a href="{:U('Index/index')}"><li>首页</li></a>
+                 </if>
+                 <if condition="$phone_head eq 'course' ">
+                 <a href="{:U('Course/index')}" style="background-color:#6e49a4; "><li style="color:#FFF;">课程</li></a>
+                 </if>
+                 <if condition="$phone_head neq 'course' ">
+                 <a href="{:U('Course/index')}"><li>课程</li></a>
+                 </if>
+                 <if condition="$phone_head eq 'weike' ">
+                 <a href="{:U('Weike/index')}" style="background-color:#6e49a4;"><li style="color:#FFF;">微课</li></a>
+                 </if>
+                 <if condition="$phone_head neq 'weike' ">
+                 <a href="{:U('Weike/index')}"><li>微课</li></a>
+                 </if>
+                  <if condition="$phone_head eq 'Assessment' ">
+                 <a href="{:U('Information/index')}" style="background-color:#6e49a4;"><li style="color:#FFF;">测评</li></a>
+                 </if>
+                 <if condition="$phone_head neq 'Assessment' ">
+                 <a href="{:U('Assessment/index')}"><li>测评</li></a>
+                 </if>
+                 <if condition="$phone_head eq 'information' ">
+                 <a href="javascript:;" style="background-color:#6e49a4;"><li style="color:#FFF;">资讯</li></a>
+                 </if>
+                 <if condition="$phone_head neq 'information' ">
+                 <a href="{:U('Information/index')}"><li>资讯</li></a>
+                 </if>
+                 <a href="javascript:;" onClick="userout()">
+                  <li class="k_tc">退出</li>
+                  </a>
+            </ul>
+         </div>
+         <div class="s_mask" onclick="close_login();"></div>
+     </nav>
+
+</body>
+</html>
+<script type="text/javascript" src="__PUBLIC__/js/phone_head.js"> </script>
+<script type="text/javascript" src="__PUBLIC__/js/url_jump.js"> </script>
+<script>
+var login='{:U("Index/phone_login")}';
+var url_weixin='{:U("Index/url_weixin")}';
+var url_userout='{:U("Index/userout")}';
+</script>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="ThemeBucket">
+  <link rel="shortcut icon" href="#" type="image/png">
+
+  <title>资讯管理</title>
+
+  <!--dynamic table-->
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css" />
+  <link href="__PUBLIC__/Admin/js/advanced-datatable/__PUBLIC__/Admin/css/demo_page.css" rel="stylesheet" />
+  <link href="__PUBLIC__/Admin/js/advanced-datatable/__PUBLIC__/Admin/css/demo_table.css" rel="stylesheet" />
+  <link rel="stylesheet" href="__PUBLIC__/Admin/js/data-tables/DT_bootstrap.css" />
+  <!--pickers css-->
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/bootstrap-datepicker/__PUBLIC__/Admin/css/datepicker-custom.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/bootstrap-timepicker/__PUBLIC__/Admin/css/timepicker.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/bootstrap-colorpicker/__PUBLIC__/Admin/css/colorpicker.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/Admin/js/bootstrap-datetimepicker/__PUBLIC__/Admin/css/datetimepicker-custom.css" />
+
+  <link href="__PUBLIC__/Admin/css/style.css" rel="stylesheet">
+  <link href="__PUBLIC__/Admin/css/style-responsive.css" rel="stylesheet">
+  <link href="__PUBLIC__/Admin/css/style.css" rel="stylesheet">
+  <link href="__PUBLIC__/Admin/css/style-responsive.css" rel="stylesheet">
+  <style>
+.panel-body form {
+    margin-left: 40px !important;
+}
+  </style>
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="__PUBLIC__/Admin/js/html5shiv.js"></script>
+  <script src="__PUBLIC__/Admin/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="sticky-header" style=" background:#EFF0F4 none repeat scroll 0% 0%;">
+          <div class="page-heading">
+            <h3>
+               首页管理
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">首页管理</a>
+                </li>
+                <li class="active"> 添加轮播图</li>
+            </ul>
+        </div>
+         <div class="row" style="padding-top:0px; margin-left:0px;" >
+            <div class="col-lg-6" style="width:99%;">
+                <section class="panel">
+                    <header class="panel-heading">
+                       添加轮播图
+                    </header>
+                    <div class="panel-body">
+                        <form role="form" method="post" action="" enctype="multipart/form-data">
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">标题</label>
+                                <input type="text" id="title" name="title" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="请输入标题名称">
+                            </div>
+                            <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">添加链接</label>
+                                <input type="url" name="url" id="url" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="请输入链接地址">
+                            </div>
+                               <div class="form-group" style="width:100%;">
+                                <label for="exampleInputEmail1">排  序：</label>
+                                <input type="number" id="ordernum" value="{$ordernum}" name="ordernum" style="width:80%;" class="form-control" id="exampleInputEmail1" placeholder="请输入链接地址">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="exampleInputFile">上传图片</label>
+                                <input type="file" name="picurl" id="exampleInputFile">
+                                <p style="color:#ee0f19;" class="help-block">＊图片规格750x300px   ＊上传图片不能超过1M</p>
+                            </div>
+<!--                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Check me out
+                                </label>
+                            </div>-->
+            </div>
+                             
+                            <button style="width:100px !important; margin-left:60px; margin-bottom:40px !important;"  type="submit" class="btn btn-primary">取消</button>
+                            <button style="width:100px !important; margin-left:40px; margin-bottom:40px !important; " id="tijiao"  type="submit" class="btn btn-primary">提交</button>
+                        </form>
+
+                    </div>
+                </section>
+            </div>
+</div>
+<!-- Placed js at the end of the document so the pages load faster -->
+<!-- Placed js at the end of the document so the pages load faster -->
+<script src="__PUBLIC__/Admin/js/jquery-1.10.2.min.js"></script>
+<script src="__PUBLIC__/Admin/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="__PUBLIC__/Admin/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="__PUBLIC__/Admin/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Admin/js/modernizr.min.js"></script>
+<script src="__PUBLIC__/Admin/js/jquery.nicescroll.js"></script>
+
+<!--pickers plugins-->
+<script type="text/javascript" src="__PUBLIC__/Admin/js/bootstrap-datepicker/__PUBLIC__/Admin/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/bootstrap-datetimepicker/__PUBLIC__/Admin/js/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/bootstrap-daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/bootstrap-colorpicker/__PUBLIC__/Admin/js/bootstrap-colorpicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/bootstrap-timepicker/__PUBLIC__/Admin/js/bootstrap-timepicker.js"></script>
+
+
+
+<!--common scripts for all pages-->
+<script src="__PUBLIC__/Admin/js/scripts.js"></script>
+
+
+
+
+<script type="text/javascript" src="__PUBLIC__/Admin/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+
+<!--common scripts for all pages-->
+<script src="__PUBLIC__/Admin/js/scripts.js"></script>
+
+<script>
+$(document).ready(function(e) {
+    $("#tijiao").click(function(e){
+		var title=$("#title").val();
+		var url=$("#url").val();
+		if(title==""){
+			alert("请输入标题");
+			return false;
+		}else if(url==""){
+			alert("请输入链接");
+			return false;
+			}
+
+		})
+});
+
+    jQuery(document).ready(function(){
+         $('.wysihtml5').wysihtml5();
+    });
+</script>
+</body>
+</html>

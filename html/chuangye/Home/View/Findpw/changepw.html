@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>修改密码</title>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/infromation.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/findpw.css"/>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/index/sea.js" type="text/javascript" data-main="focus.js"></script>
+<script src="__PUBLIC__/js/index/index.js"></script>
+<script src="__PUBLIC__/js/index/zhuce.js"></script>
+<script>
+function log_url2(Jump_page,head)
+{
+	var url=window.location.href;
+	var ur="{:U('Index/log')}";
+		var obj = {};
+		obj.key = "value";
+		$.post(ur, {'head': head,'Jump_page':Jump_page,'url':url},
+			function(data,status)
+				{
+				}
+			   );			   
+}
+function log_url(e,Jump_page,head)
+{
+	var url=window.location.href;
+	var ur="{:U('Index/log')}";
+		var obj = {};
+		obj.key = "value";
+		$.post(ur, {'head': head,'Jump_page':Jump_page,'url':url},
+			function(data,status)
+				{
+				}
+			   );
+	window.location.href=Jump_page; 			   
+			   e.cancelBubble = true;
+}
+</script>
+<style>
+
+</style>
+</head>
+
+<body style=" background:#fff;">
+	
+    <div  style=" background:#edf1f2; width:100%; text-align:center; margin:0 auto; height:110px; line-height:110px;">
+	 <img style="width:250px; text-align:center; margin-top:20px;"  src="__PUBLIC__/image/logo.png"/>
+	</div>
+
+
+	<div class="body1">
+		
+        <div style="width:100%; height:30px;margin-top: 50px;">
+           <div class="center" style="color:#7365ff; float:left;"> 找回密码</div>
+           <a style=" color:##66F !important;" href="javascript:;" onClick="log_url(event,'{:U('Index/homepage')}','public_pwRetrieve');">
+              <p style=" color:#66F !important;font-size:14px; width:100px; float:right; width:90px; margin-top:8px;"> 返回立即登录</p>
+              <!--<img style="float:right; width:25px; margin-top:6px;" src="../image/11.png"/>-->
+           </a>
+        </div>
+        <div class="bottom">
+        
+        	<div class="a1">
+            
+            	<div class="a3">
+                	确认账号
+                </div>
+                <p>></p>
+               	<div class="a3">
+                	短信/邮箱验证
+                </div>
+                <p>></p>
+               	<div class="a2 ac">
+                	更改密码
+                </div>
+            </div>
+        	
+            <div class="b">
+            	请填写修改密码
+            </div>
+            
+            <div style="width:100%; float:left; clear:both;">
+            <input name="pw2" class="mail" type="password" id="pw2" placeholder="&nbsp&nbsp请输入修改密码"  />
+
+            </div>
+            <div id="pw2error" style=" float:left; margin-top:10px; font-size:15px; height:15px; color:#F00;">
+            
+            </div>
+            <div style="width:100%; float:left; clear:both;">
+            <input name="pw1" class="mail" type="password" id="pw1" placeholder="&nbsp&nbsp请再次输入修改密码"/>
+
+            </div>
+            <div id="pw1error" style=" float:left; margin-top:10px; font-size:15px; height:15px; color:#F00;">
+            
+            </div>
+            <button type="button" style="border-radius:3px;background-color:#829DF7;border: medium none !important; height:50px; 
+            font-size:16px; width:394px; color:#FFF; margin-top:20px;" onClick="subb();" > 提交 </button>
+            
+        </div>
+
+	</div>
+
+
+</body>
+</html>
+<script>
+function subb()
+{
+		var pw=document.getElementById("pw2").value;
+		
+		var pw1=document.getElementById("pw1").value;
+		
+		log_url2('submit','public_pwRetrieve');
+		
+		if(!(pw))
+		{
+			document.getElementById("pw2error").innerHTML="密码不能为空！！";
+			var t=setTimeout("cla()",2000);	
+			return;
+		}
+		if(!(pw1))
+		{
+			document.getElementById("pw1error").innerHTML="验证密码不能为空！！";
+			var t=setTimeout("cla()",2000);	
+				return;
+		}
+		
+		var pa=/^(?!^\\d+$)(?!^[a-zA-Z]+$)(?!^[_#@]+$).{8,}/;
+	
+		var p=pa.test(pw);
+	
+		if(!(p))
+		{
+			document.getElementById("pw2error").innerHTML = "密码不能纯字符或少于8位！！";
+			var t=setTimeout("cla()",2000);	
+			return;	
+		}
+		if(pw != pw1)
+		{
+			document.getElementById("pw1error").innerHTML = "两次输入密码不一致！！";
+			var t=setTimeout("cla()",2000);	
+			return;	
+		}
+		/*document.getElementById('myform').submit();*/
+		
+		var ur="{:U('Findpw/uppw')}";
+		var obj = {};
+		obj.key = "value";
+		$.post(ur+"?pwand="+pw+"&pw="+pw1, obj,
+			function(data,status)
+				{
+					if(data==1)
+					{
+						document.getElementById("pw1error").innerHTML = "修改成功！！";	
+						log_url2('{:U("Index/homepage")}','public_pwRetrieve');
+						var t=setTimeout("window.location.href='{:U('Index/homepage')}'",2000);	
+					}
+					else
+					{
+						document.getElementById("pw1error").innerHTML = "修改失败，未知错误！！";	
+						var t=setTimeout("cla()",2000);	
+					}
+				}
+			   );
+}
+function cla()
+{
+		document.getElementById('pw2error').innerHTML="";
+		document.getElementById('pw1error').innerHTML="";	
+}
+
+</script>

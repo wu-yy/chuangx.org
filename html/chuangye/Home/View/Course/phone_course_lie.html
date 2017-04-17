@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" href="__PUBLIC__/css/phone_course_style.css" />
+<style>
+
+/*jiazai*/
+.load6 {
+	padding:20px 30px;
+  margin:5px auto 0;
+  width: 400px;
+  text-align: center;
+  color:#999;
+  font-size:24px;
+}
+.load6 > div {
+  width: 26px;
+  height: 26px;
+  background-color: #999;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+  animation: bouncedelay 1.4s infinite ease-in-out;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.load6 .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.load6 .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0.0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+@keyframes bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 40% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+
+/**/
+.content{ width:640px; height:auto; background:#fff !important;  position:relative; top:-8px; }
+.content ul{ overflow:hidden;padding-top:20px;}
+.content ul li{ width:100%; height:auto; background:#fff; margin:14px 0px;  float:left; overflow:hidden;}
+.content ul li img{ width:287px; height:180px;; float:left; margin:0px 18px;}
+.w_right{ float:left; width:300px; height:auto; word-wrap: break-word; }
+.w_right p{ font-size:26px; color:#333; line-height:42px; height:auto; }
+</style>
+</head>
+
+<body>
+
+ <div class="content">
+      <ul id="weike_list">
+      		<volist name="list" id="vo">
+          <a href="javascript:;" onClick="log_url2('{:U('Course/course_details',array('cid'=>$vo['id']))}','phone_course_list')">	
+
+              <li>
+                  <img src="__ROOT__/{$vo.image}" />
+                  <div class="w_right">
+                     <p>{$vo.title}</p>
+                     <p style="color:#999;">{$vo.brief}</p>
+                  </div>
+              </li>
+           </a>
+           </volist>
+      </ul>
+      <if condition="$add_nu egt 2 ">
+      <a href="javascript:;" onClick="jiazai();">
+     <div class="load6" id="test1" style="font-size:24px;">
+    点击加载更多~
+    </div>
+    </a>
+    <div class="load6" id="test2" style="display:none;">
+	   <div class="bounce1"></div>
+	   <div class="bounce2"></div>
+	   <div class="bounce3"></div>
+    </div>
+    <div class="load6" id="test" style="display:none;">
+    ~加载完毕，木有课程啦~
+    </div>
+    </if>
+    <if condition="$add_nu eq 1 ">
+      <a href="javascript:;" onClick="jiazai();">
+     <div class="load6" id="test1" style="font-size:24px;display:none;">
+    点击加载更多~
+    </div>
+    </a>
+    <div class="load6" id="test2" style="display:none;">
+	   <div class="bounce1"></div>
+	   <div class="bounce2"></div>
+	   <div class="bounce3"></div>
+    </div>
+    <div class="load6" id="test" >
+    ~加载完毕，木有课程啦~
+    </div>
+    </if>
+  </div>     
+  
+
+		  
+</body>
+</html>
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+
+<script>
+	var url='{:U("Course/jiazai")}';
+	var url1="{:U('Index/log')}";
+	var bofang='__URL__/course_details/';
+	var root='__ROOT__/';
+	var nu=2;
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/course/phone_course_lie.js"> </script>
+

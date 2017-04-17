@@ -1,0 +1,353 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta property="qc:admins" content="255332764063051675456375636" />
+<meta property="wb:webmaster" content="14529c2b95b45b38" />
+<meta http-equiv="x-ua-compatible" content="ie=7" /> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />-->
+<title>中国创业学院</title>
+<link rel="shortcut icon" href="__PUBLIC__/image/16x16logo.png" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" media="screen" href="__PUBLIC__/css/style.css"/>
+<link href="__PUBLIC__/css/focus.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="__PUBLIC__/css/common.css"/>
+<link rel="stylesheet" href="__PUBLIC__/css/style20151231.css"/>
+<link href="__PUBLIC__/css/shouyedaohang.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/js/koala.min.1.5.js"></script>
+
+<script src="__PUBLIC__/js/index/jquery1.9.1.js" type="text/javascript"></script>
+
+<script src="__PUBLIC__/js/index/index.js"></script>
+<script src="__PUBLIC__/js/index/zhuce.js"></script>
+<style>
+.sy_cyds ul li{ height:134px !important;}
+.sy_cyds ul li p{ position:relative !important; top:-5px !important; font-weight:800; left:0px;background:none !important; color:#333 !important;}
+.p1{ color:#666 !important; font-weight:normal !important; font-size:9px !important;}
+
+元素 {
+}
+.focus .D1fBt .current, .focus .D1fBt a:hover {
+    background: #999 none repeat scroll 0% 0%;
+}
+
+.focus .D1fBt a {
+    position: relative;
+    display: inline;
+    width: 12px;
+    height: 12px;
+    border-radius: 7px;
+    margin: 0px 5px;
+    color: #B0B0B0;
+    font: 12px/15px "宋体";
+    text-decoration: none;
+    text-align: center;
+    outline: 0px none;
+    float: left;
+    background: #D9D9D9 none repeat scroll 0% 0%;
+	display:none;
+}
+
+.sy_ganhuo ul li p {
+    font-size: 15px !important;
+    width: 270px !important;
+    float: left;
+	line-height:24px;
+    height:auto !important;
+    overflow:visible !important;
+    padding-top:0px !important;
+    color: #fff;
+	word-break:break-all;
+	display: inline;
+}
+.sy_ganhuo ul li {
+    width: 270px;
+	height:auto !important;
+	overflow:hidden;
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+</style>
+
+</head>
+
+<body style=" width:100%; margin:0 auto !important;">
+<div class="wapper" style=" width:100% !important;">
+     <include file="Public:head" />
+     <div class="sy_st">
+          <div class="sy_left">
+     <div id="fsD1" class="focus">
+
+	<div id="D1pic1" class="fPic">
+    <noempty name="balist">
+    <foreach name="balist" item="vo">
+		<div class="fcon">
+			<a href="{$vo.url}"><img src="__ROOT__/Uploads/{$vo.picurl}" /></a>
+			<!--<span class="shadow"><a href="{$vo.url}">{$vo.title}</a></span>-->
+		</div>
+        
+        </foreach>
+     </noempty>
+	</div>
+	
+	<div class="fbg">
+		<div class="D1fBt" id="D1fBt">
+        <noempty name="balist">
+    <foreach name="balist" item="vo">
+		<a href="javascript:void(0)" <if condition="$key eq 0"> class="current" </if> ><i>{$key+1}</i></a>
+        
+        </foreach>
+		 </noempty>	
+			<!--<a href="javascript:void(0)"><i>2</i></a>
+			<a href="javascript:void(0)"><i>3</i></a>
+			<a href="javascript:void(0)"><i>4</i></a>-->
+		</div>
+	</div>
+    <span class="prev"></span>
+	<span class="next"></span>
+    </div>
+              
+                  <div class="tab">
+                        <ul class="tabs" style="width:745px;">
+                             <li><a href="#">精彩课程</a></li>
+                             <li><a href="#">最新课程</a></li>
+<!--                             <li><a href="#">即将开始</a></li>-->
+                             
+                        </ul>
+                        <div class="more" style="margin-top:-33px; float:right !important;"><a href="{:U('Course/index')}">更多</a></div>
+                      <!-- / tabs -->
+                      <div class="tab_content">
+                      <div class="tabs_item">
+                         
+                              <ul>
+                                  <volist name="list_nice_course" id="vo">
+                                  <li>
+                                      <a class="thumbnail" href="{:U('Course/course_details',array('cid'=>$vo['id']))}">
+                                            <img src="__ROOT__/{$vo.image}"/>
+                                        <div class="caption">
+                                            <h6>{$vo.title}</h6>
+                                            <!--<div class="pull-right">
+                                                 <span class="subhead-content">{$vo.nu_add}&nbsp;关注</span>
+                                                 <span class="subhead-fenge">|</span>
+                                                 <span class="subhead-content"><span class="sy_fen">{$vo.score}</span>&nbsp;评分</span>
+                                            </div>-->
+                                        </div>
+                                     </a>
+                                  </li>
+                                  </volist>
+                                  
+                              </ul>
+                              
+                      </div>
+                       <!-- / tabs_item1 -->
+                      <div class="tabs_item">
+                         
+                              <ul>
+                                 <volist name="new_course" id="vo1">
+                                  <li>
+                                      <a class="thumbnail" href="{:U('Course/course_details',array('cid'=>$vo1['id']))}">
+                                        <img src="__ROOT__/{$vo1.image}"/>
+                                      <!--  {$urllocal}/{$vo1.image}<br/>-->
+                                           
+                                        <div class="caption">
+                                            <h6>{$vo1.title}</h6>
+                                            <div class="pull-right">
+                                                <!-- <span class="subhead-content">{$vo.nu_add}&nbsp;关注</span>
+                                                 <span class="subhead-fenge">|</span>
+                                                 <span class="subhead-content"><span class="sy_fen">{$vo.score}</span>&nbsp;评分</span>-->
+                                            </div>
+                                        </div>
+                                     </a>
+                                  </li>
+                                  </volist>
+                                  <volist name="new_course1" id="vo1">
+                                  <li>
+                                      <a class="thumbnail" href="{:U('Course/course_details',array('cid'=>$vo1['id']))}">
+                                        <img src="__ROOT__/{$vo1.image}"/>
+                                      <!--  {$urllocal}/{$vo1.image}<br/>-->
+                                           
+                                        <div class="caption">
+                                            <h6>{$vo1.title}</h6>
+                                            <div class="pull-right">
+                                                <!-- <span class="subhead-content">{$vo.nu_add}&nbsp;关注</span>
+                                                 <span class="subhead-fenge">|</span>
+                                                 <span class="subhead-content"><span class="sy_fen">{$vo.score}</span>&nbsp;评分</span>-->
+                                            </div>
+                                        </div>
+                                     </a>
+                                  </li>
+                                  </volist>
+                              </ul>
+                              
+                      </div>
+                      <!-- / tabs_item2
+                       <div class="tabs_item">
+                         
+                              <ul>
+                                  <li>
+                                      <a class="thumbnail" href="#">
+                                            <img src="__PUBLIC__/image/tu.png"/>
+                                        <div class="caption">
+                                            <h6>MongoDB集群之分片技术应用</h6>
+                                            <div class="pull-right">
+                                                 <span class="subhead-content">125人&nbsp;关注</span>
+                                                 <span class="subhead-fenge">|</span>
+                                                 <span class="subhead-content"><span class="sy_fen">8.0</span>&nbsp;评分</span>
+                                            </div>
+                                        </div>
+                                     </a>
+                                  </li>
+                                  <li>
+                                      <a class="thumbnail" href="#">
+                                            <img src="__PUBLIC__/image/tu.png"/>
+                                        <div class="caption">
+                                            <h6>MongoDB集群之分片技术应用</h6>
+                                            <div class="pull-right">
+                                                 <span class="subhead-content">125人&nbsp;关注</span>
+                                                 <span class="subhead-fenge">|</span>
+                                                 <span class="subhead-content"><span class="sy_fen">8.0</span>&nbsp;评分</span>
+                                            </div>
+                                        </div>
+                                     </a>
+                                  </li>
+                                  <li>
+                                      <a class="thumbnail" href="#">
+                                            <img src="__PUBLIC__/image/tu.png"/>
+                                        <div class="caption">
+                                            <h6>MongoDB集群之分片技术应用</h6>
+                                            <div class="pull-right">
+                                                 <span class="subhead-content">125人&nbsp;关注</span>
+                                                 <span class="subhead-fenge">|</span>
+                                                 <span class="subhead-content"><span class="sy_fen">8.0</span>&nbsp;评分</span>
+                                            </div>
+                                        </div>
+                                     </a>
+                                  </li>
+                              </ul>
+                              
+                      </div>
+                      tabs_item3 -->
+                     </div>
+  <!-- / tab_content -->
+                   </div>
+               <div class="sy_zx">
+                   <div class="sy_list">最新资讯</div>
+                   <div class="more1" style="margin-top: 2px !important;"><a href="{:U('Information/index')}">更多</a></div>
+                   <div class="sy_list_content">
+                       <ul>
+                       		<volist name="information_new_nu" id="vo">
+                            <li>
+                            <a href="{:U('Information/information_details',array('id'=>$vo['id']))}">
+                                <img class="sy_zx_pic" src="__ROOT__/{$vo.img}"/>
+                                <div class="sy_caption" style="height: 140px; overflow:hidden;">
+                                    <h6 class="sy_zx_title">{$vo.title}</h6>
+                                    <div class="sy_tips">
+                                        <span class="sy_zx_time">{$vo.time_ad}</span>
+                                        <div class="pull-right1">
+                                               <img src="__PUBLIC__/image/guanzhushu.png"/>
+                                               <span class="subhead-content">{$vo.nu}</span>
+                                         </div>
+                                        <p class="sy_zx_brief">{$vo.brief}</p>
+                                    </div>
+                                </div>
+                              </a>
+                            </li>
+                            </volist>
+                       </ul>
+                   </div>
+              </div>
+          </div>
+          <div class="sy_right">
+              <div class="sy_ganhuo">
+                  <div class="sy_gh_tips">
+                      <p>创业干货</p>
+<!--                      <span>更多</span>-->
+                  </div>
+                  <ul>
+                  
+                  <foreach name="drysaltery" item="vo">
+                      
+                      <li>
+                      <a href="{$vo.url}">
+                      <!--<if condition="$vo[picurl] eq ''">
+                       <img src="__PUBLIC__/image/moren1.jpg" />
+                      <else />
+                          <img src="__ROOT__/Uploads/{$vo.picurl}" />
+                      </if>-->
+                          <p>{$vo.title}</p>
+                          </a>
+                      </li>
+                       
+                      
+                  </foreach>    
+                     
+                  </ul>
+              </div>
+             <div class="sy_huodong">
+                   <a href="">
+                   <div class="sy_hd_tips">
+                      <p>最新活动</p>
+                  </div>
+                  </a>
+                  <ul style="display:inline-block !important;">
+                     	<volist name="huodong" id="vo">
+                        
+                      <li>
+                        <a href="{$vo.url}">
+                          <img style="margin-bottom:13px;" src="__ROOT__/{$vo.img}" /></a>
+                      </li>
+                      
+                      </volist>
+                  </ul>
+              </div>
+              <div class="sy_cyds" style="position: relative;">
+                   <div class="sy_cy_tips">
+                      <p>创业导师</p>
+<!--                      <span>更多</span>-->
+                  </div>
+                  <ul>
+                     <foreach name="teacherlist" item="tvo">
+                      <li>
+                      <if condition="$tvo[image] eq ''">
+                      <img src="__PUBLIC__/image/moren.jpg" />
+                      <else />
+                          <img src="__ROOT__{$tvo.image}" />
+                       </if>
+                          <p><span style="font-size: 13px;">{$tvo.name}</span> <span class="p1">{$tvo.firm}{$tvo.job}</span></p>
+                         
+                      </li>
+                     </foreach>
+                      
+                    
+                  </ul> 
+              </div>
+          </div>
+          
+     </div>
+
+    <include file="Public:foot" />
+   
+</div>
+
+
+
+</body>
+</html>
+<script type="text/javascript">
+Qfast.add('widgets', { path: "__PUBLIC__/js/terminator2.2.min.js", type: "js", requires: ['fx'] });  
+Qfast(false, 'widgets', function () {
+	K.tabs({
+		id: 'fsD1',   //焦点图包裹id  
+		conId: "D1pic1",  //** 大图域包裹id  
+		tabId:"D1fBt",  
+		tabTn:"a",
+		conCn: '.fcon', //** 大图域配置class       
+		auto: 1,   //自动播放 1或0
+		effect: 'fade',   //效果配置
+		eType: 'click', //** 鼠标事件
+		pageBt:true,//是否有按钮切换页码
+		bns: ['.prev', '.next'],//** 前后按钮配置class                          
+		interval: 3000  //** 停顿时间  
+	}) 
+})  
+</script>
